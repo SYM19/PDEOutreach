@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PDEOutreach — Cancer Science for Everyone</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23080c12'/><circle cx='16' cy='16' r='9' fill='none' stroke='%234d9eff' stroke-width='1.5' stroke-dasharray='3 2'/><circle cx='16' cy='16' r='4' fill='%233de383' opacity='.9'/><circle cx='16' cy='16' r='1.5' fill='%2300e5ff'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#080c12;--bg1:#0d1117;--bg2:#111820;
+      --border:rgba(99,130,166,.12);--border2:rgba(99,130,166,.22);
+      --text:#e2eaf4;--text2:#8b9bb4;--text3:#4d5f73;
+      --blue:#4d9eff;--green:#3de383;--amber:#f0a54a;
+      --red:#f05b5b;--cyan:#00e5ff;--purple:#a78bfa;
+      --mono:'Space Mono','Courier New',monospace;
+      --sans:'Inter',system-ui,sans-serif;
+      --radius:8px;--radius-lg:14px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:15px;scroll-behavior:smooth;}
+    body{font-family:var(--sans);background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
+    body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+      background-image:linear-gradient(rgba(77,158,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(77,158,255,.025) 1px,transparent 1px);
+      background-size:40px 40px;}
+    #app{display:flex;flex-direction:column;min-height:100vh;position:relative;z-index:1;}
+
+    /* HEADER */
+    header{height:58px;border-bottom:1px solid var(--border);padding:0 1.5rem;display:flex;align-items:center;position:sticky;top:0;background:rgba(8,12,18,.92);backdrop-filter:blur(16px);z-index:100;}
+    .logo{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--blue);letter-spacing:-.02em;white-space:nowrap;margin-right:2rem;text-decoration:none;}
+    .logo em{color:var(--green);font-style:normal;}
+    nav{display:flex;flex:1;height:100%;overflow-x:auto;}
+    nav::-webkit-scrollbar{display:none;}
+    nav button{background:none;border:none;border-bottom:2px solid transparent;color:var(--text3);cursor:pointer;font-family:var(--sans);font-size:.8rem;font-weight:500;padding:0 1rem;height:100%;white-space:nowrap;transition:color .2s,border-color .2s;}
+    nav button:hover{color:var(--text2);}
+    nav button.active{color:var(--blue);border-bottom-color:var(--blue);}
+    .header-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+    .v-badge{font-family:var(--mono);font-size:.65rem;padding:3px 8px;border:1px solid var(--border2);border-radius:4px;color:var(--text3);}
+    .pde-link{font-family:var(--mono);font-size:.7rem;color:var(--text3);border:1px solid var(--border);border-radius:4px;padding:3px 10px;text-decoration:none;transition:color .2s,border-color .2s;}
+    .pde-link:hover{color:var(--blue);border-color:var(--blue);}
+    .status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2.5s ease-in-out infinite;}
+    @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
+
+    /* LAYOUT */
+    main{flex:1;padding:2rem 1.5rem;max-width:1280px;width:100%;margin:0 auto;}
+    .tab-panel{display:none;}
+    .tab-panel.active{display:block;animation:fadein .25s ease;}
+    @keyframes fadein{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:none;}}
+    .section{margin-bottom:2.5rem;}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
+    @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:1fr 1fr;}}
+    @media(max-width:600px){main{padding:1rem;}header{padding:0 1rem;}}
+
+    /* TYPE */
+    h1{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--text);letter-spacing:-.03em;margin-bottom:.5rem;}
+    h1 .accent{color:var(--blue);}
+    h2{font-size:.8rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.875rem;}
+    h3{font-size:.95rem;font-weight:600;color:var(--text);margin-bottom:.5rem;}
+    p{font-size:.875rem;line-height:1.75;color:var(--text2);margin-bottom:.75rem;}
+    a{color:var(--blue);}
+    strong{color:var(--text);font-weight:600;}
+    code{font-family:var(--mono);font-size:.82em;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:1px 5px;color:var(--cyan);}
+
+    /* CARDS */
+    .card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem 1.5rem;transition:border-color .2s;}
+    .card:hover{border-color:var(--border2);}
+    .card-header{display:flex;align-items:center;gap:8px;margin-bottom:1rem;padding-bottom:.75rem;border-bottom:1px solid var(--border);}
+    .card-icon{width:28px;height:28px;border-radius:6px;background:rgba(77,158,255,.12);display:flex;align-items:center;justify-content:center;font-size:13px;flex-shrink:0;}
+
+    /* TAGS */
+    .tag{display:inline-block;font-family:var(--mono);font-size:.68rem;padding:3px 8px;border:1px solid var(--border);border-radius:5px;color:var(--text3);margin:2px;}
+    .tag.blue{border-color:rgba(77,158,255,.4);color:var(--blue);background:rgba(77,158,255,.08);}
+    .tag.green{border-color:rgba(61,227,131,.4);color:var(--green);background:rgba(61,227,131,.08);}
+    .tag.amber{border-color:rgba(240,165,74,.4);color:var(--amber);background:rgba(240,165,74,.08);}
+    .tag.red{border-color:rgba(240,91,91,.4);color:var(--red);background:rgba(240,91,91,.08);}
+    .tag.purple{border-color:rgba(167,139,250,.4);color:var(--purple);background:rgba(167,139,250,.08);}
+
+    /* BUTTONS */
+    .btn{font-family:var(--sans);font-size:.82rem;font-weight:500;padding:8px 18px;border-radius:var(--radius);cursor:pointer;border:1px solid transparent;transition:all .15s;}
+    .btn:active{transform:scale(.97);}
+    .btn:disabled{opacity:.35;cursor:not-allowed;}
+    .btn-primary{background:var(--blue);border-color:var(--blue);color:#fff;box-shadow:0 2px 12px rgba(77,158,255,.3);}
+    .btn-primary:hover:not(:disabled){background:#6aadff;}
+    .btn-ghost{background:transparent;border-color:var(--border2);color:var(--text2);}
+    .btn-ghost:hover:not(:disabled){border-color:var(--text3);color:var(--text);}
+    .btn-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:1rem;}
+
+    /* SLIDERS */
+    .slider-row{display:flex;align-items:center;gap:12px;margin-bottom:12px;}
+    .slider-name{font-family:var(--mono);font-size:.72rem;color:var(--text2);width:160px;flex-shrink:0;}
+    input[type="range"]{flex:1;height:4px;cursor:pointer;-webkit-appearance:none;background:var(--border2);border-radius:2px;outline:none;}
+    input[type="range"]::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:var(--blue);border:2px solid var(--bg1);cursor:pointer;transition:transform .15s;}
+    input[type="range"]::-webkit-slider-thumb:hover{transform:scale(1.2);}
+    .slider-val{font-family:var(--mono);font-size:.75rem;color:var(--blue);width:70px;text-align:right;font-weight:700;}
+
+    /* FORM */
+    select,input[type="text"],textarea{width:100%;background:var(--bg1);border:1px solid var(--border2);border-radius:var(--radius);color:var(--text);font-family:var(--sans);font-size:.85rem;padding:8px 12px;outline:none;transition:border-color .2s;appearance:none;}
+    select:focus,input:focus{border-color:var(--blue);}
+    label{font-size:.75rem;font-weight:500;color:var(--text2);display:block;margin-bottom:5px;text-transform:uppercase;letter-spacing:.05em;}
+
+    /* CANVAS */
+    canvas{display:block;width:100%;}
+    .canvas-box{background:#030507;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;position:relative;}
+    .canvas-overlay{position:absolute;top:8px;left:10px;font-family:var(--mono);font-size:.68rem;color:var(--text3);pointer-events:none;}
+
+    /* PROGRESS */
+    .progress-track{height:3px;background:var(--border);border-radius:2px;overflow:hidden;margin:8px 0;}
+    .progress-fill{height:100%;width:0%;background:linear-gradient(90deg,var(--blue),var(--cyan));border-radius:2px;transition:width .08s linear;}
+    .status-line{font-family:var(--mono);font-size:.7rem;color:var(--text3);min-height:16px;}
+
+    /* METRIC */
+    .metric{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem 1rem;}
+    .metric-label{font-size:.68rem;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:6px;}
+    .metric-value{font-family:var(--mono);font-size:1.35rem;font-weight:700;color:var(--text);}
+
+    /* COLORBAR */
+    .colorbar-row{display:flex;align-items:stretch;gap:8px;margin-top:10px;}
+    .colorbar{width:10px;border-radius:3px;flex-shrink:0;background:linear-gradient(to top,#000004 0%,#3b0f70 28%,#8c2981 50%,#de4968 70%,#fe9f6d 85%,#fcfdbf 100%);}
+    .colorbar-ticks{display:flex;flex-direction:column;justify-content:space-between;font-family:var(--mono);font-size:.62rem;color:var(--text3);}
+
+    /* DIVIDER */
+    .divider{border:none;border-top:1px solid var(--border);margin:1.5rem 0;}
+
+    /* HERO */
+    .hero{padding:2.5rem 0 1.5rem;}
+    .hero-title{font-family:var(--mono);font-size:2rem;font-weight:700;letter-spacing:-.04em;line-height:1.1;margin-bottom:1rem;}
+    .hero-title .pde{color:var(--blue);}
+    .hero-title .pub{color:var(--green);}
+    .hero-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.25rem;}
+    .hero-chip{font-family:var(--mono);font-size:.7rem;padding:4px 12px;border:1px solid var(--border2);border-radius:20px;color:var(--text3);}
+
+    /* TABLE */
+    .table-wrap{overflow-x:auto;}
+    table{width:100%;border-collapse:collapse;font-size:.82rem;}
+    th{text-align:left;font-size:.68rem;font-weight:600;color:var(--text3);padding:8px 12px;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.07em;}
+    td{padding:9px 12px;border-bottom:1px solid var(--border);color:var(--text2);}
+    tr:last-child td{border-bottom:none;}
+    tr:hover td{background:rgba(77,158,255,.03);color:var(--text);}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:1rem 1.5rem;font-size:.72rem;color:var(--text3);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    .footer-logo{font-family:var(--mono);color:var(--text2);}
+
+    /* =====================================================
+       QUIZ STYLES
+    ===================================================== */
+    .quiz-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;}
+    .quiz-question{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:1.25rem;line-height:1.5;}
+    .quiz-sub{font-size:.82rem;color:var(--text3);margin-top:.25rem;font-weight:400;}
+    .quiz-options{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;}
+    .quiz-option{
+      display:flex;align-items:center;gap:12px;
+      padding:.875rem 1.25rem;
+      background:var(--bg1);border:1px solid var(--border2);
+      border-radius:var(--radius);cursor:pointer;
+      font-size:.875rem;color:var(--text2);
+      transition:all .15s;
+    }
+    .quiz-option:hover{border-color:var(--blue);color:var(--text);}
+    .quiz-option.selected{border-color:var(--blue);background:rgba(77,158,255,.08);color:var(--text);}
+    .quiz-option.correct{border-color:var(--green);background:rgba(61,227,131,.08);color:var(--green);}
+    .quiz-option.wrong{border-color:var(--red);background:rgba(240,91,91,.08);color:var(--red);}
+    .quiz-option.reveal-correct{border-color:var(--green);background:rgba(61,227,131,.06);color:var(--green);}
+    .quiz-letter{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.75rem;font-weight:700;flex-shrink:0;}
+    .quiz-reveal{display:none;margin-top:1rem;padding:1rem 1.25rem;background:var(--bg1);border-radius:var(--radius);border-left:3px solid var(--green);font-size:.875rem;color:var(--text2);line-height:1.75;}
+    .quiz-reveal.show{display:block;animation:fadein .3s ease;}
+    .quiz-reveal.wrong-reveal{border-left-color:var(--amber);}
+    .quiz-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;margin-top:.75rem;}
+    .quiz-badge.correct-badge{background:rgba(61,227,131,.1);color:var(--green);border:1px solid rgba(61,227,131,.3);}
+    .quiz-badge.wrong-badge{background:rgba(240,165,74,.1);color:var(--amber);border:1px solid rgba(240,165,74,.3);}
+
+    /* =====================================================
+       RISK PROFILE STYLES
+    ===================================================== */
+    .profile-card{
+      border-radius:var(--radius-lg);padding:1.5rem;
+      border:2px solid;text-align:center;
+    }
+    .profile-title{font-family:var(--mono);font-size:1.1rem;font-weight:700;margin-bottom:.5rem;}
+    .profile-score{font-family:var(--mono);font-size:3rem;font-weight:700;line-height:1;margin:.75rem 0;}
+    .profile-traits{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;margin-top:.75rem;}
+
+    /* =====================================================
+       STORY PLACEHOLDER STYLES
+    ===================================================== */
+    .story-placeholder{
+      background:var(--bg1);
+      border:2px dashed var(--border2);
+      border-radius:var(--radius-lg);
+      padding:2rem;text-align:center;
+      margin-bottom:1.5rem;
+    }
+    .story-placeholder-icon{font-size:2rem;margin-bottom:.75rem;}
+    .story-placeholder-title{font-size:.9rem;font-weight:600;color:var(--text3);margin-bottom:.5rem;font-family:var(--mono);}
+    .story-placeholder-text{font-size:.82rem;color:var(--text3);line-height:1.6;}
+
+    /* REAL STORY CARD (when filled) */
+    .story-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;position:relative;overflow:hidden;}
+    .story-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--amber);}
+    .story-name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.25rem;}
+    .story-meta{font-size:.75rem;color:var(--text3);font-family:var(--mono);margin-bottom:.875rem;}
+    .story-quote{font-size:.9rem;color:var(--text2);line-height:1.75;font-style:italic;border-left:none;padding-left:1rem;}
+  </style>
+</head>
+<body>
+<div id="app">
+
+  <!-- HEADER -->
+  <header>
+    <a class="logo" href="#" onclick="switchTab('home');return false;">PDE<em>Outreach</em></a>
+    <nav id="nav">
+      <button class="active" onclick="switchTab('home')">Home</button>
+      <button onclick="switchTab('drug')">Why Drugs Fail</button>
+      <button onclick="switchTab('early')">Early Detection</button>
+      <button onclick="switchTab('lifestyle')">Lifestyle & Risk</button>
+      <button onclick="switchTab('precision')">Precision Medicine</button>
+    </nav>
+    <div class="header-right">
+      <a class="pde-link" href="https://pdeoncology.com" target="_blank">PDEOncology ↗</a>
+      <div class="status-dot"></div>
+      <span class="v-badge">v0.1</span>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ================================================
+         HOME
+    ================================================ -->
+    <div id="tab-home" class="tab-panel active">
+      <div class="hero section">
+        <div class="hero-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
+        <p style="max-width:680px;font-size:.95rem;">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
+        <div class="hero-chips">
+          <span class="hero-chip">中英双语</span>
+          <span class="hero-chip">interactive</span>
+          <span class="hero-chip">evidence-based</span>
+          <span class="hero-chip">free forever</span>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <!-- Opening quiz -->
+      <div class="section">
+        <h2>Quick — what do you think?</h2>
+        <div class="quiz-box">
+          <div class="quiz-question">
+            A powerful chemotherapy drug enters the bloodstream and reaches the tumor.
+            What percentage of cancer cells does it typically kill?
+            <div class="quiz-sub">No googling. Go with your gut.</div>
+          </div>
+          <div class="quiz-options" id="home-quiz-opts">
+            <div class="quiz-option" onclick="answerHomeQuiz(this,'A')"><span class="quiz-letter">A</span>Most of them — that's the whole point of chemo</div>
+            <div class="quiz-option" onclick="answerHomeQuiz(this,'B')"><span class="quiz-letter">B</span>About half — chemo is not very precise</div>
+            <div class="quiz-option" onclick="answerHomeQuiz(this,'C')"><span class="quiz-letter">C</span>Only the outer layer — drug can't reach the core</div>
+            <div class="quiz-option" onclick="answerHomeQuiz(this,'D')"><span class="quiz-letter">D</span>Almost none — tumors are completely drug-resistant</div>
+          </div>
+          <div class="quiz-reveal" id="home-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- 4 topic cards -->
+      <h2>Four things about cancer nobody told you</h2>
+      <div class="grid-2 section">
+        <div class="card" style="cursor:pointer;border-top:2px solid var(--blue);" onclick="switchTab('drug')">
+          <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);">Why drugs fail</h2></div>
+          <h3>Good drugs can't always reach the tumor</h3>
+          <p>Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.</p>
+          <span class="tag blue">interactive sim</span><span class="tag">quiz inside</span>
+        </div>
+        <div class="card" style="cursor:pointer;border-top:2px solid var(--green);" onclick="switchTab('early')">
+          <div class="card-header"><div class="card-icon">🔍</div><h2 style="margin:0;color:var(--green);">Early detection</h2></div>
+          <h3>Tumor size changes everything</h3>
+          <p>A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.</p>
+          <span class="tag green">drag & explore</span><span class="tag">quiz inside</span>
+        </div>
+        <div class="card" style="cursor:pointer;border-top:2px solid var(--amber);" onclick="switchTab('lifestyle')">
+          <div class="card-header"><div class="card-icon">🧬</div><h2 style="margin:0;color:var(--amber);">Lifestyle & risk</h2></div>
+          <h3>Your habits change how drugs work</h3>
+          <p>Smoking and obesity don't just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.</p>
+          <span class="tag amber">risk profile</span><span class="tag">personalised</span>
+        </div>
+        <div class="card" style="cursor:pointer;border-top:2px solid var(--purple);" onclick="switchTab('precision')">
+          <div class="card-header"><div class="card-icon">🎯</div><h2 style="margin:0;color:var(--purple);">Precision medicine</h2></div>
+          <h3>Why the same drug works differently for everyone</h3>
+          <p>Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.</p>
+          <span class="tag purple">compare</span><span class="tag">quiz inside</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         SECTION 1: WHY DRUGS FAIL
+    ================================================ -->
+    <div id="tab-drug" class="tab-panel">
+      <div class="section">
+        <h1>Why <span class="accent">Drugs Fail</span></h1>
+        <p style="max-width:680px;">The most common reason chemotherapy fails isn't drug resistance — it's a physical problem. The drug simply cannot reach the cells it needs to kill.</p>
+      </div>
+
+      <!-- Quiz first -->
+      <div class="section">
+        <h2>Before we explain — what's your guess?</h2>
+        <div class="quiz-box">
+          <div class="quiz-question">
+            Pancreatic cancer has one of the lowest survival rates of any cancer.
+            What is the main reason chemotherapy is so ineffective?
+          </div>
+          <div class="quiz-options" id="drug-quiz-opts">
+            <div class="quiz-option" onclick="answerQuiz('drug',this,'A')"><span class="quiz-letter">A</span>Cancer cells mutate too fast and become drug-resistant</div>
+            <div class="quiz-option" onclick="answerQuiz('drug',this,'B')"><span class="quiz-letter">B</span>The drugs are toxic and have to be given at low doses</div>
+            <div class="quiz-option" onclick="answerQuiz('drug',this,'C')"><span class="quiz-letter">C</span>Physical barriers in the tumor prevent drugs from reaching cancer cells</div>
+            <div class="quiz-option" onclick="answerQuiz('drug',this,'D')"><span class="quiz-letter">D</span>The pancreas breaks down drugs before they can work</div>
+          </div>
+          <div class="quiz-reveal" id="drug-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Explainer -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;">What's really happening inside</h2></div>
+        <div class="grid-2">
+          <div>
+            <h3>The tumor builds walls</h3>
+            <p>Tumors actively create a hostile microenvironment that repels drugs:</p>
+            <ul style="font-size:.875rem;color:var(--text2);line-height:2.2;padding-left:1.25rem;margin-bottom:.75rem;">
+              <li><strong>High interstitial fluid pressure</strong> — the tumor pushes fluid outward, physically repelling drugs</li>
+              <li><strong>Dense extracellular matrix</strong> — fibrous proteins slow drug movement</li>
+              <li><strong>Abnormal blood vessels</strong> — irregular and poorly distributed</li>
+            </ul>
+            <p style="margin:0;">The result: drug concentration drops dramatically moving from the tumor edge toward its center.</p>
+          </div>
+          <div>
+            <h3>We can measure this</h3>
+            <p>This is modelled by a reaction-diffusion equation used in PDEOncology:</p>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem 1.25rem;font-family:var(--mono);font-size:.85rem;color:var(--cyan);margin:1rem 0;">∂C/∂t = ∇·(D∇C) − λC − k·ρ·C</div>
+            <p>Where <code>D</code> is how fast the drug diffuses. In pancreatic cancer, D is up to 75% lower than in breast cancer — because the stroma is so dense.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive sim -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon blue">▶</div><h2 style="margin:0;">See it for yourself</h2></div>
+        <p>Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.</p>
+        <div class="grid-2" style="margin-bottom:1rem;">
+          <div><label>Drug</label>
+            <select id="drug1-select">
+              <option value="cisplatin">Cisplatin (small molecule — high penetration)</option>
+              <option value="doxorubicin">Doxorubicin (medium molecule)</option>
+              <option value="trastuzumab">Trastuzumab (large antibody — low penetration)</option>
+            </select>
+          </div>
+          <div><label>Tumor type</label>
+            <select id="tumor1-select">
+              <option value="breast">Breast cancer</option>
+              <option value="pancreatic">Pancreatic cancer (hardest to treat)</option>
+              <option value="glioma">Glioma (brain tumor)</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="canvas-box" style="aspect-ratio:1;">
+              <canvas id="drug1-heatmap" width="400" height="400"></canvas>
+              <div class="canvas-overlay" id="drug1-lbl">press Run to simulate</div>
+            </div>
+            <div class="colorbar-row" style="height:24px;margin-top:8px;">
+              <div class="colorbar" style="height:24px;"></div>
+              <div class="colorbar-ticks"><span>high</span><span>low</span></div>
+              <span style="font-size:.7rem;color:var(--text3);margin-left:8px;align-self:center;">drug concentration</span>
+            </div>
+          </div>
+          <div>
+            <div class="grid-2" style="gap:.5rem;margin-bottom:.75rem;">
+              <div class="metric"><div class="metric-label">Tumor coverage</div><div class="metric-value" id="drug1-cov">—</div></div>
+              <div class="metric"><div class="metric-label">Penetration depth</div><div class="metric-value" id="drug1-depth">—</div></div>
+            </div>
+            <div id="drug1-insight" style="font-size:.85rem;color:var(--text2);line-height:1.75;min-height:80px;padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);"></div>
+            <div class="btn-row">
+              <button class="btn btn-primary" id="drug1-btn" onclick="runDrug1()">▶ Run simulation</button>
+              <button class="btn btn-ghost" onclick="resetDrug1()">Reset</button>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="drug1-prog"></div></div>
+            <div class="status-line" id="drug1-status"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real story placeholder -->
+      <div class="section">
+        <h2>Real stories</h2>
+        <div class="story-placeholder">
+          <div class="story-placeholder-icon">📝</div>
+          <div class="story-placeholder-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text">We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.<br>If you or someone you know would like to share their experience, please reach out.</div>
+        </div>
+        <!-- When ready, replace above with story-card: -->
+        <!--
+        <div class="story-card">
+          <div class="story-name">Patient name, age</div>
+          <div class="story-meta">Diagnosis · Year · Location</div>
+          <div class="story-quote">"Quote from patient or family member..."</div>
+        </div>
+        -->
+      </div>
+    </div>
+
+    <!-- ================================================
+         SECTION 2: EARLY DETECTION
+    ================================================ -->
+    <div id="tab-early" class="tab-panel">
+      <div class="section">
+        <h1>Early <span class="accent">Detection</span></h1>
+        <p style="max-width:680px;">You've heard "catch it early." But do you know what that actually means in physical terms? First — a question.</p>
+      </div>
+
+      <!-- Quiz -->
+      <div class="section">
+        <h2>Test your intuition</h2>
+        <div class="quiz-box">
+          <div class="quiz-question">
+            A tumor doubles in size from Stage I to Stage III.
+            How much does drug coverage (the percentage of the tumor reached by chemo) change?
+          </div>
+          <div class="quiz-options" id="early-quiz-opts">
+            <div class="quiz-option" onclick="answerQuiz('early',this,'A')"><span class="quiz-letter">A</span>It drops by about half — roughly proportional to size</div>
+            <div class="quiz-option" onclick="answerQuiz('early',this,'B')"><span class="quiz-letter">B</span>It drops by about 20–30% — not that dramatic</div>
+            <div class="quiz-option" onclick="answerQuiz('early',this,'C')"><span class="quiz-letter">C</span>It drops by over 80% — coverage collapses</div>
+            <div class="quiz-option" onclick="answerQuiz('early',this,'D')"><span class="quiz-letter">D</span>It stays roughly the same — drugs adapt to tumor size</div>
+          </div>
+          <div class="quiz-reveal" id="early-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Size explorer -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon green">◉</div><h2 style="margin:0;">Drag to discover</h2></div>
+        <p>Move the slider. Watch the numbers change. This is why early screening saves lives.</p>
+        <div class="slider-row" style="max-width:600px;margin:1rem 0 1.5rem;">
+          <span class="slider-name">Tumor radius</span>
+          <input type="range" id="size-slider" min="8" max="36" step="2" value="12" oninput="updateSizeDemo(this.value)">
+          <span class="slider-val" id="size-val">12 px</span>
+        </div>
+        <div class="grid-2">
+          <div>
+            <div class="canvas-box" style="aspect-ratio:1;">
+              <canvas id="size-heatmap" width="400" height="400"></canvas>
+              <div class="canvas-overlay" id="size-lbl">adjust slider then hit Run</div>
+            </div>
+          </div>
+          <div>
+            <div class="grid-2" style="gap:.5rem;margin-bottom:1rem;">
+              <div class="metric"><div class="metric-label">Stage</div><div class="metric-value" id="size-metric-stage" style="font-size:.9rem;">—</div></div>
+              <div class="metric"><div class="metric-label">5-yr survival</div><div class="metric-value" id="size-metric-survival">—</div></div>
+              <div class="metric"><div class="metric-label">Drug coverage</div><div class="metric-value" id="size-metric-cov">—</div></div>
+              <div class="metric"><div class="metric-label">Tumor radius</div><div class="metric-value" id="size-metric-r">—</div></div>
+            </div>
+            <div id="size-insight" style="font-size:.85rem;color:var(--text2);line-height:1.75;min-height:80px;padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);"></div>
+            <div class="btn-row">
+              <button class="btn btn-primary" onclick="runSizeDemo()">▶ Simulate this size</button>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="size-prog"></div></div>
+            <div class="status-line" id="size-status"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screening table -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">📋</div><h2 style="margin:0;">When should you screen?</h2></div>
+        <div class="table-wrap">
+          <table>
+            <thead><tr><th>Cancer</th><th>Screening method</th><th>Start age</th><th>Why it matters</th></tr></thead>
+            <tbody>
+              <tr><td><strong>Breast</strong></td><td>Mammogram</td><td>40–45</td><td>Stage I: 99% survival → Stage IV: 28%</td></tr>
+              <tr><td><strong>Colorectal</strong></td><td>Colonoscopy</td><td>45</td><td>Most cases preventable if polyps caught early</td></tr>
+              <tr><td><strong>Cervical</strong></td><td>Pap smear + HPV test</td><td>21</td><td>Near 100% preventable with screening</td></tr>
+              <tr><td><strong>Lung</strong></td><td>Low-dose CT</td><td>50 (smokers)</td><td>Early finding triples survival rate</td></tr>
+              <tr><td><strong style="color:var(--red);">Pancreatic</strong></td><td>No standard screening</td><td>—</td><td>Prevention is the only current strategy</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Real story placeholder -->
+      <div class="section">
+        <h2>Real stories</h2>
+        <div class="story-placeholder">
+          <div class="story-placeholder-icon">📝</div>
+          <div class="story-placeholder-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text">A story about how early (or late) detection changed a patient's treatment journey.<br>Coming soon — we are currently reaching out to patients and families.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         SECTION 3: LIFESTYLE & RISK PROFILE
+    ================================================ -->
+    <div id="tab-lifestyle" class="tab-panel">
+      <div class="section">
+        <h1>Lifestyle <span class="accent">&amp; Risk</span></h1>
+        <p style="max-width:680px;">Your lifestyle doesn't just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.</p>
+      </div>
+
+      <!-- Risk profile builder -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon amber">◈</div><h2 style="margin:0;">Build your microenvironment profile</h2></div>
+        <p>Adjust the sliders to match your lifestyle. We'll show you how each factor affects drug penetration — and generate your personal profile.</p>
+
+        <div class="grid-2">
+          <div>
+            <div class="slider-row">
+              <span class="slider-name">Smoking (pack-years)</span>
+              <input type="range" id="ls-smoking" min="0" max="40" step="5" value="0" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-smoking-val">0</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name">BMI</span>
+              <input type="range" id="ls-bmi" min="16" max="42" step="1" value="22" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-bmi-val">22</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name">Chronic inflammation</span>
+              <input type="range" id="ls-inflam" min="0" max="10" step="1" value="0" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-inflam-val">none</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name">Exercise (hrs/week)</span>
+              <input type="range" id="ls-exercise" min="0" max="14" step="1" value="3" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-exercise-val">3h</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name">Alcohol (units/week)</span>
+              <input type="range" id="ls-alcohol" min="0" max="40" step="2" value="0" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-alcohol-val">0</span>
+            </div>
+
+            <div class="btn-row">
+              <button class="btn btn-primary" onclick="generateProfile()">Generate my profile →</button>
+              <button class="btn btn-ghost" onclick="resetLifestyle()">Reset</button>
+            </div>
+            <div class="progress-track"><div class="progress-fill" id="ls-prog"></div></div>
+          </div>
+
+          <!-- Live preview -->
+          <div>
+            <div style="padding:1rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:.75rem;">
+              <div style="font-size:.72rem;color:var(--text3);margin-bottom:.75rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;">Live microenvironment estimate</div>
+              <div class="grid-2" style="gap:.5rem;">
+                <div class="metric"><div class="metric-label">D modifier</div><div class="metric-value" id="ls-D-mod" style="color:var(--amber);">×1.00</div></div>
+                <div class="metric"><div class="metric-label">Risk level</div><div class="metric-value" id="ls-risk" style="font-size:.9rem;color:var(--green);">baseline</div></div>
+              </div>
+            </div>
+            <div id="ls-live-insight" style="font-size:.83rem;color:var(--text2);line-height:1.75;min-height:60px;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Profile result -->
+      <div id="ls-profile-result" style="display:none;" class="section">
+        <h2>Your microenvironment profile</h2>
+        <div class="grid-2">
+          <div id="ls-profile-card" class="profile-card">
+            <!-- filled by JS -->
+          </div>
+          <div>
+            <div class="canvas-box" style="aspect-ratio:1;">
+              <canvas id="ls-heatmap" width="400" height="400"></canvas>
+              <div class="canvas-overlay" id="ls-lbl">your profile simulation</div>
+            </div>
+          </div>
+        </div>
+        <div id="ls-profile-detail" class="card" style="margin-top:1rem;background:var(--bg1);"></div>
+      </div>
+
+      <!-- Prevention -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">✦</div><h2 style="margin:0;">Evidence-based actions</h2></div>
+        <div class="grid-3">
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div style="color:var(--green);font-weight:600;margin-bottom:.5rem;">Don't smoke</div>
+            <p style="margin:0;font-size:.82rem;">Smoking accounts for ~30% of all cancer deaths. Quitting at any age reduces both cancer risk and ECM density — improving potential drug penetration.</p>
+          </div>
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Healthy weight</div>
+            <p style="margin:0;font-size:.82rem;">Obesity increases risk for 13 cancer types. Excess fat tissue promotes chronic inflammation, elevating IFP and reducing drug diffusion coefficient D.</p>
+          </div>
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div style="color:var(--amber);font-weight:600;margin-bottom:.5rem;">Exercise regularly</div>
+            <p style="margin:0;font-size:.82rem;">150 min/week of moderate exercise reduces cancer risk by 10–20% and reduces systemic inflammation — keeping your tissue microenvironment healthier.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real story placeholder -->
+      <div class="section">
+        <h2>Real stories</h2>
+        <div class="story-placeholder">
+          <div class="story-placeholder-icon">📝</div>
+          <div class="story-placeholder-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text">A story about how lifestyle changes affected a patient's treatment response.<br>We are working on collecting real cases — check back soon.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================================================
+         SECTION 4: PRECISION MEDICINE
+    ================================================ -->
+    <div id="tab-precision" class="tab-panel">
+      <div class="section">
+        <h1>Precision <span class="accent">Medicine</span></h1>
+        <p style="max-width:680px;">Two patients. Same cancer. Same drug. One responds — the other doesn't. This isn't bad luck. It's biology. First, a guess.</p>
+      </div>
+
+      <!-- Quiz -->
+      <div class="section">
+        <h2>What do you think?</h2>
+        <div class="quiz-box">
+          <div class="quiz-question">
+            Trastuzumab (Herceptin) is a highly effective breast cancer drug.
+            In which patients does it work?
+          </div>
+          <div class="quiz-options" id="prec-quiz-opts">
+            <div class="quiz-option" onclick="answerQuiz('prec',this,'A')"><span class="quiz-letter">A</span>All breast cancer patients — it's a general treatment</div>
+            <div class="quiz-option" onclick="answerQuiz('prec',this,'B')"><span class="quiz-letter">B</span>Only patients whose tumors overexpress the HER2 protein (~20% of cases)</div>
+            <div class="quiz-option" onclick="answerQuiz('prec',this,'C')"><span class="quiz-letter">C</span>Only younger patients — the drug is age-dependent</div>
+            <div class="quiz-option" onclick="answerQuiz('prec',this,'D')"><span class="quiz-letter">D</span>Only patients who have already had chemotherapy</div>
+          </div>
+          <div class="quiz-reveal" id="prec-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Compare sim -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">⚖</div><h2 style="margin:0;">See the difference side by side</h2></div>
+        <div style="margin-bottom:1rem;">
+          <label>Choose a comparison scenario</label>
+          <select id="prec-scenario">
+            <option value="her2">HER2+ vs HER2− breast cancer (Trastuzumab)</option>
+            <option value="pancreas_vs_breast">Pancreatic vs breast cancer (Doxorubicin)</option>
+            <option value="small_vs_large">Small molecule vs antibody (same tumor)</option>
+          </select>
+        </div>
+        <div class="btn-row" style="margin-top:0;margin-bottom:1rem;">
+          <button class="btn btn-primary" id="prec-btn" onclick="runPrecCompare()">▶ Run comparison</button>
+        </div>
+        <div class="progress-track"><div class="progress-fill" id="prec-prog"></div></div>
+        <div class="status-line" id="prec-status"></div>
+
+        <div id="prec-results" style="display:none;margin-top:1rem;">
+          <div class="grid-2">
+            <div>
+              <div style="font-family:var(--mono);font-size:.75rem;color:var(--blue);margin-bottom:.5rem;" id="prec-label-A">Patient A</div>
+              <div class="canvas-box" style="aspect-ratio:1;"><canvas id="prec-heatmap-A" width="360" height="360"></canvas></div>
+              <div class="grid-2" style="gap:.5rem;margin-top:.5rem;">
+                <div class="metric"><div class="metric-label">Coverage</div><div class="metric-value" id="prec-cov-A">—</div></div>
+                <div class="metric"><div class="metric-label">Avg conc.</div><div class="metric-value" id="prec-avg-A">—</div></div>
+              </div>
+            </div>
+            <div>
+              <div style="font-family:var(--mono);font-size:.75rem;color:var(--green);margin-bottom:.5rem;" id="prec-label-B">Patient B</div>
+              <div class="canvas-box" style="aspect-ratio:1;"><canvas id="prec-heatmap-B" width="360" height="360"></canvas></div>
+              <div class="grid-2" style="gap:.5rem;margin-top:.5rem;">
+                <div class="metric"><div class="metric-label">Coverage</div><div class="metric-value" id="prec-cov-B">—</div></div>
+                <div class="metric"><div class="metric-label">Avg conc.</div><div class="metric-value" id="prec-avg-B">—</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="margin-top:1rem;padding:1rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div id="prec-insight" style="font-size:.875rem;color:var(--text2);line-height:1.75;"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Real story placeholder -->
+      <div class="section">
+        <h2>Real stories</h2>
+        <div class="story-placeholder">
+          <div class="story-placeholder-icon">📝</div>
+          <div class="story-placeholder-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text">A story about how genetic testing changed a patient's treatment plan — and outcome.<br>Coming soon.</div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <span class="footer-logo">PDEOutreach</span>
+    <span>Cancer science for everyone — educational use only, not medical advice</span>
+    <div style="display:flex;gap:12px;">
+      <a href="https://pdeoncology.com" target="_blank" style="color:var(--text3);">PDEOncology ↗</a>
+      <a href="https://github.com/SYM19/tumor-drug-penetration-model" target="_blank" style="color:var(--text3);">GitHub ↗</a>
+    </div>
+  </footer>
+</div>
+
+<script>
+/* =========================================================
+   PDE ENGINE
+========================================================= */
+const N=80;
+function buildRho(cx,cy,r){const a=new Float32Array(N*N);for(let y=0;y<N;y++)for(let x=0;x<N;x++){const d=Math.sqrt((x-cx)**2+(y-cy)**2);a[y*N+x]=d<=r?Math.max(.05,1-.5*(d/r)):Math.max(.05,.1+.4*Math.exp(-(d-r)/(r*.3)));}return a;}
+function buildDField(cx,cy,r,D){const a=new Float32Array(N*N);for(let y=0;y<N;y++)for(let x=0;x<N;x++){const d=Math.sqrt((x-cx)**2+(y-cy)**2);a[y*N+x]=d<=r?D*(.4+.6*d/r):D;}return a;}
+function initC(){const C=new Float32Array(N*N);for(let y=0;y<N;y++)C[y*N]=1;return C;}
+function pdeRun(C,Df,rho,dx,dt,lam,k,steps){const C2=new Float32Array(N*N);for(let s=0;s<steps;s++){for(let y=1;y<N-1;y++)for(let x=1;x<N-1;x++){const i=y*N+x,lap=(C[(y-1)*N+x]+C[(y+1)*N+x]+C[y*N+(x-1)]+C[y*N+(x+1)]-4*C[i])/(dx*dx);C2[i]=Math.max(0,C[i]+dt*Df[i]*lap-dt*lam*C[i]-dt*k*rho[i]*C[i]);}for(let y=0;y<N;y++){C2[y*N]=1;C2[y*N+N-1]=0;}for(let x=0;x<N;x++){C2[x]=0;C2[(N-1)*N+x]=0;}C.set(C2);}}
+function magma(t){t=Math.max(0,Math.min(1,t));const s=[[3,0,4],[62,4,100],[120,20,140],[180,45,122],[225,80,100],[255,130,80],[255,200,100],[252,253,191]];const idx=t*(s.length-1),lo=Math.floor(idx),hi=Math.min(lo+1,s.length-1),f=idx-lo;return s[lo].map((v,i)=>Math.round(v+f*(s[hi][i]-v)));}
+function drawHM(id,C,cx,cy,r,W,H){const cv=document.getElementById(id);cv.width=W;cv.height=H;const ctx=cv.getContext('2d'),img=ctx.createImageData(W,H);for(let py=0;py<H;py++)for(let px=0;px<W;px++){const gx=Math.floor(px/W*N),gy=Math.floor(py/H*N),[r2,g2,b2]=magma(C[gy*N+gx]),i=(py*W+px)*4;img.data[i]=r2;img.data[i+1]=g2;img.data[i+2]=b2;img.data[i+3]=255;}ctx.putImageData(img,0,0);ctx.strokeStyle='rgba(0,229,255,.7)';ctx.lineWidth=1.5;ctx.setLineDash([5,4]);ctx.beginPath();ctx.arc(cx/N*W,cy/N*H,r/N*W,0,Math.PI*2);ctx.stroke();ctx.setLineDash([]);}
+function calcCov(C,cx,cy,r){let t=0,c=0;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=r){t++;if(C[y*N+x]>.05)c++;}return t>0?(c/t*100).toFixed(1):'0';}
+function calcAvg(C,cx,cy,r){let s=0,n=0;for(let y=0;y<N;y++)for(let x=0;x<N;x++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=r){s+=C[y*N+x];n++;}return n>0?(s/n).toFixed(3):'0';}
+async function runPDE(D,lam,k,r,steps){
+  const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*D+1e-10);
+  const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
+  const CHUNKS=8,cs=Math.floor(steps/CHUNKS);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);}
+  return{C,cx,cy,r};
+}
+
+/* =========================================================
+   TABS
+========================================================= */
+function switchTab(name){
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
+  document.getElementById('tab-'+name).classList.add('active');
+  ['home','drug','early','lifestyle','precision'].forEach((t,i)=>{
+    if(t===name)document.querySelectorAll('#nav button')[i].classList.add('active');
+  });
+}
+
+/* =========================================================
+   QUIZ ENGINE
+========================================================= */
+const QUIZ_DATA={
+  home:{correct:'C',reveal:{C:`<strong>That's right.</strong> In most tumors, only the outer 2–3 cell layers receive therapeutic drug concentrations. The core is often completely unreached — not because the drug doesn't work, but because it physically cannot get there. This is what PDEOutreach is about.<div class="quiz-badge correct-badge">✓ Nice instinct</div>`,A:`<strong>Actually — no.</strong> Even highly effective chemotherapy drugs typically only reach the outer rim of a solid tumor. The drug encounters physical barriers — high fluid pressure, dense fibrous tissue — that prevent it from penetrating to the core where many cancer cells live.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Not quite.</strong> It's worse than that. Drug penetration collapses much more dramatically than "about half." In tumors like pancreatic cancer, the core is essentially unreachable by most drugs.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>Not quite.</strong> It's not that drugs are completely ineffective — many drugs do kill cancer cells they can reach. The problem is they can't reach the inner core. So partial coverage, not zero coverage.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
+  drug:{correct:'C',reveal:{C:`<strong>Exactly right.</strong> The main barrier in pancreatic cancer is physical. The tumor is surrounded by dense stroma (fibrous connective tissue) that blocks drug diffusion. Combined with high interstitial fluid pressure that pushes drugs away, the result is a tumor that is almost physically impenetrable. This is called the "stromal barrier problem."<div class="quiz-badge correct-badge">✓ Well done</div>`,A:`<strong>Resistance plays a role, but it's not the main reason.</strong> The primary barrier in pancreatic cancer is physical — dense stroma and high fluid pressure that prevent drugs from reaching cancer cells in the first place.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Toxicity is a concern, but not the main reason.</strong> The primary problem is physical: dense stromal tissue surrounds the tumor and prevents drugs from penetrating, even at full therapeutic doses.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>This is a common misconception.</strong> The pancreas doesn't specifically break down drugs. The real barrier is the tumor microenvironment — dense fibrous stroma and high fluid pressure physically block drug delivery.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
+  early:{correct:'C',reveal:{C:`<strong>Correct — and the numbers are shocking.</strong> As a tumor grows from early stage to late stage, drug coverage can drop from over 70% to under 10%. This isn't linear — it collapses. A larger tumor means thicker outer shell, greater fluid pressure, and a larger unreachable core. The simulation below shows this directly.<div class="quiz-badge correct-badge">✓ Great intuition</div>`,A:`<strong>It's much worse than that.</strong> Drug coverage doesn't just halve — it collapses. The relationship is highly non-linear. Try the slider below to see for yourself.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Far worse than 20–30%.</strong> The collapse in drug coverage as tumors grow is one of the most dramatic effects in oncology physics. Try the simulation below.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>Drugs cannot adapt to tumor size.</strong> There's no mechanism by which chemotherapy adjusts to cover larger tumors. The physical barriers get worse — not better — as tumors grow.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
+  prec:{correct:'B',reveal:{B:`<strong>Exactly right.</strong> Trastuzumab works by binding to the HER2 protein. Only tumors that overexpress HER2 (about 20% of breast cancers) respond to it. For HER2-negative patients, Trastuzumab is essentially useless — and this is why genetic testing before choosing treatment is now standard of care.<div class="quiz-badge correct-badge">✓ Correct</div>`,A:`<strong>Not quite.</strong> Trastuzumab only works for patients whose tumors overexpress the HER2 protein — about 20% of breast cancer cases. This is why genetic/receptor testing is done before prescribing it.<div class="quiz-badge wrong-badge">The answer is B</div>`,C:`<strong>Age isn't the determining factor.</strong> The key variable is HER2 receptor expression — a biological property of the tumor itself, not the patient's age.<div class="quiz-badge wrong-badge">The answer is B</div>`,D:`<strong>Prior chemotherapy isn't the requirement.</strong> The determining factor is whether the tumor overexpresses HER2, which is detected by genetic testing at diagnosis.<div class="quiz-badge wrong-badge">The answer is B</div>`}},
+};
+
+function answerHomeQuiz(el,choice){
+  const quiz=QUIZ_DATA.home;
+  const opts=document.querySelectorAll('#home-quiz-opts .quiz-option');
+  opts.forEach(o=>o.style.pointerEvents='none');
+  if(choice===quiz.correct){el.classList.add('correct');}
+  else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
+  const rev=document.getElementById('home-quiz-reveal');
+  rev.innerHTML=quiz.reveal[choice];
+  rev.classList.add('show');
+  if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
+}
+
+function answerQuiz(section,el,choice){
+  const quiz=QUIZ_DATA[section];
+  const opts=document.querySelectorAll(`#${section}-quiz-opts .quiz-option`);
+  opts.forEach(o=>o.style.pointerEvents='none');
+  if(choice===quiz.correct){el.classList.add('correct');}
+  else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
+  const rev=document.getElementById(`${section}-quiz-reveal`);
+  rev.innerHTML=quiz.reveal[choice];
+  rev.classList.add('show');
+  if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
+}
+
+/* =========================================================
+   SECTION 1: DRUG SIM
+========================================================= */
+const DRUG1P={
+  cisplatin:{breast:{D:.12,lam:.003,k:.08,r:22},pancreatic:{D:.03,lam:.005,k:.05,r:28},glioma:{D:.15,lam:.002,k:.07,r:20}},
+  doxorubicin:{breast:{D:.08,lam:.005,k:.06,r:22},pancreatic:{D:.02,lam:.008,k:.04,r:28},glioma:{D:.10,lam:.003,k:.05,r:20}},
+  trastuzumab:{breast:{D:.01,lam:.001,k:.12,r:22},pancreatic:{D:.005,lam:.002,k:.08,r:28},glioma:{D:.008,lam:.001,k:.10,r:20}},
+};
+const DRUG1I={
+  cisplatin_breast:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs available. Even so, coverage is not complete. The outer rim receives far more drug than the core.',
+  cisplatin_pancreatic:'Even the best-penetrating drug struggles here. The dense stromal barrier reduces D by ~75%. The simulation shows how little of the tumor is actually reached — which explains the ~12% 5-year survival rate.',
+  cisplatin_glioma:'Good penetration in brain tissue, but the blood-brain barrier (not modelled here) adds another layer of restriction in real patients.',
+  doxorubicin_breast:'A widely used breast cancer drug. Moderate penetration means the outer portion of the tumor is well-covered, but combination regimens are typically needed.',
+  doxorubicin_pancreatic:'The physical barriers of pancreatic cancer are visible here — only the very edge of the tumor receives meaningful drug concentration.',
+  doxorubicin_glioma:'Moderate penetration, but the blood-brain barrier significantly limits delivery in real patients beyond what this model shows.',
+  trastuzumab_breast:'Large antibody molecules are slow diffusers — D is 12× lower than small molecules. But for HER2+ patients, the drug that does reach cells is highly effective due to high k.',
+  trastuzumab_pancreatic:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',
+  trastuzumab_glioma:'The lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies (nanoparticles, local injection) are needed.',
+};
+async function runDrug1(){
+  const drug=document.getElementById('drug1-select').value;
+  const tumor=document.getElementById('tumor1-select').value;
+  const p=DRUG1P[drug][tumor];
+  const btn=document.getElementById('drug1-btn');btn.disabled=true;btn.textContent='⟳ Running…';
+  document.getElementById('drug1-status').textContent='Solving PDE…';
+  const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*p.D+1e-10);
+  const C=initC(),rho=buildRho(cx,cy,p.r),Df=buildDField(cx,cy,p.r,p.D);
+  const CHUNKS=8,cs=Math.floor(500/CHUNKS);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(C,Df,rho,dx,dt,p.lam,p.k,cs);document.getElementById('drug1-prog').style.width=((i+1)/CHUNKS*100)+'%';}
+  drawHM('drug1-heatmap',C,cx,cy,p.r,400,400);
+  document.getElementById('drug1-cov').textContent=calcCov(C,cx,cy,p.r)+'%';
+  document.getElementById('drug1-depth').textContent=(() => {let d=0;const xE=Math.min(N-1,cx+p.r);for(let x=Math.max(0,cx-p.r);x<=xE;x++){let s=0,n=0;for(let y=0;y<N;y++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=p.r){s+=C[y*N+x];n++;}if(n>0&&s/n>=.05)d=x-cx+p.r;}return d+' px';})();
+  document.getElementById('drug1-insight').textContent=DRUG1I[drug+'_'+tumor]||'';
+  document.getElementById('drug1-lbl').textContent=drug+' → '+tumor;
+  document.getElementById('drug1-status').textContent='Complete ✓';
+  btn.disabled=false;btn.textContent='▶ Run simulation';
+}
+function resetDrug1(){
+  const ctx=document.getElementById('drug1-heatmap').getContext('2d');ctx.fillStyle='#030507';ctx.fillRect(0,0,400,400);
+  ['drug1-cov','drug1-depth'].forEach(id=>document.getElementById(id).textContent='—');
+  document.getElementById('drug1-insight').textContent='';
+  document.getElementById('drug1-prog').style.width='0%';
+  document.getElementById('drug1-status').textContent='';
+  document.getElementById('drug1-lbl').textContent='press Run to simulate';
+}
+
+/* =========================================================
+   SECTION 2: SIZE DEMO
+========================================================= */
+const SIZE_DATA={
+  8:{stage:'Stage I',survival:'99%',color:'#3de383',insight:'At this size, drug coverage is high. Most treatment protocols achieve excellent outcomes. This is exactly why early screening saves lives — catching it here is often curative.'},
+  12:{stage:'Stage I–II',survival:'93%',color:'#3de383',insight:'Still early stage. Good drug coverage, high survival. Treatment is typically curative with standard protocols.'},
+  16:{stage:'Stage II',survival:'80%',color:'#4d9eff',insight:'Drug penetration is beginning to show limitations. Coverage drops noticeably. More aggressive treatment regimens are typically required.'},
+  20:{stage:'Stage II–III',survival:'65%',color:'#f0a54a',insight:'Significant drop in drug coverage. The tumor core is becoming harder to reach. The outer shell is absorbing most of the drug, shielding the inner cells.'},
+  24:{stage:'Stage III',survival:'46%',color:'#f0a54a',insight:'Drug coverage is severely limited. Only the outer rim of the tumor receives therapeutic concentrations. The majority of cancer cells are unreached.'},
+  28:{stage:'Stage III–IV',survival:'28%',color:'#f05b5b',insight:'The physical barriers are now overwhelming. The same drug that could cure Stage I barely touches the tumor core at this size.'},
+  32:{stage:'Stage IV',survival:'15%',color:'#f05b5b',insight:'The difference between Stage I and Stage IV is not just biology — it is physics. Drug coverage has collapsed. This is why screening matters so much.'},
+  36:{stage:'Stage IV',survival:'<10%',color:'#f05b5b',insight:'At this size, the drug that had 70%+ coverage at Stage I now reaches less than 5% of the tumor. The same molecule. The same dose. Just a bigger physical barrier.'},
+};
+function updateSizeDemo(val){
+  const r=parseInt(val);
+  document.getElementById('size-val').textContent=r+' px';
+  document.getElementById('size-metric-r').textContent=r+' px';
+  const key=Object.keys(SIZE_DATA).map(Number).reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);
+  const d=SIZE_DATA[key];
+  document.getElementById('size-metric-stage').textContent=d.stage;
+  document.getElementById('size-metric-stage').style.color=d.color;
+  document.getElementById('size-metric-survival').textContent=d.survival;
+  document.getElementById('size-metric-survival').style.color=d.color;
+  document.getElementById('size-insight').textContent=d.insight;
+  document.getElementById('size-metric-cov').textContent='run →';
+}
+async function runSizeDemo(){
+  const r=parseInt(document.getElementById('size-slider').value);
+  const btn=document.querySelector('[onclick="runSizeDemo()"]');btn.disabled=true;btn.textContent='⟳ Running…';
+  document.getElementById('size-status').textContent='Solving PDE…';
+  const cx=Math.floor(N/3),cy=N/2,dx=1/N,D=.08,lam=.005,k=.06,dt=.9*dx*dx/(4*D+1e-10);
+  const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
+  const CHUNKS=8,cs=Math.floor(500/CHUNKS);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);document.getElementById('size-prog').style.width=((i+1)/CHUNKS*100)+'%';}
+  drawHM('size-heatmap',C,cx,cy,r,400,400);
+  document.getElementById('size-metric-cov').textContent=calcCov(C,cx,cy,r)+'%';
+  document.getElementById('size-lbl').textContent='r = '+r+' px';
+  document.getElementById('size-status').textContent='Complete ✓';
+  btn.disabled=false;btn.textContent='▶ Simulate this size';
+}
+
+/* =========================================================
+   SECTION 3: LIFESTYLE + PROFILE
+========================================================= */
+function calcDMod(){
+  const smoking=parseInt(document.getElementById('ls-smoking').value);
+  const bmi=parseInt(document.getElementById('ls-bmi').value);
+  const inflam=parseInt(document.getElementById('ls-inflam').value);
+  const exercise=parseInt(document.getElementById('ls-exercise').value);
+  const alcohol=parseInt(document.getElementById('ls-alcohol').value);
+  return Math.max(.25,Math.min(1.05,
+    1 - .014*smoking - (bmi>25?(bmi-25)*.018:0) - .035*inflam + .018*exercise - .008*alcohol
+  ));
+}
+function updateLifestyle(){
+  const smoking=parseInt(document.getElementById('ls-smoking').value);
+  const bmi=parseInt(document.getElementById('ls-bmi').value);
+  const inflam=parseInt(document.getElementById('ls-inflam').value);
+  const exercise=parseInt(document.getElementById('ls-exercise').value);
+  const alcohol=parseInt(document.getElementById('ls-alcohol').value);
+  document.getElementById('ls-smoking-val').textContent=smoking;
+  document.getElementById('ls-bmi-val').textContent=bmi;
+  document.getElementById('ls-inflam-val').textContent=['none','none','mild','mild','moderate','moderate','moderate','high','high','very high','very high'][Math.min(inflam,10)];
+  document.getElementById('ls-exercise-val').textContent=exercise+'h';
+  document.getElementById('ls-alcohol-val').textContent=alcohol;
+  const dMod=calcDMod();
+  document.getElementById('ls-D-mod').textContent='×'+dMod.toFixed(2);
+  const risk=dMod>.88?'baseline':dMod>.72?'elevated':dMod>.55?'high':'very high';
+  const riskColor={'baseline':'#3de383','elevated':'#f0a54a','high':'#f05b5b','very high':'#f05b5b'}[risk];
+  document.getElementById('ls-risk').textContent=risk;
+  document.getElementById('ls-risk').style.color=riskColor;
+  const insights={
+    baseline:'Your lifestyle profile suggests a near-baseline tumor microenvironment. Drug diffusion would not be significantly impaired by modifiable factors.',
+    elevated:'Some lifestyle factors are beginning to affect tissue microenvironment. Consider reducing smoking or alcohol intake to preserve drug penetration efficiency.',
+    high:'Multiple factors are significantly impairing potential drug delivery. High IFP and dense ECM from chronic inflammation would substantially reduce chemotherapy effectiveness.',
+    'very high':'Severe lifestyle-driven microenvironment changes. Estimated drug penetration 50%+ below baseline. These are significant and mostly modifiable risk factors.',
+  };
+  document.getElementById('ls-live-insight').textContent=insights[risk];
+}
+
+const PROFILES={
+  baseline:{name:'Optimal Microenvironment',color:'#3de383',border:'rgba(61,227,131,.4)',traits:['Low IFP','Normal ECM density','Good vascularisation','High drug diffusivity'],detail:'Your lifestyle factors suggest your tissue microenvironment is close to optimal for drug delivery. This does not mean you are cancer-free — but if cancer were to develop, treatment would face fewer physical barriers.'},
+  elevated:{name:'Mildly Impaired Microenvironment',color:'#f0a54a',border:'rgba(240,165,74,.4)',traits:['Mildly elevated IFP','Slightly dense ECM','Some inflammation','Reduced drug diffusivity'],detail:'Some lifestyle factors are beginning to affect your microenvironment. Moderate changes — reducing smoking, improving diet, increasing exercise — can meaningfully reduce these effects over time.'},
+  high:{name:'Significantly Impaired Microenvironment',color:'#f05b5b',border:'rgba(240,91,91,.4)',traits:['Elevated IFP','Dense ECM','Chronic inflammation','Substantially reduced D'],detail:'Multiple lifestyle factors are creating physical conditions that would impair drug delivery. These are modifiable — quitting smoking, weight management, and treating chronic inflammation can improve the microenvironment significantly.'},
+  'very high':{name:'Severely Impaired Microenvironment',color:'#f05b5b',border:'rgba(240,91,91,.4)',traits:['Very high IFP','Very dense ECM','Systemic inflammation','Severely reduced D'],detail:'Severe lifestyle-driven microenvironment changes. Drug penetration estimated at less than 50% of baseline. These factors are significant but largely reversible with lifestyle changes. Consider speaking with a healthcare provider.'},
+};
+
+async function generateProfile(){
+  const dMod=calcDMod();
+  const risk=dMod>.88?'baseline':dMod>.72?'elevated':dMod>.55?'high':'very high';
+  const prof=PROFILES[risk];
+  const D=.08*dMod,lam=.005,k=.06,r=22;
+  const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*D+1e-10);
+  const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
+  const CHUNKS=8,cs=Math.floor(500/CHUNKS);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);document.getElementById('ls-prog').style.width=((i+1)/CHUNKS*100)+'%';}
+  drawHM('ls-heatmap',C,cx,cy,r,400,400);
+  document.getElementById('ls-lbl').textContent='D = ×'+dMod.toFixed(2);
+
+  const card=document.getElementById('ls-profile-card');
+  card.style.borderColor=prof.border;
+  card.innerHTML=`
+    <div class="profile-title" style="color:${prof.color}">${prof.name}</div>
+    <div class="profile-score" style="color:${prof.color}">${(dMod*100).toFixed(0)}<span style="font-size:1rem;color:var(--text3)">%</span></div>
+    <div style="font-size:.75rem;color:var(--text3);margin-bottom:.75rem;">of baseline drug diffusivity</div>
+    <div class="profile-traits">${prof.traits.map(t=>`<span class="tag" style="border-color:${prof.border};color:${prof.color}">${t}</span>`).join('')}</div>
+  `;
+  document.getElementById('ls-profile-detail').innerHTML=`<p style="font-size:.875rem;color:var(--text2);line-height:1.75;margin:0;">${prof.detail}</p>`;
+  document.getElementById('ls-profile-result').style.display='';
+  document.getElementById('ls-profile-result').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function resetLifestyle(){
+  ['ls-smoking','ls-bmi','ls-inflam','ls-exercise','ls-alcohol'].forEach(id=>{
+    const el=document.getElementById(id);
+    if(id==='ls-bmi')el.value=22;else if(id==='ls-exercise')el.value=3;else el.value=0;
+  });
+  document.getElementById('ls-profile-result').style.display='none';
+  document.getElementById('ls-prog').style.width='0%';
+  updateLifestyle();
+}
+
+/* =========================================================
+   SECTION 4: PRECISION COMPARE
+========================================================= */
+const PREC_S={
+  her2:{A:{D:.01,lam:.001,k:.12,r:22,label:'HER2+ patient (k=0.12)'},B:{D:.01,lam:.001,k:.02,r:22,label:'HER2− patient (k=0.02)'},insight:'Same drug, same physical penetration (identical D) — but HER2+ tumors absorb 6× more drug per cell. This is why genetic testing determines whether Trastuzumab works. The physics of delivery is the same; the biology of uptake is completely different.'},
+  pancreas_vs_breast:{A:{D:.08,lam:.005,k:.06,r:22,label:'Breast cancer (D=0.08)'},B:{D:.02,lam:.008,k:.04,r:28,label:'Pancreatic cancer (D=0.02)'},insight:'The same drug (Doxorubicin) in two different tumor types. Pancreatic stroma reduces D by 75%. This single physical difference — more than any drug resistance — explains the enormous survival rate gap between these two diagnoses.'},
+  small_vs_large:{A:{D:.12,lam:.003,k:.07,r:22,label:'Cisplatin (MW ~300 Da)'},B:{D:.01,lam:.001,k:.07,r:22,label:'Trastuzumab (MW ~148,000 Da)'},insight:'Molecular weight is the dominant factor in drug penetration. Cisplatin diffuses 12× faster than Trastuzumab — purely because of size. This is why large-molecule therapies often need special delivery strategies like nanoparticles or local injection.'},
+};
+async function runPrecCompare(){
+  const s=PREC_S[document.getElementById('prec-scenario').value];
+  const btn=document.getElementById('prec-btn');btn.disabled=true;btn.textContent='⟳ Running…';
+  document.getElementById('prec-status').textContent='Running Patient A…';
+  const cx=Math.floor(N/3),cy=N/2,dx=1/N,CHUNKS=8;
+  const dtA=.9*dx*dx/(4*s.A.D+1e-10);
+  const CA=initC(),rhoA=buildRho(cx,cy,s.A.r),DfA=buildDField(cx,cy,s.A.r,s.A.D);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CA,DfA,rhoA,dx,dtA,s.A.lam,s.A.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=((i+1)/CHUNKS/2*100)+'%';}
+  document.getElementById('prec-status').textContent='Running Patient B…';
+  const dtB=.9*dx*dx/(4*s.B.D+1e-10);
+  const CB=initC(),rhoB=buildRho(cx,cy,s.B.r),DfB=buildDField(cx,cy,s.B.r,s.B.D);
+  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CB,DfB,rhoB,dx,dtB,s.B.lam,s.B.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=(50+(i+1)/CHUNKS/2*100)+'%';}
+  drawHM('prec-heatmap-A',CA,cx,cy,s.A.r,360,360);
+  drawHM('prec-heatmap-B',CB,cx,cy,s.B.r,360,360);
+  document.getElementById('prec-label-A').textContent=s.A.label;
+  document.getElementById('prec-label-B').textContent=s.B.label;
+  document.getElementById('prec-cov-A').textContent=calcCov(CA,cx,cy,s.A.r)+'%';
+  document.getElementById('prec-cov-B').textContent=calcCov(CB,cx,cy,s.B.r)+'%';
+  document.getElementById('prec-avg-A').textContent=calcAvg(CA,cx,cy,s.A.r);
+  document.getElementById('prec-avg-B').textContent=calcAvg(CB,cx,cy,s.B.r);
+  document.getElementById('prec-insight').textContent=s.insight;
+  document.getElementById('prec-results').style.display='';
+  document.getElementById('prec-status').textContent='Complete ✓';
+  btn.disabled=false;btn.textContent='▶ Run comparison';
+}
+
+/* =========================================================
+   INIT
+========================================================= */
+updateSizeDemo(12);
+updateLifestyle();
+</script>
+</body>
+</html>
