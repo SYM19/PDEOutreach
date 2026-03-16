@@ -197,7 +197,21 @@
     .story-placeholder-title{font-size:.9rem;font-weight:600;color:var(--text3);margin-bottom:.5rem;font-family:var(--mono);}
     .story-placeholder-text{font-size:.82rem;color:var(--text3);line-height:1.6;}
 
-    /* REAL STORY CARD (when filled) */
+    .lang-btn{font-family:var(--mono);font-size:.72rem;padding:4px 12px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;white-space:nowrap;}
+    .lang-btn:hover{border-color:var(--blue);color:var(--blue);}
+    .donate-btn{font-family:var(--sans);font-size:.75rem;font-weight:600;padding:5px 14px;border-radius:20px;background:rgba(240,165,74,.15);border:1px solid rgba(240,165,74,.4);color:var(--amber);cursor:pointer;text-decoration:none;transition:all .2s;white-space:nowrap;}
+    .donate-btn:hover{background:rgba(240,165,74,.25);}
+
+    /* DONATE BANNER */
+    .donate-banner{background:linear-gradient(135deg,rgba(240,165,74,.08),rgba(77,158,255,.06));border-bottom:1px solid rgba(240,165,74,.15);padding:.75rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem;}
+    .donate-banner-text{font-size:.82rem;color:var(--text2);line-height:1.5;}
+    .donate-banner-text strong{color:var(--amber);}
+    .donate-links{display:flex;gap:.75rem;flex-wrap:wrap;}
+    .donate-link{display:inline-flex;align-items:center;gap:6px;padding:6px 16px;border-radius:20px;font-size:.78rem;font-weight:600;text-decoration:none;transition:all .2s;}
+    .donate-link.intl{background:rgba(77,158,255,.12);border:1px solid rgba(77,158,255,.3);color:var(--blue);}
+    .donate-link.intl:hover{background:rgba(77,158,255,.22);}
+    .donate-link.cn{background:rgba(240,165,74,.12);border:1px solid rgba(240,165,74,.3);color:var(--amber);}
+    .donate-link.cn:hover{background:rgba(240,165,74,.22);}
     .story-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;position:relative;overflow:hidden;}
     .story-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--amber);}
     .story-name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.25rem;}
@@ -212,18 +226,35 @@
   <header>
     <a class="logo" href="#" onclick="switchTab('home');return false;">PDE<em>Outreach</em></a>
     <nav id="nav">
-      <button class="active" onclick="switchTab('home')">Home</button>
-      <button onclick="switchTab('drug')">Why Drugs Fail</button>
-      <button onclick="switchTab('early')">Early Detection</button>
-      <button onclick="switchTab('lifestyle')">Lifestyle & Risk</button>
-      <button onclick="switchTab('precision')">Precision Medicine</button>
+      <button class="active" onclick="switchTab('home')" data-en="Home" data-zh="首页">Home</button>
+      <button onclick="switchTab('drug')" data-en="Why Drugs Fail" data-zh="为什么药物失效">Why Drugs Fail</button>
+      <button onclick="switchTab('early')" data-en="Early Detection" data-zh="早期发现">Early Detection</button>
+      <button onclick="switchTab('lifestyle')" data-en="Lifestyle & Risk" data-zh="生活方式与风险">Lifestyle & Risk</button>
+      <button onclick="switchTab('precision')" data-en="Precision Medicine" data-zh="精准医疗">Precision Medicine</button>
     </nav>
     <div class="header-right">
+      <a class="donate-btn" href="#" onclick="scrollToDonate();return false;" id="donate-header-btn">❤ Donate</a>
       <a class="pde-link" href="https://pdeoncology.com" target="_blank">PDEOncology ↗</a>
+      <button class="lang-btn" id="lang-btn" onclick="toggleLang()">切换中文</button>
       <div class="status-dot"></div>
       <span class="v-badge">v0.1</span>
     </div>
   </header>
+
+  <!-- DONATE BANNER -->
+  <div class="donate-banner" id="donate-banner">
+    <div class="donate-banner-text" id="donate-banner-text">
+      <strong>Support children with cancer.</strong> Our science education is free — but the fight isn't. Consider donating to our partner organisations.
+    </div>
+    <div class="donate-links">
+      <a class="donate-link intl" href="https://PLACEHOLDER_INTL" target="_blank" id="donate-intl">
+        🌍 <span id="donate-intl-name">International — TBC</span> ↗
+      </a>
+      <a class="donate-link cn" href="https://PLACEHOLDER_CN" target="_blank" id="donate-cn">
+        🇨🇳 <span id="donate-cn-name">中国机构 — 待确认</span> ↗
+      </a>
+    </div>
+  </div>
 
   <main>
 
@@ -232,8 +263,8 @@
     ================================================ -->
     <div id="tab-home" class="tab-panel active">
       <div class="hero section">
-        <div class="hero-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
-        <p style="max-width:680px;font-size:.95rem;">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
+        <div class="hero-title" data-i18n="home-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
+        <p style="max-width:680px;font-size:.95rem;" data-i18n="home-sub">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
         <div class="hero-chips">
           <span class="hero-chip">中英双语</span>
           <span class="hero-chip">interactive</span>
@@ -246,9 +277,9 @@
 
       <!-- Opening quiz -->
       <div class="section">
-        <h2>Quick — what do you think?</h2>
+        <h2 id="home-quiz-title">Quick — what do you think?</h2>
         <div class="quiz-box">
-          <div class="quiz-question">
+          <div class="quiz-question" id="home-quiz-q">
             A powerful chemotherapy drug enters the bloodstream and reaches the tumor.
             What percentage of cancer cells does it typically kill?
             <div class="quiz-sub">No googling. Go with your gut.</div>
@@ -264,29 +295,29 @@
       </div>
 
       <!-- 4 topic cards -->
-      <h2>Four things about cancer nobody told you</h2>
+      <h2 id="home-cards-title">Four things about cancer nobody told you</h2>
       <div class="grid-2 section">
-        <div class="card" style="cursor:pointer;border-top:2px solid var(--blue);" onclick="switchTab('drug')">
+        <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--blue);" onclick="switchTab('drug')">
           <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);">Why drugs fail</h2></div>
-          <h3>Good drugs can't always reach the tumor</h3>
+          <h3 id="card-h3-drug">Good drugs can't always reach the tumor</h3>
           <p>Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.</p>
           <span class="tag blue">interactive sim</span><span class="tag">quiz inside</span>
         </div>
-        <div class="card" style="cursor:pointer;border-top:2px solid var(--green);" onclick="switchTab('early')">
+        <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--green);" onclick="switchTab('early')">
           <div class="card-header"><div class="card-icon">🔍</div><h2 style="margin:0;color:var(--green);">Early detection</h2></div>
-          <h3>Tumor size changes everything</h3>
+          <h3 id="card-h3-early">Tumor size changes everything</h3>
           <p>A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.</p>
           <span class="tag green">drag & explore</span><span class="tag">quiz inside</span>
         </div>
-        <div class="card" style="cursor:pointer;border-top:2px solid var(--amber);" onclick="switchTab('lifestyle')">
+        <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--amber);" onclick="switchTab('lifestyle')">
           <div class="card-header"><div class="card-icon">🧬</div><h2 style="margin:0;color:var(--amber);">Lifestyle & risk</h2></div>
-          <h3>Your habits change how drugs work</h3>
+          <h3 id="card-h3-ls">Your habits change how drugs work</h3>
           <p>Smoking and obesity don't just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.</p>
           <span class="tag amber">risk profile</span><span class="tag">personalised</span>
         </div>
-        <div class="card" style="cursor:pointer;border-top:2px solid var(--purple);" onclick="switchTab('precision')">
+        <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--purple);" onclick="switchTab('precision')">
           <div class="card-header"><div class="card-icon">🎯</div><h2 style="margin:0;color:var(--purple);">Precision medicine</h2></div>
-          <h3>Why the same drug works differently for everyone</h3>
+          <h3 id="card-h3-prec">Why the same drug works differently for everyone</h3>
           <p>Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.</p>
           <span class="tag purple">compare</span><span class="tag">quiz inside</span>
         </div>
@@ -298,15 +329,15 @@
     ================================================ -->
     <div id="tab-drug" class="tab-panel">
       <div class="section">
-        <h1>Why <span class="accent">Drugs Fail</span></h1>
-        <p style="max-width:680px;">The most common reason chemotherapy fails isn't drug resistance — it's a physical problem. The drug simply cannot reach the cells it needs to kill.</p>
+        <h1 id="drug-title-h1">Why <span class="accent">Drugs Fail</span></h1>
+        <p style="max-width:680px;" id="drug-sub">The most common reason chemotherapy fails isn't drug resistance — it's a physical problem. The drug simply cannot reach the cells it needs to kill.</p>
       </div>
 
       <!-- Quiz first -->
       <div class="section">
-        <h2>Before we explain — what's your guess?</h2>
+        <h2 id="drug-quiz-title">Before we explain — what's your guess?</h2>
         <div class="quiz-box">
-          <div class="quiz-question">
+          <div class="quiz-question" id="drug-quiz-q">
             Pancreatic cancer has one of the lowest survival rates of any cancer.
             What is the main reason chemotherapy is so ineffective?
           </div>
@@ -322,40 +353,40 @@
 
       <!-- Explainer -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;">What's really happening inside</h2></div>
+        <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;" id="drug-explainer-title">What's really happening inside</h2></div>
         <div class="grid-2">
           <div>
-            <h3>The tumor builds walls</h3>
-            <p>Tumors actively create a hostile microenvironment that repels drugs:</p>
+            <h3 id="drug-wall-title">The tumor builds walls</h3>
+            <p id="drug-wall-p">Tumors actively create a hostile microenvironment that repels drugs:</p>
             <ul style="font-size:.875rem;color:var(--text2);line-height:2.2;padding-left:1.25rem;margin-bottom:.75rem;">
-              <li><strong>High interstitial fluid pressure</strong> — the tumor pushes fluid outward, physically repelling drugs</li>
-              <li><strong>Dense extracellular matrix</strong> — fibrous proteins slow drug movement</li>
-              <li><strong>Abnormal blood vessels</strong> — irregular and poorly distributed</li>
+              <li id="drug-li-1"><strong>High interstitial fluid pressure</strong> — the tumor pushes fluid outward, physically repelling drugs</li>
+              <li id="drug-li-2"><strong>Dense extracellular matrix</strong> — fibrous proteins slow drug movement</li>
+              <li id="drug-li-3"><strong>Abnormal blood vessels</strong> — irregular and poorly distributed</li>
             </ul>
-            <p style="margin:0;">The result: drug concentration drops dramatically moving from the tumor edge toward its center.</p>
+            <p style="margin:0;" id="drug-result-p">The result: drug concentration drops dramatically moving from the tumor edge toward its center.</p>
           </div>
           <div>
-            <h3>We can measure this</h3>
-            <p>This is modelled by a reaction-diffusion equation used in PDEOncology:</p>
+            <h3 id="drug-math-title">We can measure this</h3>
+            <p id="drug-math-p">This is modelled by a reaction-diffusion equation used in PDEOncology:</p>
             <div style="background:var(--bg1);border:1px solid var(--border);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem 1.25rem;font-family:var(--mono);font-size:.85rem;color:var(--cyan);margin:1rem 0;">∂C/∂t = ∇·(D∇C) − λC − k·ρ·C</div>
-            <p>Where <code>D</code> is how fast the drug diffuses. In pancreatic cancer, D is up to 75% lower than in breast cancer — because the stroma is so dense.</p>
+            <p id="drug-d-p">Where <code>D</code> is how fast the drug diffuses. In pancreatic cancer, D is up to 75% lower than in breast cancer — because the stroma is so dense.</p>
           </div>
         </div>
       </div>
 
       <!-- Interactive sim -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon blue">▶</div><h2 style="margin:0;">See it for yourself</h2></div>
-        <p>Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.</p>
+        <div class="card-header"><div class="card-icon blue">▶</div><h2 style="margin:0;" id="drug-sim-title">See it for yourself</h2></div>
+        <p id="drug-sim-p">Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.</p>
         <div class="grid-2" style="margin-bottom:1rem;">
-          <div><label>Drug</label>
+          <div><label id="drug-select-label">Drug</label>
             <select id="drug1-select">
               <option value="cisplatin">Cisplatin (small molecule — high penetration)</option>
               <option value="doxorubicin">Doxorubicin (medium molecule)</option>
               <option value="trastuzumab">Trastuzumab (large antibody — low penetration)</option>
             </select>
           </div>
-          <div><label>Tumor type</label>
+          <div><label id="tumor-select-label">Tumor type</label>
             <select id="tumor1-select">
               <option value="breast">Breast cancer</option>
               <option value="pancreatic">Pancreatic cancer (hardest to treat)</option>
@@ -371,19 +402,19 @@
             </div>
             <div class="colorbar-row" style="height:24px;margin-top:8px;">
               <div class="colorbar" style="height:24px;"></div>
-              <div class="colorbar-ticks"><span>high</span><span>low</span></div>
-              <span style="font-size:.7rem;color:var(--text3);margin-left:8px;align-self:center;">drug concentration</span>
+              <div class="colorbar-ticks" id="drug-colorbar-ticks"><span id="drug-hi">high</span><span id="drug-lo">low</span></div>
+              <span id="drug-colorbar-label" style="font-size:.7rem;color:var(--text3);margin-left:8px;align-self:center;">drug concentration</span>
             </div>
           </div>
           <div>
             <div class="grid-2" style="gap:.5rem;margin-bottom:.75rem;">
-              <div class="metric"><div class="metric-label">Tumor coverage</div><div class="metric-value" id="drug1-cov">—</div></div>
-              <div class="metric"><div class="metric-label">Penetration depth</div><div class="metric-value" id="drug1-depth">—</div></div>
+              <div class="metric"><div class="metric-label" id="drug-cov-label">Tumor coverage</div><div class="metric-value" id="drug1-cov">—</div></div>
+              <div class="metric"><div class="metric-label" id="drug-depth-label">Penetration depth</div><div class="metric-value" id="drug1-depth">—</div></div>
             </div>
             <div id="drug1-insight" style="font-size:.85rem;color:var(--text2);line-height:1.75;min-height:80px;padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);"></div>
             <div class="btn-row">
-              <button class="btn btn-primary" id="drug1-btn" onclick="runDrug1()">▶ Run simulation</button>
-              <button class="btn btn-ghost" onclick="resetDrug1()">Reset</button>
+              <button class="btn btn-primary" id="drug1-btn" onclick="runDrug1()" data-i18n="drug-run-btn">▶ Run simulation</button>
+              <button class="btn btn-ghost" onclick="resetDrug1()" id="drug1-reset-btn">Reset</button>
             </div>
             <div class="progress-track"><div class="progress-fill" id="drug1-prog"></div></div>
             <div class="status-line" id="drug1-status"></div>
@@ -393,7 +424,7 @@
 
       <!-- Real story placeholder -->
       <div class="section">
-        <h2>Real stories</h2>
+        <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
           <div class="story-placeholder-title">— STORY COMING SOON —</div>
@@ -415,15 +446,15 @@
     ================================================ -->
     <div id="tab-early" class="tab-panel">
       <div class="section">
-        <h1>Early <span class="accent">Detection</span></h1>
-        <p style="max-width:680px;">You've heard "catch it early." But do you know what that actually means in physical terms? First — a question.</p>
+        <h1 id="early-title-h1">Early <span class="accent">Detection</span></h1>
+        <p style="max-width:680px;" id="early-sub">You've heard "catch it early." But do you know what that actually means in physical terms? First — a question.</p>
       </div>
 
       <!-- Quiz -->
       <div class="section">
-        <h2>Test your intuition</h2>
+        <h2 id="early-quiz-title">Test your intuition</h2>
         <div class="quiz-box">
-          <div class="quiz-question">
+          <div class="quiz-question" id="early-quiz-q">
             A tumor doubles in size from Stage I to Stage III.
             How much does drug coverage (the percentage of the tumor reached by chemo) change?
           </div>
@@ -439,8 +470,8 @@
 
       <!-- Size explorer -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon green">◉</div><h2 style="margin:0;">Drag to discover</h2></div>
-        <p>Move the slider. Watch the numbers change. This is why early screening saves lives.</p>
+        <div class="card-header"><div class="card-icon green">◉</div><h2 style="margin:0;" id="early-drag-title">Drag to discover</h2></div>
+        <p id="early-drag-p">Move the slider. Watch the numbers change. This is why early screening saves lives.</p>
         <div class="slider-row" style="max-width:600px;margin:1rem 0 1.5rem;">
           <span class="slider-name">Tumor radius</span>
           <input type="range" id="size-slider" min="8" max="36" step="2" value="12" oninput="updateSizeDemo(this.value)">
@@ -462,7 +493,7 @@
             </div>
             <div id="size-insight" style="font-size:.85rem;color:var(--text2);line-height:1.75;min-height:80px;padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);"></div>
             <div class="btn-row">
-              <button class="btn btn-primary" onclick="runSizeDemo()">▶ Simulate this size</button>
+              <button class="btn btn-primary" id="early-run-btn" onclick="runSizeDemo()">▶ Simulate this size</button>
             </div>
             <div class="progress-track"><div class="progress-fill" id="size-prog"></div></div>
             <div class="status-line" id="size-status"></div>
@@ -472,16 +503,16 @@
 
       <!-- Screening table -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon">📋</div><h2 style="margin:0;">When should you screen?</h2></div>
+        <div class="card-header"><div class="card-icon">📋</div><h2 style="margin:0;" id="early-screen-title">When should you screen?</h2></div>
         <div class="table-wrap">
           <table>
-            <thead><tr><th>Cancer</th><th>Screening method</th><th>Start age</th><th>Why it matters</th></tr></thead>
+            <thead><tr><th id="screen-th1">Cancer</th><th id="screen-th2">Screening method</th><th id="screen-th3">Start age</th><th id="screen-th4">Why it matters</th></tr></thead>
             <tbody>
-              <tr><td><strong>Breast</strong></td><td>Mammogram</td><td>40–45</td><td>Stage I: 99% survival → Stage IV: 28%</td></tr>
-              <tr><td><strong>Colorectal</strong></td><td>Colonoscopy</td><td>45</td><td>Most cases preventable if polyps caught early</td></tr>
-              <tr><td><strong>Cervical</strong></td><td>Pap smear + HPV test</td><td>21</td><td>Near 100% preventable with screening</td></tr>
-              <tr><td><strong>Lung</strong></td><td>Low-dose CT</td><td>50 (smokers)</td><td>Early finding triples survival rate</td></tr>
-              <tr><td><strong style="color:var(--red);">Pancreatic</strong></td><td>No standard screening</td><td>—</td><td>Prevention is the only current strategy</td></tr>
+              <tr id="screen-row-1"><td><strong id="screen-1-cancer">Breast</strong></td><td id="screen-1-method">Mammogram</td><td>40–45</td><td id="screen-1-why">Stage I: 99% survival → Stage IV: 28%</td></tr>
+              <tr id="screen-row-2"><td><strong id="screen-2-cancer">Colorectal</strong></td><td id="screen-2-method">Colonoscopy</td><td>45</td><td id="screen-2-why">Most cases preventable if polyps caught early</td></tr>
+              <tr id="screen-row-3"><td><strong id="screen-3-cancer">Cervical</strong></td><td id="screen-3-method">Pap smear + HPV test</td><td>21</td><td id="screen-3-why">Near 100% preventable with screening</td></tr>
+              <tr id="screen-row-4"><td><strong id="screen-4-cancer">Lung</strong></td><td id="screen-4-method">Low-dose CT</td><td id="screen-4-age">50 (smokers)</td><td id="screen-4-why">Early finding triples survival rate</td></tr>
+              <tr id="screen-row-5"><td><strong id="screen-5-cancer" style="color:var(--red);">Pancreatic</strong></td><td id="screen-5-method">No standard screening</td><td>—</td><td id="screen-5-why">Prevention is the only current strategy</td></tr>
             </tbody>
           </table>
         </div>
@@ -489,7 +520,7 @@
 
       <!-- Real story placeholder -->
       <div class="section">
-        <h2>Real stories</h2>
+        <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
           <div class="story-placeholder-title">— STORY COMING SOON —</div>
@@ -503,46 +534,46 @@
     ================================================ -->
     <div id="tab-lifestyle" class="tab-panel">
       <div class="section">
-        <h1>Lifestyle <span class="accent">&amp; Risk</span></h1>
-        <p style="max-width:680px;">Your lifestyle doesn't just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.</p>
+        <h1 id="ls-title-h1">Lifestyle <span class="accent">&amp; Risk</span></h1>
+        <p style="max-width:680px;" id="ls-sub">Your lifestyle doesn't just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.</p>
       </div>
 
       <!-- Risk profile builder -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon amber">◈</div><h2 style="margin:0;">Build your microenvironment profile</h2></div>
-        <p>Adjust the sliders to match your lifestyle. We'll show you how each factor affects drug penetration — and generate your personal profile.</p>
+        <div class="card-header"><div class="card-icon amber">◈</div><h2 style="margin:0;" id="ls-profile-title">Build your microenvironment profile</h2></div>
+        <p id="ls-profile-p">Adjust the sliders to match your lifestyle. We'll show you how each factor affects drug penetration — and generate your personal profile.</p>
 
         <div class="grid-2">
           <div>
             <div class="slider-row">
-              <span class="slider-name">Smoking (pack-years)</span>
+              <span class="slider-name" id="ls-smoking-label">Smoking (pack-years)</span>
               <input type="range" id="ls-smoking" min="0" max="40" step="5" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-smoking-val">0</span>
             </div>
             <div class="slider-row">
-              <span class="slider-name">BMI</span>
+              <span class="slider-name" id="ls-bmi-label">BMI</span>
               <input type="range" id="ls-bmi" min="16" max="42" step="1" value="22" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-bmi-val">22</span>
             </div>
             <div class="slider-row">
-              <span class="slider-name">Chronic inflammation</span>
+              <span class="slider-name" id="ls-inflam-label">Chronic inflammation</span>
               <input type="range" id="ls-inflam" min="0" max="10" step="1" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-inflam-val">none</span>
             </div>
             <div class="slider-row">
-              <span class="slider-name">Exercise (hrs/week)</span>
+              <span class="slider-name" id="ls-exercise-label">Exercise (hrs/week)</span>
               <input type="range" id="ls-exercise" min="0" max="14" step="1" value="3" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-exercise-val">3h</span>
             </div>
             <div class="slider-row">
-              <span class="slider-name">Alcohol (units/week)</span>
+              <span class="slider-name" id="ls-alcohol-label">Alcohol (units/week)</span>
               <input type="range" id="ls-alcohol" min="0" max="40" step="2" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-alcohol-val">0</span>
             </div>
 
             <div class="btn-row">
-              <button class="btn btn-primary" onclick="generateProfile()">Generate my profile →</button>
-              <button class="btn btn-ghost" onclick="resetLifestyle()">Reset</button>
+              <button class="btn btn-primary" onclick="generateProfile()" data-i18n="ls-gen-btn">Generate my profile →</button>
+              <button class="btn btn-ghost" onclick="resetLifestyle()" data-i18n="ls-reset-btn">Reset</button>
             </div>
             <div class="progress-track"><div class="progress-fill" id="ls-prog"></div></div>
           </div>
@@ -550,10 +581,10 @@
           <!-- Live preview -->
           <div>
             <div style="padding:1rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);margin-bottom:.75rem;">
-              <div style="font-size:.72rem;color:var(--text3);margin-bottom:.75rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;">Live microenvironment estimate</div>
+              <div id="ls-live-title" style="font-size:.72rem;color:var(--text3);margin-bottom:.75rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.06em;">Live microenvironment estimate</div>
               <div class="grid-2" style="gap:.5rem;">
-                <div class="metric"><div class="metric-label">D modifier</div><div class="metric-value" id="ls-D-mod" style="color:var(--amber);">×1.00</div></div>
-                <div class="metric"><div class="metric-label">Risk level</div><div class="metric-value" id="ls-risk" style="font-size:.9rem;color:var(--green);">baseline</div></div>
+                <div class="metric"><div class="metric-label" id="ls-D-label">D modifier</div><div class="metric-value" id="ls-D-mod" style="color:var(--amber);">×1.00</div></div>
+                <div class="metric"><div class="metric-label" id="ls-risk-title-label">Risk level</div><div class="metric-value" id="ls-risk" style="font-size:.9rem;color:var(--green);">baseline</div></div>
               </div>
             </div>
             <div id="ls-live-insight" style="font-size:.83rem;color:var(--text2);line-height:1.75;min-height:60px;"></div>
@@ -563,7 +594,7 @@
 
       <!-- Profile result -->
       <div id="ls-profile-result" style="display:none;" class="section">
-        <h2>Your microenvironment profile</h2>
+        <h2 id="ls-profile-result-title">Your microenvironment profile</h2>
         <div class="grid-2">
           <div id="ls-profile-card" class="profile-card">
             <!-- filled by JS -->
@@ -580,26 +611,26 @@
 
       <!-- Prevention -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon">✦</div><h2 style="margin:0;">Evidence-based actions</h2></div>
+        <div class="card-header"><div class="card-icon">✦</div><h2 style="margin:0;" id="ls-prev-title">Evidence-based actions</h2></div>
         <div class="grid-3">
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
-            <div style="color:var(--green);font-weight:600;margin-bottom:.5rem;">Don't smoke</div>
-            <p style="margin:0;font-size:.82rem;">Smoking accounts for ~30% of all cancer deaths. Quitting at any age reduces both cancer risk and ECM density — improving potential drug penetration.</p>
+            <div id="ls-prev1-title" style="color:var(--green);font-weight:600;margin-bottom:.5rem;">Don't smoke</div>
+            <p style="margin:0;font-size:.82rem;" id="ls-prev1-p">Smoking accounts for ~30% of all cancer deaths. Quitting at any age reduces both cancer risk and ECM density — improving potential drug penetration.</p>
           </div>
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
-            <div style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Healthy weight</div>
-            <p style="margin:0;font-size:.82rem;">Obesity increases risk for 13 cancer types. Excess fat tissue promotes chronic inflammation, elevating IFP and reducing drug diffusion coefficient D.</p>
+            <div id="ls-prev2-title" style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Healthy weight</div>
+            <p style="margin:0;font-size:.82rem;" id="ls-prev2-p">Obesity increases risk for 13 cancer types. Excess fat tissue promotes chronic inflammation, elevating IFP and reducing drug diffusion coefficient D.</p>
           </div>
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
-            <div style="color:var(--amber);font-weight:600;margin-bottom:.5rem;">Exercise regularly</div>
-            <p style="margin:0;font-size:.82rem;">150 min/week of moderate exercise reduces cancer risk by 10–20% and reduces systemic inflammation — keeping your tissue microenvironment healthier.</p>
+            <div id="ls-prev3-title" style="color:var(--amber);font-weight:600;margin-bottom:.5rem;">Exercise regularly</div>
+            <p style="margin:0;font-size:.82rem;" id="ls-prev3-p">150 min/week of moderate exercise reduces cancer risk by 10–20% and reduces systemic inflammation — keeping your tissue microenvironment healthier.</p>
           </div>
         </div>
       </div>
 
       <!-- Real story placeholder -->
       <div class="section">
-        <h2>Real stories</h2>
+        <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
           <div class="story-placeholder-title">— STORY COMING SOON —</div>
@@ -613,15 +644,15 @@
     ================================================ -->
     <div id="tab-precision" class="tab-panel">
       <div class="section">
-        <h1>Precision <span class="accent">Medicine</span></h1>
-        <p style="max-width:680px;">Two patients. Same cancer. Same drug. One responds — the other doesn't. This isn't bad luck. It's biology. First, a guess.</p>
+        <h1 id="prec-title-h1">Precision <span class="accent">Medicine</span></h1>
+        <p style="max-width:680px;" id="prec-sub">Two patients. Same cancer. Same drug. One responds — the other doesn't. This isn't bad luck. It's biology. First, a guess.</p>
       </div>
 
       <!-- Quiz -->
       <div class="section">
-        <h2>What do you think?</h2>
+        <h2 id="prec-quiz-title">What do you think?</h2>
         <div class="quiz-box">
-          <div class="quiz-question">
+          <div class="quiz-question" id="prec-quiz-q">
             Trastuzumab (Herceptin) is a highly effective breast cancer drug.
             In which patients does it work?
           </div>
@@ -637,9 +668,9 @@
 
       <!-- Compare sim -->
       <div class="card section">
-        <div class="card-header"><div class="card-icon">⚖</div><h2 style="margin:0;">See the difference side by side</h2></div>
+        <div class="card-header"><div class="card-icon">⚖</div><h2 style="margin:0;" id="prec-compare-title">See the difference side by side</h2></div>
         <div style="margin-bottom:1rem;">
-          <label>Choose a comparison scenario</label>
+          <label id="prec-scenario-label">Choose a comparison scenario</label>
           <select id="prec-scenario">
             <option value="her2">HER2+ vs HER2− breast cancer (Trastuzumab)</option>
             <option value="pancreas_vs_breast">Pancreatic vs breast cancer (Doxorubicin)</option>
@@ -658,16 +689,16 @@
               <div style="font-family:var(--mono);font-size:.75rem;color:var(--blue);margin-bottom:.5rem;" id="prec-label-A">Patient A</div>
               <div class="canvas-box" style="aspect-ratio:1;"><canvas id="prec-heatmap-A" width="360" height="360"></canvas></div>
               <div class="grid-2" style="gap:.5rem;margin-top:.5rem;">
-                <div class="metric"><div class="metric-label">Coverage</div><div class="metric-value" id="prec-cov-A">—</div></div>
-                <div class="metric"><div class="metric-label">Avg conc.</div><div class="metric-value" id="prec-avg-A">—</div></div>
+                <div class="metric"><div class="metric-label" id="prec-cov-label-A">Coverage</div><div class="metric-value" id="prec-cov-A">—</div></div>
+                <div class="metric"><div class="metric-label" id="prec-avg-label-A">Avg conc.</div><div class="metric-value" id="prec-avg-A">—</div></div>
               </div>
             </div>
             <div>
               <div style="font-family:var(--mono);font-size:.75rem;color:var(--green);margin-bottom:.5rem;" id="prec-label-B">Patient B</div>
               <div class="canvas-box" style="aspect-ratio:1;"><canvas id="prec-heatmap-B" width="360" height="360"></canvas></div>
               <div class="grid-2" style="gap:.5rem;margin-top:.5rem;">
-                <div class="metric"><div class="metric-label">Coverage</div><div class="metric-value" id="prec-cov-B">—</div></div>
-                <div class="metric"><div class="metric-label">Avg conc.</div><div class="metric-value" id="prec-avg-B">—</div></div>
+                <div class="metric"><div class="metric-label" id="prec-cov-label-B">Coverage</div><div class="metric-value" id="prec-cov-B">—</div></div>
+                <div class="metric"><div class="metric-label" id="prec-avg-label-B">Avg conc.</div><div class="metric-value" id="prec-avg-B">—</div></div>
               </div>
             </div>
           </div>
@@ -679,7 +710,7 @@
 
       <!-- Real story placeholder -->
       <div class="section">
-        <h2>Real stories</h2>
+        <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
           <div class="story-placeholder-title">— STORY COMING SOON —</div>
@@ -692,7 +723,7 @@
 
   <footer>
     <span class="footer-logo">PDEOutreach</span>
-    <span>Cancer science for everyone — educational use only, not medical advice</span>
+    <span id="footer-copy">Cancer science for everyone — educational use only, not medical advice</span>
     <div style="display:flex;gap:12px;">
       <a href="https://pdeoncology.com" target="_blank" style="color:var(--text3);">PDEOncology ↗</a>
       <a href="https://github.com/SYM19/tumor-drug-penetration-model" target="_blank" style="color:var(--text3);">GitHub ↗</a>
@@ -737,10 +768,46 @@ function switchTab(name){
    QUIZ ENGINE
 ========================================================= */
 const QUIZ_DATA={
-  home:{correct:'C',reveal:{C:`<strong>That's right.</strong> In most tumors, only the outer 2–3 cell layers receive therapeutic drug concentrations. The core is often completely unreached — not because the drug doesn't work, but because it physically cannot get there. This is what PDEOutreach is about.<div class="quiz-badge correct-badge">✓ Nice instinct</div>`,A:`<strong>Actually — no.</strong> Even highly effective chemotherapy drugs typically only reach the outer rim of a solid tumor. The drug encounters physical barriers — high fluid pressure, dense fibrous tissue — that prevent it from penetrating to the core where many cancer cells live.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Not quite.</strong> It's worse than that. Drug penetration collapses much more dramatically than "about half." In tumors like pancreatic cancer, the core is essentially unreachable by most drugs.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>Not quite.</strong> It's not that drugs are completely ineffective — many drugs do kill cancer cells they can reach. The problem is they can't reach the inner core. So partial coverage, not zero coverage.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
-  drug:{correct:'C',reveal:{C:`<strong>Exactly right.</strong> The main barrier in pancreatic cancer is physical. The tumor is surrounded by dense stroma (fibrous connective tissue) that blocks drug diffusion. Combined with high interstitial fluid pressure that pushes drugs away, the result is a tumor that is almost physically impenetrable. This is called the "stromal barrier problem."<div class="quiz-badge correct-badge">✓ Well done</div>`,A:`<strong>Resistance plays a role, but it's not the main reason.</strong> The primary barrier in pancreatic cancer is physical — dense stroma and high fluid pressure that prevent drugs from reaching cancer cells in the first place.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Toxicity is a concern, but not the main reason.</strong> The primary problem is physical: dense stromal tissue surrounds the tumor and prevents drugs from penetrating, even at full therapeutic doses.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>This is a common misconception.</strong> The pancreas doesn't specifically break down drugs. The real barrier is the tumor microenvironment — dense fibrous stroma and high fluid pressure physically block drug delivery.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
-  early:{correct:'C',reveal:{C:`<strong>Correct — and the numbers are shocking.</strong> As a tumor grows from early stage to late stage, drug coverage can drop from over 70% to under 10%. This isn't linear — it collapses. A larger tumor means thicker outer shell, greater fluid pressure, and a larger unreachable core. The simulation below shows this directly.<div class="quiz-badge correct-badge">✓ Great intuition</div>`,A:`<strong>It's much worse than that.</strong> Drug coverage doesn't just halve — it collapses. The relationship is highly non-linear. Try the slider below to see for yourself.<div class="quiz-badge wrong-badge">The answer is C</div>`,B:`<strong>Far worse than 20–30%.</strong> The collapse in drug coverage as tumors grow is one of the most dramatic effects in oncology physics. Try the simulation below.<div class="quiz-badge wrong-badge">The answer is C</div>`,D:`<strong>Drugs cannot adapt to tumor size.</strong> There's no mechanism by which chemotherapy adjusts to cover larger tumors. The physical barriers get worse — not better — as tumors grow.<div class="quiz-badge wrong-badge">The answer is C</div>`}},
-  prec:{correct:'B',reveal:{B:`<strong>Exactly right.</strong> Trastuzumab works by binding to the HER2 protein. Only tumors that overexpress HER2 (about 20% of breast cancers) respond to it. For HER2-negative patients, Trastuzumab is essentially useless — and this is why genetic testing before choosing treatment is now standard of care.<div class="quiz-badge correct-badge">✓ Correct</div>`,A:`<strong>Not quite.</strong> Trastuzumab only works for patients whose tumors overexpress the HER2 protein — about 20% of breast cancer cases. This is why genetic/receptor testing is done before prescribing it.<div class="quiz-badge wrong-badge">The answer is B</div>`,C:`<strong>Age isn't the determining factor.</strong> The key variable is HER2 receptor expression — a biological property of the tumor itself, not the patient's age.<div class="quiz-badge wrong-badge">The answer is B</div>`,D:`<strong>Prior chemotherapy isn't the requirement.</strong> The determining factor is whether the tumor overexpresses HER2, which is detected by genetic testing at diagnosis.<div class="quiz-badge wrong-badge">The answer is B</div>`}},
+  home:{correct:'C',reveal:{
+    C:{en:`<strong>That's right.</strong> In most tumors, only the outer 2–3 cell layers receive therapeutic drug concentrations. The core is often completely unreached — not because the drug doesn't work, but because it physically cannot get there.<div class="quiz-badge correct-badge">✓ Nice instinct</div>`,
+       zh:`<strong>答对了！</strong>在大多数肿瘤中，只有外层 2–3 个细胞层能达到治疗药物浓度。核心区域通常完全无法到达——不是因为药物失效，而是因为它在物理上无法到达那里。<div class="quiz-badge correct-badge">✓ 直觉很好</div>`},
+    A:{en:`<strong>Actually — no.</strong> Even highly effective drugs typically only reach the outer rim of a solid tumor. Physical barriers prevent penetration to the core where many cancer cells live.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>不对。</strong>即使是高效化疗药物，通常也只能到达实体肿瘤的外缘。物理屏障阻止了药物渗透到许多癌细胞所在的核心区域。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    B:{en:`<strong>Not quite.</strong> Drug penetration collapses much more dramatically than "about half." In pancreatic cancer, the core is essentially unreachable by most drugs.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>不太对。</strong>药物渗透的下降远比"大约一半"更剧烈。在胰腺癌中，核心区域对大多数药物来说基本上无法到达。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    D:{en:`<strong>Not quite.</strong> It's not that drugs are completely ineffective — many drugs do kill cancer cells they can reach. The problem is they can't reach the inner core.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>不太对。</strong>不是说药物完全无效——许多药物确实会杀死它们能到达的癌细胞。问题在于它们无法到达内部核心。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+  }},
+  drug:{correct:'C',reveal:{
+    C:{en:`<strong>Exactly right.</strong> The main barrier in pancreatic cancer is physical. The tumor is surrounded by dense stroma that blocks drug diffusion. Combined with high interstitial fluid pressure, the result is a tumor that is almost physically impenetrable. This is the "stromal barrier problem."<div class="quiz-badge correct-badge">✓ Well done</div>`,
+       zh:`<strong>完全正确！</strong>胰腺癌的主要屏障是物理性的。肿瘤被致密的基质所包围，阻断药物扩散。加上高间质液压将药物推出，结果就是一个几乎在物理上无法渗透的肿瘤，这就是"基质屏障问题"。<div class="quiz-badge correct-badge">✓ 答得好</div>`},
+    A:{en:`<strong>Resistance plays a role, but it's not the main reason.</strong> The primary barrier is physical — dense stroma and high fluid pressure prevent drugs from reaching cancer cells.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>耐药性有一定作用，但不是主要原因。</strong>主要屏障是物理性的——致密基质和高液压阻止药物到达癌细胞。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    B:{en:`<strong>Toxicity is a concern, but not the main reason.</strong> Dense stromal tissue surrounds the tumor and prevents drug penetration, even at full therapeutic doses.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>毒性是一个问题，但不是主要原因。</strong>致密的基质组织包围肿瘤，即使在足量治疗剂量下也会阻止药物渗透。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    D:{en:`<strong>This is a common misconception.</strong> The pancreas doesn't break down drugs specifically. The real barrier is the tumor microenvironment — dense fibrous stroma and high fluid pressure.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>这是一个常见误解。</strong>胰腺不会特异性地降解药物。真正的屏障是肿瘤微环境——致密的纤维基质和高液压。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+  }},
+  early:{correct:'C',reveal:{
+    C:{en:`<strong>Correct — and the numbers are shocking.</strong> Drug coverage can drop from over 70% to under 10% as a tumor grows. This isn't linear — it collapses. A larger tumor means thicker outer shell, greater fluid pressure, and a larger unreachable core.<div class="quiz-badge correct-badge">✓ Great intuition</div>`,
+       zh:`<strong>正确——而且数字令人震惊。</strong>随着肿瘤生长，药物覆盖率可能从 70% 以上跌至 10% 以下。这不是线性的——是崩溃式的。肿瘤越大意味着外壳越厚、液压越高、无法触及的核心越大。<div class="quiz-badge correct-badge">✓ 直觉很准</div>`},
+    A:{en:`<strong>It's much worse than that.</strong> Drug coverage doesn't just halve — it collapses. The relationship is highly non-linear. Try the slider below.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>实际情况比这糟糕得多。</strong>药物覆盖率不只是减半——而是崩溃。这种关系是高度非线性的。试试下面的滑块。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    B:{en:`<strong>Far worse than 20–30%.</strong> The collapse in drug coverage as tumors grow is one of the most dramatic effects in oncology physics.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>比 20-30% 糟糕得多。</strong>随着肿瘤生长，药物覆盖率的崩溃是肿瘤物理学中最戏剧性的效应之一。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    D:{en:`<strong>Drugs cannot adapt to tumor size.</strong> Physical barriers get worse — not better — as tumors grow.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+       zh:`<strong>药物无法适应肿瘤大小。</strong>随着肿瘤生长，物理屏障只会变得更糟，而不是更好。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+  }},
+  prec:{correct:'B',reveal:{
+    B:{en:`<strong>Exactly right.</strong> Trastuzumab works by binding to HER2. Only tumors that overexpress HER2 (~20% of breast cancers) respond to it. This is why genetic testing before treatment is now standard of care.<div class="quiz-badge correct-badge">✓ Correct</div>`,
+       zh:`<strong>完全正确！</strong>曲妥珠单抗通过与 HER2 结合发挥作用。只有 HER2 过表达的肿瘤（约 20% 的乳腺癌）才对其有反应。这就是为什么治疗前的基因检测现在已成为标准诊疗流程。<div class="quiz-badge correct-badge">✓ 答对了</div>`},
+    A:{en:`<strong>Not quite.</strong> Trastuzumab only works for patients whose tumors overexpress HER2 — about 20% of breast cancer cases.<div class="quiz-badge wrong-badge">The answer is B</div>`,
+       zh:`<strong>不对。</strong>曲妥珠单抗只对 HER2 过表达的患者有效——约占乳腺癌病例的 20%。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
+    C:{en:`<strong>Age isn't the determining factor.</strong> The key variable is HER2 receptor expression — a biological property of the tumor.<div class="quiz-badge wrong-badge">The answer is B</div>`,
+       zh:`<strong>年龄不是决定性因素。</strong>关键变量是 HER2 受体表达——这是肿瘤本身的生物学特性。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
+    D:{en:`<strong>Prior chemotherapy isn't the requirement.</strong> The factor is HER2 overexpression, detected by genetic testing at diagnosis.<div class="quiz-badge wrong-badge">The answer is B</div>`,
+       zh:`<strong>之前是否化疗不是前提条件。</strong>决定性因素是 HER2 过表达，在诊断时通过基因检测确定。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
+  }},
 };
 
 function answerHomeQuiz(el,choice){
@@ -750,7 +817,8 @@ function answerHomeQuiz(el,choice){
   if(choice===quiz.correct){el.classList.add('correct');}
   else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
   const rev=document.getElementById('home-quiz-reveal');
-  rev.innerHTML=quiz.reveal[choice];
+  const r=quiz.reveal[choice];
+  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):r.en;
   rev.classList.add('show');
   if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
 }
@@ -762,7 +830,8 @@ function answerQuiz(section,el,choice){
   if(choice===quiz.correct){el.classList.add('correct');}
   else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
   const rev=document.getElementById(`${section}-quiz-reveal`);
-  rev.innerHTML=quiz.reveal[choice];
+  const r=quiz.reveal[choice];
+  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):r.en;
   rev.classList.add('show');
   if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
 }
@@ -776,15 +845,15 @@ const DRUG1P={
   trastuzumab:{breast:{D:.01,lam:.001,k:.12,r:22},pancreatic:{D:.005,lam:.002,k:.08,r:28},glioma:{D:.008,lam:.001,k:.10,r:20}},
 };
 const DRUG1I={
-  cisplatin_breast:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs available. Even so, coverage is not complete. The outer rim receives far more drug than the core.',
-  cisplatin_pancreatic:'Even the best-penetrating drug struggles here. The dense stromal barrier reduces D by ~75%. The simulation shows how little of the tumor is actually reached — which explains the ~12% 5-year survival rate.',
-  cisplatin_glioma:'Good penetration in brain tissue, but the blood-brain barrier (not modelled here) adds another layer of restriction in real patients.',
-  doxorubicin_breast:'A widely used breast cancer drug. Moderate penetration means the outer portion of the tumor is well-covered, but combination regimens are typically needed.',
-  doxorubicin_pancreatic:'The physical barriers of pancreatic cancer are visible here — only the very edge of the tumor receives meaningful drug concentration.',
-  doxorubicin_glioma:'Moderate penetration, but the blood-brain barrier significantly limits delivery in real patients beyond what this model shows.',
-  trastuzumab_breast:'Large antibody molecules are slow diffusers — D is 12× lower than small molecules. But for HER2+ patients, the drug that does reach cells is highly effective due to high k.',
-  trastuzumab_pancreatic:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',
-  trastuzumab_glioma:'The lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies (nanoparticles, local injection) are needed.',
+  cisplatin_breast:{en:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs. Coverage is not complete — the outer rim receives far more drug than the core.',zh:'顺铂是一种小分子铂类药物，渗透性最强之一。即便如此覆盖也不完全——外缘接受的药物远多于核心。'},
+  cisplatin_pancreatic:{en:'Even the best-penetrating drug struggles here. Dense stroma reduces D by ~75%, explaining the ~12% 5-year survival rate.',zh:'即使渗透性最强的药物在这里也举步维艰。致密基质使 D 降低约 75%，这解释了约 12% 的 5 年生存率。'},
+  cisplatin_glioma:{en:'Good penetration in brain tissue, but the blood-brain barrier (not modelled) adds another restriction in real patients.',zh:'在脑组织中渗透性良好，但血脑屏障（本模型未包含）在真实患者中增加了额外限制。'},
+  doxorubicin_breast:{en:'A widely used breast cancer drug. Moderate penetration covers the tumor outer portion well, but combination regimens are typically needed.',zh:'一种广泛使用的乳腺癌药物。中等渗透性使肿瘤外部覆盖较好，但通常需要联合方案。'},
+  doxorubicin_pancreatic:{en:'Pancreatic cancer physical barriers are visible here — only the very edge receives meaningful drug concentration.',zh:'胰腺癌的物理屏障在这里清晰可见——只有最外缘才能获得有意义的药物浓度。'},
+  doxorubicin_glioma:{en:'Moderate penetration, but the blood-brain barrier significantly limits delivery beyond what this model shows.',zh:'中等渗透性，但血脑屏障在真实患者中的限制远超本模型所展示的。'},
+  trastuzumab_breast:{en:'Large antibody molecules are slow diffusers — D is 12× lower than small molecules. But for HER2+ patients, high k makes it highly effective.',zh:'大分子抗体扩散慢，D 比小分子低 12 倍。但对 HER2+ 患者，高摄取率使其非常有效。'},
+  trastuzumab_pancreatic:{en:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',zh:'大分子 + 致密基质 = 近乎零渗透。这就是为什么抗体疗法不用于胰腺癌。'},
+  trastuzumab_glioma:{en:'Lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies are needed.',zh:'所有模拟药物中 D 值最低，加上血脑屏障。需要特殊的药物传递策略。'},
 };
 async function runDrug1(){
   const drug=document.getElementById('drug1-select').value;
@@ -799,10 +868,10 @@ async function runDrug1(){
   drawHM('drug1-heatmap',C,cx,cy,p.r,400,400);
   document.getElementById('drug1-cov').textContent=calcCov(C,cx,cy,p.r)+'%';
   document.getElementById('drug1-depth').textContent=(() => {let d=0;const xE=Math.min(N-1,cx+p.r);for(let x=Math.max(0,cx-p.r);x<=xE;x++){let s=0,n=0;for(let y=0;y<N;y++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=p.r){s+=C[y*N+x];n++;}if(n>0&&s/n>=.05)d=x-cx+p.r;}return d+' px';})();
-  document.getElementById('drug1-insight').textContent=DRUG1I[drug+'_'+tumor]||'';
-  document.getElementById('drug1-lbl').textContent=drug+' → '+tumor;
+  const ins=DRUG1I[drug+'_'+tumor]||{en:'',zh:''};document.getElementById('drug1-insight').textContent=currentLang==='zh'?(ins.zh||ins.en):ins.en;
+  const tZh={breast:'乳腺癌',pancreatic:'胰腺癌',glioma:'胶质瘤'};document.getElementById('drug1-lbl').textContent=drug+' → '+(currentLang==='zh'?(tZh[tumor]||tumor):tumor);
   document.getElementById('drug1-status').textContent='Complete ✓';
-  btn.disabled=false;btn.textContent='▶ Run simulation';
+  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行模拟':'▶ Run simulation';
 }
 function resetDrug1(){
   const ctx=document.getElementById('drug1-heatmap').getContext('2d');ctx.fillStyle='#030507';ctx.fillRect(0,0,400,400);
@@ -810,21 +879,37 @@ function resetDrug1(){
   document.getElementById('drug1-insight').textContent='';
   document.getElementById('drug1-prog').style.width='0%';
   document.getElementById('drug1-status').textContent='';
-  document.getElementById('drug1-lbl').textContent='press Run to simulate';
+  document.getElementById('drug1-lbl').textContent=currentLang==='zh'?'按运行开始':'press Run to simulate';
 }
 
 /* =========================================================
    SECTION 2: SIZE DEMO
 ========================================================= */
 const SIZE_DATA={
-  8:{stage:'Stage I',survival:'99%',color:'#3de383',insight:'At this size, drug coverage is high. Most treatment protocols achieve excellent outcomes. This is exactly why early screening saves lives — catching it here is often curative.'},
-  12:{stage:'Stage I–II',survival:'93%',color:'#3de383',insight:'Still early stage. Good drug coverage, high survival. Treatment is typically curative with standard protocols.'},
-  16:{stage:'Stage II',survival:'80%',color:'#4d9eff',insight:'Drug penetration is beginning to show limitations. Coverage drops noticeably. More aggressive treatment regimens are typically required.'},
-  20:{stage:'Stage II–III',survival:'65%',color:'#f0a54a',insight:'Significant drop in drug coverage. The tumor core is becoming harder to reach. The outer shell is absorbing most of the drug, shielding the inner cells.'},
-  24:{stage:'Stage III',survival:'46%',color:'#f0a54a',insight:'Drug coverage is severely limited. Only the outer rim of the tumor receives therapeutic concentrations. The majority of cancer cells are unreached.'},
-  28:{stage:'Stage III–IV',survival:'28%',color:'#f05b5b',insight:'The physical barriers are now overwhelming. The same drug that could cure Stage I barely touches the tumor core at this size.'},
-  32:{stage:'Stage IV',survival:'15%',color:'#f05b5b',insight:'The difference between Stage I and Stage IV is not just biology — it is physics. Drug coverage has collapsed. This is why screening matters so much.'},
-  36:{stage:'Stage IV',survival:'<10%',color:'#f05b5b',insight:'At this size, the drug that had 70%+ coverage at Stage I now reaches less than 5% of the tumor. The same molecule. The same dose. Just a bigger physical barrier.'},
+  8: {stage:'Stage I',stageZh:'第一期',survival:'99%',color:'#3de383',
+      insight:'At this size, drug coverage is high. Most treatment protocols achieve excellent outcomes. This is exactly why early screening saves lives — catching it here is often curative.',
+      insightZh:'此大小下药物覆盖率高。大多数治疗方案效果优异。这正是早期筛查能拯救生命的原因——在此阶段发现通常可以治愈。'},
+  12:{stage:'Stage I–II',stageZh:'第一至二期',survival:'93%',color:'#3de383',
+      insight:'Still early stage. Good drug coverage, high survival. Treatment is typically curative with standard protocols.',
+      insightZh:'仍属早期。药物覆盖率高，生存率高。标准治疗方案通常可以治愈。'},
+  16:{stage:'Stage II',stageZh:'第二期',survival:'80%',color:'#4d9eff',
+      insight:'Drug penetration is beginning to show limitations. Coverage drops noticeably. More aggressive treatment regimens are typically required.',
+      insightZh:'药物渗透开始显示出局限性。覆盖率明显下降。通常需要更积极的治疗方案。'},
+  20:{stage:'Stage II–III',stageZh:'第二至三期',survival:'65%',color:'#f0a54a',
+      insight:'Significant drop in drug coverage. The tumor core is becoming harder to reach. The outer shell is absorbing most of the drug, shielding the inner cells.',
+      insightZh:'药物覆盖率大幅下降。肿瘤核心越来越难以到达。外层组织吸收了大部分药物，遮蔽了内层细胞。'},
+  24:{stage:'Stage III',stageZh:'第三期',survival:'46%',color:'#f0a54a',
+      insight:'Drug coverage is severely limited. Only the outer rim of the tumor receives therapeutic concentrations. The majority of cancer cells are unreached.',
+      insightZh:'药物覆盖率严重受限。只有肿瘤外缘能达到治疗浓度。大多数癌细胞仍无法被触及。'},
+  28:{stage:'Stage III–IV',stageZh:'第三至四期',survival:'28%',color:'#f05b5b',
+      insight:'The physical barriers are now overwhelming. The same drug that could cure Stage I barely touches the tumor core at this size.',
+      insightZh:'物理屏障已压倒性地存在。同样的药物在第一期能够治愈，在此大小下几乎无法触及肿瘤核心。'},
+  32:{stage:'Stage IV',stageZh:'第四期',survival:'15%',color:'#f05b5b',
+      insight:'The difference between Stage I and Stage IV is not just biology — it is physics. Drug coverage has collapsed. This is why screening matters so much.',
+      insightZh:'第一期和第四期的差距不只是生物学问题——更是物理问题。药物覆盖率已经崩溃。这就是筛查如此重要的原因。'},
+  36:{stage:'Stage IV',stageZh:'第四期',survival:'<10%',color:'#f05b5b',
+      insight:'At this size, the drug that had 70%+ coverage at Stage I now reaches less than 5% of the tumor. The same molecule. The same dose. Just a bigger physical barrier.',
+      insightZh:'在此大小下，第一期时覆盖率超过 70% 的药物，现在只能到达不足 5% 的肿瘤区域。同样的分子，同样的剂量，只是物理屏障更大了。'},
 };
 function updateSizeDemo(val){
   const r=parseInt(val);
@@ -832,17 +917,18 @@ function updateSizeDemo(val){
   document.getElementById('size-metric-r').textContent=r+' px';
   const key=Object.keys(SIZE_DATA).map(Number).reduce((a,b)=>Math.abs(b-r)<Math.abs(a-r)?b:a);
   const d=SIZE_DATA[key];
-  document.getElementById('size-metric-stage').textContent=d.stage;
+  const isZh=currentLang==='zh';
+  document.getElementById('size-metric-stage').textContent=isZh?(d.stageZh||d.stage):d.stage;
   document.getElementById('size-metric-stage').style.color=d.color;
   document.getElementById('size-metric-survival').textContent=d.survival;
   document.getElementById('size-metric-survival').style.color=d.color;
-  document.getElementById('size-insight').textContent=d.insight;
-  document.getElementById('size-metric-cov').textContent='run →';
+  document.getElementById('size-insight').textContent=isZh?(d.insightZh||d.insight):d.insight;
+  document.getElementById('size-metric-cov').textContent=isZh?'运行 →':'run →';
 }
 async function runSizeDemo(){
   const r=parseInt(document.getElementById('size-slider').value);
   const btn=document.querySelector('[onclick="runSizeDemo()"]');btn.disabled=true;btn.textContent='⟳ Running…';
-  document.getElementById('size-status').textContent='Solving PDE…';
+  document.getElementById('size-status').textContent=currentLang==='zh'?'正在求解 PDE…':'Solving PDE…';
   const cx=Math.floor(N/3),cy=N/2,dx=1/N,D=.08,lam=.005,k=.06,dt=.9*dx*dx/(4*D+1e-10);
   const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
   const CHUNKS=8,cs=Math.floor(500/CHUNKS);
@@ -850,7 +936,7 @@ async function runSizeDemo(){
   drawHM('size-heatmap',C,cx,cy,r,400,400);
   document.getElementById('size-metric-cov').textContent=calcCov(C,cx,cy,r)+'%';
   document.getElementById('size-lbl').textContent='r = '+r+' px';
-  document.getElementById('size-status').textContent='Complete ✓';
+  document.getElementById('size-status').textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
   btn.disabled=false;btn.textContent='▶ Simulate this size';
 }
 
@@ -875,16 +961,25 @@ function updateLifestyle(){
   const alcohol=parseInt(document.getElementById('ls-alcohol').value);
   document.getElementById('ls-smoking-val').textContent=smoking;
   document.getElementById('ls-bmi-val').textContent=bmi;
-  document.getElementById('ls-inflam-val').textContent=['none','none','mild','mild','moderate','moderate','moderate','high','high','very high','very high'][Math.min(inflam,10)];
+  const inflammLevels=currentLang==='zh'
+    ?['无','无','轻微','轻微','中度','中度','中度','高','高','很高','很高']
+    :['none','none','mild','mild','moderate','moderate','moderate','high','high','very high','very high'];
+  document.getElementById('ls-inflam-val').textContent=inflammLevels[Math.min(inflam,10)];
   document.getElementById('ls-exercise-val').textContent=exercise+'h';
   document.getElementById('ls-alcohol-val').textContent=alcohol;
   const dMod=calcDMod();
   document.getElementById('ls-D-mod').textContent='×'+dMod.toFixed(2);
   const risk=dMod>.88?'baseline':dMod>.72?'elevated':dMod>.55?'high':'very high';
   const riskColor={'baseline':'#3de383','elevated':'#f0a54a','high':'#f05b5b','very high':'#f05b5b'}[risk];
-  document.getElementById('ls-risk').textContent=risk;
+  const riskLabelZh={'baseline':'基准','elevated':'偏高','high':'高','very high':'极高'}[risk];
+  document.getElementById('ls-risk').textContent=currentLang==='zh'?riskLabelZh:risk;
   document.getElementById('ls-risk').style.color=riskColor;
-  const insights={
+  const insights=currentLang==='zh'?{
+    baseline:'你的生活方式画像提示肿瘤微环境接近基准水平。可调节因素对药物扩散的影响不大。',
+    elevated:'部分生活方式因素开始影响组织微环境。考虑减少吸烟或饮酒，以保持药物渗透效率。',
+    high:'多个因素正在显著削弱潜在的药物传递能力。慢性炎症引起的高IFP和致密ECM将大幅降低化疗效果。',
+    'very high':'严重的生活方式驱动的微环境改变。估计药物渗透率比基准低50%以上。这些是重要但大多可改变的风险因素。',
+  }:{
     baseline:'Your lifestyle profile suggests a near-baseline tumor microenvironment. Drug diffusion would not be significantly impaired by modifiable factors.',
     elevated:'Some lifestyle factors are beginning to affect tissue microenvironment. Consider reducing smoking or alcohol intake to preserve drug penetration efficiency.',
     high:'Multiple factors are significantly impairing potential drug delivery. High IFP and dense ECM from chronic inflammation would substantially reduce chemotherapy effectiveness.',
@@ -894,16 +989,45 @@ function updateLifestyle(){
 }
 
 const PROFILES={
-  baseline:{name:'Optimal Microenvironment',color:'#3de383',border:'rgba(61,227,131,.4)',traits:['Low IFP','Normal ECM density','Good vascularisation','High drug diffusivity'],detail:'Your lifestyle factors suggest your tissue microenvironment is close to optimal for drug delivery. This does not mean you are cancer-free — but if cancer were to develop, treatment would face fewer physical barriers.'},
-  elevated:{name:'Mildly Impaired Microenvironment',color:'#f0a54a',border:'rgba(240,165,74,.4)',traits:['Mildly elevated IFP','Slightly dense ECM','Some inflammation','Reduced drug diffusivity'],detail:'Some lifestyle factors are beginning to affect your microenvironment. Moderate changes — reducing smoking, improving diet, increasing exercise — can meaningfully reduce these effects over time.'},
-  high:{name:'Significantly Impaired Microenvironment',color:'#f05b5b',border:'rgba(240,91,91,.4)',traits:['Elevated IFP','Dense ECM','Chronic inflammation','Substantially reduced D'],detail:'Multiple lifestyle factors are creating physical conditions that would impair drug delivery. These are modifiable — quitting smoking, weight management, and treating chronic inflammation can improve the microenvironment significantly.'},
-  'very high':{name:'Severely Impaired Microenvironment',color:'#f05b5b',border:'rgba(240,91,91,.4)',traits:['Very high IFP','Very dense ECM','Systemic inflammation','Severely reduced D'],detail:'Severe lifestyle-driven microenvironment changes. Drug penetration estimated at less than 50% of baseline. These factors are significant but largely reversible with lifestyle changes. Consider speaking with a healthcare provider.'},
+  baseline:{
+    name:'Optimal Microenvironment', nameZh:'最优微环境',
+    color:'#3de383',border:'rgba(61,227,131,.4)',
+    traits:['Low IFP','Normal ECM density','Good vascularisation','High drug diffusivity'],
+    traitsZh:['低IFP','正常ECM密度','良好血管化','高药物扩散性'],
+    detail:'Your lifestyle factors suggest your tissue microenvironment is close to optimal for drug delivery. This does not mean you are cancer-free — but if cancer were to develop, treatment would face fewer physical barriers.',
+    detailZh:'你的生活方式因素提示组织微环境接近药物传递的最优状态。这不意味着你没有患癌风险——但如果癌症发生，治疗将面临更少的物理障碍。',
+  },
+  elevated:{
+    name:'Mildly Impaired Microenvironment', nameZh:'轻度受损微环境',
+    color:'#f0a54a',border:'rgba(240,165,74,.4)',
+    traits:['Mildly elevated IFP','Slightly dense ECM','Some inflammation','Reduced drug diffusivity'],
+    traitsZh:['轻度IFP升高','ECM略微致密','轻度炎症','扩散系数下降'],
+    detail:'Some lifestyle factors are beginning to affect your microenvironment. Moderate changes — reducing smoking, improving diet, increasing exercise — can meaningfully reduce these effects over time.',
+    detailZh:'部分生活方式因素开始影响你的微环境。适度改变——减少吸烟、改善饮食、增加运动——随着时间推移可以有效改善这些影响。',
+  },
+  high:{
+    name:'Significantly Impaired Microenvironment', nameZh:'显著受损微环境',
+    color:'#f05b5b',border:'rgba(240,91,91,.4)',
+    traits:['Elevated IFP','Dense ECM','Chronic inflammation','Substantially reduced D'],
+    traitsZh:['IFP升高','ECM致密','慢性炎症','D值大幅下降'],
+    detail:'Multiple lifestyle factors are creating physical conditions that would impair drug delivery. These are modifiable — quitting smoking, weight management, and treating chronic inflammation can improve the microenvironment significantly.',
+    detailZh:'多个生活方式因素正在产生影响药物传递的物理条件。这些都是可改变的——戒烟、控制体重和治疗慢性炎症可以显著改善微环境。',
+  },
+  'very high':{
+    name:'Severely Impaired Microenvironment', nameZh:'严重受损微环境',
+    color:'#f05b5b',border:'rgba(240,91,91,.4)',
+    traits:['Very high IFP','Very dense ECM','Systemic inflammation','Severely reduced D'],
+    traitsZh:['IFP极高','ECM极致密','全身性炎症','D值严重下降'],
+    detail:'Severe lifestyle-driven microenvironment changes. Drug penetration estimated at less than 50% of baseline. These factors are significant but largely reversible with lifestyle changes. Consider speaking with a healthcare provider.',
+    detailZh:'严重的生活方式驱动的微环境变化。药物渗透率估计不足基准的50%。这些因素很重要，但通过生活方式改变大多可逆转。建议咨询医疗专业人士。',
+  },
 };
 
 async function generateProfile(){
   const dMod=calcDMod();
   const risk=dMod>.88?'baseline':dMod>.72?'elevated':dMod>.55?'high':'very high';
   const prof=PROFILES[risk];
+  const isZh=currentLang==='zh';
   const D=.08*dMod,lam=.005,k=.06,r=22;
   const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*D+1e-10);
   const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
@@ -911,16 +1035,16 @@ async function generateProfile(){
   for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);document.getElementById('ls-prog').style.width=((i+1)/CHUNKS*100)+'%';}
   drawHM('ls-heatmap',C,cx,cy,r,400,400);
   document.getElementById('ls-lbl').textContent='D = ×'+dMod.toFixed(2);
-
   const card=document.getElementById('ls-profile-card');
   card.style.borderColor=prof.border;
+  const traits=isZh?(prof.traitsZh||prof.traits):prof.traits;
   card.innerHTML=`
-    <div class="profile-title" style="color:${prof.color}">${prof.name}</div>
+    <div class="profile-title" style="color:${prof.color}">${isZh?(prof.nameZh||prof.name):prof.name}</div>
     <div class="profile-score" style="color:${prof.color}">${(dMod*100).toFixed(0)}<span style="font-size:1rem;color:var(--text3)">%</span></div>
-    <div style="font-size:.75rem;color:var(--text3);margin-bottom:.75rem;">of baseline drug diffusivity</div>
-    <div class="profile-traits">${prof.traits.map(t=>`<span class="tag" style="border-color:${prof.border};color:${prof.color}">${t}</span>`).join('')}</div>
+    <div style="font-size:.75rem;color:var(--text3);margin-bottom:.75rem;">${isZh?'基准药物扩散率':'of baseline drug diffusivity'}</div>
+    <div class="profile-traits">${traits.map(t=>`<span class="tag" style="border-color:${prof.border};color:${prof.color}">${t}</span>`).join('')}</div>
   `;
-  document.getElementById('ls-profile-detail').innerHTML=`<p style="font-size:.875rem;color:var(--text2);line-height:1.75;margin:0;">${prof.detail}</p>`;
+  document.getElementById('ls-profile-detail').innerHTML=`<p style="font-size:.875rem;color:var(--text2);line-height:1.75;margin:0;">${isZh?(prof.detailZh||prof.detail):prof.detail}</p>`;
   document.getElementById('ls-profile-result').style.display='';
   document.getElementById('ls-profile-result').scrollIntoView({behavior:'smooth',block:'start'});
 }
@@ -938,34 +1062,385 @@ function resetLifestyle(){
    SECTION 4: PRECISION COMPARE
 ========================================================= */
 const PREC_S={
-  her2:{A:{D:.01,lam:.001,k:.12,r:22,label:'HER2+ patient (k=0.12)'},B:{D:.01,lam:.001,k:.02,r:22,label:'HER2− patient (k=0.02)'},insight:'Same drug, same physical penetration (identical D) — but HER2+ tumors absorb 6× more drug per cell. This is why genetic testing determines whether Trastuzumab works. The physics of delivery is the same; the biology of uptake is completely different.'},
-  pancreas_vs_breast:{A:{D:.08,lam:.005,k:.06,r:22,label:'Breast cancer (D=0.08)'},B:{D:.02,lam:.008,k:.04,r:28,label:'Pancreatic cancer (D=0.02)'},insight:'The same drug (Doxorubicin) in two different tumor types. Pancreatic stroma reduces D by 75%. This single physical difference — more than any drug resistance — explains the enormous survival rate gap between these two diagnoses.'},
-  small_vs_large:{A:{D:.12,lam:.003,k:.07,r:22,label:'Cisplatin (MW ~300 Da)'},B:{D:.01,lam:.001,k:.07,r:22,label:'Trastuzumab (MW ~148,000 Da)'},insight:'Molecular weight is the dominant factor in drug penetration. Cisplatin diffuses 12× faster than Trastuzumab — purely because of size. This is why large-molecule therapies often need special delivery strategies like nanoparticles or local injection.'},
+  her2:{
+    A:{D:.01,lam:.001,k:.12,r:22,label:'HER2+ patient (k=0.12)',labelZh:'HER2阳性患者 (k=0.12)'},
+    B:{D:.01,lam:.001,k:.02,r:22,label:'HER2− patient (k=0.02)',labelZh:'HER2阴性患者 (k=0.02)'},
+    insight:'Same drug, same physical penetration (identical D) — but HER2+ tumors absorb 6× more drug per cell. This is why genetic testing determines whether Trastuzumab works.',
+    insightZh:'相同药物，相同物理渗透（D相同）——但 HER2+ 肿瘤每个细胞摄取的药物是 HER2− 的 6 倍。这就是为什么基因检测决定曲妥珠单抗是否有效。',
+  },
+  pancreas_vs_breast:{
+    A:{D:.08,lam:.005,k:.06,r:22,label:'Breast cancer (D=0.08)',labelZh:'乳腺癌 (D=0.08)'},
+    B:{D:.02,lam:.008,k:.04,r:28,label:'Pancreatic cancer (D=0.02)',labelZh:'胰腺癌 (D=0.02)'},
+    insight:'The same drug (Doxorubicin) in two tumor types. Pancreatic stroma reduces D by 75%. This single physical difference explains the enormous survival rate gap between these two diagnoses.',
+    insightZh:'同一种药物（多柔比星）在两种肿瘤类型中的表现。胰腺基质使 D 降低 75%。这一个物理差异就解释了这两种诊断之间巨大的生存率差距。',
+  },
+  small_vs_large:{
+    A:{D:.12,lam:.003,k:.07,r:22,label:'Cisplatin (MW ~300 Da)',labelZh:'顺铂 (分子量约 300 Da)'},
+    B:{D:.01,lam:.001,k:.07,r:22,label:'Trastuzumab (MW ~148,000 Da)',labelZh:'曲妥珠单抗 (分子量约 148,000 Da)'},
+    insight:'Molecular weight dominates drug penetration. Cisplatin diffuses 12× faster than Trastuzumab — purely because of size. This is why large-molecule therapies need special delivery strategies.',
+    insightZh:'分子量主导药物渗透。顺铂的扩散速度是曲妥珠单抗的 12 倍——纯粹因为尺寸不同。这就是大分子疗法需要特殊传递策略的原因。',
+  },
 };
 async function runPrecCompare(){
   const s=PREC_S[document.getElementById('prec-scenario').value];
   const btn=document.getElementById('prec-btn');btn.disabled=true;btn.textContent='⟳ Running…';
-  document.getElementById('prec-status').textContent='Running Patient A…';
+  document.getElementById('prec-status').textContent=currentLang==='zh'?'正在运行患者 A…':'Running Patient A…';
   const cx=Math.floor(N/3),cy=N/2,dx=1/N,CHUNKS=8;
   const dtA=.9*dx*dx/(4*s.A.D+1e-10);
   const CA=initC(),rhoA=buildRho(cx,cy,s.A.r),DfA=buildDField(cx,cy,s.A.r,s.A.D);
   for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CA,DfA,rhoA,dx,dtA,s.A.lam,s.A.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=((i+1)/CHUNKS/2*100)+'%';}
-  document.getElementById('prec-status').textContent='Running Patient B…';
+  document.getElementById('prec-status').textContent=currentLang==='zh'?'正在运行患者 B…':'Running Patient B…';
   const dtB=.9*dx*dx/(4*s.B.D+1e-10);
   const CB=initC(),rhoB=buildRho(cx,cy,s.B.r),DfB=buildDField(cx,cy,s.B.r,s.B.D);
   for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CB,DfB,rhoB,dx,dtB,s.B.lam,s.B.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=(50+(i+1)/CHUNKS/2*100)+'%';}
   drawHM('prec-heatmap-A',CA,cx,cy,s.A.r,360,360);
   drawHM('prec-heatmap-B',CB,cx,cy,s.B.r,360,360);
-  document.getElementById('prec-label-A').textContent=s.A.label;
-  document.getElementById('prec-label-B').textContent=s.B.label;
+  document.getElementById('prec-label-A').textContent=currentLang==='zh'?(s.A.labelZh||s.A.label):s.A.label;
+  document.getElementById('prec-label-B').textContent=currentLang==='zh'?(s.B.labelZh||s.B.label):s.B.label;
   document.getElementById('prec-cov-A').textContent=calcCov(CA,cx,cy,s.A.r)+'%';
   document.getElementById('prec-cov-B').textContent=calcCov(CB,cx,cy,s.B.r)+'%';
   document.getElementById('prec-avg-A').textContent=calcAvg(CA,cx,cy,s.A.r);
   document.getElementById('prec-avg-B').textContent=calcAvg(CB,cx,cy,s.B.r);
-  document.getElementById('prec-insight').textContent=s.insight;
+  document.getElementById('prec-insight').textContent=currentLang==='zh'?(s.insightZh||s.insight):s.insight;
   document.getElementById('prec-results').style.display='';
-  document.getElementById('prec-status').textContent='Complete ✓';
-  btn.disabled=false;btn.textContent='▶ Run comparison';
+  document.getElementById('prec-status').textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
+  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行对比':'▶ Run comparison';
+}
+
+/* =========================================================
+   LANGUAGE SYSTEM
+========================================================= */
+let currentLang='en';
+
+const TRANSLATIONS={
+  // NAV
+  'nav-home':         {en:'Home',           zh:'首页'},
+  'nav-drug':         {en:'Why Drugs Fail', zh:'为什么药物失效'},
+  'nav-early':        {en:'Early Detection',zh:'早期发现'},
+  'nav-lifestyle':    {en:'Lifestyle & Risk',zh:'生活方式与风险'},
+  'nav-precision':    {en:'Precision Medicine',zh:'精准医疗'},
+
+  // LANG BUTTON (shows opposite language)
+  'lang-btn':         {en:'切换中文',        zh:'Switch to English'},
+
+  // DONATE
+  'donate-header-btn':{en:'❤ Donate',       zh:'❤ 捐款'},
+  'donate-banner-text':{
+    en:'<strong>Support children with cancer.</strong> Our science education is free — but the fight isn\'t. Consider donating to our partner organisations.',
+    zh:'<strong>支持癌症儿童。</strong>我们的科普内容永久免费——但抗癌之战需要资金。请考虑向我们的合作机构捐款。'
+  },
+  'donate-intl-name': {en:'International — TBC',zh:'国际机构 — 待确认'},
+  'donate-cn-name':   {en:'China — TBC',    zh:'中国机构 — 待确认'},
+
+  // HOME
+  'home-title':       {en:'<span class="pde">PDE</span><span class="pub">Outreach</span>',zh:'<span class="pde">PDE</span><span class="pub">Outreach</span>'},
+  'home-sub':         {en:'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.',
+                       zh:'癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。'},
+  'home-quiz-title':  {en:'Quick — what do you think?',zh:'先来猜一猜——'},
+  'home-q':           {en:'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?',
+                       zh:'一种强效化疗药物进入血液并到达肿瘤。它通常能杀死多少比例的癌细胞？'},
+  'home-q-sub':       {en:'No googling. Go with your gut.',zh:'别查资料，凭直觉回答。'},
+  'home-opt-A':       {en:'Most of them — that\'s the whole point of chemo',zh:'大部分——这不就是化疗的目的吗'},
+  'home-opt-B':       {en:'About half — chemo is not very precise',zh:'大约一半——化疗不太精准'},
+  'home-opt-C':       {en:'Only the outer layer — drug can\'t reach the core',zh:'只有外层——药物无法到达核心'},
+  'home-opt-D':       {en:'Almost none — tumors are completely drug-resistant',zh:'几乎没有——肿瘤完全耐药'},
+  'home-cards-title': {en:'Four things about cancer nobody told you',zh:'关于癌症，没人告诉你的四件事'},
+
+  // DRUG TAB
+  'drug-title':       {en:'Why <span class="accent">Drugs Fail</span>',zh:'为什么<span class="accent">药物失效</span>'},
+  'drug-sub':         {en:'The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.',
+                       zh:'化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。'},
+  'drug-run-btn':     {en:'▶ Run simulation',zh:'▶ 运行模拟'},
+  'drug-reset-btn':   {en:'Reset',zh:'重置'},
+
+  // EARLY TAB
+  'early-title':      {en:'Early <span class="accent">Detection</span>',zh:'<span class="accent">早期</span>发现'},
+  'early-sub':        {en:'You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.',
+                       zh:'你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。'},
+  'early-run-btn':    {en:'▶ Simulate this size',zh:'▶ 模拟当前大小'},
+
+  // LIFESTYLE TAB
+  'ls-title':         {en:'Lifestyle <span class="accent">&amp; Risk</span>',zh:'生活方式<span class="accent">与风险</span>'},
+  'ls-sub':           {en:'Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below.',
+                       zh:'你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗的效果好不好。填写下方的信息，生成你的专属画像。'},
+  'ls-gen-btn':       {en:'Generate my profile →',zh:'生成我的画像 →'},
+  'ls-reset-btn':     {en:'Reset',zh:'重置'},
+
+  // PRECISION TAB
+  'prec-title':       {en:'Precision <span class="accent">Medicine</span>',zh:'<span class="accent">精准</span>医疗'},
+  'prec-sub':         {en:'Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology.',
+                       zh:'两个患者。同一种癌症。同一种药物。一个有效，一个无效。这不是运气问题，这是生物学。'},
+  'prec-run-btn':     {en:'▶ Run comparison',zh:'▶ 运行对比'},
+
+  // STORY PLACEHOLDERS
+  'story-ph-title':   {en:'— STORY COMING SOON —',zh:'— 故事即将上线 —'},
+  'story-ph-drug':    {en:'We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.',
+                       zh:'我们正在收集真实患者故事，以说明药物物理屏障如何影响治疗结果。'},
+  'story-ph-early':   {en:'A story about how early (or late) detection changed a patient\'s treatment journey.',
+                       zh:'一个关于早期（或晚期）发现如何改变患者治疗之路的故事。'},
+  'story-ph-ls':      {en:'A story about how lifestyle changes affected a patient\'s treatment response.',
+                       zh:'一个关于生活方式改变如何影响患者治疗反应的故事。'},
+  'story-ph-prec':    {en:'A story about how genetic testing changed a patient\'s treatment plan — and outcome.',
+                       zh:'一个关于基因检测如何改变患者治疗方案和预后的故事。'},
+
+  // FOOTER
+  'footer-copy':      {en:'Cancer science for everyone — educational use only, not medical advice',
+                       zh:'癌症科学，人人可懂——仅供教育使用，非医疗建议'},
+};
+
+function applyLang(lang){
+  currentLang=lang;
+  document.documentElement.lang=lang==='zh'?'zh-CN':'en';
+  document.getElementById('lang-btn').textContent=lang==='en'?'切换中文':'Switch to English';
+
+  // nav
+  const navMap={home:{en:'Home',zh:'首页'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效'},early:{en:'Early Detection',zh:'早期发现'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险'},precision:{en:'Precision Medicine',zh:'精准医疗'}};
+  document.querySelectorAll('#nav button').forEach(btn=>{
+    const m=btn.getAttribute('onclick').match(/switchTab\('(\w+)'\)/);
+    if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang];
+  });
+
+  // header buttons
+  document.getElementById('donate-header-btn').textContent=lang==='zh'?'❤ 捐款':'❤ Donate';
+  document.getElementById('donate-banner-text').innerHTML=lang==='zh'
+    ?'<strong>支持癌症儿童。</strong>我们的科普内容永久免费——但抗癌之战需要资金。请考虑向我们的合作机构捐款。'
+    :'<strong>Support children with cancer.</strong> Our science education is free — but the fight isn\'t. Consider donating to our partner organisations.';
+  document.getElementById('donate-intl-name').textContent=lang==='zh'?'国际机构 — 待确认':'International — TBC';
+  document.getElementById('donate-cn-name').textContent=lang==='zh'?'中国机构 — 待确认':'China — TBC';
+
+  // title tag
+  document.title=lang==='zh'?'PDEOutreach — 癌症科学，人人可懂':'PDEOutreach — Cancer Science for Everyone';
+
+  // HOME tab
+  setText('home-sub',lang==='zh'
+    ?'癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。'
+    :'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.');
+  setText('home-chips-i',lang==='zh'?'中英双语':'bilingual');
+  setText('home-cards-title',lang==='zh'?'关于癌症，没人告诉你的四件事':'Four things about cancer nobody told you');
+  setText('home-quiz-title',lang==='zh'?'先来猜一猜——':'Quick — what do you think?');
+  setHtml('home-quiz-q',lang==='zh'
+    ?'一种强效化疗药物进入血液并到达肿瘤。它通常能消灭多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>'
+    :'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?<div class="quiz-sub">No googling. Go with your gut.</div>');
+
+  // HOME quiz options
+  const homeOpts=document.querySelectorAll('#home-quiz-opts .quiz-option');
+  const homeOptsTxt=lang==='zh'
+    ?['大部分——这不就是化疗的目的吗','大约一半——化疗不太精准','只有外层——药物无法到达核心','几乎没有——肿瘤完全耐药']
+    :['Most of them — that\'s the whole point of chemo','About half — chemo is not very precise','Only the outer layer — drug can\'t reach the core','Almost none — tumors are completely drug-resistant'];
+  homeOpts.forEach((o,i)=>{const letter=o.querySelector('.quiz-letter');const txt=homeOptsTxt[i];o.childNodes[o.childNodes.length-1].textContent=' '+txt;});
+
+  // HOME cards
+  const cards=[
+    {h:lang==='zh'?'为什么药物失效':'Why drugs fail', p:lang==='zh'?'即使是最有效的化疗药物，有时也会失效——不是因为它们失去了作用，而是因为它们在物理上无法穿透到足够深的位置。我们用真实的数学来模拟这一过程。':'Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.', t1:lang==='zh'?'互动模拟':'interactive sim', t2:lang==='zh'?'内含测验':'quiz inside'},
+    {h:lang==='zh'?'早期发现':'Early detection', p:lang==='zh'?'1 厘米和 5 厘米发现的肿瘤是完全不同的问题。拖动滑块——亲眼看看随着肿瘤生长，治疗变得有多难。':'A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.', t1:lang==='zh'?'拖动探索':'drag & explore', t2:lang==='zh'?'内含测验':'quiz inside'},
+    {h:lang==='zh'?'生活方式与风险':'Lifestyle & risk', p:lang==='zh'?'吸烟和肥胖不只会导致癌症——它们还会改变肿瘤微环境，使化疗效果更差。获取你的个性化风险画像。':'Smoking and obesity don\'t just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.', t1:lang==='zh'?'风险画像':'risk profile', t2:lang==='zh'?'个性化':'personalised'},
+    {h:lang==='zh'?'精准医疗':'Precision medicine', p:lang==='zh'?'两个患者，相同的癌症，相同的药物——结果却截然不同。基因和肿瘤生物学都起着关键作用。亲眼看看差异。':'Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.', t1:lang==='zh'?'对比':'compare', t2:lang==='zh'?'内含测验':'quiz inside'},
+  ];
+  document.querySelectorAll('.home-card').forEach((card,i)=>{
+    if(!cards[i])return;
+    const h=card.querySelector('h2');const p=card.querySelector('p');
+    const tags=card.querySelectorAll('.tag');
+    if(h)h.textContent=cards[i].h;
+    if(p)p.textContent=cards[i].p;
+    if(tags[0])tags[0].textContent=cards[i].t1;
+    if(tags[1])tags[1].textContent=cards[i].t2;
+  });
+
+  // WHY DRUGS FAIL tab
+  setText('drug-title-h1',lang==='zh'?'为什么药物失效':'Why Drugs Fail');
+  setText('drug-sub',lang==='zh'?'化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。':'The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.');
+  setText('drug-quiz-title',lang==='zh'?'先来猜一猜——':'Before we explain — what\'s your guess?');
+  setHtml('drug-quiz-q',lang==='zh'
+    ?'胰腺癌是生存率最低的癌症之一。化疗效果如此差的主要原因是什么？'
+    :'Pancreatic cancer has one of the lowest survival rates of any cancer. What is the main reason chemotherapy is so ineffective?');
+  const drugOpts=document.querySelectorAll('#drug-quiz-opts .quiz-option');
+  const drugOptsTxt=lang==='zh'
+    ?['癌细胞变异太快，产生耐药性','药物毒性太强，只能低剂量使用','肿瘤内的物理屏障阻止了药物到达癌细胞','胰腺在药物发挥作用前将其降解']
+    :['Cancer cells mutate too fast and become drug-resistant','The drugs are toxic and have to be given at low doses','Physical barriers in the tumor prevent drugs from reaching cancer cells','The pancreas breaks down drugs before they can work'];
+  drugOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+drugOptsTxt[i];});
+  setText('drug-explainer-title',lang==='zh'?'肿瘤内部到底发生了什么':'What\'s really happening inside');
+  setText('drug-wall-title',lang==='zh'?'肿瘤建起了屏障':'The tumor builds walls');
+  setText('drug-math-title',lang==='zh'?'我们可以量化这个过程':'We can measure this');
+  setText('drug-sim-title',lang==='zh'?'亲眼看看':'See it for yourself');
+  setText('drug-sim-p',lang==='zh'?'选择药物和肿瘤类型，运行模拟，看看药物究竟能渗透多远。':'Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.');
+  setText('drug-run-btn',lang==='zh'?'▶ 运行模拟':'▶ Run simulation');
+  setText('drug-reset-btn',lang==='zh'?'重置':'Reset');
+  const drugLabel=document.querySelector('[for="drug1-select"]')||document.querySelector('label[id="drug-label"]');
+  setText('drug-select-label',lang==='zh'?'药物':'Drug');
+  setText('tumor-select-label',lang==='zh'?'肿瘤类型':'Tumor type');
+  setText('drug-cov-label',lang==='zh'?'肿瘤覆盖率':'Tumor coverage');
+  setText('drug-depth-label',lang==='zh'?'渗透深度':'Penetration depth');
+  setText('drug-takeaway-title',lang==='zh'?'核心结论':'Key takeaway');
+  setText('drug-takeaway-p',lang==='zh'
+    ?'对于胰腺癌，即使渗透性最强的药物，其在治疗浓度下覆盖的肿瘤体积也不足 10%。这就是胰腺癌 5 年生存率仅约 12% 的原因——物理屏障使现有药物几乎无法发挥作用。这不是化学上的失败，而是物理上的失败。'
+    :'For pancreatic cancer, even the best-penetrating drugs cover less than 10% of the tumor volume at therapeutic concentrations. This is why pancreatic cancer has a 5-year survival rate of only ~12% — the biology makes it nearly impossible for current drugs to work. This is not a failure of chemistry. It\'s a failure of physics.');
+  setText('drug-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
+  setText('drug-story-ph-p',lang==='zh'?'我们正在收集真实患者故事，以说明药物物理屏障如何影响治疗结果。':'We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.');
+
+  // drug select options
+  // home card h3 subtitles
+  setText('card-h3-drug',  lang==='zh'?'好药并不总能到达肿瘤':'Good drugs can\'t always reach the tumor');
+  setText('card-h3-early', lang==='zh'?'肿瘤大小改变一切':'Tumor size changes everything');
+  setText('card-h3-ls',    lang==='zh'?'你的习惯影响药物效果':'Your habits change how drugs work');
+  setText('card-h3-prec',  lang==='zh'?'为什么同一种药对不同人效果不同':'Why the same drug works differently for everyone');
+
+  // drug explainer body
+  setText('drug-wall-p',   lang==='zh'?'肿瘤主动创造出排斥药物的敌对微环境：':'Tumors actively create a hostile microenvironment that repels drugs:');
+  setHtml('drug-li-1', lang==='zh'?'<strong>间质液压升高</strong>——肿瘤向外推液体，物理上排斥药物':'<strong>High interstitial fluid pressure</strong> — the tumor pushes fluid outward, physically repelling drugs');
+  setHtml('drug-li-2', lang==='zh'?'<strong>致密细胞外基质</strong>——纤维蛋白减缓药物移动':'<strong>Dense extracellular matrix</strong> — fibrous proteins slow drug movement');
+  setHtml('drug-li-3', lang==='zh'?'<strong>异常血管</strong>——不规则且分布不良':'<strong>Abnormal blood vessels</strong> — irregular and poorly distributed');
+  setText('drug-result-p', lang==='zh'?'结果：药物浓度从肿瘤边缘向中心移动时急剧下降。':'The result: drug concentration drops dramatically moving from the tumor edge toward its center.');
+  setText('drug-math-p',   lang==='zh'?'这可以用 PDEOncology 中的反应-扩散方程建模：':'This is modelled by a reaction-diffusion equation used in PDEOncology:');
+  setHtml('drug-d-p',      lang==='zh'?'其中 <code>D</code> 是药物扩散的速度。在胰腺癌中，D 比乳腺癌低多达 75%——因为基质非常致密。':'Where <code>D</code> is how fast the drug diffuses. In pancreatic cancer, D is up to 75% lower than in breast cancer — because the stroma is so dense.');
+
+  // lifestyle prevention body
+  setText('ls-prev1-p', lang==='zh'?'吸烟约占所有癌症死亡的 30%。任何年龄戒烟都能降低癌症风险和 ECM 密度——改善潜在的药物渗透性。':'Smoking accounts for ~30% of all cancer deaths. Quitting at any age reduces both cancer risk and ECM density — improving potential drug penetration.');
+  setText('ls-prev2-p', lang==='zh'?'肥胖增加 13 种癌症类型的风险。过多脂肪组织促进慢性炎症，升高 IFP 并降低药物扩散系数 D。':'Obesity increases risk for 13 cancer types. Excess fat tissue promotes chronic inflammation, elevating IFP and reducing drug diffusion coefficient D.');
+  setText('ls-prev3-p', lang==='zh'?'每周 150 分钟中等强度运动可将癌症风险降低 10–20%，并减少全身炎症——让组织微环境更健康。':'150 min/week of moderate exercise reduces cancer risk by 10–20% and reduces systemic inflammation — keeping your tissue microenvironment healthier.');
+
+  const drugMap={'cisplatin':{en:'Cisplatin (small molecule — high penetration)',zh:'顺铂（小分子——高渗透）'},'doxorubicin':{en:'Doxorubicin (medium molecule)',zh:'多柔比星（中等分子）'},'trastuzumab':{en:'Trastuzumab (large antibody — low penetration)',zh:'曲妥珠单抗（大分子抗体——低渗透）'}};
+  const tumorMap={'breast':{en:'Breast cancer',zh:'乳腺癌'},'pancreatic':{en:'Pancreatic cancer (hardest to treat)',zh:'胰腺癌（最难治疗）'},'glioma':{en:'Glioma (brain tumor)',zh:'胶质瘤（脑肿瘤）'}};
+  ['drug1-select'].forEach(id=>{const s=document.getElementById(id);if(!s)return;Array.from(s.options).forEach(o=>{if(drugMap[o.value])o.textContent=drugMap[o.value][lang];});});
+  ['tumor1-select'].forEach(id=>{const s=document.getElementById(id);if(!s)return;Array.from(s.options).forEach(o=>{if(tumorMap[o.value])o.textContent=tumorMap[o.value][lang];});});
+
+  // EARLY DETECTION tab
+  setText('early-title-h1',lang==='zh'?'早期发现':'Early Detection');
+  setText('early-sub',lang==='zh'?'你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。':'You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.');
+  setText('early-quiz-title',lang==='zh'?'测试你的直觉——':'Test your intuition');
+  setHtml('early-quiz-q',lang==='zh'
+    ?'肿瘤从一期长到三期，大小翻倍。药物覆盖率（化疗能到达的肿瘤比例）会如何变化？'
+    :'A tumor doubles in size from Stage I to Stage III. How much does drug coverage (the percentage of the tumor reached by chemo) change?');
+  const earlyOpts=document.querySelectorAll('#early-quiz-opts .quiz-option');
+  const earlyOptsTxt=lang==='zh'
+    ?['大约减半——与大小大致成比例','减少约 20-30%——变化不大','减少超过 80%——覆盖率骤降','基本不变——药物能适应肿瘤大小']
+    :['It drops by about half — roughly proportional to size','It drops by about 20–30% — not that dramatic','It drops by over 80% — coverage collapses','It stays roughly the same — drugs adapt to tumor size'];
+  earlyOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+earlyOptsTxt[i];});
+  setText('early-drag-title',lang==='zh'?'拖动来发现真相':'Drag to discover');
+  setText('early-drag-p',lang==='zh'?'移动滑块，看数字如何变化。这就是为什么早期筛查能够拯救生命。':'Move the slider. Watch the numbers change. This is why early screening saves lives.');
+  setText('size-slider-label',lang==='zh'?'肿瘤半径':'Tumor radius');
+  setText('early-run-btn',lang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size');
+  setText('early-stage-label',lang==='zh'?'分期':'Stage');
+  setText('early-survival-label',lang==='zh'?'5年生存率':'5-yr survival');
+  setText('early-cov-label',lang==='zh'?'药物覆盖率':'Drug coverage');
+  setText('early-r-label',lang==='zh'?'肿瘤半径':'Tumor radius');
+  setText('early-screen-title',lang==='zh'?'你应该什么时候筛查？':'When should you screen?');
+  setText('early-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
+  setText('early-story-ph-p',lang==='zh'?'一个关于早期（或晚期）发现如何改变患者治疗之路的故事。':'A story about how early (or late) detection changed a patient\'s treatment journey.');
+
+  // LIFESTYLE tab
+  setText('ls-title-h1',lang==='zh'?'生活方式与风险':'Lifestyle & Risk');
+  setText('ls-sub',lang==='zh'?'你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗效果好不好。填写下方信息，生成你的专属画像。':'Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.');
+  setText('ls-profile-title',lang==='zh'?'建立你的微环境画像':'Build your microenvironment profile');
+  setText('ls-profile-p',lang==='zh'?'调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。':'Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.');
+  setText('ls-smoking-label',lang==='zh'?'吸烟（包年）':'Smoking (pack-years)');
+  setText('ls-bmi-label',lang==='zh'?'BMI 体重指数':'BMI');
+  setText('ls-inflam-label',lang==='zh'?'慢性炎症程度':'Chronic inflammation');
+  setText('ls-exercise-label',lang==='zh'?'运动（小时/周）':'Exercise (hrs/week)');
+  setText('ls-alcohol-label',lang==='zh'?'饮酒（单位/周）':'Alcohol (units/week)');
+  setText('ls-gen-btn',lang==='zh'?'生成我的画像 →':'Generate my profile →');
+  setText('ls-reset-btn',lang==='zh'?'重置':'Reset');
+  setText('ls-live-title',lang==='zh'?'实时微环境估计':'Live microenvironment estimate');
+  setText('ls-D-label',lang==='zh'?'D 系数':'D modifier');
+  setText('ls-risk-title-label',lang==='zh'?'风险等级':'Risk level');
+  setText('ls-profile-result-title',lang==='zh'?'你的微环境画像':'Your microenvironment profile');
+  setText('ls-prev-title',lang==='zh'?'循证预防建议':'Evidence-based actions');
+  setText('ls-prev1-title',lang==='zh'?'不要吸烟':'Don\'t smoke');
+  setText('ls-prev2-title',lang==='zh'?'保持健康体重':'Healthy weight');
+  setText('ls-prev3-title',lang==='zh'?'规律运动':'Exercise regularly');
+  setText('ls-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
+  setText('ls-story-ph-p',lang==='zh'?'一个关于生活方式改变如何影响患者治疗反应的故事。':'A story about how lifestyle changes affected a patient\'s treatment response.');
+
+  // PRECISION tab
+  setText('prec-title-h1',lang==='zh'?'精准医疗':'Precision Medicine');
+  setText('prec-sub',lang==='zh'?'两个患者，相同的癌症，相同的药物。一个有效，一个无效。这不是运气问题，这是生物学。先来猜一猜。':'Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology. First, a guess.');
+  setText('prec-quiz-title',lang==='zh'?'你认为呢？':'What do you think?');
+  setHtml('prec-quiz-q',lang==='zh'
+    ?'曲妥珠单抗（赫赛汀）是一种高效乳腺癌药物。哪些患者能从中获益？'
+    :'Trastuzumab (Herceptin) is a highly effective breast cancer drug. In which patients does it work?');
+  const precOpts=document.querySelectorAll('#prec-quiz-opts .quiz-option');
+  const precOptsTxt=lang==='zh'
+    ?['所有乳腺癌患者——这是通用治疗方案','仅限 HER2 蛋白过表达的患者（约 20% 的病例）','仅限年轻患者——该药物与年龄有关','仅限已经接受过化疗的患者']
+    :['All breast cancer patients — it\'s a general treatment','Only patients whose tumors overexpress the HER2 protein (~20% of cases)','Only younger patients — the drug is age-dependent','Only patients who have already had chemotherapy'];
+  precOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+precOptsTxt[i];});
+  setText('prec-compare-title',lang==='zh'?'并排看看差异':'See the difference side by side');
+  setText('prec-scenario-label',lang==='zh'?'选择对比场景':'Choose a comparison scenario');
+  setText('prec-run-btn',lang==='zh'?'▶ 运行对比':'▶ Run comparison');
+  setText('prec-ask-label',lang==='zh'?'建议向肿瘤科医生提问：':'Questions to ask your oncologist');
+  setText('prec-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
+  setText('prec-story-ph-p',lang==='zh'?'一个关于基因检测如何改变患者治疗方案和预后的故事。':'A story about how genetic testing changed a patient\'s treatment plan — and outcome.');
+
+  // precision scenario options
+  const precScenMap={
+    'her2':{en:'HER2+ vs HER2− breast cancer (Trastuzumab)',zh:'HER2阳性 vs 阴性乳腺癌（曲妥珠单抗）'},
+    'pancreas_vs_breast':{en:'Pancreatic vs breast cancer (Doxorubicin)',zh:'胰腺癌 vs 乳腺癌（多柔比星）'},
+    'small_vs_large':{en:'Small molecule vs antibody (same tumor)',zh:'小分子 vs 抗体（同一肿瘤）'},
+  };
+  const precSel=document.getElementById('prec-scenario');
+  if(precSel)Array.from(precSel.options).forEach(o=>{if(precScenMap[o.value])o.textContent=precScenMap[o.value][lang];});
+
+  // precision results labels
+  setText('prec-cov-label-A',lang==='zh'?'覆盖率':'Coverage');
+  setText('prec-avg-label-A',lang==='zh'?'平均浓度':'Avg conc.');
+  setText('prec-cov-label-B',lang==='zh'?'覆盖率':'Coverage');
+  setText('prec-avg-label-B',lang==='zh'?'平均浓度':'Avg conc.');
+
+  // story placeholders (all)
+  document.querySelectorAll('.story-placeholder-title').forEach(el=>el.textContent=lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
+
+  // footer
+  const fc=document.getElementById('footer-copy');
+  if(fc)fc.textContent=lang==='zh'?'癌症科学，人人可懂——仅供教育使用，非医疗建议':'Cancer science for everyone — educational use only, not medical advice';
+
+  // screening table
+  setText('screen-th1', lang==='zh'?'癌症类型':'Cancer');
+  setText('screen-th2', lang==='zh'?'筛查方法':'Screening method');
+  setText('screen-th3', lang==='zh'?'开始年龄':'Start age');
+  setText('screen-th4', lang==='zh'?'为什么重要':'Why it matters');
+  setText('screen-1-cancer', lang==='zh'?'乳腺癌':'Breast');
+  setText('screen-1-method', lang==='zh'?'乳腺X线摄影':'Mammogram');
+  setText('screen-1-why',    lang==='zh'?'第一期：99% 生存率 → 第四期：28%':'Stage I: 99% survival → Stage IV: 28%');
+  setText('screen-2-cancer', lang==='zh'?'结直肠癌':'Colorectal');
+  setText('screen-2-method', lang==='zh'?'结肠镜检查':'Colonoscopy');
+  setText('screen-2-why',    lang==='zh'?'早期发现息肉可预防大多数病例':'Most cases preventable if polyps caught early');
+  setText('screen-3-cancer', lang==='zh'?'宫颈癌':'Cervical');
+  setText('screen-3-method', lang==='zh'?'宫颈涂片 + HPV 检测':'Pap smear + HPV test');
+  setText('screen-3-why',    lang==='zh'?'筛查后近 100% 可预防':'Near 100% preventable with screening');
+  setText('screen-4-cancer', lang==='zh'?'肺癌':'Lung');
+  setText('screen-4-method', lang==='zh'?'低剂量 CT':'Low-dose CT');
+  const age4=document.getElementById('screen-4-age');if(age4)age4.textContent=lang==='zh'?'50岁（吸烟者）':'50 (smokers)';
+  setText('screen-4-why',    lang==='zh'?'早期发现可将生存率提高三倍':'Early finding triples survival rate');
+  setText('screen-5-cancer', lang==='zh'?'胰腺癌':'Pancreatic');
+  setText('screen-5-method', lang==='zh'?'暂无标准筛查方案':'No standard screening');
+  setText('screen-5-why',    lang==='zh'?'预防是目前唯一的策略':'Prevention is the only current strategy');
+
+  // colorbar drug label
+  setText('drug-colorbar-label', lang==='zh'?'药物浓度':'drug concentration');
+  setText('drug-hi', lang==='zh'?'高':'high');
+  setText('drug-lo', lang==='zh'?'低':'low');
+
+  // Real stories headings
+  document.querySelectorAll('.real-stories-h2').forEach(el=>el.textContent=lang==='zh'?'真实故事':'Real stories');
+
+  // drug sim Reset button
+  const d1rb=document.getElementById('drug1-reset-btn');if(d1rb)d1rb.textContent=lang==='zh'?'重置':'Reset';
+
+  // prec run button
+  const precBtn=document.getElementById('prec-btn');if(precBtn&&!precBtn.disabled)precBtn.textContent=lang==='zh'?'▶ 运行对比':'▶ Run comparison';
+
+  // re-run size demo text
+  updateSizeDemo(document.getElementById('size-slider').value);
+  updateLifestyle();
+}
+
+function setText(id,txt){const el=document.getElementById(id);if(el)el.textContent=txt;}
+function setHtml(id,html){const el=document.getElementById(id);if(el)el.innerHTML=html;}
+
+function toggleLang(){
+  applyLang(currentLang==='en'?'zh':'en');
+}
+
+function scrollToDonate(){
+  document.getElementById('donate-banner').scrollIntoView({behavior:'smooth'});
 }
 
 /* =========================================================
