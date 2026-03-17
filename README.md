@@ -73,7 +73,7 @@ We are building a bilingual (Chinese/English) content presence across:
 
 | Platform | Content type | Target audience |
 |----------|-------------|-----------------|
-| 小红书 (Xiaohongshu) | Science explainers, infographics | Chinese general public |
+| 小红书 (Rednote) | Science explainers, infographics | Chinese general public |
 | B站 (Bilibili) | Educational videos, simulation walkthroughs | Students, science enthusiasts |
 | Instagram | Visual data stories, awareness posters | International audience |
 
