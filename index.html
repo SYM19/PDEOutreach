@@ -168,6 +168,31 @@
     .hero-chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:1.25rem;}
     .hero-chip{font-family:var(--mono);font-size:.7rem;padding:4px 12px;border:1px solid var(--border2);border-radius:20px;color:var(--text3);}
 
+    /* HOME HERO (magazine cover) */
+    #tab-home .hero{padding:4rem 0 3rem;}
+    #tab-home .hero-grid{display:grid;grid-template-columns:55% 45%;align-items:center;gap:2.5rem;}
+    #tab-home .hero-left p{font-size:1.05rem;color:var(--text2);line-height:1.7;max-width:480px;}
+    #tab-home .hero-title{font-size:3rem;line-height:1.1;margin-bottom:0;}
+    #tab-home .hero-title .pde{color:var(--coral);}
+    #tab-home .hero-title .pub{color:var(--teal);}
+    #tab-home .hero-title::after{content:'';display:block;width:60px;height:4px;background:var(--coral);margin:1rem 0;}
+    #tab-home .hero-chip{background:#fff;border:1px solid var(--border2);border-radius:20px;box-shadow:var(--shadow-sm);font-size:.75rem;color:var(--text3);}
+    #tab-home .hero-cta{margin-top:1.25rem;background:var(--coral);color:#fff;border:none;padding:14px 32px;border-radius:28px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s,filter .2s;}
+    #tab-home .hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.12);filter:brightness(.98);}
+    #tab-home .hero-right{display:flex;justify-content:center;}
+    #tab-home .hero-illus{width:320px;height:320px;border-radius:50%;position:relative;background:linear-gradient(135deg,var(--coral-dim),var(--teal-dim));display:grid;place-items:center;animation:homeHeroPulse 3s ease-in-out infinite;}
+    #tab-home .hero-illus::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(78,205,196,0.3);}
+    #tab-home .hero-illus::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,107,107,0.1);}
+    #tab-home .hero-illus-core{position:relative;width:140px;height:140px;border-radius:50%;background:rgba(255,107,107,0.25);z-index:1;}
+    @keyframes homeHeroPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
+    @media(max-width:768px){
+      #tab-home .hero-grid{grid-template-columns:1fr;}
+      #tab-home .hero-right{order:2;margin-top:1.5rem;}
+      #tab-home .hero-illus{width:220px;height:220px;}
+      #tab-home .hero-illus::after{width:150px;height:150px;}
+      #tab-home .hero-illus-core{width:96px;height:96px;}
+    }
+
     /* TABLE */
     .table-wrap{overflow-x:auto;}
     table{width:100%;border-collapse:collapse;font-size:.82rem;}
@@ -299,13 +324,21 @@
     ================================================ -->
     <div id="tab-home" class="tab-panel active">
       <div class="hero section">
-        <div class="hero-title" data-i18n="home-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
-        <p style="max-width:680px;font-size:.95rem;" data-i18n="home-sub">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
-        <div class="hero-chips">
-          <span class="hero-chip">中英双语</span>
-          <span class="hero-chip">interactive</span>
-          <span class="hero-chip">evidence-based</span>
-          <span class="hero-chip">free forever</span>
+        <div class="hero-grid">
+          <div class="hero-left">
+            <div class="hero-title" data-i18n="home-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
+            <p data-i18n="home-sub">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
+            <div class="hero-chips">
+              <span class="hero-chip">中英双语</span>
+              <span class="hero-chip">interactive</span>
+              <span class="hero-chip">evidence-based</span>
+              <span class="hero-chip">free forever</span>
+            </div>
+            <button class="hero-cta" id="hero-cta" onclick="switchTab('drug')" data-en="Start Exploring →" data-zh="开始探索 →">Start Exploring →</button>
+          </div>
+          <div class="hero-right" aria-hidden="true">
+            <div class="hero-illus"><div class="hero-illus-core"></div></div>
+          </div>
         </div>
       </div>
 
