@@ -208,30 +208,33 @@
     /* =====================================================
        QUIZ STYLES
     ===================================================== */
-    .quiz-box{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.5rem;margin-bottom:1.5rem;}
-    .quiz-question{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:1.25rem;line-height:1.5;}
-    .quiz-sub{font-size:.82rem;color:var(--text3);margin-top:.25rem;font-weight:400;}
+    .quiz-box{background:#FFFFFF;border:none;border-radius:20px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.07);margin-bottom:1.5rem;}
+    .quiz-question{font-size:1.1rem;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:1.5rem;}
+    .quiz-sub{font-size:.82rem;color:var(--text3);margin-top:.5rem;font-weight:400;}
     .quiz-options{display:flex;flex-direction:column;gap:.5rem;margin-bottom:1rem;}
     .quiz-option{
-      display:flex;align-items:center;gap:12px;
-      padding:.875rem 1.25rem;
-      background:var(--bg1);border:1px solid var(--border2);
-      border-radius:var(--radius);cursor:pointer;
-      font-size:.875rem;color:var(--text2);
-      transition:all .15s;
+      display:flex;align-items:center;gap:14px;
+      padding:1rem 1.25rem;
+      margin-bottom:.6rem;
+      background:#FAFAF8;border:2px solid transparent;
+      border-radius:14px;cursor:pointer;
+      font-size:.9rem;color:var(--text2);
+      transition:all .2s ease;
+      position:relative;
     }
-    .quiz-option:hover{border-color:var(--blue);color:var(--text);}
-    .quiz-option.selected{border-color:var(--blue);background:rgba(77,158,255,.08);color:var(--text);}
-    .quiz-option.correct{border-color:var(--green);background:rgba(61,227,131,.08);color:var(--green);}
-    .quiz-option.wrong{border-color:var(--red);background:rgba(240,91,91,.08);color:var(--red);}
+    .quiz-option:hover{background:#FFFFFF;border-color:var(--teal);color:var(--text);transform:translateX(4px);}
+    .quiz-option.selected{border-color:var(--teal);background:rgba(78,205,196,0.06);color:var(--text);}
+    .quiz-option.correct{border-color:#4ECDC4;background:rgba(78,205,196,0.10);color:#2A9D8F;padding-right:3rem;}
+    .quiz-option.correct::after{content:'✓';position:absolute;right:16px;top:50%;transform:translateY(-50%);font-weight:700;color:#2A9D8F;}
+    .quiz-option.wrong{border-color:#FF6B6B;background:rgba(255,107,107,0.08);color:#E63946;}
     .quiz-option.reveal-correct{border-color:var(--green);background:rgba(61,227,131,.06);color:var(--green);}
-    .quiz-letter{width:28px;height:28px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.75rem;font-weight:700;flex-shrink:0;}
-    .quiz-reveal{display:none;margin-top:1rem;padding:1rem 1.25rem;background:var(--bg1);border-radius:var(--radius);border-left:3px solid var(--green);font-size:.875rem;color:var(--text2);line-height:1.75;}
+    .quiz-letter{width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,0.06);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:.78rem;font-weight:700;flex-shrink:0;}
+    .quiz-reveal{display:none;margin-top:1.25rem;padding:1.25rem 1.5rem;background:rgba(78,205,196,0.08);border-radius:14px;border-left:4px solid #4ECDC4;font-size:.88rem;color:var(--text2);line-height:1.75;}
     .quiz-reveal.show{display:block;animation:fadein .3s ease;}
-    .quiz-reveal.wrong-reveal{border-left-color:var(--amber);}
-    .quiz-badge{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;font-size:.75rem;font-weight:600;margin-top:.75rem;}
-    .quiz-badge.correct-badge{background:rgba(61,227,131,.1);color:var(--green);border:1px solid rgba(61,227,131,.3);}
-    .quiz-badge.wrong-badge{background:rgba(240,165,74,.1);color:var(--amber);border:1px solid rgba(240,165,74,.3);}
+    .quiz-reveal.wrong-reveal{background:rgba(255,179,71,0.08);border-left-color:#FFB347;}
+    .quiz-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;border-radius:20px;font-size:.78rem;font-weight:600;margin-top:1rem;}
+    .quiz-badge.correct-badge{background:rgba(78,205,196,0.15);color:#2A9D8F;border:none;}
+    .quiz-badge.wrong-badge{background:rgba(255,179,71,0.15);color:#E07B00;border:none;}
 
     /* =====================================================
        RISK PROFILE STYLES
