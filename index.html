@@ -278,9 +278,135 @@
     .story-name{font-size:1rem;font-weight:600;color:var(--text);margin-bottom:.25rem;}
     .story-meta{font-size:.75rem;color:var(--text3);font-family:var(--mono);margin-bottom:.875rem;}
     .story-quote{font-size:.9rem;color:var(--text2);line-height:1.75;font-style:italic;border-left:none;padding-left:1rem;}
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: #FAFAF8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s ease;
+    }
+
+    #loader.done {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    /* 爱心动画容器 */
+    .loader-heart {
+      position: relative;
+      width: 80px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 0.5rem;
+    }
+
+    /* 爱心图标 */
+    .heart-icon {
+      font-size: 2.5rem;
+      color: #FF6B6B;
+      animation: heartbeat 1.2s ease-in-out infinite;
+      z-index: 2;
+      position: relative;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.25); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.15); }
+      60% { transform: scale(1); }
+    }
+
+    /* 扩散圆环 */
+    .heart-ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 2px solid #FF6B6B;
+      animation: ring-expand 2s ease-out infinite;
+    }
+
+    .ring1 { width: 50px; height: 50px; animation-delay: 0s; opacity: 0.5; }
+    .ring2 { width: 70px; height: 70px; animation-delay: 0.4s; opacity: 0.3; }
+    .ring3 { width: 90px; height: 90px; animation-delay: 0.8s; opacity: 0.15; }
+
+    @keyframes ring-expand {
+      0% { transform: scale(0.6); opacity: 0.6; }
+      100% { transform: scale(1.4); opacity: 0; }
+    }
+
+    /* Logo */
+    .loader-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #FF6B6B;
+      letter-spacing: -0.02em;
+    }
+
+    .loader-logo em {
+      color: #4ECDC4;
+      font-style: normal;
+    }
+
+    /* 进度条 */
+    .loader-bar-wrap {
+      width: 180px;
+      height: 3px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .loader-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #FF6B6B, #4ECDC4);
+      border-radius: 2px;
+      animation: bar-fill 1.5s ease forwards;
+    }
+
+    @keyframes bar-fill {
+      0% { width: 0%; }
+      100% { width: 100%; }
+    }
+
+    /* 文字 */
+    .loader-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      color: #9090A0;
+      letter-spacing: 0.05em;
+    }
   </style>
 </head>
 <body>
+<div id="loader">
+  <div class="loader-content">
+    <div class="loader-heart">
+      <div class="heart-icon">❤</div>
+      <div class="heart-ring ring1"></div>
+      <div class="heart-ring ring2"></div>
+      <div class="heart-ring ring3"></div>
+    </div>
+    <div class="loader-logo">PDE<em>Outreach</em></div>
+    <div class="loader-bar-wrap">
+      <div class="loader-bar"></div>
+    </div>
+    <div class="loader-text">Cancer science for everyone</div>
+  </div>
+</div>
 <div id="app">
 
   <!-- HEADER -->
@@ -801,6 +927,11 @@
 </div>
 
 <script>
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('done');
+  }, 1800);
+});
 /* =========================================================
    PDE ENGINE
 ========================================================= */
