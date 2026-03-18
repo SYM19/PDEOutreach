@@ -64,16 +64,16 @@
 
     /* HEADER */
     header{height:64px;padding:0 1.5rem;display:flex;align-items:center;position:sticky;top:0;background:#FFFFFF;box-shadow:0 2px 12px rgba(0,0,0,0.06);z-index:100;}
-    .logo{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--coral);letter-spacing:-.02em;white-space:nowrap;margin-right:2rem;text-decoration:none;}
+    .logo{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:var(--coral);letter-spacing:-.02em;white-space:nowrap;margin-right:1rem;text-decoration:none;flex-shrink:0;}
     .logo em{color:var(--teal);font-style:normal;}
-    nav{display:flex;flex:1;height:100%;overflow-x:auto;align-items:center;gap:8px;}
+    nav{display:flex;flex:1;min-width:0;height:100%;overflow-x:auto;align-items:center;gap:4px;}
     nav::-webkit-scrollbar{display:none;}
-    nav button{background:transparent;border:none;color:var(--text2);cursor:pointer;font-family:var(--sans);font-size:.8rem;font-weight:500;padding:6px 16px;border-radius:20px;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s;}
+    nav button{background:transparent;border:none;color:var(--text2);cursor:pointer;font-family:var(--sans);font-size:.78rem;font-weight:500;padding:6px 12px;border-radius:20px;white-space:nowrap;transition:background .2s,color .2s,box-shadow .2s;}
     nav button:hover{background:rgba(78,205,196,0.1);color:var(--teal);}
     nav button.active{background:var(--teal);color:#fff;box-shadow:0 2px 10px rgba(78,205,196,0.28);}
-    .header-right{display:flex;align-items:center;gap:10px;margin-left:auto;}
+    .header-right{display:flex;align-items:center;gap:8px;margin-left:8px;flex-shrink:0;}
     .v-badge{font-family:var(--mono);font-size:.65rem;padding:3px 8px;border:1px solid var(--border2);border-radius:4px;color:var(--text3);}
-    .pde-link{font-family:var(--mono);font-size:.7rem;color:var(--text3);border:none;border-radius:0;padding:3px 0;text-decoration-line:underline;text-decoration-style:dashed;text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s;}
+    .pde-link{font-family:var(--mono);font-size:.7rem;color:var(--text3);border:none;border-radius:0;padding:3px 0;text-decoration-line:underline;text-decoration-style:dashed;text-decoration-thickness:1px;text-underline-offset:3px;transition:color .2s;white-space:nowrap;}
     .pde-link:hover{color:var(--coral);}
     .status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 6px var(--green);animation:pulse 2.5s ease-in-out infinite;}
     @keyframes pulse{0%,100%{opacity:1;}50%{opacity:.5;}}
@@ -1282,6 +1282,35 @@ function copyLink() {
   return false;
 }
 /* =========================================================
+   SIM ERROR HELPERS
+========================================================= */
+// #4 — wraps an async sim function with a timeout + error recovery
+async function simRunGuarded(fn, onError) {
+  const TIMEOUT_MS = 18000; // 18s — generous for slow phones
+  let timedOut = false;
+  const timer = setTimeout(() => {
+    timedOut = true;
+    onError('timeout');
+  }, TIMEOUT_MS);
+  try {
+    await fn();
+  } catch(e) {
+    if (!timedOut) onError('error');
+  } finally {
+    clearTimeout(timer);
+  }
+}
+
+function simErrorMsg(lang, type) {
+  if (type === 'timeout') return lang === 'zh'
+    ? '⚠ 运算超时——请尝试刷新页面后重试。'
+    : '⚠ Simulation timed out — please refresh and try again.';
+  return lang === 'zh'
+    ? '⚠ 运算出错——请尝试刷新页面后重试。'
+    : '⚠ Something went wrong — please refresh and try again.';
+}
+
+/* =========================================================
    PDE ENGINE
 ========================================================= */
 const N=80;
@@ -1359,30 +1388,75 @@ const QUIZ_DATA={
   }},
 };
 
-function answerHomeQuiz(el,choice){
-  const quiz=QUIZ_DATA.home;
-  const opts=document.querySelectorAll('#home-quiz-opts .quiz-option');
-  opts.forEach(o=>o.style.pointerEvents='none');
-  if(choice===quiz.correct){el.classList.add('correct');}
-  else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
-  const rev=document.getElementById('home-quiz-reveal');
-  const r=quiz.reveal[choice];
-  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):r.en;
-  rev.classList.add('show');
-  if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
+function resetQuiz(section, optsSelector, revealId) {
+  const opts = document.querySelectorAll(optsSelector);
+  opts.forEach(o => {
+    o.classList.remove('correct','wrong','reveal-correct','selected');
+    o.style.pointerEvents = '';
+  });
+  const rev = document.getElementById(revealId);
+  rev.classList.remove('show','wrong-reveal');
+  rev.innerHTML = '';
 }
 
-function answerQuiz(section,el,choice){
-  const quiz=QUIZ_DATA[section];
-  const opts=document.querySelectorAll(`#${section}-quiz-opts .quiz-option`);
-  opts.forEach(o=>o.style.pointerEvents='none');
-  if(choice===quiz.correct){el.classList.add('correct');}
-  else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
-  const rev=document.getElementById(`${section}-quiz-reveal`);
-  const r=quiz.reveal[choice];
-  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):r.en;
+function answerHomeQuiz(el, choice) {
+  const quiz = QUIZ_DATA.home;
+  const opts = document.querySelectorAll('#home-quiz-opts .quiz-option');
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  const isCorrect = choice === quiz.correct;
+  if (isCorrect) {
+    el.classList.add('correct');
+  } else {
+    el.classList.add('wrong');
+    opts.forEach(o => { if(o.textContent.trim().startsWith(quiz.correct)) o.classList.add('reveal-correct'); });
+  }
+  const rev = document.getElementById('home-quiz-reveal');
+  const r = quiz.reveal[choice];
+  rev.innerHTML = currentLang==='zh' ? (r.zh||r.en) : r.en;
   rev.classList.add('show');
-  if(choice!==quiz.correct)rev.classList.add('wrong-reveal');
+  if (!isCorrect) {
+    rev.classList.add('wrong-reveal');
+    // 3秒后淡出并重置，让用户再试
+    setTimeout(() => {
+      rev.style.transition = 'opacity .5s';
+      rev.style.opacity = '0';
+      setTimeout(() => {
+        rev.style.transition = '';
+        rev.style.opacity = '';
+        resetQuiz('home', '#home-quiz-opts .quiz-option', 'home-quiz-reveal');
+      }, 500);
+    }, 3000);
+  }
+}
+
+function answerQuiz(section, el, choice) {
+  const quiz = QUIZ_DATA[section];
+  const opts = document.querySelectorAll(`#${section}-quiz-opts .quiz-option`);
+  opts.forEach(o => o.style.pointerEvents = 'none');
+  const isCorrect = choice === quiz.correct;
+  if (isCorrect) {
+    el.classList.add('correct');
+  } else {
+    el.classList.add('wrong');
+    opts.forEach(o => { if(o.textContent.trim().startsWith(quiz.correct)) o.classList.add('reveal-correct'); });
+  }
+  const rev = document.getElementById(`${section}-quiz-reveal`);
+  const r = quiz.reveal[choice];
+  rev.innerHTML = currentLang==='zh' ? (r.zh||r.en) : r.en;
+  rev.classList.add('show');
+  if (!isCorrect) {
+    rev.classList.add('wrong-reveal');
+    // 3秒后淡出并重置
+    setTimeout(() => {
+      rev.style.transition = 'opacity .5s';
+      rev.style.opacity = '0';
+      setTimeout(() => {
+        rev.style.transition = '';
+        rev.style.opacity = '';
+        resetQuiz(section, `#${section}-quiz-opts .quiz-option`, `${section}-quiz-reveal`);
+      }, 500);
+    }, 3000);
+  }
 }
 
 /* =========================================================
@@ -1408,19 +1482,36 @@ async function runDrug1(){
   const drug=document.getElementById('drug1-select').value;
   const tumor=document.getElementById('tumor1-select').value;
   const p=DRUG1P[drug][tumor];
-  const btn=document.getElementById('drug1-btn');btn.disabled=true;btn.textContent='⟳ Running…';
-  document.getElementById('drug1-status').textContent='Solving PDE…';
-  const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*p.D+1e-10);
-  const C=initC(),rho=buildRho(cx,cy,p.r),Df=buildDField(cx,cy,p.r,p.D);
-  const CHUNKS=8,cs=Math.floor(500/CHUNKS);
-  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(C,Df,rho,dx,dt,p.lam,p.k,cs);document.getElementById('drug1-prog').style.width=((i+1)/CHUNKS*100)+'%';}
-  drawHM('drug1-heatmap',C,cx,cy,p.r,400,400);
-  document.getElementById('drug1-cov').textContent=calcCov(C,cx,cy,p.r)+'%';
-  document.getElementById('drug1-depth').textContent=(() => {let d=0;const xE=Math.min(N-1,cx+p.r);for(let x=Math.max(0,cx-p.r);x<=xE;x++){let s=0,n=0;for(let y=0;y<N;y++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=p.r){s+=C[y*N+x];n++;}if(n>0&&s/n>=.05)d=x-cx+p.r;}return d+' px';})();
-  const ins=DRUG1I[drug+'_'+tumor]||{en:'',zh:''};document.getElementById('drug1-insight').textContent=currentLang==='zh'?(ins.zh||ins.en):ins.en;
-  const tZh={breast:'乳腺癌',pancreatic:'胰腺癌',glioma:'胶质瘤'};document.getElementById('drug1-lbl').textContent=drug+' → '+(currentLang==='zh'?(tZh[tumor]||tumor):tumor);
-  document.getElementById('drug1-status').textContent='Complete ✓';
-  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行模拟':'▶ Run simulation';
+  const btn=document.getElementById('drug1-btn');
+  const statusEl=document.getElementById('drug1-status');
+  const progEl=document.getElementById('drug1-prog');
+  btn.disabled=true;btn.textContent='⟳ Running…';
+  statusEl.textContent=currentLang==='zh'?'正在求解 PDE…':'Solving PDE…';
+
+  // #4 — error/timeout recovery
+  const onError=(type)=>{
+    statusEl.textContent=simErrorMsg(currentLang,type);
+    statusEl.style.color='var(--red)';
+    progEl.style.width='0%';
+    btn.disabled=false;
+    btn.textContent=currentLang==='zh'?'▶ 运行模拟':'▶ Run simulation';
+    setTimeout(()=>{statusEl.textContent='';statusEl.style.color='';},5000);
+  };
+
+  await simRunGuarded(async()=>{
+    const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*p.D+1e-10);
+    const C=initC(),rho=buildRho(cx,cy,p.r),Df=buildDField(cx,cy,p.r,p.D);
+    const CHUNKS=8,cs=Math.floor(500/CHUNKS);
+    for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(C,Df,rho,dx,dt,p.lam,p.k,cs);progEl.style.width=((i+1)/CHUNKS*100)+'%';}
+    drawHM('drug1-heatmap',C,cx,cy,p.r,400,400);
+    document.getElementById('drug1-cov').textContent=calcCov(C,cx,cy,p.r)+'%';
+    document.getElementById('drug1-depth').textContent=(() => {let d=0;const xE=Math.min(N-1,cx+p.r);for(let x=Math.max(0,cx-p.r);x<=xE;x++){let s=0,n=0;for(let y=0;y<N;y++)if(Math.sqrt((x-cx)**2+(y-cy)**2)<=p.r){s+=C[y*N+x];n++;}if(n>0&&s/n>=.05)d=x-cx+p.r;}return d+' px';})();
+    const ins=DRUG1I[drug+'_'+tumor]||{en:'',zh:''};document.getElementById('drug1-insight').textContent=currentLang==='zh'?(ins.zh||ins.en):ins.en;
+    const tZh={breast:'乳腺癌',pancreatic:'胰腺癌',glioma:'胶质瘤'};document.getElementById('drug1-lbl').textContent=drug+' → '+(currentLang==='zh'?(tZh[tumor]||tumor):tumor);
+    statusEl.style.color='';
+    statusEl.textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
+    btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行模拟':'▶ Run simulation';
+  }, onError);
 }
 function resetDrug1(){
   const ctx=document.getElementById('drug1-heatmap').getContext('2d');ctx.fillStyle='#030507';ctx.fillRect(0,0,400,400);
@@ -1476,17 +1567,34 @@ function updateSizeDemo(val){
 }
 async function runSizeDemo(){
   const r=parseInt(document.getElementById('size-slider').value);
-  const btn=document.querySelector('[onclick="runSizeDemo()"]');btn.disabled=true;btn.textContent='⟳ Running…';
-  document.getElementById('size-status').textContent=currentLang==='zh'?'正在求解 PDE…':'Solving PDE…';
-  const cx=Math.floor(N/3),cy=N/2,dx=1/N,D=.08,lam=.005,k=.06,dt=.9*dx*dx/(4*D+1e-10);
-  const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
-  const CHUNKS=8,cs=Math.floor(500/CHUNKS);
-  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);document.getElementById('size-prog').style.width=((i+1)/CHUNKS*100)+'%';}
-  drawHM('size-heatmap',C,cx,cy,r,400,400);
-  document.getElementById('size-metric-cov').textContent=calcCov(C,cx,cy,r)+'%';
-  document.getElementById('size-lbl').textContent='r = '+r+' px';
-  document.getElementById('size-status').textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
-  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size';
+  const btn=document.getElementById('early-run-btn');
+  const statusEl=document.getElementById('size-status');
+  const progEl=document.getElementById('size-prog');
+  btn.disabled=true;btn.textContent='⟳ Running…';
+  statusEl.textContent=currentLang==='zh'?'正在求解 PDE…':'Solving PDE…';
+
+  // #4 — error/timeout recovery with auto-clear after 5s
+  const onError=(type)=>{
+    statusEl.textContent=simErrorMsg(currentLang,type);
+    statusEl.style.color='var(--red)';
+    progEl.style.width='0%';
+    btn.disabled=false;
+    btn.textContent=currentLang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size';
+    setTimeout(()=>{statusEl.textContent='';statusEl.style.color='';},5000);
+  };
+
+  await simRunGuarded(async()=>{
+    const cx=Math.floor(N/3),cy=N/2,dx=1/N,D=.08,lam=.005,k=.06,dt=.9*dx*dx/(4*D+1e-10);
+    const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
+    const CHUNKS=8,cs=Math.floor(500/CHUNKS);
+    for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);progEl.style.width=((i+1)/CHUNKS*100)+'%';}
+    drawHM('size-heatmap',C,cx,cy,r,400,400);
+    document.getElementById('size-metric-cov').textContent=calcCov(C,cx,cy,r)+'%';
+    document.getElementById('size-lbl').textContent='r = '+r+' px';
+    statusEl.style.color='';
+    statusEl.textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
+    btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size';
+  }, onError);
 }
 
 /* =========================================================
@@ -1578,10 +1686,23 @@ async function generateProfile(){
   const prof=PROFILES[risk];
   const isZh=currentLang==='zh';
   const D=.08*dMod,lam=.005,k=.06,r=22;
+  const progEl=document.getElementById('ls-prog');
+
+  // #4 — error/timeout recovery
+  const onError=(type)=>{
+    progEl.style.width='0%';
+    const btn=document.querySelector('[onclick="generateProfile()"]');
+    if(btn){btn.disabled=false;}
+    // show error in the insight box
+    const ins=document.getElementById('ls-live-insight');
+    if(ins){ins.textContent=simErrorMsg(currentLang,type);ins.style.color='var(--red)';}
+  };
+
+  await simRunGuarded(async()=>{
   const cx=Math.floor(N/3),cy=N/2,dx=1/N,dt=.9*dx*dx/(4*D+1e-10);
   const C=initC(),rho=buildRho(cx,cy,r),Df=buildDField(cx,cy,r,D);
   const CHUNKS=8,cs=Math.floor(500/CHUNKS);
-  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);document.getElementById('ls-prog').style.width=((i+1)/CHUNKS*100)+'%';}
+  for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);progEl.style.width=((i+1)/CHUNKS*100)+'%';}
   drawHM('ls-heatmap',C,cx,cy,r,400,400);
   document.getElementById('ls-lbl').textContent='D = ×'+dMod.toFixed(2);
   const card=document.getElementById('ls-profile-card');
@@ -1596,6 +1717,7 @@ async function generateProfile(){
   document.getElementById('ls-profile-detail').innerHTML=`<p style="font-size:.875rem;color:var(--text2);line-height:1.75;margin:0;">${isZh?(prof.detailZh||prof.detail):prof.detail}</p>`;
   document.getElementById('ls-profile-result').style.display='';
   document.getElementById('ls-profile-result').scrollIntoView({behavior:'smooth',block:'start'});
+  }, onError);
 }
 function resetLifestyle(){
   ['ls-smoking','ls-bmi','ls-inflam','ls-exercise','ls-alcohol'].forEach(id=>{
@@ -1632,28 +1754,45 @@ const PREC_S={
 };
 async function runPrecCompare(){
   const s=PREC_S[document.getElementById('prec-scenario').value];
-  const btn=document.getElementById('prec-btn');btn.disabled=true;btn.textContent='⟳ Running…';
-  document.getElementById('prec-status').textContent=currentLang==='zh'?'正在运行患者 A…':'Running Patient A…';
-  const cx=Math.floor(N/3),cy=N/2,dx=1/N,CHUNKS=8;
-  const dtA=.9*dx*dx/(4*s.A.D+1e-10);
-  const CA=initC(),rhoA=buildRho(cx,cy,s.A.r),DfA=buildDField(cx,cy,s.A.r,s.A.D);
-  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CA,DfA,rhoA,dx,dtA,s.A.lam,s.A.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=((i+1)/CHUNKS/2*100)+'%';}
-  document.getElementById('prec-status').textContent=currentLang==='zh'?'正在运行患者 B…':'Running Patient B…';
-  const dtB=.9*dx*dx/(4*s.B.D+1e-10);
-  const CB=initC(),rhoB=buildRho(cx,cy,s.B.r),DfB=buildDField(cx,cy,s.B.r,s.B.D);
-  for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CB,DfB,rhoB,dx,dtB,s.B.lam,s.B.k,Math.floor(500/CHUNKS));document.getElementById('prec-prog').style.width=(50+(i+1)/CHUNKS/2*100)+'%';}
-  drawHM('prec-heatmap-A',CA,cx,cy,s.A.r,360,360);
-  drawHM('prec-heatmap-B',CB,cx,cy,s.B.r,360,360);
-  document.getElementById('prec-label-A').textContent=currentLang==='zh'?(s.A.labelZh||s.A.label):s.A.label;
-  document.getElementById('prec-label-B').textContent=currentLang==='zh'?(s.B.labelZh||s.B.label):s.B.label;
-  document.getElementById('prec-cov-A').textContent=calcCov(CA,cx,cy,s.A.r)+'%';
-  document.getElementById('prec-cov-B').textContent=calcCov(CB,cx,cy,s.B.r)+'%';
-  document.getElementById('prec-avg-A').textContent=calcAvg(CA,cx,cy,s.A.r);
-  document.getElementById('prec-avg-B').textContent=calcAvg(CB,cx,cy,s.B.r);
-  document.getElementById('prec-insight').textContent=currentLang==='zh'?(s.insightZh||s.insight):s.insight;
-  document.getElementById('prec-results').style.display='';
-  document.getElementById('prec-status').textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
-  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行对比':'▶ Run comparison';
+  const btn=document.getElementById('prec-btn');
+  const statusEl=document.getElementById('prec-status');
+  const progEl=document.getElementById('prec-prog');
+  btn.disabled=true;btn.textContent='⟳ Running…';
+  statusEl.textContent=currentLang==='zh'?'正在运行患者 A…':'Running Patient A…';
+
+  // #4 — error/timeout recovery
+  const onError=(type)=>{
+    statusEl.textContent=simErrorMsg(currentLang,type);
+    statusEl.style.color='var(--red)';
+    progEl.style.width='0%';
+    btn.disabled=false;
+    btn.textContent=currentLang==='zh'?'▶ 运行对比':'▶ Run comparison';
+    setTimeout(()=>{statusEl.textContent='';statusEl.style.color='';},5000);
+  };
+
+  await simRunGuarded(async()=>{
+    const cx=Math.floor(N/3),cy=N/2,dx=1/N,CHUNKS=8;
+    const dtA=.9*dx*dx/(4*s.A.D+1e-10);
+    const CA=initC(),rhoA=buildRho(cx,cy,s.A.r),DfA=buildDField(cx,cy,s.A.r,s.A.D);
+    for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CA,DfA,rhoA,dx,dtA,s.A.lam,s.A.k,Math.floor(500/CHUNKS));progEl.style.width=((i+1)/CHUNKS/2*100)+'%';}
+    statusEl.textContent=currentLang==='zh'?'正在运行患者 B…':'Running Patient B…';
+    const dtB=.9*dx*dx/(4*s.B.D+1e-10);
+    const CB=initC(),rhoB=buildRho(cx,cy,s.B.r),DfB=buildDField(cx,cy,s.B.r,s.B.D);
+    for(let i=0;i<CHUNKS;i++){await new Promise(r=>setTimeout(r,0));pdeRun(CB,DfB,rhoB,dx,dtB,s.B.lam,s.B.k,Math.floor(500/CHUNKS));progEl.style.width=(50+(i+1)/CHUNKS/2*100)+'%';}
+    drawHM('prec-heatmap-A',CA,cx,cy,s.A.r,360,360);
+    drawHM('prec-heatmap-B',CB,cx,cy,s.B.r,360,360);
+    document.getElementById('prec-label-A').textContent=currentLang==='zh'?(s.A.labelZh||s.A.label):s.A.label;
+    document.getElementById('prec-label-B').textContent=currentLang==='zh'?(s.B.labelZh||s.B.label):s.B.label;
+    document.getElementById('prec-cov-A').textContent=calcCov(CA,cx,cy,s.A.r)+'%';
+    document.getElementById('prec-cov-B').textContent=calcCov(CB,cx,cy,s.B.r)+'%';
+    document.getElementById('prec-avg-A').textContent=calcAvg(CA,cx,cy,s.A.r);
+    document.getElementById('prec-avg-B').textContent=calcAvg(CB,cx,cy,s.B.r);
+    document.getElementById('prec-insight').textContent=currentLang==='zh'?(s.insightZh||s.insight):s.insight;
+    document.getElementById('prec-results').style.display='';
+    statusEl.style.color='';
+    statusEl.textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
+    btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 运行对比':'▶ Run comparison';
+  }, onError);
 }
 
 /* =========================================================
@@ -1999,7 +2138,15 @@ function setText(id,txt){const el=document.getElementById(id);if(el)el.textConte
 function setHtml(id,html){const el=document.getElementById(id);if(el)el.innerHTML=html;}
 
 function toggleLang(){
-  applyLang(currentLang==='en'?'zh':'en');
+  const next = currentLang === 'en' ? 'zh' : 'en';
+  applyLang(next);
+  // update URL so shared links open in correct language
+  // (may fail in sandboxed iframes — safe to ignore)
+  try {
+    const url = new URL(window.location.href);
+    url.searchParams.set('lang', next);
+    window.history.replaceState({}, '', url);
+  } catch(e) { /* sandboxed environment — skip URL update */ }
 }
 
 function scrollToDonate(){
@@ -2073,6 +2220,13 @@ document.addEventListener('keydown', e => {
 ========================================================= */
 updateSizeDemo(12);
 updateLifestyle();
+
+// read ?lang= URL param on load (may not work in sandboxed iframes)
+try {
+  const params = new URLSearchParams(window.location.search);
+  const urlLang = params.get('lang');
+  if (urlLang === 'zh' || urlLang === 'en') applyLang(urlLang);
+} catch(e) { /* sandboxed environment — skip */ }
 </script>
 </body>
 </html>
