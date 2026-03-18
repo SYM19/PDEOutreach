@@ -193,17 +193,82 @@
     #tab-home .hero-cta{margin-top:1.25rem;background:var(--coral);color:#fff;border:none;padding:14px 32px;border-radius:28px;font-size:1rem;font-weight:600;cursor:pointer;transition:transform .2s,box-shadow .2s,filter .2s;}
     #tab-home .hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,0.12);filter:brightness(.98);}
     #tab-home .hero-right{display:flex;justify-content:center;}
-    #tab-home .hero-illus{width:320px;height:320px;border-radius:50%;position:relative;background:linear-gradient(135deg,var(--coral-dim),var(--teal-dim));display:grid;place-items:center;animation:homeHeroPulse 3s ease-in-out infinite;}
-    #tab-home .hero-illus::before{content:'';position:absolute;inset:0;border-radius:50%;border:2px dashed rgba(78,205,196,0.3);}
-    #tab-home .hero-illus::after{content:'';position:absolute;width:220px;height:220px;border-radius:50%;background:rgba(255,107,107,0.1);}
-    #tab-home .hero-illus-core{position:relative;width:140px;height:140px;border-radius:50%;background:rgba(255,107,107,0.25);z-index:1;}
-    @keyframes homeHeroPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.03);}}
+    /* ── Hero illustration ── */
+    #tab-home .hero-illus{
+      width:300px;height:300px;
+      position:relative;
+      display:flex;align-items:center;justify-content:center;
+    }
+    .illus-ring{
+      position:absolute;border-radius:50%;
+      border:1.5px dashed rgba(78,205,196,0.22);
+      top:50%;left:50%;transform:translate(-50%,-50%);
+    }
+    .ring-a{width:270px;height:270px;}
+    .ring-b{width:196px;height:196px;}
+    .ring-c{width:130px;height:130px;}
+    .illus-arm{
+      position:absolute;
+      top:50%;left:50%;
+      width:0;height:0;
+      transform-origin:0 0;
+    }
+    .arm-1{animation:armSpin 7s linear infinite;}
+    .arm-2{animation:armSpin 4.8s linear infinite reverse;}
+    .arm-3{animation:armSpin 3.2s linear infinite;}
+    .illus-dot{
+      position:absolute;
+      border-radius:50%;
+      transform:translate(-50%,-50%);
+    }
+    .arm-1 .illus-dot{width:11px;height:11px;top:-135px;left:0;background:var(--coral);box-shadow:0 0 10px rgba(255,107,107,0.7);}
+    .arm-2 .illus-dot{width:9px;height:9px;top:-98px;left:0;background:var(--teal);box-shadow:0 0 10px rgba(78,205,196,0.7);}
+    .arm-3 .illus-dot{width:7px;height:7px;top:-65px;left:0;background:var(--amber);box-shadow:0 0 8px rgba(255,179,71,0.7);}
+    @keyframes armSpin{from{transform:rotate(0deg);}to{transform:rotate(360deg);}}
+    #tab-home .hero-illus-core{
+      position:relative;z-index:2;
+      width:76px;height:76px;border-radius:50%;
+      background:radial-gradient(circle at 38% 38%,#ff8f8f,#ff5b5b);
+      box-shadow:0 0 0 0 rgba(255,107,107,0.5);
+      animation:corePulse 2.6s ease-in-out infinite;
+      display:grid;place-items:center;
+    }
+    .illus-core-inner{
+      width:30px;height:30px;border-radius:50%;
+      background:rgba(255,255,255,0.28);
+      animation:corePulse 2.6s ease-in-out infinite reverse;
+    }
+    @keyframes corePulse{
+      0%,100%{transform:scale(1);box-shadow:0 0 0 0 rgba(255,107,107,0.4),0 0 16px rgba(255,107,107,0.25);}
+      50%{transform:scale(1.1);box-shadow:0 0 0 12px rgba(255,107,107,0),0 0 28px rgba(255,107,107,0.5);}
+    }
+    .illus-wave{
+      position:absolute;top:50%;left:50%;
+      transform:translate(-50%,-50%);
+      border-radius:50%;
+      border:1.5px solid rgba(78,205,196,0.55);
+      width:76px;height:76px;
+      animation:wavePulse 3.2s ease-out infinite;
+    }
+    .wave-2{animation-delay:1.07s;}
+    .wave-3{animation-delay:2.13s;}
+    @keyframes wavePulse{
+      0%  {transform:translate(-50%,-50%) scale(1);opacity:.7;}
+      100%{transform:translate(-50%,-50%) scale(3.8);opacity:0;}
+    }
     @media(max-width:768px){
       #tab-home .hero-grid{grid-template-columns:1fr;}
       #tab-home .hero-right{order:2;margin-top:1.5rem;}
-      #tab-home .hero-illus{width:220px;height:220px;}
-      #tab-home .hero-illus::after{width:150px;height:150px;}
-      #tab-home .hero-illus-core{width:96px;height:96px;}
+      #tab-home .hero-illus{width:210px;height:210px;}
+      .ring-a{width:188px;height:188px;}
+      .ring-b{width:136px;height:136px;}
+      .ring-c{width:90px;height:90px;}
+      .arm-1 .illus-dot{top:-94px;}
+      .arm-2 .illus-dot{top:-68px;}
+      .arm-3 .illus-dot{top:-45px;}
+      #tab-home .hero-illus-core{width:54px;height:54px;}
+      .illus-core-inner{width:22px;height:22px;}
+      .illus-wave{width:54px;height:54px;}
     }
 
     @media (max-width: 768px) {
@@ -539,7 +604,7 @@
     </div>
     <div class="donate-links">
       <button class="donate-link intl" onclick="openDonateModal('intl')">
-        🌍 <span id="donate-intl-name">International</span> ↗
+        🌍 <span id="donate-intl-name">International — TBC</span> ↗
       </button>
       <button class="donate-link cn" onclick="openDonateModal('cn')">
         🇨🇳 <span id="donate-cn-name">中国机构</span> ↗
@@ -564,18 +629,35 @@
       <div class="hero section">
         <div class="hero-grid">
           <div class="hero-left">
-            <div class="hero-title" data-i18n="home-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
-            <p data-i18n="home-sub">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
+            <div id="home-title" class="hero-title" data-i18n="home-title"><span class="pde">PDE</span><span class="pub">Outreach</span></div>
+            <p id="home-sub" data-i18n="home-sub">Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.</p>
             <div class="hero-chips">
-              <span class="hero-chip">中英双语</span>
-              <span class="hero-chip">interactive</span>
-              <span class="hero-chip">evidence-based</span>
-              <span class="hero-chip">free forever</span>
+              <span class="hero-chip" id="home-chips-i">中英双语</span>
+              <span class="hero-chip" id="home-chips-ii">interactive</span>
+              <span class="hero-chip" id="home-chips-iii">evidence-based</span>
+              <span class="hero-chip" id="home-chips-iv">free forever</span>
             </div>
             <button class="hero-cta" id="hero-cta" onclick="switchTab('drug')" data-en="Start Exploring →" data-zh="开始探索 →">Start Exploring →</button>
           </div>
           <div class="hero-right" aria-hidden="true">
-            <div class="hero-illus"><div class="hero-illus-core"></div></div>
+            <div class="hero-illus">
+              <!-- 静态轨道环 -->
+              <div class="illus-ring ring-a"></div>
+              <div class="illus-ring ring-b"></div>
+              <div class="illus-ring ring-c"></div>
+              <!-- 旋转臂（带粒子） -->
+              <div class="illus-arm arm-1"><div class="illus-dot"></div></div>
+              <div class="illus-arm arm-2"><div class="illus-dot"></div></div>
+              <div class="illus-arm arm-3"><div class="illus-dot"></div></div>
+              <!-- 扩散波 -->
+              <div class="illus-wave"></div>
+              <div class="illus-wave wave-2"></div>
+              <div class="illus-wave wave-3"></div>
+              <!-- 核心肿瘤 -->
+              <div class="hero-illus-core">
+                <div class="illus-core-inner"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -755,13 +837,19 @@
         </div>
       </div>
 
+      <!-- Key takeaway -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">💡</div><h2 style="margin:0;" id="drug-takeaway-title">Key takeaway</h2></div>
+        <p id="drug-takeaway-p">For pancreatic cancer, even the best-penetrating drugs cover less than 10% of the tumor volume at therapeutic concentrations. This is why pancreatic cancer has a 5-year survival rate of only ~12% — the biology makes it nearly impossible for current drugs to work. This is not a failure of chemistry. It's a failure of physics.</p>
+      </div>
+
       <!-- Real story placeholder -->
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
-          <div class="story-placeholder-title">— STORY COMING SOON —</div>
-          <div class="story-placeholder-text">We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.<br>If you or someone you know would like to share their experience, please reach out.</div>
+          <div class="story-placeholder-title" id="drug-story-ph-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text" id="drug-story-ph-p">We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.<br>If you or someone you know would like to share their experience, please reach out.</div>
         </div>
         <!-- When ready, replace above with story-card: -->
         <!--
@@ -832,7 +920,7 @@
         <div class="card-header"><div class="card-icon green">◉</div><h2 style="margin:0;" id="early-drag-title">Drag to discover</h2></div>
         <p id="early-drag-p">Move the slider. Watch the numbers change. This is why early screening saves lives.</p>
         <div class="slider-row" style="max-width:600px;margin:1rem 0 1.5rem;">
-          <span class="slider-name">Tumor radius</span>
+          <span class="slider-name" id="size-slider-label">Tumor radius</span>
           <input type="range" id="size-slider" min="8" max="36" step="2" value="12" oninput="updateSizeDemo(this.value)">
           <span class="slider-val" id="size-val">12 px</span>
         </div>
@@ -845,10 +933,10 @@
           </div>
           <div>
             <div class="grid-2" style="gap:.5rem;margin-bottom:1rem;">
-              <div class="metric"><div class="metric-label">Stage</div><div class="metric-value" id="size-metric-stage" style="font-size:.9rem;">—</div></div>
-              <div class="metric"><div class="metric-label">5-yr survival</div><div class="metric-value" id="size-metric-survival">—</div></div>
-              <div class="metric"><div class="metric-label">Drug coverage</div><div class="metric-value" id="size-metric-cov">—</div></div>
-              <div class="metric"><div class="metric-label">Tumor radius</div><div class="metric-value" id="size-metric-r">—</div></div>
+              <div class="metric"><div class="metric-label" id="early-stage-label">Stage</div><div class="metric-value" id="size-metric-stage" style="font-size:.9rem;">—</div></div>
+              <div class="metric"><div class="metric-label" id="early-survival-label">5-yr survival</div><div class="metric-value" id="size-metric-survival">—</div></div>
+              <div class="metric"><div class="metric-label" id="early-cov-label">Drug coverage</div><div class="metric-value" id="size-metric-cov">—</div></div>
+              <div class="metric"><div class="metric-label" id="early-r-label">Tumor radius</div><div class="metric-value" id="size-metric-r">—</div></div>
             </div>
             <div id="size-insight" style="font-size:.85rem;color:var(--text2);line-height:1.75;min-height:80px;padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);"></div>
             <div class="btn-row">
@@ -882,8 +970,8 @@
         <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
-          <div class="story-placeholder-title">— STORY COMING SOON —</div>
-          <div class="story-placeholder-text">A story about how early (or late) detection changed a patient's treatment journey.<br>Coming soon — we are currently reaching out to patients and families.</div>
+          <div class="story-placeholder-title" id="early-story-ph-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text" id="early-story-ph-p">A story about how early (or late) detection changed a patient's treatment journey.<br>Coming soon — we are currently reaching out to patients and families.</div>
         </div>
       </div>
       <div class="share-bar">
@@ -957,8 +1045,8 @@
             </div>
 
             <div class="btn-row">
-              <button class="btn btn-primary" onclick="generateProfile()" data-i18n="ls-gen-btn">Generate my profile →</button>
-              <button class="btn btn-ghost" onclick="resetLifestyle()" data-i18n="ls-reset-btn">Reset</button>
+              <button class="btn btn-primary" id="ls-gen-btn" onclick="generateProfile()" data-i18n="ls-gen-btn">Generate my profile →</button>
+              <button class="btn btn-ghost" id="ls-reset-btn" onclick="resetLifestyle()" data-i18n="ls-reset-btn">Reset</button>
             </div>
             <div class="progress-track"><div class="progress-fill" id="ls-prog"></div></div>
           </div>
@@ -1018,8 +1106,8 @@
         <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
-          <div class="story-placeholder-title">— STORY COMING SOON —</div>
-          <div class="story-placeholder-text">A story about how lifestyle changes affected a patient's treatment response.<br>We are working on collecting real cases — check back soon.</div>
+          <div class="story-placeholder-title" id="ls-story-ph-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text" id="ls-story-ph-p">A story about how lifestyle changes affected a patient's treatment response.<br>We are working on collecting real cases — check back soon.</div>
         </div>
       </div>
       <div class="share-bar">
@@ -1119,13 +1207,23 @@
         </div>
       </div>
 
+      <!-- Ask your oncologist -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">💬</div><h2 style="margin:0;" id="prec-ask-label">Questions to ask your oncologist</h2></div>
+        <ul style="font-size:.875rem;color:var(--text2);line-height:2.2;padding-left:1.25rem;">
+          <li id="prec-ask-1">Has my tumor been tested for biomarkers like HER2, KRAS, or EGFR?</li>
+          <li id="prec-ask-2">Is there a targeted therapy available for my specific mutation?</li>
+          <li id="prec-ask-3">Would genetic testing change my treatment plan?</li>
+        </ul>
+      </div>
+
       <!-- Real story placeholder -->
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
         <div class="story-placeholder">
           <div class="story-placeholder-icon">📝</div>
-          <div class="story-placeholder-title">— STORY COMING SOON —</div>
-          <div class="story-placeholder-text">A story about how genetic testing changed a patient's treatment plan — and outcome.<br>Coming soon.</div>
+          <div class="story-placeholder-title" id="prec-story-ph-title">— STORY COMING SOON —</div>
+          <div class="story-placeholder-text" id="prec-story-ph-p">A story about how genetic testing changed a patient's treatment plan — and outcome.<br>Coming soon.</div>
         </div>
       </div>
       <div class="share-bar">
@@ -1388,7 +1486,7 @@ async function runSizeDemo(){
   document.getElementById('size-metric-cov').textContent=calcCov(C,cx,cy,r)+'%';
   document.getElementById('size-lbl').textContent='r = '+r+' px';
   document.getElementById('size-status').textContent=currentLang==='zh'?'完成 ✓':'Complete ✓';
-  btn.disabled=false;btn.textContent='▶ Simulate this size';
+  btn.disabled=false;btn.textContent=currentLang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size';
 }
 
 /* =========================================================
@@ -1663,10 +1761,15 @@ function applyLang(lang){
   document.title=lang==='zh'?'PDEOutreach — 癌症科学，人人可懂':'PDEOutreach — Cancer Science for Everyone';
 
   // HOME tab
-  setText('home-sub',lang==='zh'
+  setHtml('home-sub',lang==='zh'
     ?'癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。'
     :'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.');
+  setHtml('home-title',lang==='zh'?'<span class="pde">PDE</span><span class="pub">Outreach</span>':'<span class="pde">PDE</span><span class="pub">Outreach</span>');
   setText('home-chips-i',lang==='zh'?'中英双语':'bilingual');
+  setText('home-chips-ii',lang==='zh'?'互动体验':'interactive');
+  setText('home-chips-iii',lang==='zh'?'循证内容':'evidence-based');
+  setText('home-chips-iv',lang==='zh'?'永久免费':'free forever');
+  const heroCta=document.getElementById('hero-cta');if(heroCta)heroCta.textContent=lang==='zh'?'开始探索 →':'Start Exploring →';
   setText('home-cards-title',lang==='zh'?'关于癌症，没人告诉你的四件事':'Four things about cancer nobody told you');
   setText('home-quiz-title',lang==='zh'?'先来猜一猜——':'Quick — what do you think?');
   setHtml('home-quiz-q',lang==='zh'
@@ -1715,6 +1818,7 @@ function applyLang(lang){
   setText('drug-sim-title',lang==='zh'?'亲眼看看':'See it for yourself');
   setText('drug-sim-p',lang==='zh'?'选择药物和肿瘤类型，运行模拟，看看药物究竟能渗透多远。':'Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.');
   setText('drug-run-btn',lang==='zh'?'▶ 运行模拟':'▶ Run simulation');
+  const drug1Btn=document.getElementById('drug1-btn');if(drug1Btn&&!drug1Btn.disabled)drug1Btn.textContent=lang==='zh'?'▶ 运行模拟':'▶ Run simulation';
   setText('drug-reset-btn',lang==='zh'?'重置':'Reset');
   const drugLabel=document.querySelector('[for="drug1-select"]')||document.querySelector('label[id="drug-label"]');
   setText('drug-select-label',lang==='zh'?'药物':'Drug');
@@ -1817,6 +1921,9 @@ function applyLang(lang){
   setText('prec-scenario-label',lang==='zh'?'选择对比场景':'Choose a comparison scenario');
   setText('prec-run-btn',lang==='zh'?'▶ 运行对比':'▶ Run comparison');
   setText('prec-ask-label',lang==='zh'?'建议向肿瘤科医生提问：':'Questions to ask your oncologist');
+  setText('prec-ask-1',lang==='zh'?'我的肿瘤是否检测过 HER2、KRAS 或 EGFR 等生物标志物？':'Has my tumor been tested for biomarkers like HER2, KRAS, or EGFR?');
+  setText('prec-ask-2',lang==='zh'?'针对我的特定突变，是否有靶向治疗方案？':'Is there a targeted therapy available for my specific mutation?');
+  setText('prec-ask-3',lang==='zh'?'基因检测会改变我的治疗计划吗？':'Would genetic testing change my treatment plan?');
   setText('prec-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
   setText('prec-story-ph-p',lang==='zh'?'一个关于基因检测如何改变患者治疗方案和预后的故事。':'A story about how genetic testing changed a patient\'s treatment plan — and outcome.');
 
@@ -1877,6 +1984,11 @@ function applyLang(lang){
 
   // prec run button
   const precBtn=document.getElementById('prec-btn');if(precBtn&&!precBtn.disabled)precBtn.textContent=lang==='zh'?'▶ 运行对比':'▶ Run comparison';
+
+  // canvas overlay labels (only update if not already showing results)
+  const drug1Lbl=document.getElementById('drug1-lbl');
+  if(drug1Lbl&&(drug1Lbl.textContent==='press Run to simulate'||drug1Lbl.textContent==='按运行开始'))
+    drug1Lbl.textContent=lang==='zh'?'按运行开始':'press Run to simulate';
 
   // re-run size demo text
   updateSizeDemo(document.getElementById('size-slider').value);
