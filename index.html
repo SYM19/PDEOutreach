@@ -207,16 +207,10 @@
     }
 
     @media (max-width: 768px) {
-      header { height: auto; flex-wrap: wrap; padding: 0.6rem 1rem; }
-      .logo { margin-right: auto; }
-      .header-right { margin-left: 0; gap: 6px; }
-      .pde-link { display: none; }
+      nav { overflow-x: auto; }
+      nav button { padding: 6px 10px; font-size: 0.72rem; }
+      .header-right { gap: 6px; }
       .v-badge { display: none; }
-      nav { width: 100%; order: 3; flex: none; height: auto; border-top: 1px solid rgba(0,0,0,0.08); margin-top: 0.5rem; padding-top: 0.4rem; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
-      nav::-webkit-scrollbar { display: none; }
-      nav button { padding: 6px 14px; font-size: 0.72rem; white-space: nowrap; flex-shrink: 0; height: 34px; }
-      .donate-btn { font-size: 0.7rem; padding: 4px 10px; }
-      .lang-btn { font-size: 0.65rem; padding: 3px 7px; }
 
       .hero { flex-direction: column !important; padding: 2rem 0 1rem; }
       .hero-visual { width: 180px !important; height: 180px !important; margin: 1rem auto 0; }
@@ -323,7 +317,7 @@
     .donate-banner-text{font-size:.82rem;color:var(--text2);line-height:1.5;}
     .donate-banner-text strong{color:var(--amber);}
     .donate-links{display:flex;gap:.75rem;flex-wrap:wrap;}
-    .donate-link{display:inline-flex;align-items:center;gap:6px;border-radius:24px;padding:8px 20px;font-weight:600;font-size:.82rem;text-decoration:none;transition:transform .15s ease,background .2s;}
+    .donate-link{display:inline-flex;align-items:center;gap:6px;border-radius:24px;padding:8px 20px;font-weight:600;font-size:.82rem;text-decoration:none;transition:transform .15s ease,background .2s;cursor:pointer;border:none;font-family:var(--sans);}
     .donate-link:hover{transform:translateY(-2px);}
     .donate-link.intl{background:rgba(77,158,255,.12);border:1px solid rgba(77,158,255,.3);color:var(--blue);}
     .donate-link.intl:hover{background:rgba(77,158,255,.22);}
@@ -500,12 +494,6 @@
     .share-btn { width: 36px; height: 36px; }
   }
   </style>
-  <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-0VJVBaljWIH2K-TqY2J28.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
 </head>
 <body>
 <div id="loader">
@@ -550,12 +538,20 @@
       <strong>Support children with cancer.</strong> Our science education is free — but the fight isn't. Consider donating to our partner organisations.
     </div>
     <div class="donate-links">
-      <a class="donate-link intl" href="https://PLACEHOLDER_INTL" target="_blank" id="donate-intl">
-        🌍 <span id="donate-intl-name">International — TBC</span> ↗
-      </a>
-      <a class="donate-link cn" href="https://PLACEHOLDER_CN" target="_blank" id="donate-cn">
-        🇨🇳 <span id="donate-cn-name">中国机构 — 待确认</span> ↗
-      </a>
+      <button class="donate-link intl" onclick="openDonateModal('intl')">
+        🌍 <span id="donate-intl-name">International</span> ↗
+      </button>
+      <button class="donate-link cn" onclick="openDonateModal('cn')">
+        🇨🇳 <span id="donate-cn-name">中国机构</span> ↗
+      </button>
+    </div>
+  </div>
+
+  <!-- DONATE MODAL -->
+  <div id="donate-modal" onclick="if(event.target===this){this.style.display='none';document.body.style.overflow='';}" style="display:none;position:fixed;inset:0;background:rgba(255,255,255,.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9998;align-items:center;justify-content:center;padding:1.5rem;">
+    <div id="donate-modal-box" style="background:#FDFAF7;border-radius:24px;padding:2rem;max-width:540px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.18);position:relative;max-height:90vh;overflow-y:auto;">
+      <button onclick="document.getElementById('donate-modal').style.display='none';document.body.style.overflow='';" style="position:absolute;top:1rem;right:1rem;background:rgba(0,0,0,0.06);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;color:#666;display:flex;align-items:center;justify-content:center;">✕</button>
+      <div id="donate-modal-content"></div>
     </div>
   </div>
 
@@ -1895,8 +1891,70 @@ function toggleLang(){
 }
 
 function scrollToDonate(){
-  document.getElementById('donate-banner').scrollIntoView({behavior:'smooth'});
+  openDonateModal('all');
 }
+
+const DONATE_DATA = {
+  all: {
+    title: '❤ Our Charity Partners',
+    titleZh: '❤ 我们的慈善伙伴',
+    orgs: [
+      {name:"Cancer Research UK",desc:"The UK's largest cancer charity, funding world-class research into all types of cancer.",descZh:"英国最大的癌症慈善机构，资助世界一流的癌症研究。",url:"",flag:"🇬🇧"},
+      {name:"St. Baldrick's Foundation",desc:"The largest private funder of childhood cancer research grants. Particularly supports student ambassador programmes.",descZh:"儿童癌症研究资助最大的私人机构，特别支持学生大使项目。",url:"",flag:"🇺🇸"},
+      {name:"Union for International Cancer Control (UICC)",desc:"A global network covering 170+ countries. Champions cancer prevention and treatment equity worldwide.",descZh:"覆盖170+国家的全球网络，致力于推动全球癌症预防与治疗公平。",url:"",flag:"🌍"},
+      {name:"向日葵儿童 Sunflower Children",desc:"China's leading children's cancer support organisation. Provides information, support and hope to families affected by childhood cancer.",descZh:"中国领先的儿童癌症公益机构，为受儿童癌症影响的家庭提供信息、支持与希望。",url:"",flag:"🇨🇳"}
+    ]
+  },
+  intl: {
+    title: '🌍 International Organisations',
+    titleZh: '🌍 国际慈善机构',
+    orgs: [
+      {name:"Cancer Research UK",desc:"The UK's largest cancer charity, funding world-class research into all types of cancer.",descZh:"英国最大的癌症慈善机构，资助世界一流的癌症研究。",url:"",flag:"🇬🇧"},
+      {name:"St. Baldrick's Foundation",desc:"The largest private funder of childhood cancer research grants. Particularly supports student ambassador programmes.",descZh:"儿童癌症研究资助最大的私人机构，特别支持学生大使项目。",url:"",flag:"🇺🇸"},
+      {name:"Union for International Cancer Control (UICC)",desc:"A global network covering 170+ countries. Champions cancer prevention and treatment equity worldwide.",descZh:"覆盖170+国家的全球网络，致力于推动全球癌症预防与治疗公平。",url:"",flag:"🌍"}
+    ]
+  },
+  cn: {
+    title: '🇨🇳 China Organisation',
+    titleZh: '🇨🇳 中国慈善机构',
+    orgs: [
+      {name:"向日葵儿童 Sunflower Children",desc:"China's leading children's cancer support organisation. Provides information, support and hope to families affected by childhood cancer.",descZh:"中国领先的儿童癌症公益机构，为受儿童癌症影响的家庭提供信息、支持与希望。",url:"",flag:"🇨🇳"}
+    ]
+  }
+};
+
+function openDonateModal(type) {
+  const data = DONATE_DATA[type];
+  const isZh = currentLang === 'zh';
+  const title = isZh ? data.titleZh : data.title;
+  let html = `<h2 style="font-size:1.2rem;font-weight:700;color:#1A1A2E;margin-bottom:1.5rem;padding-right:2rem;">${title}</h2>`;
+  data.orgs.forEach(org => {
+    html += `
+      <div style="background:#F5F0EB;border-radius:16px;padding:1.25rem;margin-bottom:1rem;border:1px solid rgba(0,0,0,0.06);">
+        <div style="font-size:1rem;font-weight:700;color:#1A1A2E;margin-bottom:.5rem;">${org.flag} ${org.name}</div>
+        <div style="font-size:.85rem;color:#4A4A6A;line-height:1.65;margin-bottom:1rem;">${isZh ? org.descZh : org.desc}</div>
+        ${org.url
+          ? `<a href="${org.url}" target="_blank" style="display:inline-flex;align-items:center;gap:6px;background:#FF6B6B;color:#fff;border-radius:20px;padding:8px 20px;font-size:.82rem;font-weight:600;text-decoration:none;transition:filter .2s;" onmouseover="this.style.filter='brightness(.9)'" onmouseout="this.style.filter='brightness(1)'">${isZh ? '前往捐款 ↗' : 'Donate now ↗'}</a>`
+          : `<span style="display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,0.06);color:#9090A0;border-radius:20px;padding:8px 20px;font-size:.82rem;font-weight:600;">${isZh ? '链接即将上线' : 'Link coming soon'}</span>`
+        }
+      </div>`;
+  });
+  html += `<p style="font-size:.72rem;color:#9090A0;margin-top:1rem;line-height:1.6;">${isZh ? '所有资金直接进入上述慈善机构。PDEOutreach 不经手任何款项。' : 'All funds go directly to the organisations above. PDEOutreach does not handle any money.'}</p>`;
+  document.getElementById('donate-modal-content').innerHTML = html;
+  const modal = document.getElementById('donate-modal');
+  modal.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeDonateModal(e) {
+  if (e && e.target !== document.getElementById('donate-modal') && e.target !== document.querySelector('#donate-modal button[onclick]')) return;
+  document.getElementById('donate-modal').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { document.getElementById('donate-modal').style.display = 'none'; document.body.style.overflow = ''; }
+});
 
 /* =========================================================
    INIT
