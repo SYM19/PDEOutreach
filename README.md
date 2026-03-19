@@ -46,7 +46,7 @@ Full Chinese and English support throughout — toggle with one click. Built for
 Links to four partner cancer charities — three international, one China-based — with a clean modal UI.
 
 ### 📱 Share Buttons
-GitHub, WeChat (copy link), 小红书, B站, Instagram, Twitter/X — one bar per tab.
+GitHub, WeChat (copy link), 小红书, B站, Instagram — one bar per tab.
 
 ---
 
