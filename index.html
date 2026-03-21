@@ -905,6 +905,36 @@
         </div>
       </div>
 
+      <!-- Chain quiz Q2 (hidden, unlocked on correct answer) -->
+      <div id="drug-q2" class="section" style="display:none;">
+        <h2 id="drug-q2-title" style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 Unlocked — next question</h2>
+        <div class="quiz-box">
+          <div class="quiz-question" id="drug-q2-q"></div>
+          <div class="quiz-options" id="drug-q2-opts">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Chain quiz Q3 -->
+      <div id="drug-q3" class="section" style="display:none;">
+        <h2 id="drug-q3-title" style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 One more</h2>
+        <div class="quiz-box">
+          <div class="quiz-question" id="drug-q3-q"></div>
+          <div class="quiz-options" id="drug-q3-opts">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
+        </div>
+      </div>
+
       <!-- Explainer -->
       <div class="card section">
         <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;" id="drug-explainer-title">What's really happening inside</h2></div>
@@ -1095,6 +1125,36 @@
             <div class="quiz-option" onclick="answerQuiz('early',this,'D')"><span class="quiz-letter">D</span>It stays roughly the same — drugs adapt to tumor size</div>
           </div>
           <div class="quiz-reveal" id="early-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Chain quiz Q2 -->
+      <div id="early-q2" class="section" style="display:none;">
+        <h2 style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 Unlocked — next question</h2>
+        <div class="quiz-box">
+          <div class="quiz-question"></div>
+          <div class="quiz-options">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Chain quiz Q3 -->
+      <div id="early-q3" class="section" style="display:none;">
+        <h2 style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 One more</h2>
+        <div class="quiz-box">
+          <div class="quiz-question"></div>
+          <div class="quiz-options">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
         </div>
       </div>
 
@@ -1387,6 +1447,36 @@
             <div class="quiz-option" onclick="answerQuiz('prec',this,'D')"><span class="quiz-letter">D</span>Only patients who have already had chemotherapy</div>
           </div>
           <div class="quiz-reveal" id="prec-quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Chain quiz Q2 -->
+      <div id="prec-q2" class="section" style="display:none;">
+        <h2 style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 Unlocked — next question</h2>
+        <div class="quiz-box">
+          <div class="quiz-question"></div>
+          <div class="quiz-options">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
+        </div>
+      </div>
+
+      <!-- Chain quiz Q3 -->
+      <div id="prec-q3" class="section" style="display:none;">
+        <h2 style="font-size:1rem;margin-bottom:.75rem;color:var(--teal);">🔓 One more</h2>
+        <div class="quiz-box">
+          <div class="quiz-question"></div>
+          <div class="quiz-options">
+            <div class="quiz-option"><span class="quiz-letter">A</span></div>
+            <div class="quiz-option"><span class="quiz-letter">B</span></div>
+            <div class="quiz-option"><span class="quiz-letter">C</span></div>
+            <div class="quiz-option"><span class="quiz-letter">D</span></div>
+          </div>
+          <div class="quiz-reveal"></div>
         </div>
       </div>
 
@@ -2131,6 +2221,172 @@ const QUIZ_DATA={
   }},
 };
 
+// ── QUIZ CHAIN: 2 extra questions per tab unlocked after first correct answer ──
+const QUIZ_CHAIN={
+  drug:[
+    {id:'drug-q2',correct:'B',
+     q:{en:'IFP stands for Interstitial Fluid Pressure. What does high IFP do to drug delivery?',
+        zh:'IFP 即间质液压。高 IFP 对药物传递有什么影响？',
+        de:'Was bewirkt hoher IFP bei der Medikamentenabgabe?'},
+     opts:{A:{en:'It pulls drugs into the tumor center',zh:'把药物往肿瘤中心吸',de:'Zieht Medikamente ins Zentrum'},
+           B:{en:'It pushes drugs away — outward flow opposes inward diffusion',zh:'把药物往外推——向外液流对抗向内扩散',de:'Drückt Medikamente nach außen'},
+           C:{en:'It has no effect on drug movement',zh:'对药物移动没有影响',de:'Hat keinen Einfluss'},
+           D:{en:'It increases drug solubility inside the tumor',zh:'提高药物在肿瘤内的溶解度',de:'Erhöht die Löslichkeit'}},
+     reveal:{
+       B:{en:`<strong>Correct!</strong> High IFP creates outward fluid flow (Darcy's law) — like trying to push water into a pressurised balloon. PDEOncology models this with the convection term v·∇C.<div class="quiz-badge correct-badge">✓ Physics-level thinking</div>`,
+          zh:`<strong>答对了！</strong>高间质液压产生向外的液流（达西定律）——就像往已加压的气球里注水。PDEOncology 用对流项 v·∇C 来模拟这个过程。<div class="quiz-badge correct-badge">✓ 物理思维</div>`,
+          de:`<strong>Korrekt!</strong> Hoher IFP erzeugt Auswärtsfluss (Darcy). PDEOncology modelliert dies mit v·∇C.<div class="quiz-badge correct-badge">✓ Physikalisches Denken</div>`},
+       A:{en:`<strong>The opposite.</strong> High IFP pushes outward, repelling drugs.<div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>恰恰相反。</strong>高 IFP 向外推，把药物推走。<div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Gegenteil.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+       C:{en:`<strong>Incorrect.</strong> IFP has a significant physical effect.<div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>不对。</strong>IFP 有显著的物理影响。<div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Falsch.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+       D:{en:`<strong>Incorrect.</strong> IFP affects fluid flow, not drug chemistry.<div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>不对。</strong>IFP 影响液体流动，不影响药物化学性质。<div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Falsch.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+     }},
+    {id:'drug-q3',correct:'A',
+     q:{en:'Which drug type has the LOWEST diffusion coefficient (D) in tumor tissue?',
+        zh:'哪种药物类型在肿瘤组织中的扩散系数（D）最低？',
+        de:'Welcher Wirkstofftyp hat das niedrigste D im Tumorgewebe?'},
+     opts:{A:{en:'Large antibody molecules (e.g. trastuzumab, ~145 kDa)',zh:'大分子抗体（如曲妥珠单抗，约145 kDa）',de:'Große Antikörper (z.B. Trastuzumab, ~145 kDa)'},
+           B:{en:'Small platinum compounds (e.g. cisplatin, ~300 Da)',zh:'小分子铂类化合物（如顺铂，约300 Da）',de:'Kleine Platinverbindungen (z.B. Cisplatin, ~300 Da)'},
+           C:{en:'Medium anthracyclines (e.g. doxorubicin, ~544 Da)',zh:'中等蒽环类（如多柔比星，约544 Da）',de:'Mittlere Anthrazykline (z.B. Doxorubicin, ~544 Da)'},
+           D:{en:'All drugs diffuse at the same rate',zh:'所有药物扩散速率相同',de:'Alle diffundieren gleich schnell'}},
+     reveal:{
+       A:{en:`<strong>Correct!</strong> Antibodies are ~500× larger than small molecules. Trastuzumab has D≈0.01 vs cisplatin's D≈0.20 — a 20× difference. Try both in the simulator!<div class="quiz-badge correct-badge">✓ Molecular thinking</div>`,
+          zh:`<strong>答对了！</strong>抗体比小分子大约 500 倍。曲妥珠单抗 D≈0.01，顺铂 D≈0.20，相差 20 倍——在模拟器里都试试看！<div class="quiz-badge correct-badge">✓ 分子量思维</div>`,
+          de:`<strong>Korrekt!</strong> Antikörper sind ~500× größer. Trastuzumab D≈0,01 vs. Cisplatin D≈0,20.<div class="quiz-badge correct-badge">✓ Molekulares Denken</div>`},
+       B:{en:`<strong>Cisplatin has the highest D.</strong> Small size = faster diffusion. Try it in the simulator!<div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>顺铂 D 值最高。</strong>分子小 = 扩散快——在模拟器里试试！<div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Cisplatin hat das höchste D.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+       C:{en:`<strong>Doxorubicin is in the middle.</strong><div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>多柔比星居中。</strong><div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Doxorubicin liegt in der Mitte.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+       D:{en:`<strong>Not at all.</strong> Size difference between cisplatin and trastuzumab is 500×.<div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>完全不是。</strong>顺铂和曲妥珠单抗的分子量相差 500 倍。<div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Stimmt nicht.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+     }},
+  ],
+  early:[
+    {id:'early-q2',correct:'D',
+     q:{en:'Which cancer has NO recommended population-wide screening programme?',
+        zh:'哪种癌症目前没有推荐的大规模筛查方案？',
+        de:'Welcher Krebs hat KEIN empfohlenes Massenscreening?'},
+     opts:{A:{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},
+           B:{en:'Colorectal cancer',zh:'结直肠癌',de:'Darmkrebs'},
+           C:{en:'Cervical cancer',zh:'宫颈癌',de:'Gebärmutterhalskrebs'},
+           D:{en:'Pancreatic cancer',zh:'胰腺癌',de:'Bauchspeicheldrüsenkrebs'}},
+     reveal:{
+       D:{en:`<strong>Correct.</strong> Despite only ~11% 5-year survival, no effective population screening exists for pancreatic cancer — it develops silently and early detection tools lack sufficient sensitivity for mass use.<div class="quiz-badge correct-badge">✓ Well reasoned</div>`,
+          zh:`<strong>正确。</strong>尽管 5 年生存率仅约 11%，胰腺癌至今没有有效的大规模筛查——它悄无声息地发展，现有工具灵敏度不够用于大规模筛查。<div class="quiz-badge correct-badge">✓ 分析到位</div>`,
+          de:`<strong>Korrekt.</strong> Trotz nur ~11% 5-Jahres-Überleben gibt es kein Massenscreening.<div class="quiz-badge correct-badge">✓ Gut überlegt</div>`},
+       A:{en:`<strong>Breast cancer has mammography</strong> from age 40–45.<div class="quiz-badge wrong-badge">Answer: D</div>`,zh:`<strong>乳腺癌有乳腺X光筛查</strong>，从40-45岁开始。<div class="quiz-badge wrong-badge">正确答案是 D</div>`,de:`<strong>Brustkrebs hat Mammographie.</strong><div class="quiz-badge wrong-badge">Antwort: D</div>`},
+       B:{en:`<strong>Colorectal has colonoscopy</strong> from age 45.<div class="quiz-badge wrong-badge">Answer: D</div>`,zh:`<strong>结直肠癌有结肠镜</strong>，从45岁开始。<div class="quiz-badge wrong-badge">正确答案是 D</div>`,de:`<strong>Darmkrebs hat Koloskopie.</strong><div class="quiz-badge wrong-badge">Antwort: D</div>`},
+       C:{en:`<strong>Cervical has Pap smear + HPV testing.</strong><div class="quiz-badge wrong-badge">Answer: D</div>`,zh:`<strong>宫颈癌有宫颈涂片+HPV检测。</strong><div class="quiz-badge wrong-badge">正确答案是 D</div>`,de:`<strong>Gebärmutterhalskrebs hat Pap + HPV-Test.</strong><div class="quiz-badge wrong-badge">Antwort: D</div>`},
+     }},
+    {id:'early-q3',correct:'B',
+     q:{en:'Breast cancer at Stage I: ~99% 5-year survival. What is it at Stage IV?',
+        zh:'乳腺癌第一期 5 年生存率约 99%。第四期是多少？',
+        de:'Brustkrebs Stadium I: ~99% Überleben. Was ist bei Stadium IV?'},
+     opts:{A:{en:'~70% — still quite good',zh:'约 70%——还不错',de:'~70% — immer noch gut'},
+           B:{en:'~28% — it drops dramatically',zh:'约 28%——断崖式下降',de:'~28% — ein dramatischer Einbruch'},
+           C:{en:'~50% — roughly half survive',zh:'约 50%——大约一半能存活',de:'~50% — etwa die Hälfte'},
+           D:{en:'Under 5% — nearly untreatable',zh:'5% 以下——几乎无法治疗',de:'Unter 5% — kaum behandelbar'}},
+     reveal:{
+       B:{en:`<strong>Correct — 28%.</strong> A 71-point drop. Same cancer, same patient biology — caught 5 years later, survival odds transform completely. This is why early detection saves lives.<div class="quiz-badge correct-badge">✓ Numbers matter</div>`,
+          zh:`<strong>正确，约 28%。</strong>差了 71 个百分点。同样的癌症、同样的人，只是晚发现了几年，生存率就天壤之别。这就是早发现的意义。<div class="quiz-badge correct-badge">✓ 数字说明一切</div>`,
+          de:`<strong>Korrekt — 28%.</strong> Ein Einbruch um 71 Punkte. Früherkennung rettet Leben.<div class="quiz-badge correct-badge">✓ Zahlen zählen</div>`},
+       A:{en:`<strong>It's 28%, not 70%.</strong> The drop is far more severe than expected.<div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>是 28%，不是 70%。</strong>下降远比预期严峻。<div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Es sind 28%, nicht 70%.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+       C:{en:`<strong>It's 28% — much lower than 50%.</strong><div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>是 28%——比 50% 低得多。</strong><div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Es sind nur 28%.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+       D:{en:`<strong>It's 28% — low, but modern treatments have improved Stage IV.</strong><div class="quiz-badge wrong-badge">Answer: B</div>`,zh:`<strong>是 28%——很低，但现代治疗已改善了四期预后。</strong><div class="quiz-badge wrong-badge">正确答案是 B</div>`,de:`<strong>Es sind 28%.</strong><div class="quiz-badge wrong-badge">Antwort: B</div>`},
+     }},
+  ],
+  prec:[
+    {id:'prec-q2',correct:'C',
+     q:{en:'What does a PD-L1 biomarker test tell your oncologist?',
+        zh:'PD-L1 生物标志物检测能告诉肿瘤科医生什么？',
+        de:'Was sagt ein PD-L1-Biomarker-Test dem Onkologen?'},
+     opts:{A:{en:'Whether you have the BRCA1/2 mutation',zh:'你是否携带 BRCA1/2 突变',de:'Ob Sie BRCA1/2 haben'},
+           B:{en:'How fast your tumor is growing',zh:'你的肿瘤生长速度',de:'Wie schnell der Tumor wächst'},
+           C:{en:'Whether your tumor may respond to checkpoint inhibitor immunotherapy',zh:'你的肿瘤是否可能对免疫检查点抑制剂有反应',de:'Ob Ihr Tumor auf Checkpoint-Inhibitoren ansprechen könnte'},
+           D:{en:'Whether you carry a hereditary cancer mutation',zh:'你是否携带遗传性癌症突变',de:'Ob Sie eine Erbmutation haben'}},
+     reveal:{
+       C:{en:`<strong>Correct!</strong> High PD-L1 → immune system is being "braked" → checkpoint inhibitors like pembrolizumab release those brakes. This test is now standard before immunotherapy for many cancers.<div class="quiz-badge correct-badge">✓ Immunology insight</div>`,
+          zh:`<strong>答对了！</strong>PD-L1 高 → 免疫系统被"踩刹车"了 → 帕博利珠单抗等检查点抑制剂可以松开刹车。目前这是很多癌症使用免疫治疗前的标准检测。<div class="quiz-badge correct-badge">✓ 免疫学思维</div>`,
+          de:`<strong>Korrekt!</strong> Hohes PD-L1 → Immunsystem gebremst → Checkpoint-Inhibitoren lösen die Bremse.<div class="quiz-badge correct-badge">✓ Immunologisches Denken</div>`},
+       A:{en:`<strong>That's BRCA testing, not PD-L1.</strong> BRCA relates to hereditary DNA repair; PD-L1 to immune checkpoints.<div class="quiz-badge wrong-badge">Answer: C</div>`,zh:`<strong>那是 BRCA 检测，不是 PD-L1。</strong><div class="quiz-badge wrong-badge">正确答案是 C</div>`,de:`<strong>Das ist BRCA, nicht PD-L1.</strong><div class="quiz-badge wrong-badge">Antwort: C</div>`},
+       B:{en:`<strong>That's Ki-67, not PD-L1.</strong><div class="quiz-badge wrong-badge">Answer: C</div>`,zh:`<strong>那是 Ki-67，不是 PD-L1。</strong><div class="quiz-badge wrong-badge">正确答案是 C</div>`,de:`<strong>Das ist Ki-67, nicht PD-L1.</strong><div class="quiz-badge wrong-badge">Antwort: C</div>`},
+       D:{en:`<strong>That's germline mutation testing, not PD-L1.</strong><div class="quiz-badge wrong-badge">Answer: C</div>`,zh:`<strong>那是胚系突变检测，不是 PD-L1。</strong><div class="quiz-badge wrong-badge">正确答案是 C</div>`,de:`<strong>Das ist Keimbahn-Test, nicht PD-L1.</strong><div class="quiz-badge wrong-badge">Antwort: C</div>`},
+     }},
+    {id:'prec-q3',correct:'A',
+     q:{en:"CAR-T works brilliantly in blood cancers. Why does it struggle in solid tumours?",
+        zh:'CAR-T 在血液癌中效果出色。为什么在实体肿瘤中举步维艰？',
+        de:'CAR-T wirkt bei Blutkrebs. Warum versagt es bei soliden Tumoren?'},
+     opts:{A:{en:'Physical and immunosuppressive barriers prevent CAR-T cells from infiltrating and surviving',zh:'物理屏障和免疫抑制环境阻止 CAR-T 细胞渗入和存活',de:'Physische und immunsuppressive Barrieren'},
+           B:{en:'CAR-T cells are too large to enter tumors through blood vessels',zh:'CAR-T 细胞太大，无法通过血管进入肿瘤',de:'CAR-T-Zellen sind zu groß'},
+           C:{en:'Solid tumors develop resistance within 24 hours',zh:'实体肿瘤在 24 小时内就产生耐药性',de:'Resistenz in 24 Stunden'},
+           D:{en:'CAR-T manufacturing only works for blood cancer antigens',zh:'CAR-T 制造工艺只适用于血液癌抗原',de:'Herstellung nur für Blutkrebs-Antigene'}},
+     reveal:{
+       A:{en:`<strong>Correct — this is a central challenge.</strong> Dense stroma + high IFP block entry, AND the immunosuppressive microenvironment deactivates CAR-T cells once they arrive. This is why CAR-T works in leukaemia (cells float freely) but struggles against pancreatic cancer or glioblastoma.<div class="quiz-badge correct-badge">✓ Frontier science</div>`,
+          zh:`<strong>答对了——这是最核心的挑战之一。</strong>致密基质+高 IFP 阻止 CAR-T 细胞进入；一旦到达，免疫抑制微环境又让它们失活。白血病细胞漂浮在血液里，所以 CAR-T 效果出色；胰腺癌和胶质母细胞瘤就完全不同了。<div class="quiz-badge correct-badge">✓ 前沿科学</div>`,
+          de:`<strong>Korrekt.</strong> Stroma + IFP blockieren den Eintritt; immunsuppressives Mikromilieu deaktiviert CAR-T-Zellen.<div class="quiz-badge correct-badge">✓ Grenzwissenschaft</div>`},
+       B:{en:`<strong>Size isn't the issue.</strong> CAR-T cells can extravasate. The problem is inside the tumor.<div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>大小不是问题。</strong>CAR-T 细胞可以渗出血管——问题在于肿瘤内部。<div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Größe ist kein Problem.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+       C:{en:`<strong>Resistance doesn't develop that fast.</strong><div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>耐药不会发展那么快。</strong><div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Resistenz so schnell? Nein.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+       D:{en:`<strong>Incorrect — CAR-T can target solid tumor antigens.</strong> The problem is delivery, not manufacturing.<div class="quiz-badge wrong-badge">Answer: A</div>`,zh:`<strong>不对——CAR-T 可以针对实体肿瘤抗原设计。</strong>问题在于传递，不在于制造。<div class="quiz-badge wrong-badge">正确答案是 A</div>`,de:`<strong>Falsch — CAR-T kann für solide Antigene entwickelt werden.</strong><div class="quiz-badge wrong-badge">Antwort: A</div>`},
+     }},
+  ],
+};
+
+function getLang(){return currentLang==='zh'?'zh':currentLang==='de'?'de':'en';}
+
+function showChainQuiz(tabId,stepIndex){
+  const chain=QUIZ_CHAIN[tabId];
+  if(!chain||stepIndex>=chain.length)return;
+  const q=chain[stepIndex];
+  const lang=getLang();
+  const container=document.getElementById(q.id);
+  if(!container)return;
+  container.style.display='block';
+  container.style.animation='fadein .3s ease';
+  const qEl=container.querySelector('.quiz-question');
+  if(qEl)qEl.textContent=q.q[lang]||q.q.en;
+  const optEls=container.querySelectorAll('.quiz-option');
+  const optKeys=['A','B','C','D'];
+  optEls.forEach((el,i)=>{
+    const key=optKeys[i];
+    const txt=q.opts[key][lang]||q.opts[key].en;
+    el.childNodes[el.childNodes.length-1].textContent=' '+txt;
+    el.onclick=()=>answerChainQuiz(tabId,stepIndex,el,key);
+    el.classList.remove('correct','wrong','reveal-correct','selected');
+    el.style.pointerEvents='';
+  });
+  const rev=container.querySelector('.quiz-reveal');
+  if(rev){rev.innerHTML='';rev.classList.remove('show','wrong-reveal');}
+  container.scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function answerChainQuiz(tabId,stepIndex,el,choice){
+  const chain=QUIZ_CHAIN[tabId];
+  const q=chain[stepIndex];
+  const lang=getLang();
+  const container=document.getElementById(q.id);
+  const opts=container.querySelectorAll('.quiz-option');
+  opts.forEach(o=>o.style.pointerEvents='none');
+  const isCorrect=choice===q.correct;
+  if(isCorrect){el.classList.add('correct');}
+  else{
+    el.classList.add('wrong');
+    opts.forEach(o=>{const l=o.querySelector('.quiz-letter');if(l&&l.textContent===q.correct)o.classList.add('reveal-correct');});
+  }
+  const rev=container.querySelector('.quiz-reveal');
+  const r=q.reveal[choice];
+  rev.innerHTML=r[lang]||r.en;
+  rev.classList.add('show');
+  if(!isCorrect){
+    rev.classList.add('wrong-reveal');
+    setTimeout(()=>{
+      rev.style.transition='opacity .5s';rev.style.opacity='0';
+      setTimeout(()=>{
+        rev.style.transition='';rev.style.opacity='';
+        rev.innerHTML='';rev.classList.remove('show','wrong-reveal');
+        opts.forEach(o=>{o.classList.remove('correct','wrong','reveal-correct');o.style.pointerEvents='';});
+      },500);
+    },3000);
+  } else {
+    setTimeout(()=>showChainQuiz(tabId,stepIndex+1),1200);
+  }
+}
+
 function resetQuiz(section, optsSelector, revealId) {
   const opts = document.querySelectorAll(optsSelector);
   opts.forEach(o => {
@@ -2185,11 +2441,11 @@ function answerQuiz(section, el, choice) {
   }
   const rev = document.getElementById(`${section}-quiz-reveal`);
   const r = quiz.reveal[choice];
-  rev.innerHTML = currentLang==='zh' ? (r.zh||r.en) : r.en;
+  const lang=getLang();
+  rev.innerHTML = r[lang]||r.en;
   rev.classList.add('show');
   if (!isCorrect) {
     rev.classList.add('wrong-reveal');
-    // 3秒后淡出并重置
     setTimeout(() => {
       rev.style.transition = 'opacity .5s';
       rev.style.opacity = '0';
@@ -2199,6 +2455,9 @@ function answerQuiz(section, el, choice) {
         resetQuiz(section, `#${section}-quiz-opts .quiz-option`, `${section}-quiz-reveal`);
       }, 500);
     }, 3000);
+  } else {
+    // unlock first chain quiz after 1.2s
+    if(QUIZ_CHAIN[section]) setTimeout(()=>showChainQuiz(section,0),1200);
   }
 }
 
@@ -2864,7 +3123,10 @@ function applyLang(lang){
   setText('ct-pancreatic-if',t('No standard screening','暂无标准筛查','Kein Standardscreening'));
 
   // Drug FAQ accordion
-  setText('drug-faq-title',lang==='zh'?'常见问题解答':'Frequently asked questions');
+  setText('drug-faq-title',t('Frequently asked questions','常见问题解答','Häufige Fragen'));
+  // chain quiz unlock labels
+  document.querySelectorAll('#drug-q2 h2,#early-q2 h2,#prec-q2 h2').forEach(el=>{el.textContent=t('🔓 Unlocked — next question','🔓 解锁成功——下一题','🔓 Freigeschaltet — nächste Frage');});
+  document.querySelectorAll('#drug-q3 h2,#early-q3 h2,#prec-q3 h2').forEach(el=>{el.textContent=t('🔓 One more','🔓 再来一题','🔓 Noch eine');});
   setText('drug-faq-q1',lang==='zh'?'药物都渗透不进去，化疗怎么还有效果？':'If drugs can\'t penetrate tumors, why does chemotherapy still work at all?');
   setText('drug-faq-a1',lang==='zh'?'化疗通过杀死快速分裂的细胞发挥作用——它确实能有效到达肿瘤的外层。问题在于核心部位。在小的早期肿瘤中，外层与内层细胞的比例更有利，影响较小。但在大的致密肿瘤中，无法到达的核心成为存活癌细胞的"储藏库"，可能引发复发。这也是为什么同一种药物在不同分期效果差异巨大。':'Chemotherapy works by killing rapidly dividing cells — and it does reach the outer layers of a tumor effectively. The problem is the core. In small, early-stage tumors this matters less because the ratio of outer-to-inner cells is more favorable. In large, dense tumors, the unreachable core becomes a reservoir of surviving cancer cells that can seed recurrence.');
   setText('drug-faq-q2',lang==='zh'?'间质液压（IFP）是什么，跟治疗有什么关系？':'What is IFP and why does it matter?');
