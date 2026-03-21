@@ -2345,7 +2345,11 @@ function showChainQuiz(tabId,stepIndex){
   optEls.forEach((el,i)=>{
     const key=optKeys[i];
     const txt=q.opts[key][lang]||q.opts[key].en;
-    el.childNodes[el.childNodes.length-1].textContent=' '+txt;
+    // rebuild content: keep letter span, set text after it
+    const letter=el.querySelector('.quiz-letter');
+    el.innerHTML='';
+    if(letter){el.appendChild(letter);}else{const s=document.createElement('span');s.className='quiz-letter';s.textContent=key;el.appendChild(s);}
+    el.appendChild(document.createTextNode(' '+txt));
     el.onclick=()=>answerChainQuiz(tabId,stepIndex,el,key);
     el.classList.remove('correct','wrong','reveal-correct','selected');
     el.style.pointerEvents='';
