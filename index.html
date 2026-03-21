@@ -602,21 +602,6 @@
     .share-btn { width: 36px; height: 36px; }
   }
   </style>
-  <!-- Privacy-friendly analytics by Plausible -->
-<script async src="https://plausible.io/js/pa-0VJVBaljWIH2K-TqY2J28.js"></script>
-<script>
-  window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-  plausible.init()
-</script>
-<script>
-var _hmt = _hmt || [];
-(function() {
-  var hm = document.createElement("script");
-  hm.src = "https://hm.baidu.com/hm.js?27a377626c10dd6f82708df70224555b";
-  var s = document.getElementsByTagName("script")[0]; 
-  s.parentNode.insertBefore(hm, s);
-})();
-</script>
 </head>
 <body>
 <div id="loader">
@@ -654,6 +639,7 @@ var _hmt = _hmt || [];
       <button onclick="switchTab('early')" data-en="Early Detection" data-zh="早期发现">Early Detection</button>
       <button onclick="switchTab('lifestyle')" data-en="Lifestyle & Risk" data-zh="生活方式与风险">Lifestyle & Risk</button>
       <button onclick="switchTab('precision')" data-en="Precision Medicine" data-zh="精准医疗">Precision Medicine</button>
+      <button onclick="switchTab('journal')" data-en="📖 Journal" data-zh="📖 期刊">📖 Journal</button>
     </nav>
   </header>
 
@@ -744,7 +730,7 @@ var _hmt = _hmt || [];
       </div>
 
       <!-- 4 topic cards -->
-      <h2 id="home-cards-title">Four things about cancer nobody told you</h2>
+      <h2 id="home-cards-title">Five things about cancer nobody told you</h2>
       <div class="grid-2 section">
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--blue);" onclick="switchTab('drug')">
           <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);">Why drugs fail</h2></div>
@@ -769,6 +755,12 @@ var _hmt = _hmt || [];
           <h3 id="card-h3-prec">Why the same drug works differently for everyone</h3>
           <p>Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.</p>
           <span class="tag purple">compare</span><span class="tag">quiz inside</span>
+        </div>
+        <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--coral);grid-column:1/-1;" onclick="switchTab('journal')">
+          <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;color:var(--coral);" id="card-h2-journal">Journal</h2></div>
+          <h3 id="card-h3-journal">Top cancer research, made readable — fees go to charity</h3>
+          <p id="card-p-journal">We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Monthly subscription from $4 — 100% goes to our charity partners.</p>
+          <span class="tag" style="border-color:rgba(255,107,107,.4);color:var(--coral);background:rgba(255,107,107,.08);" id="card-tag-journal1">EN / 中文 / DE</span><span class="tag" id="card-tag-journal2">fees → charity</span>
         </div>
       </div>
       <div class="share-bar">
@@ -1299,6 +1291,188 @@ var _hmt = _hmt || [];
       </div>
     </div>
 
+    <!-- ================================================
+         SECTION 5: JOURNAL
+    ================================================ -->
+    <div id="tab-journal" class="tab-panel">
+
+      <!-- Hero -->
+      <div class="section">
+        <h1 id="journal-h1">Cancer Science <span class="accent">Journal</span></h1>
+        <p style="max-width:680px;" id="journal-sub">World-class cancer research, made readable. Every article is summarised by our team from high-impact journals — CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, Cancer Discovery. <strong>All subscription fees go directly to our charity partners.</strong></p>
+        <div class="hero-chips" style="margin-top:1rem;">
+          <span class="hero-chip" id="journal-chip-1">High-IF journals</span>
+          <span class="hero-chip" id="journal-chip-2">Plain language</span>
+          <span class="hero-chip" id="journal-chip-3">EN / 中文 / DE</span>
+          <span class="hero-chip" id="journal-chip-4">Fees → charity</span>
+        </div>
+      </div>
+
+      <!-- Pricing cards -->
+      <div class="section">
+        <h2 id="journal-plans-title">Choose a plan</h2>
+        <div class="grid-3" id="journal-plans-grid">
+
+          <!-- Free -->
+          <div class="card" style="border-top:3px solid var(--teal);text-align:center;padding:1.75rem 1.25rem;">
+            <div style="font-family:var(--mono);font-size:.75rem;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;" id="plan-free-label">Free</div>
+            <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--text);line-height:1;">$0</div>
+            <div style="font-size:.75rem;color:var(--text3);margin-bottom:1.25rem;" id="plan-free-period">forever</div>
+            <ul style="list-style:none;font-size:.82rem;color:var(--text2);line-height:2.2;margin-bottom:1.5rem;text-align:left;">
+              <li id="pf-1">✓ 1 free article per month</li>
+              <li id="pf-2">✓ English only</li>
+              <li id="pf-3">✓ Access to all quiz content</li>
+              <li style="color:var(--text3);" id="pf-4">✗ Previous articles</li>
+              <li style="color:var(--text3);" id="pf-5">✗ 中文 / Deutsch</li>
+            </ul>
+            <button class="btn btn-ghost" style="width:100%;" id="plan-free-btn" onclick="openJournalSignup('free')">Get started</button>
+          </div>
+
+          <!-- Monthly -->
+          <div class="card" style="border-top:3px solid var(--coral);text-align:center;padding:1.75rem 1.25rem;position:relative;box-shadow:0 8px 32px rgba(255,107,107,0.15);">
+            <div style="position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--coral);color:#fff;font-size:.65rem;font-weight:700;padding:3px 12px;border-radius:20px;font-family:var(--mono);letter-spacing:.06em;" id="plan-popular-badge">MOST POPULAR</div>
+            <div style="font-family:var(--mono);font-size:.75rem;color:var(--coral);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;" id="plan-monthly-label">Monthly</div>
+            <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--text);line-height:1;">$4</div>
+            <div style="font-size:.75rem;color:var(--text3);margin-bottom:1.25rem;" id="plan-monthly-period">per month</div>
+            <ul style="list-style:none;font-size:.82rem;color:var(--text2);line-height:2.2;margin-bottom:1.5rem;text-align:left;">
+              <li id="pm-1">✓ 4 articles per month</li>
+              <li id="pm-2">✓ EN / 中文 / Deutsch</li>
+              <li id="pm-3">✓ Cancel anytime</li>
+              <li id="pm-4">✓ 100% fees → charity</li>
+              <li style="color:var(--text3);" id="pm-5">✗ Previous articles archive</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%;background:var(--coral);border-color:var(--coral);" id="plan-monthly-btn" onclick="openJournalSignup('monthly')">Subscribe — $4/mo</button>
+          </div>
+
+          <!-- Archive -->
+          <div class="card" style="border-top:3px solid var(--purple);text-align:center;padding:1.75rem 1.25rem;">
+            <div style="font-family:var(--mono);font-size:.75rem;color:var(--purple);text-transform:uppercase;letter-spacing:.1em;margin-bottom:.5rem;" id="plan-archive-label">Single article</div>
+            <div style="font-family:var(--mono);font-size:2.5rem;font-weight:700;color:var(--text);line-height:1;">$1.50</div>
+            <div style="font-size:.75rem;color:var(--text3);margin-bottom:1.25rem;" id="plan-archive-period">per article</div>
+            <ul style="list-style:none;font-size:.82rem;color:var(--text2);line-height:2.2;margin-bottom:1.5rem;text-align:left;">
+              <li id="pa-1">✓ Buy any past article</li>
+              <li id="pa-2">✓ EN / 中文 / Deutsch</li>
+              <li id="pa-3">✓ Permanent access</li>
+              <li id="pa-4">✓ 100% fees → charity</li>
+              <li id="pa-5">✓ No subscription needed</li>
+            </ul>
+            <button class="btn btn-ghost" style="width:100%;border-color:var(--purple);color:var(--purple);" id="plan-archive-btn" onclick="openJournalSignup('archive')">Browse archive</button>
+          </div>
+        </div>
+
+        <!-- Charity note -->
+        <div class="card" style="margin-top:1rem;background:rgba(78,205,196,0.06);border-color:rgba(78,205,196,0.3);text-align:center;padding:1rem 1.5rem;">
+          <p style="margin:0;font-size:.85rem;" id="journal-charity-note">❤ <strong>100% of subscription fees</strong> go directly to our verified charity partners in childhood cancer research and patient support. PDEOutreach handles no money.</p>
+        </div>
+      </div>
+
+      <!-- Sample articles -->
+      <div class="section">
+        <h2 id="journal-sample-title">Sample articles</h2>
+        <div class="grid-2">
+
+          <div class="card" style="cursor:pointer;" onclick="openArticlePreview('art1')">
+            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
+              <span class="tag blue">CA: Cancer J Clin</span>
+              <span class="tag">Jan 2025</span>
+            </div>
+            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art1-title">Global Cancer Statistics 2024: How has the landscape shifted?</h3>
+            <p style="font-size:.8rem;margin:0;" id="art1-desc">GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what's risen, what's fallen, and what it means for prevention.</p>
+            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art1-read">5 min read</span>
+              <span style="flex:1;"></span>
+              <span class="tag green" id="art1-free-tag">Free this month</span>
+            </div>
+          </div>
+
+          <div class="card" style="cursor:pointer;opacity:.75;" onclick="openArticlePreview('art2')">
+            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
+              <span class="tag purple">Nature Rev Cancer</span>
+              <span class="tag">Feb 2025</span>
+            </div>
+            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art2-title">Tumour microenvironment remodelling: new targets for drug delivery</h3>
+            <p style="font-size:.8rem;margin:0;" id="art2-desc">How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.</p>
+            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art2-read">7 min read</span>
+              <span style="flex:1;"></span>
+              <span class="tag amber" id="art2-lock-tag">🔒 Subscribers</span>
+            </div>
+          </div>
+
+          <div class="card" style="cursor:pointer;opacity:.75;" onclick="openArticlePreview('art3')">
+            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
+              <span class="tag red">Lancet Oncology</span>
+              <span class="tag">Feb 2025</span>
+            </div>
+            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art3-title">Liquid biopsies in early detection: 2025 clinical update</h3>
+            <p style="font-size:.8rem;margin:0;" id="art3-desc">ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.</p>
+            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art3-read">6 min read</span>
+              <span style="flex:1;"></span>
+              <span class="tag amber" id="art3-lock-tag">🔒 Subscribers</span>
+            </div>
+          </div>
+
+          <div class="card" style="cursor:pointer;opacity:.75;" onclick="openArticlePreview('art4')">
+            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
+              <span class="tag" style="border-color:rgba(240,165,74,.4);color:var(--amber);background:var(--amber-dim);">Cancer Discovery</span>
+              <span class="tag">Mar 2025</span>
+            </div>
+            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art4-title">CAR-T in solid tumours: breaking through the stromal barrier</h3>
+            <p style="font-size:.8rem;margin:0;" id="art4-desc">Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.</p>
+            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
+              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art4-read">8 min read</span>
+              <span style="flex:1;"></span>
+              <span class="tag amber" id="art4-lock-tag">🔒 Subscribers</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Source journals -->
+      <div class="section">
+        <h2 id="journal-sources-title">Source journals</h2>
+        <div class="grid-3">
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">CA: A Cancer Journal for Clinicians</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~254 · Highest in oncology</div>
+          </div>
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Nature Reviews Cancer</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~78</div>
+          </div>
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Journal of Clinical Oncology</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~45</div>
+          </div>
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Cell</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~50</div>
+          </div>
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">The Lancet Oncology</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~51</div>
+          </div>
+          <div class="card" style="text-align:center;padding:1rem;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Discovery</div>
+            <div style="font-size:.72rem;color:var(--text3);">IF ~29</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ================================================
+         JOURNAL SIGNUP MODAL
+    ================================================ -->
+    <div id="journal-modal" onclick="if(event.target===this){closeJournalModal();}" style="display:none;position:fixed;inset:0;background:rgba(255,255,255,.55);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);z-index:9997;align-items:center;justify-content:center;padding:1.5rem;">
+      <div style="background:#FDFAF7;border-radius:24px;padding:2rem;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,0.18);position:relative;">
+        <button onclick="closeJournalModal();" style="position:absolute;top:1rem;right:1rem;background:rgba(0,0,0,0.06);border:none;width:32px;height:32px;border-radius:50%;cursor:pointer;font-size:1rem;color:#666;display:flex;align-items:center;justify-content:center;">✕</button>
+        <div id="journal-modal-content"></div>
+      </div>
+    </div>
+
   </main>
 
   <footer>
@@ -1378,11 +1552,114 @@ async function runPDE(D,lam,k,r,steps){
 /* =========================================================
    TABS
 ========================================================= */
+/* =========================================================
+   JOURNAL
+========================================================= */
+function openJournalSignup(plan){
+  const modal=document.getElementById('journal-modal');
+  const content=document.getElementById('journal-modal-content');
+  const lang=document.documentElement.lang==='zh'?'zh':'en';
+  const plans={
+    free:{
+      en:{title:'Get started for free',desc:'1 article per month, English only. No payment needed.',btn:'Create free account'},
+      zh:{title:'免费开始',desc:'每月1篇文章，仅英文。无需付款。',btn:'创建免费账户'}
+    },
+    monthly:{
+      en:{title:'Monthly subscription — $4/mo',desc:'4 articles per month in EN / 中文 / Deutsch. Cancel anytime. 100% of fees go to charity.',btn:'Subscribe — $4/month'},
+      zh:{title:'月度订阅 — $4/月',desc:'每月4篇文章，中英德三语。随时取消。所有费用直接捐给慈善机构。',btn:'订阅 — $4/月'}
+    },
+    archive:{
+      en:{title:'Single article — $1.50',desc:'Buy any article from the archive. Permanent access, no subscription needed.',btn:'Browse & buy'},
+      zh:{title:'单篇购买 — $1.50',desc:'购买档案中的任意文章，永久访问，无需订阅。',btn:'浏览并购买'}
+    }
+  };
+  const p=plans[plan][lang]||plans[plan].en;
+  content.innerHTML=`
+    <h2 style="font-family:var(--mono);font-size:1.1rem;margin-bottom:.5rem;">${p.title}</h2>
+    <p style="font-size:.85rem;color:#666;margin-bottom:1.5rem;">${p.desc}</p>
+    <div style="margin-bottom:1rem;">
+      <label style="font-size:.78rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Name</label>
+      <input type="text" placeholder="Your name" style="width:100%;padding:10px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:.875rem;background:#fafafa;outline:none;">
+    </div>
+    <div style="margin-bottom:1rem;">
+      <label style="font-size:.78rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Email</label>
+      <input type="email" placeholder="you@email.com" style="width:100%;padding:10px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:.875rem;background:#fafafa;outline:none;">
+    </div>
+    <div style="margin-bottom:1.25rem;">
+      <label style="font-size:.78rem;font-weight:600;color:#333;display:block;margin-bottom:4px;">Preferred language</label>
+      <select style="width:100%;padding:10px 14px;border:1.5px solid #ddd;border-radius:10px;font-size:.875rem;background:#fafafa;outline:none;">
+        <option>English</option>
+        <option>中文</option>
+        <option>Deutsch</option>
+      </select>
+    </div>
+    <button onclick="journalSignupSubmit()" style="width:100%;padding:12px;background:var(--coral);color:#fff;border:none;border-radius:12px;font-size:.9rem;font-weight:600;cursor:pointer;">${p.btn}</button>
+    <p style="font-size:.7rem;color:#999;text-align:center;margin-top:.875rem;">Payment integration coming soon. We'll notify you when it's live.</p>
+  `;
+  modal.style.display='flex';
+}
+function closeJournalModal(){
+  document.getElementById('journal-modal').style.display='none';
+}
+function journalSignupSubmit(){
+  document.getElementById('journal-modal-content').innerHTML=`
+    <div style="text-align:center;padding:1.5rem 0;">
+      <div style="font-size:2.5rem;margin-bottom:1rem;">🎉</div>
+      <h2 style="font-family:var(--mono);font-size:1.1rem;margin-bottom:.5rem;">You're on the list!</h2>
+      <p style="font-size:.85rem;color:#666;margin-bottom:1.5rem;">We'll email you as soon as the journal launches. All fees will go directly to our charity partners.</p>
+      <button onclick="closeJournalModal();" style="padding:10px 28px;background:var(--teal);color:#fff;border:none;border-radius:10px;font-size:.875rem;font-weight:600;cursor:pointer;">Close</button>
+    </div>
+  `;
+}
+function openArticlePreview(id){
+  const modal=document.getElementById('journal-modal');
+  const content=document.getElementById('journal-modal-content');
+  const articles={
+    art1:{
+      tag:'CA: Cancer J Clin',free:true,
+      title:'Global Cancer Statistics 2024',
+      body:`<p style="font-size:.875rem;line-height:1.8;color:#444;margin-bottom:1rem;">GLOBOCAN 2024 estimates approximately <strong>20 million new cancer cases</strong> and 9.7 million deaths worldwide in 2022. The most commonly diagnosed cancers are lung, breast, colorectal, prostate, and stomach — together accounting for nearly half of all cases.</p>
+      <p style="font-size:.875rem;line-height:1.8;color:#444;margin-bottom:1rem;">Key shifts since 2020: <strong>lung cancer has reclaimed the top spot</strong> for incidence globally, driven largely by high rates in Asia. Meanwhile, breast cancer mortality rates have declined in high-income countries due to screening and improved treatment.</p>
+      <p style="font-size:.875rem;line-height:1.8;color:#444;">The data underscores a widening gap between high- and low-income countries — survival rates differ by up to 4× for the same cancer type depending on where you live.</p>`
+    },
+    art2:{tag:'Nature Rev Cancer',free:false,title:'Tumour microenvironment remodelling'},
+    art3:{tag:'Lancet Oncology',free:false,title:'Liquid biopsies: 2025 clinical update'},
+    art4:{tag:'Cancer Discovery',free:false,title:'CAR-T in solid tumours'},
+  };
+  const a=articles[id];
+  if(!a)return;
+  if(!a.free){
+    content.innerHTML=`
+      <div style="text-align:center;padding:1rem 0;">
+        <div style="font-size:2rem;margin-bottom:.75rem;">🔒</div>
+        <h2 style="font-family:var(--mono);font-size:1rem;margin-bottom:.5rem;">${a.title}</h2>
+        <p style="font-size:.82rem;color:#666;margin-bottom:1.25rem;">This article is available to subscribers. Subscribe from $4/month — 100% goes to charity.</p>
+        <button onclick="closeJournalModal();openJournalSignup('monthly');" style="padding:10px 24px;background:var(--coral);color:#fff;border:none;border-radius:10px;font-size:.875rem;font-weight:600;cursor:pointer;margin-right:8px;">Subscribe — $4/mo</button>
+        <button onclick="closeJournalModal();openJournalSignup('archive');" style="padding:10px 24px;background:#f0f0f0;color:#333;border:none;border-radius:10px;font-size:.875rem;cursor:pointer;">Buy this article — $1.50</button>
+      </div>
+    `;
+  } else {
+    content.innerHTML=`
+      <div style="display:flex;gap:8px;margin-bottom:1rem;flex-wrap:wrap;">
+        <span class="tag blue">${a.tag}</span>
+        <span class="tag green">Free this month</span>
+      </div>
+      <h2 style="font-family:var(--mono);font-size:1rem;margin-bottom:1rem;">${a.title}</h2>
+      ${a.body}
+      <div style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid #eee;text-align:center;">
+        <p style="font-size:.75rem;color:#999;margin-bottom:.75rem;">Enjoyed this? Subscribe for 4 articles/month — all fees go to charity.</p>
+        <button onclick="closeJournalModal();openJournalSignup('monthly');" style="padding:9px 22px;background:var(--coral);color:#fff;border:none;border-radius:10px;font-size:.82rem;font-weight:600;cursor:pointer;">Subscribe — $4/mo</button>
+      </div>
+    `;
+  }
+  modal.style.display='flex';
+}
+
 function switchTab(name){
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
   document.getElementById('tab-'+name).classList.add('active');
-  ['home','drug','early','lifestyle','precision'].forEach((t,i)=>{
+  ['home','drug','early','lifestyle','precision','journal'].forEach((t,i)=>{
     if(t===name)document.querySelectorAll('#nav button')[i].classList.add('active');
   });
 }
@@ -1927,7 +2204,7 @@ function applyLang(lang){
   document.getElementById('lang-btn').textContent=lang==='en'?'切换中文':'Switch to English';
 
   // nav
-  const navMap={home:{en:'Home',zh:'首页'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效'},early:{en:'Early Detection',zh:'早期发现'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险'},precision:{en:'Precision Medicine',zh:'精准医疗'}};
+  const navMap={home:{en:'Home',zh:'首页'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效'},early:{en:'Early Detection',zh:'早期发现'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险'},precision:{en:'Precision Medicine',zh:'精准医疗'},journal:{en:'📖 Journal',zh:'📖 期刊'}};
   document.querySelectorAll('#nav button').forEach(btn=>{
     const m=btn.getAttribute('onclick').match(/switchTab\('(\w+)'\)/);
     if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang];
@@ -1954,7 +2231,12 @@ function applyLang(lang){
   setText('home-chips-iii',lang==='zh'?'循证内容':'evidence-based');
   setText('home-chips-iv',lang==='zh'?'永久免费':'free forever');
   const heroCta=document.getElementById('hero-cta');if(heroCta)heroCta.textContent=lang==='zh'?'开始探索 →':'Start Exploring →';
-  setText('home-cards-title',lang==='zh'?'关于癌症，没人告诉你的四件事':'Four things about cancer nobody told you');
+  setText('home-cards-title',lang==='zh'?'关于癌症，没人告诉你的五件事':'Five things about cancer nobody told you');
+  setText('card-h2-journal', lang==='zh'?'期刊':'Journal');
+  setText('card-h3-journal', lang==='zh'?'顶级癌症研究，通俗易懂——订阅费全部捐给慈善机构':'Top cancer research, made readable — fees go to charity');
+  setText('card-p-journal', lang==='zh'?'我们将CA、Nature Reviews Cancer、JCO、Cancer Cell等期刊的最新研究整理成通俗语言。月度订阅低至$4——100%捐给我们的慈善伙伴。':'We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Monthly subscription from $4 — 100% goes to our charity partners.');
+  setText('card-tag-journal1', 'EN / 中文 / DE');
+  setText('card-tag-journal2', lang==='zh'?'费用 → 慈善':'fees → charity');
   setText('home-quiz-title',lang==='zh'?'先来猜一猜——':'Quick — what do you think?');
   setHtml('home-quiz-q',lang==='zh'
     ?'一种强效化疗药物进入血液并到达肿瘤。它通常能消灭多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>'
@@ -2159,6 +2441,63 @@ function applyLang(lang){
   setText('drug-colorbar-label', lang==='zh'?'药物浓度':'drug concentration');
   setText('drug-hi', lang==='zh'?'高':'high');
   setText('drug-lo', lang==='zh'?'低':'low');
+
+  // Journal tab translations
+  setText('journal-h1', lang==='zh'?'癌症科学期刊':'Cancer Science Journal');
+  setText('journal-sub', lang==='zh'?
+    '顶级癌症研究，通俗易懂。我们的团队从高影响因子期刊中精选文章并提供摘要——CA、Nature Reviews Cancer、JCO、Cancer Cell、Lancet Oncology、Cancer Discovery。所有订阅费用直接捐给慈善机构。':
+    'World-class cancer research, made readable. Every article is summarised by our team from high-impact journals — CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, Cancer Discovery. All subscription fees go directly to our charity partners.');
+  setText('journal-chip-1', lang==='zh'?'高影响因子期刊':'High-IF journals');
+  setText('journal-chip-2', lang==='zh'?'通俗语言':'Plain language');
+  setText('journal-chip-3', 'EN / 中文 / DE');
+  setText('journal-chip-4', lang==='zh'?'费用 → 慈善':'Fees → charity');
+  setText('journal-plans-title', lang==='zh'?'选择方案':'Choose a plan');
+  setText('plan-free-label', lang==='zh'?'免费':'Free');
+  setText('plan-free-period', lang==='zh'?'永久':'forever');
+  setText('pf-1', lang==='zh'?'✓ 每月1篇免费文章':'✓ 1 free article per month');
+  setText('pf-2', lang==='zh'?'✓ 仅英文':'✓ English only');
+  setText('pf-3', lang==='zh'?'✓ 所有测验内容':'✓ Access to all quiz content');
+  setText('pf-4', lang==='zh'?'✗ 往期文章':'✗ Previous articles');
+  setText('pf-5', lang==='zh'?'✗ 中文 / 德文':'✗ 中文 / Deutsch');
+  setText('plan-free-btn', lang==='zh'?'免费开始':'Get started');
+  setText('plan-popular-badge', lang==='zh'?'最受欢迎':'MOST POPULAR');
+  setText('plan-monthly-label', lang==='zh'?'月度订阅':'Monthly');
+  setText('plan-monthly-period', lang==='zh'?'每月':'per month');
+  setText('pm-1', lang==='zh'?'✓ 每月4篇文章':'✓ 4 articles per month');
+  setText('pm-2', lang==='zh'?'✓ 中英德三语':'✓ EN / 中文 / Deutsch');
+  setText('pm-3', lang==='zh'?'✓ 随时取消':'✓ Cancel anytime');
+  setText('pm-4', lang==='zh'?'✓ 100% 费用 → 慈善':'✓ 100% fees → charity');
+  setText('pm-5', lang==='zh'?'✗ 往期文章档案':'✗ Previous articles archive');
+  setText('plan-monthly-btn', lang==='zh'?'订阅 — $4/月':'Subscribe — $4/mo');
+  setText('plan-archive-label', lang==='zh'?'单篇购买':'Single article');
+  setText('plan-archive-period', lang==='zh'?'每篇':'per article');
+  setText('pa-1', lang==='zh'?'✓ 购买任意往期文章':'✓ Buy any past article');
+  setText('pa-2', lang==='zh'?'✓ 中英德三语':'✓ EN / 中文 / Deutsch');
+  setText('pa-3', lang==='zh'?'✓ 永久访问':'✓ Permanent access');
+  setText('pa-4', lang==='zh'?'✓ 100% 费用 → 慈善':'✓ 100% fees → charity');
+  setText('pa-5', lang==='zh'?'✓ 无需订阅':'✓ No subscription needed');
+  setText('plan-archive-btn', lang==='zh'?'浏览档案':'Browse archive');
+  setText('journal-charity-note', lang==='zh'?
+    '❤ 所有订阅费用100%直接捐给我们经过认证的儿童癌症研究与患者支持慈善伙伴。PDEOutreach不经手任何款项。':
+    '❤ 100% of subscription fees go directly to our verified charity partners in childhood cancer research and patient support. PDEOutreach handles no money.');
+  setText('journal-sample-title', lang==='zh'?'示例文章':'Sample articles');
+  setText('art1-title', lang==='zh'?'2024年全球癌症统计：格局如何变化？':'Global Cancer Statistics 2024: How has the landscape shifted?');
+  setText('art1-desc', lang==='zh'?'GLOBOCAN 2024对185个国家36种癌症的估算——哪些上升、哪些下降，以及对预防意味着什么。':'GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what\'s risen, what\'s fallen, and what it means for prevention.');
+  setText('art1-read', lang==='zh'?'5分钟阅读':'5 min read');
+  setText('art1-free-tag', lang==='zh'?'本月免费':'Free this month');
+  setText('art2-title', lang==='zh'?'肿瘤微环境重塑：药物递送新靶点':'Tumour microenvironment remodelling: new targets for drug delivery');
+  setText('art2-desc', lang==='zh'?'间质密度和IFP梯度如何在物理上阻挡化疗——以及克服这些障碍的新兴策略。':'How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.');
+  setText('art2-read', lang==='zh'?'7分钟阅读':'7 min read');
+  setText('art2-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
+  setText('art3-title', lang==='zh'?'液体活检早期检测：2025年临床进展':'Liquid biopsies in early detection: 2025 clinical update');
+  setText('art3-desc', lang==='zh'?'ctDNA和CancerSEEK在临床试验中的现状，以及最新敏感性/特异性数据的真实含义。':'ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.');
+  setText('art3-read', lang==='zh'?'6分钟阅读':'6 min read');
+  setText('art3-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
+  setText('art4-title', lang==='zh'?'CAR-T疗法攻克实体瘤：突破间质屏障':'CAR-T in solid tumours: breaking through the stromal barrier');
+  setText('art4-desc', lang==='zh'?'为什么CAR-T在血液癌中效果显著，却在实体瘤中举步维艰——以及正在改变这一局面的三种工程方案。':'Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.');
+  setText('art4-read', lang==='zh'?'8分钟阅读':'8 min read');
+  setText('art4-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
+  setText('journal-sources-title', lang==='zh'?'来源期刊':'Source journals');
 
   // Real stories headings
   document.querySelectorAll('.real-stories-h2').forEach(el=>el.textContent=lang==='zh'?'真实故事':'Real stories');
