@@ -357,8 +357,25 @@
     tr:hover td{background:rgba(77,158,255,.03);color:var(--text);}
 
     /* FOOTER */
-    footer{border-top:1px solid var(--border);padding:1rem 1.5rem;font-size:.72rem;color:var(--text3);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
-    .footer-logo{font-family:var(--mono);color:var(--text2);}
+    footer{background:linear-gradient(135deg,#1a0a0a 0%,#1f0f0f 50%,#0f1a1a 100%);border-top:2px solid rgba(255,107,107,.2);padding:2.5rem 1.5rem 1.5rem;color:rgba(255,255,255,.55);font-size:.78rem;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;max-width:900px;margin:0 auto 2rem;}
+    @media(max-width:680px){.footer-grid{grid-template-columns:1fr;gap:1.5rem;}}
+    .footer-brand .footer-logo{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:#fff;display:block;margin-bottom:.5rem;}
+    .footer-brand .footer-logo .pde{color:var(--coral);}
+    .footer-brand .footer-logo .pub{color:var(--teal);}
+    .footer-tagline{font-size:.75rem;color:rgba(255,255,255,.45);line-height:1.6;margin-bottom:1rem;}
+    .footer-social{display:flex;gap:10px;margin-top:.25rem;}
+    .footer-social a{width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.55);transition:all .2s;text-decoration:none;}
+    .footer-social a:hover{background:var(--coral);border-color:var(--coral);color:#fff;transform:translateY(-2px);}
+    .footer-col h4{font-size:.72rem;font-family:var(--mono);text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.35);margin-bottom:.875rem;}
+    .footer-col a{display:block;color:rgba(255,255,255,.55);text-decoration:none;margin-bottom:.5rem;font-size:.78rem;transition:color .2s;}
+    .footer-col a:hover{color:var(--teal);}
+    .footer-col a .footer-arrow{font-size:.65rem;margin-left:3px;opacity:.6;}
+    .footer-bottom{max-width:900px;margin:0 auto;padding-top:1.25rem;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;}
+    .footer-copy-text{font-size:.7rem;color:rgba(255,255,255,.3);}
+    .footer-license{font-size:.68rem;color:rgba(255,255,255,.25);}
+    .footer-license a{color:rgba(255,255,255,.35);text-decoration:none;}
+    .footer-license a:hover{color:var(--teal);}
 
     /* =====================================================
        QUIZ STYLES
@@ -1765,11 +1782,52 @@
   </main>
 
   <footer>
-    <span class="footer-logo">PDEOutreach</span>
-    <span id="footer-copy">Cancer science for everyone — educational use only, not medical advice</span>
-    <div style="display:flex;gap:12px;">
-      <a href="https://pdeoncology.com" target="_blank" style="color:var(--text3);">PDEOncology ↗</a>
-      <a href="https://github.com/SYM19/tumor-drug-penetration-model" target="_blank" style="color:var(--text3);">GitHub ↗</a>
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand -->
+      <div class="footer-brand">
+        <span class="footer-logo"><span class="pde">PDE</span><span class="pub">Outreach</span></span>
+        <p class="footer-tagline" id="footer-tagline">Cancer science for everyone.<br>Made by students, for the world.</p>
+        <div class="footer-social">
+          <a href="https://xhslink.com/m/1Y1wTEVOtGd" target="_blank" title="小红书" aria-label="小红书">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+          </a>
+          <a href="https://b23.tv/t6dCsI2" target="_blank" title="Bilibili" aria-label="B站">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L8.12 3.747c.027.027.040.053.067.08h7.547c.027-.027.040-.053.067-.08l1.307-1.227c.267-.249.573-.373.92-.373.347 0 .662.124.92.373.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/pdeoncology" target="_blank" title="Instagram" aria-label="Instagram">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Col 2: Links -->
+      <div class="footer-col">
+        <h4 id="footer-links-title">Links</h4>
+        <a href="https://pdeoncology.com" target="_blank" id="footer-link-oncology">PDEOncology <span class="footer-arrow">↗</span></a>
+        <a href="https://github.com/SYM19/PDEOutreach" target="_blank" id="footer-link-github">GitHub <span class="footer-arrow">↗</span></a>
+        <a href="https://github.com/SYM19/tumor-drug-penetration-model" target="_blank" id="footer-link-oncgit">PDEOncology GitHub <span class="footer-arrow">↗</span></a>
+        <a href="#" onclick="openDonateModal('all');return false;" id="footer-link-donate">❤ Donate</a>
+      </div>
+
+      <!-- Col 3: Contact -->
+      <div class="footer-col">
+        <h4 id="footer-contact-title">Contact</h4>
+        <a href="mailto:outreach@pdeo.org" id="footer-email-outreach">outreach@pdeo.org</a>
+        <a href="mailto:research@pdeo.org" id="footer-email-research">research@pdeo.org</a>
+        <a href="#" onclick="switchTab('journal');openJournalSignup('free');return false;" id="footer-submit-link">
+          ✏ Submit an article <span class="footer-arrow">→</span>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- Bottom bar -->
+    <div class="footer-bottom">
+      <span class="footer-copy-text" id="footer-copy">© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice</span>
+      <span class="footer-license">
+        <a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" id="footer-license-link">CC BY-NC 4.0</a>
+      </span>
     </div>
   </footer>
 </div>
@@ -2153,15 +2211,15 @@ const DRUG1P={
   trastuzumab:{breast:{D:.01,lam:.001,k:.12,r:22},pancreatic:{D:.005,lam:.002,k:.08,r:28},glioma:{D:.008,lam:.001,k:.10,r:20}},
 };
 const DRUG1I={
-  cisplatin_breast:{en:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs. Coverage is not complete — the outer rim receives far more drug than the core.',zh:'顺铂是一种小分子铂类药物，渗透性最强之一。即便如此覆盖也不完全——外缘接受的药物远多于核心。'},
-  cisplatin_pancreatic:{en:'Even the best-penetrating drug struggles here. Dense stroma reduces D by ~75%, explaining the ~12% 5-year survival rate.',zh:'即使渗透性最强的药物在这里也举步维艰。致密基质使 D 降低约 75%，这解释了约 12% 的 5 年生存率。'},
-  cisplatin_glioma:{en:'Good penetration in brain tissue, but the blood-brain barrier (not modelled) adds another restriction in real patients.',zh:'在脑组织中渗透性良好，但血脑屏障（本模型未包含）在真实患者中增加了额外限制。'},
+  cisplatin_breast:{en:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs. Coverage is not complete — the outer rim receives far more drug than the core.',zh:'顺铂是一种小分子铂类药物，渗透性最强之一。即便如此，覆盖仍不完全——外缘的药物浓度远高于肿瘤核心。'},
+  cisplatin_pancreatic:{en:'Even the best-penetrating drug struggles here. Dense stroma reduces D by ~75%, explaining the ~12% 5-year survival rate.',zh:'哪怕渗透性最强的药物，在胰腺癌面前也无能为力。致密的基质让扩散系数 D 下降约 75%，这正是胰腺癌 5 年生存率仅约 12% 的物理原因。'},
+  cisplatin_glioma:{en:'Good penetration in brain tissue, but the blood-brain barrier (not modelled) adds another restriction in real patients.',zh:'脑组织内渗透尚可，但真实患者还面临血脑屏障的阻拦——这部分本模型暂未纳入。'},
   doxorubicin_breast:{en:'A widely used breast cancer drug. Moderate penetration covers the tumor outer portion well, but combination regimens are typically needed.',zh:'一种广泛使用的乳腺癌药物。中等渗透性使肿瘤外部覆盖较好，但通常需要联合方案。'},
-  doxorubicin_pancreatic:{en:'Pancreatic cancer physical barriers are visible here — only the very edge receives meaningful drug concentration.',zh:'胰腺癌的物理屏障在这里清晰可见——只有最外缘才能获得有意义的药物浓度。'},
-  doxorubicin_glioma:{en:'Moderate penetration, but the blood-brain barrier significantly limits delivery beyond what this model shows.',zh:'中等渗透性，但血脑屏障在真实患者中的限制远超本模型所展示的。'},
+  doxorubicin_pancreatic:{en:'Pancreatic cancer physical barriers are visible here — only the very edge receives meaningful drug concentration.',zh:'胰腺癌的物理屏障在这里一目了然——药物几乎只能停留在肿瘤最外层。'},
+  doxorubicin_glioma:{en:'Moderate penetration, but the blood-brain barrier significantly limits delivery beyond what this model shows.',zh:'渗透性居中，但现实中血脑屏障的阻碍远比模型显示的严峻。'},
   trastuzumab_breast:{en:'Large antibody molecules are slow diffusers — D is 12× lower than small molecules. But for HER2+ patients, high k makes it highly effective.',zh:'大分子抗体扩散慢，D 比小分子低 12 倍。但对 HER2+ 患者，高摄取率使其非常有效。'},
-  trastuzumab_pancreatic:{en:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',zh:'大分子 + 致密基质 = 近乎零渗透。这就是为什么抗体疗法不用于胰腺癌。'},
-  trastuzumab_glioma:{en:'Lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies are needed.',zh:'所有模拟药物中 D 值最低，加上血脑屏障。需要特殊的药物传递策略。'},
+  trastuzumab_pancreatic:{en:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',zh:'大分子 + 致密基质 = 近乎零渗透。这也是抗体疗法在胰腺癌中基本无效的原因。'},
+  trastuzumab_glioma:{en:'Lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies are needed.',zh:'所有模拟药物里扩散系数最低，再叠加血脑屏障，几乎完全无法到达肿瘤——临床上需要特殊给药方式。'},
 };
 async function runDrug1(){
   const drug=document.getElementById('drug1-select').value;
@@ -2330,10 +2388,10 @@ function updateLifestyle(){
   document.getElementById('ls-risk').textContent=currentLang==='zh'?riskLabelZh:risk;
   document.getElementById('ls-risk').style.color=riskColor;
   const insights=currentLang==='zh'?{
-    baseline:'你的生活方式画像提示肿瘤微环境接近基准水平。可调节因素对药物扩散的影响不大。',
-    elevated:'部分生活方式因素开始影响组织微环境。改善饮食、睡眠或减少压力，有助于保持药物渗透效率。',
-    high:'多个因素正在显著削弱潜在的药物传递能力。慢性炎症、睡眠不足和高压力引起的高IFP将大幅降低化疗效果。',
-    'very high':'严重的生活方式驱动的微环境改变。估计药物渗透率比基准低50%以上。这些是重要但大多可改变的风险因素。',
+    baseline:'你目前的生活方式对肿瘤微环境影响不大，药物扩散接近正常水平。继续保持！',
+    elevated:'有些生活习惯已经开始影响组织环境了。改善饮食、睡好觉、少一点压力，都能帮助药物更好地发挥作用。',
+    high:'多个因素正在明显削弱药物的传递效率。长期炎症、睡眠不足、高压力会升高肿瘤间质液压，让化疗大打折扣。',
+    'very high':'生活方式造成的微环境变化已经比较严重了——估计药物渗透率比正常低50%以上。好消息是，这些因素大多是可以改变的。',
   }:currentLang==='de'?{
     baseline:'Dein Lebensstilprofil deutet auf ein nahezu normales Tumormikromilieu hin. Modifizierbare Faktoren beeinflussen die Medikamentendiffusion kaum.',
     elevated:'Einige Lebensstilfaktoren beginnen das Gewebsmikromilieu zu beeinflussen. Bessere Ernährung, mehr Schlaf oder weniger Stress helfen, die Medikamentenpenetration zu erhalten.',
@@ -2531,7 +2589,7 @@ const TRANSLATIONS={
   // HOME
   'home-title':       {en:'<span class="pde">PDE</span><span class="pub">Outreach</span>',zh:'<span class="pde">PDE</span><span class="pub">Outreach</span>'},
   'home-sub':         {en:'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.',
-                       zh:'癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。'},
+                       zh:'癌症科学，不该只属于医生。我们把 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究做成了交互体验——不需要公式，不需要教科书，真正看得懂。'},
   'home-quiz-title':  {en:'Quick — what do you think?',zh:'先来猜一猜——'},
   'home-q':           {en:'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?',
                        zh:'一种强效化疗药物进入血液并到达肿瘤。它通常能杀死多少比例的癌细胞？'},
@@ -2545,27 +2603,27 @@ const TRANSLATIONS={
   // DRUG TAB
   'drug-title':       {en:'Why <span class="accent">Drugs Fail</span>',zh:'为什么<span class="accent">药物失效</span>'},
   'drug-sub':         {en:'The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.',
-                       zh:'化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。'},
+                       zh:'化疗失败，最常见的原因不是耐药——而是一个物理问题：药物压根儿到不了它该去的地方。'},
   'drug-run-btn':     {en:'▶ Run simulation',zh:'▶ 运行模拟'},
   'drug-reset-btn':   {en:'Reset',zh:'重置'},
 
   // EARLY TAB
   'early-title':      {en:'Early <span class="accent">Detection</span>',zh:'<span class="accent">早期</span>发现'},
   'early-sub':        {en:'You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.',
-                       zh:'你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。'},
+                       zh:'你一定听过"早发现早治疗"。但具体早多少、有多关键？先来看一道题。'},
   'early-run-btn':    {en:'▶ Simulate this size',zh:'▶ 模拟当前大小'},
 
   // LIFESTYLE TAB
   'ls-title':         {en:'Lifestyle <span class="accent">&amp; Risk</span>',zh:'生活方式<span class="accent">与风险</span>'},
   'ls-sub':           {en:'Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below.',
-                       zh:'你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗的效果好不好。填写下方的信息，生成你的专属画像。'},
+                       zh:'生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。'},
   'ls-gen-btn':       {en:'Generate my profile →',zh:'生成我的画像 →'},
   'ls-reset-btn':     {en:'Reset',zh:'重置'},
 
   // PRECISION TAB
   'prec-title':       {en:'Precision <span class="accent">Medicine</span>',zh:'<span class="accent">精准</span>医疗'},
   'prec-sub':         {en:'Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology.',
-                       zh:'两个患者。同一种癌症。同一种药物。一个有效，一个无效。这不是运气问题，这是生物学。'},
+                       zh:'同样的癌症，同样的药，一个有效，一个完全没用。不是运气，是基因。'},
   'prec-run-btn':     {en:'▶ Run comparison',zh:'▶ 运行对比'},
 
   // STORY PLACEHOLDERS
@@ -2573,11 +2631,11 @@ const TRANSLATIONS={
   'story-ph-drug':    {en:'We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.',
                        zh:'我们正在收集真实患者故事，以说明药物物理屏障如何影响治疗结果。'},
   'story-ph-early':   {en:'A story about how early (or late) detection changed a patient\'s treatment journey.',
-                       zh:'一个关于早期（或晚期）发现如何改变患者治疗之路的故事。'},
+                       zh:'早发现和晚发现，治疗之路可以完全不同。患者故事即将上线，敬请期待。'},
   'story-ph-ls':      {en:'A story about how lifestyle changes affected a patient\'s treatment response.',
-                       zh:'一个关于生活方式改变如何影响患者治疗反应的故事。'},
+                       zh:'一个人的生活习惯，真的会影响化疗效果吗？患者故事即将上线。'},
   'story-ph-prec':    {en:'A story about how genetic testing changed a patient\'s treatment plan — and outcome.',
-                       zh:'一个关于基因检测如何改变患者治疗方案和预后的故事。'},
+                       zh:'一次基因检测，可能彻底改变治疗方案。患者故事即将上线。'},
 
   // FOOTER
   'footer-copy':      {en:'Cancer science for everyone — educational use only, not medical advice',
@@ -2631,7 +2689,7 @@ function applyLang(lang){
   // HOME tab
   setHtml('home-sub',t(
     'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.',
-    '癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。',
+    '癌症科学，不该只属于医生。我们把 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究做成了交互体验——不需要公式，不需要教科书，真正看得懂。',
     'Krebswissenschaft für alle. Wir verwandeln die Forschung hinter <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> in interaktive Erlebnisse — keine Gleichungen, keine Lehrbücher.'
   ));
   setHtml('home-title',lang==='zh'?'<span class="pde">PDE</span><span class="pub">Outreach</span>':'<span class="pde">PDE</span><span class="pub">Outreach</span>');
@@ -2649,7 +2707,7 @@ function applyLang(lang){
   setText('home-quiz-title',t('Quick — what do you think?','先来猜一猜——','Schnell — was denkst du?'));
   setHtml('home-quiz-q',t(
     'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?<div class="quiz-sub">No googling. Go with your gut.</div>',
-    '一种强效化疗药物进入血液并到达肿瘤。它通常能消灭多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>',
+    '一种效果很好的化疗药物进入血液，到达肿瘤。通常能杀死多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>',
     'Ein starkes Chemotherapeutikum gelangt in den Blutkreislauf und erreicht den Tumor. Wie viele Krebszellen tötet es typischerweise ab?<div class="quiz-sub">Nicht googeln. Vertrau deinem Bauchgefühl.</div>'
   ));
 
@@ -2691,7 +2749,7 @@ function applyLang(lang){
 
   // WHY DRUGS FAIL tab
   setText('drug-title-h1',t('Why Drugs Fail','为什么药物失效','Warum Medikamente versagen'));
-  setText('drug-sub',t('The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.','化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。','Der häufigste Grund für das Versagen einer Chemotherapie ist kein Widerstand — es ist ein physisches Problem. Das Medikament erreicht die Zellen, die es abtöten muss, einfach nicht.'));
+  setText('drug-sub',t('The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.','化疗失败，最常见的原因不是耐药——而是一个物理问题：药物压根儿到不了它该去的地方。','Der häufigste Grund für das Versagen einer Chemotherapie ist kein Widerstand — es ist ein physisches Problem. Das Medikament erreicht die Zellen, die es abtöten muss, einfach nicht.'));
   setText('drug-quiz-title',t('Before we explain — what\'s your guess?','先来猜一猜——','Bevor wir erklären — was ist deine Vermutung?'));
   setHtml('drug-quiz-q',t(
     'Pancreatic cancer has one of the lowest survival rates of any cancer. What is the main reason chemotherapy is so ineffective?',
@@ -2700,13 +2758,13 @@ function applyLang(lang){
   ));
   const drugOpts=document.querySelectorAll('#drug-quiz-opts .quiz-option');
   const drugOptsTxt=lang==='zh'
-    ?['癌细胞变异太快，产生耐药性','药物毒性太强，只能低剂量使用','肿瘤内的物理屏障阻止了药物到达癌细胞','胰腺在药物发挥作用前将其降解']
+    ?['癌细胞变异太快，很快耐药了','药物毒性太大，剂量不敢加','肿瘤内部有物理屏障，药物根本进不去','胰腺把药物降解了，还没来得及起效']
     :lang==='de'
     ?['Krebszellen mutieren zu schnell und werden resistent','Die Medikamente sind toxisch und müssen niedrig dosiert werden','Physische Barrieren im Tumor verhindern, dass Medikamente Krebszellen erreichen','Die Bauchspeicheldrüse baut Medikamente ab, bevor sie wirken können']
     :['Cancer cells mutate too fast and become drug-resistant','The drugs are toxic and have to be given at low doses','Physical barriers in the tumor prevent drugs from reaching cancer cells','The pancreas breaks down drugs before they can work'];
   drugOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+drugOptsTxt[i];});
   setText('drug-explainer-title',t('What\'s really happening inside','肿瘤内部到底发生了什么','Was wirklich im Inneren passiert'));
-  setText('drug-wall-title',t('The tumor builds walls','肿瘤建起了屏障','Der Tumor baut Mauern'));
+  setText('drug-wall-title',t('The tumor builds walls','肿瘤主动制造了屏障','Der Tumor baut Mauern'));
   setText('drug-math-title',t('We can measure this','我们可以量化这个过程','Wir können das messen'));
   setText('drug-sim-title',t('See it for yourself','亲眼看看','Selbst nachsehen'));
   setText('drug-sim-p',t('Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.','选择药物和肿瘤类型，运行模拟，看看药物究竟能渗透多远。','Wähle ein Medikament und einen Tumor. Starte die Simulation. Beobachte, wie weit das Medikament wirklich gelangt.'));
@@ -2753,7 +2811,7 @@ function applyLang(lang){
 
   // EARLY DETECTION tab
   setText('early-title-h1',t('Early Detection','早期发现','Früherkennung'));
-  setText('early-sub',t('You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.','你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。','Du hast gehört: „Früh erkennen." Aber weißt du, was das physisch bedeutet? Erst — eine Frage.'));
+  setText('early-sub',t('You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.','你一定听过"早发现早治疗"。但具体早多少、有多关键？先来看一道题。','Du hast gehört: „Früh erkennen." Aber weißt du, was das physisch bedeutet? Erst — eine Frage.'));
   setText('early-quiz-title',t('Test your intuition','测试你的直觉——','Teste deine Intuition'));
   setHtml('early-quiz-q',lang==='zh'
     ?'肿瘤从一期长到三期，大小翻倍。药物覆盖率（化疗能到达的肿瘤比例）会如何变化？'
@@ -2773,11 +2831,11 @@ function applyLang(lang){
   setText('early-r-label',lang==='zh'?'肿瘤半径':'Tumor radius');
   setText('early-screen-title',lang==='zh'?'你应该什么时候筛查？':'When should you screen?');
   setText('early-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
-  setText('early-story-ph-p',lang==='zh'?'一个关于早期（或晚期）发现如何改变患者治疗之路的故事。':'A story about how early (or late) detection changed a patient\'s treatment journey.');
+  setText('early-story-ph-p',lang==='zh'?'早发现和晚发现，治疗之路可以完全不同。患者故事即将上线，敬请期待。':'A story about how early (or late) detection changed a patient\'s treatment journey.');
 
   // LIFESTYLE tab
   setText('ls-title-h1',t('Lifestyle & Risk','生活方式与风险','Lebensstil & Risiko'));
-  setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗效果好不好。填写下方信息，生成你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko — er beeinflusst auch, wie gut die Behandlung wirkt. Fülle das Profil aus, um dein persönliches Ergebnis zu sehen.'));
+  setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko — er beeinflusst auch, wie gut die Behandlung wirkt. Fülle das Profil aus, um dein persönliches Ergebnis zu sehen.'));
   setText('ls-profile-title',t('Build your microenvironment profile','建立你的微环境画像','Erstelle dein Mikromilieu-Profil'));
   setText('ls-profile-p',t('Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.','调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。','Passe die Schieberegler an deinen Lebensstil an. Wir zeigen, wie jeder Faktor die Medikamentenpenetration beeinflusst.'));
   setText('ls-smoking-label',t('Smoking (pack-years)','吸烟（包年）','Rauchen (Packungsjahre)'));
@@ -2807,15 +2865,15 @@ function applyLang(lang){
 
   // Drug FAQ accordion
   setText('drug-faq-title',lang==='zh'?'常见问题解答':'Frequently asked questions');
-  setText('drug-faq-q1',lang==='zh'?'如果药物无法渗透肿瘤，化疗为何仍然有效？':'If drugs can\'t penetrate tumors, why does chemotherapy still work at all?');
+  setText('drug-faq-q1',lang==='zh'?'药物都渗透不进去，化疗怎么还有效果？':'If drugs can\'t penetrate tumors, why does chemotherapy still work at all?');
   setText('drug-faq-a1',lang==='zh'?'化疗通过杀死快速分裂的细胞发挥作用——它确实能有效到达肿瘤的外层。问题在于核心部位。在小的早期肿瘤中，外层与内层细胞的比例更有利，影响较小。但在大的致密肿瘤中，无法到达的核心成为存活癌细胞的"储藏库"，可能引发复发。这也是为什么同一种药物在不同分期效果差异巨大。':'Chemotherapy works by killing rapidly dividing cells — and it does reach the outer layers of a tumor effectively. The problem is the core. In small, early-stage tumors this matters less because the ratio of outer-to-inner cells is more favorable. In large, dense tumors, the unreachable core becomes a reservoir of surviving cancer cells that can seed recurrence.');
-  setText('drug-faq-q2',lang==='zh'?'什么是间质液压（IFP），为什么重要？':'What is IFP and why does it matter?');
+  setText('drug-faq-q2',lang==='zh'?'间质液压（IFP）是什么，跟治疗有什么关系？':'What is IFP and why does it matter?');
   setText('drug-faq-a2',lang==='zh'?'间质液压（IFP）是肿瘤组织内液体的压力。正常组织的IFP接近零，而肿瘤由于血管渗漏和淋巴管受压，会产生异常高的IFP——有时比正常高10-30 mmHg。这种向外的压力会将药物从肿瘤中心推开，就像往一个已经加压的气球里注水一样。':'Interstitial Fluid Pressure (IFP) is the pressure of fluid within tumor tissue. Normal tissues have near-zero IFP. Tumors generate abnormally high IFP — sometimes 10–30 mmHg above normal — due to leaky blood vessels and compressed lymphatics. This outward pressure physically pushes drugs away from the tumor center, like trying to inject water into a balloon that\'s already pressurized.');
-  setText('drug-faq-q3',lang==='zh'?'肿瘤类型真的会影响药物渗透效果吗？':'Does tumor type really change how well drugs penetrate?');
+  setText('drug-faq-q3',lang==='zh'?'不同癌症，药物渗透差别真的那么大？':'Does tumor type really change how well drugs penetrate?');
   setText('drug-faq-a3',lang==='zh'?'影响显著。胰腺癌被致密的间质基质包围，可使药物扩散系数比乳腺癌降低75%。脑胶质瘤面临另一挑战：血脑屏障完全阻止大分子进入。这就是为什么即使癌细胞对药物同样敏感，在一种癌症中有效的药物在另一种中几乎无效。':'Dramatically. Pancreatic cancer is surrounded by dense stromal matrix that can reduce drug diffusion by up to 75% compared to breast cancer. Gliomas face a different challenge: the blood-brain barrier restricts large molecules entirely. This is why a drug that works in one cancer may be nearly useless in another — even if the cancer cells are equally sensitive to it.');
-  setText('drug-faq-q4',lang==='zh'?'有没有专门设计来克服这些屏障的药物？':'Are there drugs designed to overcome these barriers?');
+  setText('drug-faq-q4',lang==='zh'?'有没有能突破这些屏障的药？':'Are there drugs designed to overcome these barriers?');
   setText('drug-faq-a4',lang==='zh'?'有——这是一个活跃的研究领域。方法包括：利用EPR效应的纳米颗粒载体；分解胶原基质的间质清除剂（如透明质酸酶+吉西他滨用于胰腺癌）；使用抗VEGF药物使肿瘤血管正常化并降低IFP；以及临时打开屏障的超声介导给药。':'Yes — this is an active research area. Approaches include: nanoparticle carriers exploiting the EPR effect; stromal-depleting agents that break down the collagen matrix; anti-VEGF agents that normalise tumor vasculature and reduce IFP; and ultrasound-mediated delivery that temporarily opens barriers.');
-  setText('drug-faq-q5',lang==='zh'?'耐药性与药物渗透失败有什么区别？':'What\'s the difference between drug resistance and drug penetration failure?');
+  setText('drug-faq-q5',lang==='zh'?'"耐药"和"药物进不去"，是一回事吗？':'What\'s the difference between drug resistance and drug penetration failure?');
   setText('drug-faq-a5',lang==='zh'?'耐药性是生物现象——癌细胞进化出中和药物的突变。渗透失败是物理现象——药物从未到达这些细胞。临床上两者结果相同（治疗失败），但机制完全不同。渗透失败常被低估，因为它不会在细胞培养实验中出现——需要3D肿瘤模型或体内研究才能观察到。':'Drug resistance is biological — cancer cells evolve mutations that neutralise the drug. Penetration failure is physical — the drug never reaches those cells. Clinically the outcomes look identical (treatment failure), but the mechanisms are completely different. Penetration failure is often underappreciated because it doesn\'t appear in cell culture experiments — you need 3D tumor models or in vivo studies to see it.');
 
   // Precision treatment comparison
@@ -2837,7 +2895,7 @@ function applyLang(lang){
   setText('ls-prev2-title',t('Healthy weight','保持健康体重','Gesundes Gewicht'));
   setText('ls-prev3-title',t('Exercise regularly','规律运动','Regelmäßig Sport'));
   setText('ls-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
-  setText('ls-story-ph-p',lang==='zh'?'一个关于生活方式改变如何影响患者治疗反应的故事。':'A story about how lifestyle changes affected a patient\'s treatment response.');
+  setText('ls-story-ph-p',lang==='zh'?'一个人的生活习惯，真的会影响化疗效果吗？患者故事即将上线。':'A story about how lifestyle changes affected a patient\'s treatment response.');
 
   // PRECISION tab
   setText('prec-title-h1',t('Precision Medicine','精准医疗','Präzisionsmedizin'));
@@ -2850,7 +2908,7 @@ function applyLang(lang){
   ));
   const precOpts=document.querySelectorAll('#prec-quiz-opts .quiz-option');
   const precOptsTxt=lang==='zh'
-    ?['所有乳腺癌患者——这是通用治疗方案','仅限 HER2 蛋白过表达的患者（约 20% 的病例）','仅限年轻患者——该药物与年龄有关','仅限已经接受过化疗的患者']
+    ?['所有乳腺癌患者——这是标准用药','只对 HER2 阳性的患者有效（约占乳腺癌的 20%）','只对年轻患者有效——这个药和年龄有关','只对做过化疗的患者有效']
     :lang==='de'
     ?['Alle Brustkrebspatientinnen — es ist eine allgemeine Behandlung','Nur Patientinnen, deren Tumoren HER2 überexprimieren (~20% der Fälle)','Nur jüngere Patientinnen — das Medikament ist altersabhängig','Nur Patientinnen, die bereits eine Chemotherapie hatten']
     :['All breast cancer patients — it\'s a general treatment','Only patients whose tumors overexpress the HER2 protein (~20% of cases)','Only younger patients — the drug is age-dependent','Only patients who have already had chemotherapy'];
@@ -2863,7 +2921,7 @@ function applyLang(lang){
   setText('prec-ask-2',lang==='zh'?'针对我的特定突变，是否有靶向治疗方案？':'Is there a targeted therapy available for my specific mutation?');
   setText('prec-ask-3',lang==='zh'?'基因检测会改变我的治疗计划吗？':'Would genetic testing change my treatment plan?');
   setText('prec-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
-  setText('prec-story-ph-p',lang==='zh'?'一个关于基因检测如何改变患者治疗方案和预后的故事。':'A story about how genetic testing changed a patient\'s treatment plan — and outcome.');
+  setText('prec-story-ph-p',lang==='zh'?'一次基因检测，可能彻底改变治疗方案。患者故事即将上线。':'A story about how genetic testing changed a patient\'s treatment plan — and outcome.');
 
   // precision scenario options
   const precScenMap={
@@ -2885,7 +2943,18 @@ function applyLang(lang){
 
   // footer
   const fc=document.getElementById('footer-copy');
-  if(fc)fc.textContent=t('Cancer science for everyone — educational use only, not medical advice','癌症科学，人人可懂——仅供教育使用，非医疗建议','Krebswissenschaft für alle — nur zur Bildung, kein medizinischer Rat');
+  if(fc)fc.textContent=t('© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2025 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2025 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
+  setText('footer-tagline', t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
+  setText('footer-links-title', t('Links','链接','Links'));
+  setText('footer-contact-title', t('Contact','联系我们','Kontakt'));
+  setText('footer-link-oncology', 'PDEOncology ↗');
+  setText('footer-link-github', 'GitHub ↗');
+  setText('footer-link-oncgit', 'PDEOncology GitHub ↗');
+  setText('footer-link-donate', t('❤ Donate','❤ 捐款','❤ Spenden'));
+  setText('footer-email-outreach', 'outreach@pdeo.org');
+  setText('footer-email-research', 'research@pdeo.org');
+  setText('footer-submit-link', t('✏ Submit an article →','✏ 投稿 →','✏ Artikel einreichen →'));
+  setText('footer-license-link', 'CC BY-NC 4.0');
 
   // screening table
   setText('screen-th1', t('Cancer','癌症类型','Krebsart'));
