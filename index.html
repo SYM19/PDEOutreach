@@ -416,8 +416,11 @@
     .story-placeholder-title{font-size:.9rem;font-weight:600;color:var(--text3);margin-bottom:.5rem;font-family:var(--mono);}
     .story-placeholder-text{font-size:.82rem;color:var(--text3);line-height:1.6;}
 
-    .lang-btn{font-family:var(--mono);font-size:.72rem;padding:4px 12px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;white-space:nowrap;}
-    .lang-btn:hover{border-color:var(--teal);color:var(--teal);}
+    .lang-select-wrap{position:relative;display:flex;align-items:center;}
+    .lang-select{font-family:var(--mono);font-size:.72rem;padding:4px 26px 4px 10px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;appearance:none;-webkit-appearance:none;transition:all .2s;white-space:nowrap;outline:none;}
+    .lang-select:hover,.lang-select:focus{border-color:var(--teal);color:var(--teal);}
+    .lang-select option{background:var(--bg1);color:var(--text);}
+    .lang-select-arrow{position:absolute;right:9px;pointer-events:none;font-size:.6rem;color:var(--text3);}
     .donate-btn{font-family:var(--sans);font-size:.75rem;font-weight:600;padding:5px 14px;border-radius:20px;background:var(--coral);border:1px solid var(--coral);color:#fff;cursor:pointer;text-decoration:none;transition:filter .2s,background .2s;white-space:nowrap;}
     .donate-btn:hover{filter:brightness(.95);}
 
@@ -664,7 +667,14 @@
       <div class="header-right">
         <a class="donate-btn" href="#" onclick="scrollToDonate();return false;" id="donate-header-btn">❤ Donate</a>
         <a class="pde-link" href="https://pdeoncology.com" target="_blank">PDEOncology ↗</a>
-        <button class="lang-btn" id="lang-btn" onclick="toggleLang()">切换中文</button>
+        <div class="lang-select-wrap">
+          <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
+            <option value="en">EN</option>
+            <option value="zh">中文</option>
+            <option value="de">DE</option>
+          </select>
+          <span class="lang-select-arrow">▾</span>
+        </div>
         <div class="status-dot"></div>
         <span class="v-badge">v0.1</span>
       </div>
@@ -2468,7 +2478,7 @@ const TRANSLATIONS={
   'nav-precision':    {en:'Precision Medicine',zh:'精准医疗'},
 
   // LANG BUTTON (shows opposite language)
-  'lang-btn':         {en:'切换中文',        zh:'Switch to English'},
+  'donate-header-btn': {en:'❤ Donate', zh:'❤ 捐款'},
 
   // DONATE
   'donate-header-btn':{en:'❤ Donate',       zh:'❤ 捐款'},
@@ -2538,7 +2548,8 @@ const TRANSLATIONS={
 function applyLang(lang){
   currentLang=lang;
   document.documentElement.lang=lang==='zh'?'zh-CN':'en';
-  document.getElementById('lang-btn').textContent=lang==='en'?'切换中文':'Switch to English';
+  const sel=document.getElementById('lang-select');
+  if(sel && sel.value!==lang) sel.value=lang;
 
   // nav
   const navMap={home:{en:'Home',zh:'首页'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效'},early:{en:'Early Detection',zh:'早期发现'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险'},precision:{en:'Precision Medicine',zh:'精准医疗'},journal:{en:'📖 Journal',zh:'📖 期刊'}};
@@ -2899,16 +2910,34 @@ function applyLang(lang){
 function setText(id,txt){const el=document.getElementById(id);if(el)el.textContent=txt;}
 function setHtml(id,html){const el=document.getElementById(id);if(el)el.innerHTML=html;}
 
-function toggleLang(){
-  const next = currentLang === 'en' ? 'zh' : 'en';
-  applyLang(next);
-  // update URL so shared links open in correct language
-  // (may fail in sandboxed iframes — safe to ignore)
+function setLang(lang){
+  if(lang==='de'){
+    // German: show EN content with DE badge for now (full DE translation TBD)
+    applyLang('en');
+    const sel=document.getElementById('lang-select');
+    if(sel)sel.value='de';
+    // Show a small notice
+    const existing=document.getElementById('de-notice');
+    if(!existing){
+      const notice=document.createElement('div');
+      notice.id='de-notice';
+      notice.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:.6rem 1.25rem;font-size:.78rem;color:var(--text2);z-index:9998;font-family:var(--mono);white-space:nowrap;';
+      notice.textContent='🇩🇪 Deutsche Übersetzung kommt bald — showing English';
+      document.body.appendChild(notice);
+      setTimeout(()=>notice.remove(),3500);
+    }
+    return;
+  }
+  applyLang(lang);
   try {
-    const url = new URL(window.location.href);
-    url.searchParams.set('lang', next);
-    window.history.replaceState({}, '', url);
-  } catch(e) { /* sandboxed environment — skip URL update */ }
+    const url=new URL(window.location.href);
+    url.searchParams.set('lang',lang);
+    window.history.replaceState({},'' ,url);
+  } catch(e){}
+}
+function toggleLang(){
+  const next=currentLang==='en'?'zh':'en';
+  setLang(next);
 }
 
 function scrollToDonate(){
