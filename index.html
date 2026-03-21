@@ -601,6 +601,42 @@
     .share-bar { padding: 1rem; gap: 0.75rem; }
     .share-btn { width: 36px; height: 36px; }
   }
+  /* ── ACCORDION ── */
+  .accordion{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:.5rem;}
+  .accordion-header{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;cursor:pointer;background:var(--bg1);transition:background .2s;user-select:none;gap:1rem;}
+  .accordion-header:hover{background:var(--bg2);}
+  .accordion-header h3{margin:0;font-size:.9rem;font-weight:600;color:var(--text);}
+  .accordion-arrow{flex-shrink:0;width:20px;height:20px;border-radius:50%;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--text2);transition:transform .25s,background .2s;}
+  .accordion.open .accordion-arrow{transform:rotate(180deg);background:var(--teal);color:#fff;}
+  .accordion-body{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .25s;}
+  .accordion.open .accordion-body{max-height:2000px;}
+  .accordion-inner{padding:1rem 1.25rem 1.25rem;}
+  .accordion-inner p{font-size:.855rem;line-height:1.8;color:var(--text2);margin-bottom:.75rem;}
+  .accordion-inner p:last-child{margin-bottom:0;}
+  .accordion-inner ul{font-size:.855rem;line-height:2;color:var(--text2);padding-left:1.25rem;}
+
+  /* ── CANCER TYPE CARDS (Early Detection) ── */
+  .cancer-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+  @media(max-width:768px){.cancer-type-grid{grid-template-columns:repeat(2,1fr);}}
+  @media(max-width:480px){.cancer-type-grid{grid-template-columns:1fr;}}
+  .cancer-type-card{border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;cursor:pointer;transition:all .2s;background:var(--bg1);}
+  .cancer-type-card:hover{border-color:var(--teal);background:var(--bg2);}
+  .cancer-type-card.active{border-color:var(--teal);background:rgba(78,205,196,.08);box-shadow:0 0 14px rgba(78,205,196,.12);}
+  .cancer-type-card .ct-name{font-weight:700;font-size:.88rem;margin-bottom:3px;color:var(--text);}
+  .cancer-type-card .ct-if{font-size:.72rem;color:var(--text3);}
+  .cancer-detail-panel{display:none;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-top:.75rem;animation:fadein .2s ease;}
+  .cancer-detail-panel.visible{display:block;}
+
+  /* ── TREATMENT COMPARE (Precision) ── */
+  .tx-compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;}
+  @media(max-width:600px){.tx-compare-grid{grid-template-columns:1fr;}}
+  .tx-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;background:var(--bg1);}
+  .tx-card .tx-name{font-family:var(--mono);font-weight:700;font-size:.82rem;color:var(--teal);margin-bottom:.5rem;}
+  .tx-card .tx-desc{font-size:.82rem;color:var(--text2);line-height:1.7;margin-bottom:.75rem;}
+  .tx-badge{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:4px;border:1px solid;font-family:var(--mono);font-weight:700;margin-right:4px;margin-bottom:4px;}
+  .tx-badge.good{border-color:var(--green);color:var(--green);background:var(--green-dim);}
+  .tx-badge.ok{border-color:var(--amber);color:var(--amber);background:var(--amber-dim);}
+  .tx-badge.bad{border-color:var(--red);color:var(--red);background:rgba(240,91,91,.08);}
   </style>
 </head>
 <body>
@@ -892,6 +928,61 @@
         <p id="drug-takeaway-p">For pancreatic cancer, even the best-penetrating drugs cover less than 10% of the tumor volume at therapeutic concentrations. This is why pancreatic cancer has a 5-year survival rate of only ~12% — the biology makes it nearly impossible for current drugs to work. This is not a failure of chemistry. It's a failure of physics.</p>
       </div>
 
+      <!-- FAQ Accordion -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">❓</div><h2 style="margin:0;" id="drug-faq-title">Frequently asked questions</h2></div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="drug-faq-q1">If drugs can't penetrate tumors, why does chemotherapy still work at all?</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <p id="drug-faq-a1">Chemotherapy works by killing rapidly dividing cells — and it does reach the outer layers of a tumor effectively. The problem is the core. In small, early-stage tumors this matters less because the ratio of outer-to-inner cells is more favorable. In large, dense tumors, the unreachable core becomes a reservoir of surviving cancer cells that can seed recurrence.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="drug-faq-q2">What is IFP and why does it matter?</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <p id="drug-faq-a2">Interstitial Fluid Pressure (IFP) is the pressure of fluid within tumor tissue. Normal tissues have near-zero IFP. Tumors generate abnormally high IFP — sometimes 10–30 mmHg above normal — due to leaky blood vessels and compressed lymphatics. This outward pressure physically pushes drugs away from the tumor center, like trying to inject water into a balloon that's already pressurized.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="drug-faq-q3">Does tumor type really change how well drugs penetrate?</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <p id="drug-faq-a3">Dramatically. Pancreatic cancer is surrounded by dense stromal matrix that can reduce drug diffusion by up to 75% compared to breast cancer. Gliomas face a different challenge: the blood-brain barrier restricts large molecules entirely. This is why a drug that works in one cancer may be nearly useless in another — even if the cancer cells are equally sensitive to it.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="drug-faq-q4">Are there drugs designed to overcome these barriers?</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <p id="drug-faq-a4">Yes — this is an active research area. Approaches include: <strong>nanoparticle carriers</strong> exploiting the EPR effect; <strong>stromal-depleting agents</strong> that break down the collagen matrix (e.g. hyaluronidase + gemcitabine for pancreatic cancer); <strong>anti-VEGF agents</strong> that normalise tumor vasculature and reduce IFP; and <strong>ultrasound-mediated delivery</strong> that temporarily opens barriers.</p>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="drug-faq-q5">What's the difference between drug resistance and drug penetration failure?</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <p id="drug-faq-a5"><strong>Drug resistance</strong> is biological — cancer cells evolve mutations that neutralise the drug. <strong>Penetration failure</strong> is physical — the drug never reaches those cells. Clinically the outcomes look identical (treatment failure), but the mechanisms are completely different. Penetration failure is often underappreciated because it doesn't appear in cell culture experiments — you need 3D tumor models or in vivo studies to see it.</p>
+          </div></div>
+        </div>
+      </div>
+
       <!-- Real story placeholder -->
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
@@ -900,14 +991,6 @@
           <div class="story-placeholder-title" id="drug-story-ph-title">— STORY COMING SOON —</div>
           <div class="story-placeholder-text" id="drug-story-ph-p">We are collecting real patient stories to illustrate how physical drug barriers affect treatment outcomes.<br>If you or someone you know would like to share their experience, please reach out.</div>
         </div>
-        <!-- When ready, replace above with story-card: -->
-        <!--
-        <div class="story-card">
-          <div class="story-name">Patient name, age</div>
-          <div class="story-meta">Diagnosis · Year · Location</div>
-          <div class="story-quote">"Quote from patient or family member..."</div>
-        </div>
-        -->
       </div>
       <div class="share-bar">
         <span class="share-label">分享 / Share</span>
@@ -1011,6 +1094,39 @@
         </div>
       </div>
 
+      <!-- Cancer type deep-dive -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon green">🔬</div><h2 style="margin:0;" id="early-typeguide-title">Cancer-by-cancer screening guide</h2></div>
+        <p style="margin-bottom:1rem;" id="early-typeguide-sub">Select a cancer type to see detailed screening recommendations and survival data.</p>
+        <div class="cancer-type-grid">
+          <div class="cancer-type-card" data-cancer="breast" onclick="selectCancerType('breast')">
+            <div class="ct-name" id="ct-breast-name">Breast cancer</div>
+            <div class="ct-if" id="ct-breast-if">Mammogram from 40</div>
+          </div>
+          <div class="cancer-type-card" data-cancer="colorectal" onclick="selectCancerType('colorectal')">
+            <div class="ct-name" id="ct-colorectal-name">Colorectal cancer</div>
+            <div class="ct-if" id="ct-colorectal-if">Colonoscopy from 45</div>
+          </div>
+          <div class="cancer-type-card" data-cancer="lung" onclick="selectCancerType('lung')">
+            <div class="ct-name" id="ct-lung-name">Lung cancer</div>
+            <div class="ct-if" id="ct-lung-if">Low-dose CT, high risk</div>
+          </div>
+          <div class="cancer-type-card" data-cancer="cervical" onclick="selectCancerType('cervical')">
+            <div class="ct-name" id="ct-cervical-name">Cervical cancer</div>
+            <div class="ct-if" id="ct-cervical-if">Pap smear from 21</div>
+          </div>
+          <div class="cancer-type-card" data-cancer="prostate" onclick="selectCancerType('prostate')">
+            <div class="ct-name" id="ct-prostate-name">Prostate cancer</div>
+            <div class="ct-if" id="ct-prostate-if">PSA test from 50</div>
+          </div>
+          <div class="cancer-type-card" data-cancer="pancreatic" onclick="selectCancerType('pancreatic')">
+            <div class="ct-name" id="ct-pancreatic-name">Pancreatic cancer</div>
+            <div class="ct-if" id="ct-pancreatic-if">No standard screening</div>
+          </div>
+        </div>
+        <div class="cancer-detail-panel" id="cancer-detail-panel"></div>
+      </div>
+
       <!-- Real story placeholder -->
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
@@ -1085,6 +1201,21 @@
               <span class="slider-name" id="ls-alcohol-label">Alcohol (units/week)</span>
               <input type="range" id="ls-alcohol" min="0" max="40" step="2" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-alcohol-val">0</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name" id="ls-diet-label">Diet quality</span>
+              <input type="range" id="ls-diet" min="0" max="10" step="1" value="5" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-diet-val">5/10</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name" id="ls-sleep-label">Sleep (hrs/night)</span>
+              <input type="range" id="ls-sleep" min="4" max="10" step="0.5" value="7" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-sleep-val">7h</span>
+            </div>
+            <div class="slider-row">
+              <span class="slider-name" id="ls-stress-label">Chronic stress</span>
+              <input type="range" id="ls-stress" min="0" max="10" step="1" value="3" oninput="updateLifestyle()">
+              <span class="slider-val" id="ls-stress-val">3/10</span>
             </div>
 
             <div class="btn-row">
@@ -1255,6 +1386,127 @@
           <li id="prec-ask-2">Is there a targeted therapy available for my specific mutation?</li>
           <li id="prec-ask-3">Would genetic testing change my treatment plan?</li>
         </ul>
+      </div>
+
+      <!-- Treatment comparison accordion -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon purple">⚖</div><h2 style="margin:0;" id="prec-tx-title">Treatment approaches compared</h2></div>
+        <p style="margin-bottom:1rem;" id="prec-tx-sub">Click any treatment to see how it works, its advantages, and its limitations.</p>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="prec-tx-q1">Conventional chemotherapy</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <div class="tx-compare-grid">
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx1-how-label">How it works</div>
+                <div class="tx-desc" id="prec-tx1-how">Kills rapidly dividing cells by damaging DNA or disrupting cell division. Works systemically — targets any fast-dividing cell throughout the body.</div>
+                <span class="tx-badge good" id="prec-tx1-b1">Wide availability</span>
+                <span class="tx-badge good" id="prec-tx1-b2">Low cost</span>
+              </div>
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx1-lim-label">Limitations</div>
+                <div class="tx-desc" id="prec-tx1-lim">Damages healthy rapidly dividing cells (hair follicles, gut lining, bone marrow). Physical penetration barriers often prevent drugs reaching the tumor core. No targeting — affects entire body.</div>
+                <span class="tx-badge bad" id="prec-tx1-b3">High toxicity</span>
+                <span class="tx-badge bad" id="prec-tx1-b4">Penetration barriers</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="prec-tx-q2">Targeted therapy (e.g. imatinib, trastuzumab)</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <div class="tx-compare-grid">
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx2-how-label">How it works</div>
+                <div class="tx-desc" id="prec-tx2-how">Binds to specific molecular targets overexpressed by cancer cells (e.g. HER2 receptor, BCR-ABL kinase). Only works if the tumor expresses the target — requires genetic testing first.</div>
+                <span class="tx-badge good" id="prec-tx2-b1">Precise targeting</span>
+                <span class="tx-badge good" id="prec-tx2-b2">Lower toxicity</span>
+              </div>
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx2-lim-label">Limitations</div>
+                <div class="tx-desc" id="prec-tx2-lim">Only ~20–30% of patients have targetable mutations. Resistance develops within months to years in most patients. Large antibody molecules (e.g. trastuzumab) face severe penetration barriers in solid tumors.</div>
+                <span class="tx-badge bad" id="prec-tx2-b3">Requires biomarker</span>
+                <span class="tx-badge ok" id="prec-tx2-b4">Resistance risk</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="prec-tx-q3">Immunotherapy (checkpoint inhibitors)</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <div class="tx-compare-grid">
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx3-how-label">How it works</div>
+                <div class="tx-desc" id="prec-tx3-how">Removes the "brakes" on the immune system (PD-1/PD-L1, CTLA-4 checkpoints) so T-cells can recognise and attack cancer cells. The immune system does the killing — not the drug itself.</div>
+                <span class="tx-badge good" id="prec-tx3-b1">Long-lasting responses</span>
+                <span class="tx-badge good" id="prec-tx3-b2">Works without penetrating tumor</span>
+              </div>
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx3-lim-label">Limitations</div>
+                <div class="tx-desc" id="prec-tx3-lim">Only works in tumors with high mutation burden or PD-L1 expression (~20–40% of patients). Autoimmune side effects can be severe. Very expensive. Dense tumors may exclude T-cells entirely.</div>
+                <span class="tx-badge bad" id="prec-tx3-b3">Expensive</span>
+                <span class="tx-badge ok" id="prec-tx3-b4">Patient selection critical</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="prec-tx-q4">CAR-T cell therapy</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <div class="tx-compare-grid">
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx4-how-label">How it works</div>
+                <div class="tx-desc" id="prec-tx4-how">Patient's own T-cells are extracted, genetically engineered to express a Chimeric Antigen Receptor (CAR) that targets a cancer-specific protein, then reinfused. Living drug that can persist for years.</div>
+                <span class="tx-badge good" id="prec-tx4-b1">Highly effective in blood cancers</span>
+                <span class="tx-badge good" id="prec-tx4-b2">Potentially curative</span>
+              </div>
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx4-lim-label">Limitations</div>
+                <div class="tx-desc" id="prec-tx4-lim">Currently works mainly in blood cancers — solid tumors present physical and immunosuppressive barriers that CAR-T cells cannot easily overcome. Cytokine release syndrome can be life-threatening. Cost: $400,000–$500,000 per treatment.</div>
+                <span class="tx-badge bad" id="prec-tx4-b3">Limited in solid tumors</span>
+                <span class="tx-badge bad" id="prec-tx4-b4">Extremely expensive</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
+
+        <div class="accordion">
+          <div class="accordion-header" onclick="toggleAccordion(this)">
+            <h3 id="prec-tx-q5">Antibody-drug conjugates (ADCs)</h3>
+            <div class="accordion-arrow">▼</div>
+          </div>
+          <div class="accordion-body"><div class="accordion-inner">
+            <div class="tx-compare-grid">
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx5-how-label">How it works</div>
+                <div class="tx-desc" id="prec-tx5-how">An antibody (targeting a cancer-specific protein) is chemically linked to a highly toxic drug payload. The antibody acts as a guided missile — delivering a lethal dose specifically to cancer cells. Examples: trastuzumab emtansine (T-DM1), enfortumab vedotin.</div>
+                <span class="tx-badge good" id="prec-tx5-b1">Targeted + toxic payload</span>
+                <span class="tx-badge good" id="prec-tx5-b2">Better than naked antibodies</span>
+              </div>
+              <div class="tx-card">
+                <div class="tx-name" id="prec-tx5-lim-label">Limitations</div>
+                <div class="tx-desc" id="prec-tx5-lim">The large antibody structure still faces tumor penetration barriers — ADCs accumulate at the outer layers. Linker stability is critical: premature drug release causes systemic toxicity. Bystander killing can help or hurt depending on tumor type.</div>
+                <span class="tx-badge ok" id="prec-tx5-b3">Still faces penetration barriers</span>
+                <span class="tx-badge bad" id="prec-tx5-b4">Linker toxicity risk</span>
+              </div>
+            </div>
+          </div></div>
+        </div>
       </div>
 
       <!-- Real story placeholder -->
@@ -1547,6 +1799,73 @@ async function runPDE(D,lam,k,r,steps){
   const CHUNKS=8,cs=Math.floor(steps/CHUNKS);
   for(let i=0;i<CHUNKS;i++){await new Promise(r2=>setTimeout(r2,0));pdeRun(C,Df,rho,dx,dt,lam,k,cs);}
   return{C,cx,cy,r};
+}
+
+/* =========================================================
+   ACCORDION
+========================================================= */
+function toggleAccordion(el){
+  const acc=el.closest('.accordion');
+  acc.classList.toggle('open');
+}
+
+/* =========================================================
+   CANCER TYPE SELECTOR (Early Detection)
+========================================================= */
+const CANCER_TYPES={
+  breast:{
+    en:{name:'Breast',screen:'Mammogram (annual from 40–45)',age:'40–74',survival_early:'99%',survival_late:'28%',tip:'Monthly self-exams plus annual mammograms catch 80% of cases at Stage I.'},
+    zh:{name:'乳腺癌',screen:'乳腺X光（40–45岁起每年一次）',age:'40–74岁',survival_early:'99%',survival_late:'28%',tip:'每月自查加上每年乳腺X光检查，可在第一期发现80%的病例。'}
+  },
+  colorectal:{
+    en:{name:'Colorectal',screen:'Colonoscopy (every 10 yrs from 45)',age:'45–75',survival_early:'91%',survival_late:'13%',tip:'Colonoscopy can both detect AND remove precancerous polyps before they become cancer.'},
+    zh:{name:'结直肠癌',screen:'结肠镜检查（45岁起每10年一次）',age:'45–75岁',survival_early:'91%',survival_late:'13%',tip:'结肠镜检查不仅能发现癌变，还能同时切除癌前息肉，防患于未然。'}
+  },
+  lung:{
+    en:{name:'Lung',screen:'Low-dose CT (annual, high-risk only)',age:'50–80 (smokers)',survival_early:'63%',survival_late:'7%',tip:'Low-dose CT is only recommended for current/former heavy smokers aged 50–80.'},
+    zh:{name:'肺癌',screen:'低剂量CT（高风险人群每年一次）',age:'50–80岁（吸烟者）',survival_early:'63%',survival_late:'7%',tip:'低剂量CT仅推荐用于50–80岁的现在或曾经大量吸烟者。'}
+  },
+  cervical:{
+    en:{name:'Cervical',screen:'Pap smear + HPV test (every 3–5 yrs)',age:'21–65',survival_early:'92%',survival_late:'17%',tip:'HPV vaccination before exposure reduces cervical cancer risk by over 90%.'},
+    zh:{name:'宫颈癌',screen:'宫颈涂片 + HPV检测（每3–5年一次）',age:'21–65岁',survival_early:'92%',survival_late:'17%',tip:'在接触HPV之前接种疫苗，可将宫颈癌风险降低90%以上。'}
+  },
+  prostate:{
+    en:{name:'Prostate',screen:'PSA blood test (discuss with doctor)',age:'50–70',survival_early:'~100%',survival_late:'31%',tip:'PSA screening is controversial — discuss personal risk/benefit with your doctor.'},
+    zh:{name:'前列腺癌',screen:'PSA血液检测（与医生商议）',age:'50–70岁',survival_early:'~100%',survival_late:'31%',tip:'PSA筛查存在争议，请与医生讨论个人的风险收益比。'}
+  },
+  pancreatic:{
+    en:{name:'Pancreatic',screen:'No standard screening available',age:'High-risk groups only',survival_early:'44%',survival_late:'3%',tip:'No effective population-wide screening exists. Know the warning signs: new-onset diabetes, unexplained weight loss, jaundice.'},
+    zh:{name:'胰腺癌',screen:'暂无标准筛查方案',age:'仅限高风险人群',survival_early:'44%',survival_late:'3%',tip:'目前尚无有效的大规模筛查手段。请了解警告信号：新发糖尿病、不明原因体重下降、黄疸。'}
+  }
+};
+function selectCancerType(type){
+  document.querySelectorAll('.cancer-type-card').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('[data-cancer="'+type+'"]').forEach(c=>c.classList.add('active'));
+  const lang=document.documentElement.lang==='zh'?'zh':'en';
+  const d=CANCER_TYPES[type][lang];
+  const panel=document.getElementById('cancer-detail-panel');
+  panel.innerHTML=`
+    <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:1rem;">
+      <h3 style="margin:0;font-size:1rem;">${d.name}</h3>
+      <span class="tag green">${lang==='zh'?'早期存活率':'Early survival'} ${d.survival_early}</span>
+      <span class="tag red">${lang==='zh'?'晚期存活率':'Late survival'} ${d.survival_late}</span>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;">
+      <div style="background:var(--bg2);border-radius:var(--radius);padding:.75rem;">
+        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${lang==='zh'?'筛查方法':'Screening'}</div>
+        <div style="font-size:.82rem;color:var(--text);">${d.screen}</div>
+      </div>
+      <div style="background:var(--bg2);border-radius:var(--radius);padding:.75rem;">
+        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${lang==='zh'?'推荐年龄':'Recommended age'}</div>
+        <div style="font-size:.82rem;color:var(--text);">${d.age}</div>
+      </div>
+    </div>
+    <div style="background:rgba(78,205,196,.07);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.875rem;">
+      <span style="font-size:.72rem;font-family:var(--mono);color:var(--teal);text-transform:uppercase;letter-spacing:.06em;">${lang==='zh'?'关键提示':'Key insight'} </span>
+      <span style="font-size:.83rem;color:var(--text2);">${d.tip}</span>
+    </div>
+  `;
+  panel.classList.add('visible');
 }
 
 /* =========================================================
@@ -1928,8 +2247,15 @@ function calcDMod(){
   const inflam=parseInt(document.getElementById('ls-inflam').value);
   const exercise=parseInt(document.getElementById('ls-exercise').value);
   const alcohol=parseInt(document.getElementById('ls-alcohol').value);
+  const diet=parseInt(document.getElementById('ls-diet').value);
+  const sleep=parseFloat(document.getElementById('ls-sleep').value);
+  const stress=parseInt(document.getElementById('ls-stress').value);
+  const sleepPenalty=sleep<6?(6-sleep)*.02:sleep>9?0:0;
+  const dietBonus=(diet-5)*.008;
+  const stressPenalty=stress*.012;
   return Math.max(.25,Math.min(1.05,
     1 - .014*smoking - (bmi>25?(bmi-25)*.018:0) - .035*inflam + .018*exercise - .008*alcohol
+    + dietBonus - sleepPenalty - stressPenalty
   ));
 }
 function updateLifestyle(){
@@ -1938,6 +2264,9 @@ function updateLifestyle(){
   const inflam=parseInt(document.getElementById('ls-inflam').value);
   const exercise=parseInt(document.getElementById('ls-exercise').value);
   const alcohol=parseInt(document.getElementById('ls-alcohol').value);
+  const diet=parseInt(document.getElementById('ls-diet').value);
+  const sleep=parseFloat(document.getElementById('ls-sleep').value);
+  const stress=parseInt(document.getElementById('ls-stress').value);
   document.getElementById('ls-smoking-val').textContent=smoking;
   document.getElementById('ls-bmi-val').textContent=bmi;
   const inflammLevels=currentLang==='zh'
@@ -1946,6 +2275,9 @@ function updateLifestyle(){
   document.getElementById('ls-inflam-val').textContent=inflammLevels[Math.min(inflam,10)];
   document.getElementById('ls-exercise-val').textContent=exercise+'h';
   document.getElementById('ls-alcohol-val').textContent=alcohol;
+  document.getElementById('ls-diet-val').textContent=diet+'/10';
+  document.getElementById('ls-sleep-val').textContent=sleep+'h';
+  document.getElementById('ls-stress-val').textContent=stress+'/10';
   const dMod=calcDMod();
   document.getElementById('ls-D-mod').textContent='×'+dMod.toFixed(2);
   const risk=dMod>.88?'baseline':dMod>.72?'elevated':dMod>.55?'high':'very high';
@@ -1955,13 +2287,13 @@ function updateLifestyle(){
   document.getElementById('ls-risk').style.color=riskColor;
   const insights=currentLang==='zh'?{
     baseline:'你的生活方式画像提示肿瘤微环境接近基准水平。可调节因素对药物扩散的影响不大。',
-    elevated:'部分生活方式因素开始影响组织微环境。考虑减少吸烟或饮酒，以保持药物渗透效率。',
-    high:'多个因素正在显著削弱潜在的药物传递能力。慢性炎症引起的高IFP和致密ECM将大幅降低化疗效果。',
+    elevated:'部分生活方式因素开始影响组织微环境。改善饮食、睡眠或减少压力，有助于保持药物渗透效率。',
+    high:'多个因素正在显著削弱潜在的药物传递能力。慢性炎症、睡眠不足和高压力引起的高IFP将大幅降低化疗效果。',
     'very high':'严重的生活方式驱动的微环境改变。估计药物渗透率比基准低50%以上。这些是重要但大多可改变的风险因素。',
   }:{
     baseline:'Your lifestyle profile suggests a near-baseline tumor microenvironment. Drug diffusion would not be significantly impaired by modifiable factors.',
-    elevated:'Some lifestyle factors are beginning to affect tissue microenvironment. Consider reducing smoking or alcohol intake to preserve drug penetration efficiency.',
-    high:'Multiple factors are significantly impairing potential drug delivery. High IFP and dense ECM from chronic inflammation would substantially reduce chemotherapy effectiveness.',
+    elevated:'Some lifestyle factors are beginning to affect tissue microenvironment. Improving diet, sleep or reducing stress can help preserve drug penetration efficiency.',
+    high:'Multiple factors are significantly impairing potential drug delivery. High IFP from chronic inflammation, poor sleep and high stress would substantially reduce chemotherapy effectiveness.',
     'very high':'Severe lifestyle-driven microenvironment changes. Estimated drug penetration 50%+ below baseline. These are significant and mostly modifiable risk factors.',
   };
   document.getElementById('ls-live-insight').textContent=insights[risk];
@@ -2042,9 +2374,14 @@ async function generateProfile(){
   }, onError);
 }
 function resetLifestyle(){
-  ['ls-smoking','ls-bmi','ls-inflam','ls-exercise','ls-alcohol'].forEach(id=>{
+  ['ls-smoking','ls-bmi','ls-inflam','ls-exercise','ls-alcohol','ls-diet','ls-sleep','ls-stress'].forEach(id=>{
     const el=document.getElementById(id);
-    if(id==='ls-bmi')el.value=22;else if(id==='ls-exercise')el.value=3;else el.value=0;
+    if(id==='ls-bmi')el.value=22;
+    else if(id==='ls-exercise')el.value=3;
+    else if(id==='ls-diet')el.value=5;
+    else if(id==='ls-sleep')el.value=7;
+    else if(id==='ls-stress')el.value=3;
+    else el.value=0;
   });
   document.getElementById('ls-profile-result').style.display='none';
   document.getElementById('ls-prog').style.width='0%';
@@ -2358,6 +2695,47 @@ function applyLang(lang){
   setText('ls-inflam-label',lang==='zh'?'慢性炎症程度':'Chronic inflammation');
   setText('ls-exercise-label',lang==='zh'?'运动（小时/周）':'Exercise (hrs/week)');
   setText('ls-alcohol-label',lang==='zh'?'饮酒（单位/周）':'Alcohol (units/week)');
+  setText('ls-diet-label',lang==='zh'?'饮食质量':'Diet quality');
+  setText('ls-sleep-label',lang==='zh'?'睡眠时长（小时/晚）':'Sleep (hrs/night)');
+  setText('ls-stress-label',lang==='zh'?'慢性压力':'Chronic stress');
+
+  // Early Detection cancer type guide
+  setText('early-typeguide-title',lang==='zh'?'分癌种筛查指南':'Cancer-by-cancer screening guide');
+  setText('early-typeguide-sub',lang==='zh'?'选择癌症类型，查看详细筛查建议和生存数据。':'Select a cancer type to see detailed screening recommendations and survival data.');
+  setText('ct-breast-name',lang==='zh'?'乳腺癌':'Breast cancer');
+  setText('ct-breast-if',lang==='zh'?'40岁起乳腺X光':'Mammogram from 40');
+  setText('ct-colorectal-name',lang==='zh'?'结直肠癌':'Colorectal cancer');
+  setText('ct-colorectal-if',lang==='zh'?'45岁起结肠镜':'Colonoscopy from 45');
+  setText('ct-lung-name',lang==='zh'?'肺癌':'Lung cancer');
+  setText('ct-lung-if',lang==='zh'?'低剂量CT，高风险人群':'Low-dose CT, high risk');
+  setText('ct-cervical-name',lang==='zh'?'宫颈癌':'Cervical cancer');
+  setText('ct-cervical-if',lang==='zh'?'21岁起宫颈涂片':'Pap smear from 21');
+  setText('ct-prostate-name',lang==='zh'?'前列腺癌':'Prostate cancer');
+  setText('ct-prostate-if',lang==='zh'?'50岁起PSA检测':'PSA test from 50');
+  setText('ct-pancreatic-name',lang==='zh'?'胰腺癌':'Pancreatic cancer');
+  setText('ct-pancreatic-if',lang==='zh'?'暂无标准筛查':'No standard screening');
+
+  // Drug FAQ accordion
+  setText('drug-faq-title',lang==='zh'?'常见问题解答':'Frequently asked questions');
+  setText('drug-faq-q1',lang==='zh'?'如果药物无法渗透肿瘤，化疗为何仍然有效？':'If drugs can\'t penetrate tumors, why does chemotherapy still work at all?');
+  setText('drug-faq-a1',lang==='zh'?'化疗通过杀死快速分裂的细胞发挥作用——它确实能有效到达肿瘤的外层。问题在于核心部位。在小的早期肿瘤中，外层与内层细胞的比例更有利，影响较小。但在大的致密肿瘤中，无法到达的核心成为存活癌细胞的"储藏库"，可能引发复发。这也是为什么同一种药物在不同分期效果差异巨大。':'Chemotherapy works by killing rapidly dividing cells — and it does reach the outer layers of a tumor effectively. The problem is the core. In small, early-stage tumors this matters less because the ratio of outer-to-inner cells is more favorable. In large, dense tumors, the unreachable core becomes a reservoir of surviving cancer cells that can seed recurrence.');
+  setText('drug-faq-q2',lang==='zh'?'什么是间质液压（IFP），为什么重要？':'What is IFP and why does it matter?');
+  setText('drug-faq-a2',lang==='zh'?'间质液压（IFP）是肿瘤组织内液体的压力。正常组织的IFP接近零，而肿瘤由于血管渗漏和淋巴管受压，会产生异常高的IFP——有时比正常高10-30 mmHg。这种向外的压力会将药物从肿瘤中心推开，就像往一个已经加压的气球里注水一样。':'Interstitial Fluid Pressure (IFP) is the pressure of fluid within tumor tissue. Normal tissues have near-zero IFP. Tumors generate abnormally high IFP — sometimes 10–30 mmHg above normal — due to leaky blood vessels and compressed lymphatics. This outward pressure physically pushes drugs away from the tumor center, like trying to inject water into a balloon that\'s already pressurized.');
+  setText('drug-faq-q3',lang==='zh'?'肿瘤类型真的会影响药物渗透效果吗？':'Does tumor type really change how well drugs penetrate?');
+  setText('drug-faq-a3',lang==='zh'?'影响显著。胰腺癌被致密的间质基质包围，可使药物扩散系数比乳腺癌降低75%。脑胶质瘤面临另一挑战：血脑屏障完全阻止大分子进入。这就是为什么即使癌细胞对药物同样敏感，在一种癌症中有效的药物在另一种中几乎无效。':'Dramatically. Pancreatic cancer is surrounded by dense stromal matrix that can reduce drug diffusion by up to 75% compared to breast cancer. Gliomas face a different challenge: the blood-brain barrier restricts large molecules entirely. This is why a drug that works in one cancer may be nearly useless in another — even if the cancer cells are equally sensitive to it.');
+  setText('drug-faq-q4',lang==='zh'?'有没有专门设计来克服这些屏障的药物？':'Are there drugs designed to overcome these barriers?');
+  setText('drug-faq-a4',lang==='zh'?'有——这是一个活跃的研究领域。方法包括：利用EPR效应的纳米颗粒载体；分解胶原基质的间质清除剂（如透明质酸酶+吉西他滨用于胰腺癌）；使用抗VEGF药物使肿瘤血管正常化并降低IFP；以及临时打开屏障的超声介导给药。':'Yes — this is an active research area. Approaches include: nanoparticle carriers exploiting the EPR effect; stromal-depleting agents that break down the collagen matrix; anti-VEGF agents that normalise tumor vasculature and reduce IFP; and ultrasound-mediated delivery that temporarily opens barriers.');
+  setText('drug-faq-q5',lang==='zh'?'耐药性与药物渗透失败有什么区别？':'What\'s the difference between drug resistance and drug penetration failure?');
+  setText('drug-faq-a5',lang==='zh'?'耐药性是生物现象——癌细胞进化出中和药物的突变。渗透失败是物理现象——药物从未到达这些细胞。临床上两者结果相同（治疗失败），但机制完全不同。渗透失败常被低估，因为它不会在细胞培养实验中出现——需要3D肿瘤模型或体内研究才能观察到。':'Drug resistance is biological — cancer cells evolve mutations that neutralise the drug. Penetration failure is physical — the drug never reaches those cells. Clinically the outcomes look identical (treatment failure), but the mechanisms are completely different. Penetration failure is often underappreciated because it doesn\'t appear in cell culture experiments — you need 3D tumor models or in vivo studies to see it.');
+
+  // Precision treatment comparison
+  setText('prec-tx-title',lang==='zh'?'治疗方法对比':'Treatment approaches compared');
+  setText('prec-tx-sub',lang==='zh'?'点击任意治疗方法，了解其原理、优势和局限性。':'Click any treatment to see how it works, its advantages, and its limitations.');
+  setText('prec-tx-q1',lang==='zh'?'传统化疗':'Conventional chemotherapy');
+  setText('prec-tx-q2',lang==='zh'?'靶向治疗（如伊马替尼、曲妥珠单抗）':'Targeted therapy (e.g. imatinib, trastuzumab)');
+  setText('prec-tx-q3',lang==='zh'?'免疫治疗（免疫检查点抑制剂）':'Immunotherapy (checkpoint inhibitors)');
+  setText('prec-tx-q4',lang==='zh'?'CAR-T细胞疗法':'CAR-T cell therapy');
+  setText('prec-tx-q5',lang==='zh'?'抗体药物偶联物（ADC）':'Antibody-drug conjugates (ADCs)');
   setText('ls-gen-btn',lang==='zh'?'生成我的画像 →':'Generate my profile →');
   setText('ls-reset-btn',lang==='zh'?'重置':'Reset');
   setText('ls-live-title',lang==='zh'?'实时微环境估计':'Live microenvironment estimate');
