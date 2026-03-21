@@ -416,11 +416,22 @@
     .story-placeholder-title{font-size:.9rem;font-weight:600;color:var(--text3);margin-bottom:.5rem;font-family:var(--mono);}
     .story-placeholder-text{font-size:.82rem;color:var(--text3);line-height:1.6;}
 
-    .lang-select-wrap{position:relative;display:flex;align-items:center;}
-    .lang-select{font-family:var(--mono);font-size:.72rem;padding:4px 26px 4px 10px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;appearance:none;-webkit-appearance:none;transition:all .2s;white-space:nowrap;outline:none;}
-    .lang-select:hover,.lang-select:focus{border-color:var(--teal);color:var(--teal);}
-    .lang-select option{background:var(--bg1);color:var(--text);}
-    .lang-select-arrow{position:absolute;right:9px;pointer-events:none;font-size:.6rem;color:var(--text3);}
+    /* ── LANGUAGE DROPDOWN ── */
+    .lang-dropdown{position:relative;display:flex;align-items:center;}
+    .lang-dropdown-btn{font-family:var(--mono);font-size:.72rem;padding:4px 10px;border:1px solid var(--border2);border-radius:20px;background:transparent;color:var(--text2);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px;user-select:none;}
+    .lang-dropdown-btn:hover{border-color:var(--teal);color:var(--teal);}
+    .lang-dropdown-btn .lang-flag{font-size:.85rem;}
+    .lang-dropdown-btn .lang-arrow{font-size:.55rem;transition:transform .2s;}
+    .lang-dropdown.open .lang-arrow{transform:rotate(180deg);}
+    .lang-dropdown-menu{display:none;position:absolute;top:calc(100% + 6px);right:0;background:#fff;border:1px solid rgba(0,0,0,.1);border-radius:12px;box-shadow:0 8px 24px rgba(0,0,0,.12);overflow:hidden;min-width:130px;z-index:9999;}
+    .lang-dropdown.open .lang-dropdown-menu{display:block;}
+    .lang-dropdown-item{display:flex;align-items:center;gap:8px;padding:9px 14px;font-size:.78rem;cursor:pointer;transition:background .15s;color:#333;font-family:var(--mono);}
+    .lang-dropdown-item:hover{background:rgba(78,205,196,.1);}
+    .lang-dropdown-item.active{color:var(--teal);font-weight:700;}
+    .lang-dropdown-item .li-flag{font-size:.9rem;}
+    .lang-dropdown-item .li-label{flex:1;}
+    .lang-dropdown-item .li-check{font-size:.7rem;color:var(--teal);opacity:0;}
+    .lang-dropdown-item.active .li-check{opacity:1;}
     .donate-btn{font-family:var(--sans);font-size:.75rem;font-weight:600;padding:5px 14px;border-radius:20px;background:var(--coral);border:1px solid var(--coral);color:#fff;cursor:pointer;text-decoration:none;transition:filter .2s,background .2s;white-space:nowrap;}
     .donate-btn:hover{filter:brightness(.95);}
 
@@ -667,13 +678,29 @@
       <div class="header-right">
         <a class="donate-btn" href="#" onclick="scrollToDonate();return false;" id="donate-header-btn">❤ Donate</a>
         <a class="pde-link" href="https://pdeoncology.com" target="_blank">PDEOncology ↗</a>
-        <div class="lang-select-wrap">
-          <select class="lang-select" id="lang-select" onchange="setLang(this.value)">
-            <option value="en">EN</option>
-            <option value="zh">中文</option>
-            <option value="de">DE</option>
-          </select>
-          <span class="lang-select-arrow">▾</span>
+        <div class="lang-dropdown" id="lang-dropdown">
+          <div class="lang-dropdown-btn" onclick="toggleLangDropdown()">
+            <span class="lang-flag" id="lang-flag">🇬🇧</span>
+            <span id="lang-label">EN</span>
+            <span class="lang-arrow">▾</span>
+          </div>
+          <div class="lang-dropdown-menu">
+            <div class="lang-dropdown-item active" id="lang-item-en" onclick="setLang('en')">
+              <span class="li-flag">🇬🇧</span>
+              <span class="li-label">English</span>
+              <span class="li-check">✓</span>
+            </div>
+            <div class="lang-dropdown-item" id="lang-item-zh" onclick="setLang('zh')">
+              <span class="li-flag">🇨🇳</span>
+              <span class="li-label">中文</span>
+              <span class="li-check">✓</span>
+            </div>
+            <div class="lang-dropdown-item" id="lang-item-de" onclick="setLang('de')">
+              <span class="li-flag">🇩🇪</span>
+              <span class="li-label">Deutsch</span>
+              <span class="li-check">✓</span>
+            </div>
+          </div>
         </div>
         <div class="status-dot"></div>
         <span class="v-badge">v0.1</span>
@@ -1825,53 +1852,60 @@ function toggleAccordion(el){
 const CANCER_TYPES={
   breast:{
     en:{name:'Breast',screen:'Mammogram (annual from 40–45)',age:'40–74',survival_early:'99%',survival_late:'28%',tip:'Monthly self-exams plus annual mammograms catch 80% of cases at Stage I.'},
-    zh:{name:'乳腺癌',screen:'乳腺X光（40–45岁起每年一次）',age:'40–74岁',survival_early:'99%',survival_late:'28%',tip:'每月自查加上每年乳腺X光检查，可在第一期发现80%的病例。'}
+    zh:{name:'乳腺癌',screen:'乳腺X光（40–45岁起每年一次）',age:'40–74岁',survival_early:'99%',survival_late:'28%',tip:'每月自查加上每年乳腺X光检查，可在第一期发现80%的病例。'},
+    de:{name:'Brustkrebs',screen:'Mammographie (jährlich ab 40–45)',age:'40–74',survival_early:'99%',survival_late:'28%',tip:'Monatliche Selbstuntersuchung plus jährliche Mammographie erkennt 80% der Fälle im Stadium I.'}
   },
   colorectal:{
     en:{name:'Colorectal',screen:'Colonoscopy (every 10 yrs from 45)',age:'45–75',survival_early:'91%',survival_late:'13%',tip:'Colonoscopy can both detect AND remove precancerous polyps before they become cancer.'},
-    zh:{name:'结直肠癌',screen:'结肠镜检查（45岁起每10年一次）',age:'45–75岁',survival_early:'91%',survival_late:'13%',tip:'结肠镜检查不仅能发现癌变，还能同时切除癌前息肉，防患于未然。'}
+    zh:{name:'结直肠癌',screen:'结肠镜检查（45岁起每10年一次）',age:'45–75岁',survival_early:'91%',survival_late:'13%',tip:'结肠镜检查不仅能发现癌变，还能同时切除癌前息肉，防患于未然。'},
+    de:{name:'Darmkrebs',screen:'Koloskopie (alle 10 Jahre ab 45)',age:'45–75',survival_early:'91%',survival_late:'13%',tip:'Koloskopie kann Krebsvorstufen entdecken UND entfernen, bevor sie zu Krebs werden.'}
   },
   lung:{
     en:{name:'Lung',screen:'Low-dose CT (annual, high-risk only)',age:'50–80 (smokers)',survival_early:'63%',survival_late:'7%',tip:'Low-dose CT is only recommended for current/former heavy smokers aged 50–80.'},
-    zh:{name:'肺癌',screen:'低剂量CT（高风险人群每年一次）',age:'50–80岁（吸烟者）',survival_early:'63%',survival_late:'7%',tip:'低剂量CT仅推荐用于50–80岁的现在或曾经大量吸烟者。'}
+    zh:{name:'肺癌',screen:'低剂量CT（高风险人群每年一次）',age:'50–80岁（吸烟者）',survival_early:'63%',survival_late:'7%',tip:'低剂量CT仅推荐用于50–80岁的现在或曾经大量吸烟者。'},
+    de:{name:'Lungenkrebs',screen:'Niedrigdosis-CT (jährlich, nur Hochrisiko)',age:'50–80 (Raucher)',survival_early:'63%',survival_late:'7%',tip:'Niedrigdosis-CT wird nur für aktuelle/ehemalige Vielraucher im Alter 50–80 empfohlen.'}
   },
   cervical:{
     en:{name:'Cervical',screen:'Pap smear + HPV test (every 3–5 yrs)',age:'21–65',survival_early:'92%',survival_late:'17%',tip:'HPV vaccination before exposure reduces cervical cancer risk by over 90%.'},
-    zh:{name:'宫颈癌',screen:'宫颈涂片 + HPV检测（每3–5年一次）',age:'21–65岁',survival_early:'92%',survival_late:'17%',tip:'在接触HPV之前接种疫苗，可将宫颈癌风险降低90%以上。'}
+    zh:{name:'宫颈癌',screen:'宫颈涂片 + HPV检测（每3–5年一次）',age:'21–65岁',survival_early:'92%',survival_late:'17%',tip:'在接触HPV之前接种疫苗，可将宫颈癌风险降低90%以上。'},
+    de:{name:'Gebärmutterhalskrebs',screen:'Pap-Abstrich + HPV-Test (alle 3–5 Jahre)',age:'21–65',survival_early:'92%',survival_late:'17%',tip:'HPV-Impfung vor dem Kontakt reduziert das Risiko um über 90%.'}
   },
   prostate:{
     en:{name:'Prostate',screen:'PSA blood test (discuss with doctor)',age:'50–70',survival_early:'~100%',survival_late:'31%',tip:'PSA screening is controversial — discuss personal risk/benefit with your doctor.'},
-    zh:{name:'前列腺癌',screen:'PSA血液检测（与医生商议）',age:'50–70岁',survival_early:'~100%',survival_late:'31%',tip:'PSA筛查存在争议，请与医生讨论个人的风险收益比。'}
+    zh:{name:'前列腺癌',screen:'PSA血液检测（与医生商议）',age:'50–70岁',survival_early:'~100%',survival_late:'31%',tip:'PSA筛查存在争议，请与医生讨论个人的风险收益比。'},
+    de:{name:'Prostatakrebs',screen:'PSA-Bluttest (mit Arzt besprechen)',age:'50–70',survival_early:'~100%',survival_late:'31%',tip:'PSA-Screening ist umstritten — bespreche persönliche Risiken mit deinem Arzt.'}
   },
   pancreatic:{
     en:{name:'Pancreatic',screen:'No standard screening available',age:'High-risk groups only',survival_early:'44%',survival_late:'3%',tip:'No effective population-wide screening exists. Know the warning signs: new-onset diabetes, unexplained weight loss, jaundice.'},
-    zh:{name:'胰腺癌',screen:'暂无标准筛查方案',age:'仅限高风险人群',survival_early:'44%',survival_late:'3%',tip:'目前尚无有效的大规模筛查手段。请了解警告信号：新发糖尿病、不明原因体重下降、黄疸。'}
+    zh:{name:'胰腺癌',screen:'暂无标准筛查方案',age:'仅限高风险人群',survival_early:'44%',survival_late:'3%',tip:'目前尚无有效的大规模筛查手段。请了解警告信号：新发糖尿病、不明原因体重下降、黄疸。'},
+    de:{name:'Bauchspeicheldrüsenkrebs',screen:'Kein Standardscreening verfügbar',age:'Nur Hochrisikogruppen',survival_early:'44%',survival_late:'3%',tip:'Kein wirksames Massenscreening verfügbar. Warnsignale kennen: neu aufgetretener Diabetes, unerklärter Gewichtsverlust, Gelbsucht.'}
   }
 };
 function selectCancerType(type){
   document.querySelectorAll('.cancer-type-card').forEach(c=>c.classList.remove('active'));
   document.querySelectorAll('[data-cancer="'+type+'"]').forEach(c=>c.classList.add('active'));
-  const lang=document.documentElement.lang==='zh'?'zh':'en';
-  const d=CANCER_TYPES[type][lang];
+  const lang=currentLang==='zh'?'zh':currentLang==='de'?'de':'en';
+  const d=CANCER_TYPES[type][lang]||CANCER_TYPES[type].en;
   const panel=document.getElementById('cancer-detail-panel');
+  const tl=(en,zh,de)=>lang==='zh'?zh:lang==='de'?(de||en):en;
   panel.innerHTML=`
     <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:1rem;">
       <h3 style="margin:0;font-size:1rem;">${d.name}</h3>
-      <span class="tag green">${lang==='zh'?'早期存活率':'Early survival'} ${d.survival_early}</span>
-      <span class="tag red">${lang==='zh'?'晚期存活率':'Late survival'} ${d.survival_late}</span>
+      <span class="tag green">${tl('Early survival','早期存活率','Frühes Überleben')} ${d.survival_early}</span>
+      <span class="tag red">${tl('Late survival','晚期存活率','Spätes Überleben')} ${d.survival_late}</span>
     </div>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-bottom:1rem;">
       <div style="background:var(--bg2);border-radius:var(--radius);padding:.75rem;">
-        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${lang==='zh'?'筛查方法':'Screening'}</div>
+        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${tl('Screening','筛查方法','Screening')}</div>
         <div style="font-size:.82rem;color:var(--text);">${d.screen}</div>
       </div>
       <div style="background:var(--bg2);border-radius:var(--radius);padding:.75rem;">
-        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${lang==='zh'?'推荐年龄':'Recommended age'}</div>
+        <div style="font-size:.7rem;color:var(--text3);font-family:var(--mono);text-transform:uppercase;margin-bottom:4px;">${tl('Recommended age','推荐年龄','Empfohlenes Alter')}</div>
         <div style="font-size:.82rem;color:var(--text);">${d.age}</div>
       </div>
     </div>
     <div style="background:rgba(78,205,196,.07);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.875rem;">
-      <span style="font-size:.72rem;font-family:var(--mono);color:var(--teal);text-transform:uppercase;letter-spacing:.06em;">${lang==='zh'?'关键提示':'Key insight'} </span>
+      <span style="font-size:.72rem;font-family:var(--mono);color:var(--teal);text-transform:uppercase;letter-spacing:.06em;">${tl('Key insight','关键提示','Wichtiger Hinweis')} </span>
       <span style="font-size:.83rem;color:var(--text2);">${d.tip}</span>
     </div>
   `;
@@ -2300,6 +2334,11 @@ function updateLifestyle(){
     elevated:'部分生活方式因素开始影响组织微环境。改善饮食、睡眠或减少压力，有助于保持药物渗透效率。',
     high:'多个因素正在显著削弱潜在的药物传递能力。慢性炎症、睡眠不足和高压力引起的高IFP将大幅降低化疗效果。',
     'very high':'严重的生活方式驱动的微环境改变。估计药物渗透率比基准低50%以上。这些是重要但大多可改变的风险因素。',
+  }:currentLang==='de'?{
+    baseline:'Dein Lebensstilprofil deutet auf ein nahezu normales Tumormikromilieu hin. Modifizierbare Faktoren beeinflussen die Medikamentendiffusion kaum.',
+    elevated:'Einige Lebensstilfaktoren beginnen das Gewebsmikromilieu zu beeinflussen. Bessere Ernährung, mehr Schlaf oder weniger Stress helfen, die Medikamentenpenetration zu erhalten.',
+    high:'Mehrere Faktoren beeinträchtigen die potenzielle Medikamentenabgabe erheblich. Hoher IFP durch chronische Entzündung, Schlafmangel und Stress würde die Chemotherapiewirksamkeit stark reduzieren.',
+    'very high':'Schwerwiegende lebensstilbedingte Mikromilieu-Veränderungen. Geschätzte Medikamentenpenetration über 50% unter Ausgangswert. Dies sind erhebliche und meist veränderbare Risikofaktoren.',
   }:{
     baseline:'Your lifestyle profile suggests a near-baseline tumor microenvironment. Drug diffusion would not be significantly impaired by modifiable factors.',
     elevated:'Some lifestyle factors are beginning to affect tissue microenvironment. Improving diet, sleep or reducing stress can help preserve drug penetration efficiency.',
@@ -2547,62 +2586,98 @@ const TRANSLATIONS={
 
 function applyLang(lang){
   currentLang=lang;
-  document.documentElement.lang=lang==='zh'?'zh-CN':'en';
-  const sel=document.getElementById('lang-select');
-  if(sel && sel.value!==lang) sel.value=lang;
+  document.documentElement.lang=lang==='zh'?'zh-CN':lang==='de'?'de':'en';
+  const flags={en:'🇬🇧',zh:'🇨🇳',de:'🇩🇪'};
+  const labels={en:'EN',zh:'中文',de:'DE'};
+  const flagEl=document.getElementById('lang-flag');
+  const labelEl=document.getElementById('lang-label');
+  if(flagEl) flagEl.textContent=flags[lang]||'🇬🇧';
+  if(labelEl) labelEl.textContent=labels[lang]||'EN';
+  ['en','zh','de'].forEach(l=>{
+    const item=document.getElementById('lang-item-'+l);
+    if(item) item.classList.toggle('active',l===lang);
+  });
+
+  // Helper: pick from {en,zh,de} object
+  function t(en,zh,de){return lang==='zh'?zh:lang==='de'?(de||en):en;}
 
   // nav
-  const navMap={home:{en:'Home',zh:'首页'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效'},early:{en:'Early Detection',zh:'早期发现'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险'},precision:{en:'Precision Medicine',zh:'精准医疗'},journal:{en:'📖 Journal',zh:'📖 期刊'}};
+  const navMap={
+    home:     {en:'Home',          zh:'首页',        de:'Start'},
+    drug:     {en:'Why Drugs Fail',zh:'为什么药物失效',de:'Warum Medikamente versagen'},
+    early:    {en:'Early Detection',zh:'早期发现',   de:'Früherkennung'},
+    lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险',de:'Lebensstil & Risiko'},
+    precision:{en:'Precision Medicine',zh:'精准医疗', de:'Präzisionsmedizin'},
+    journal:  {en:'📖 Journal',    zh:'📖 期刊',      de:'📖 Journal'}
+  };
   document.querySelectorAll('#nav button').forEach(btn=>{
     const m=btn.getAttribute('onclick').match(/switchTab\('(\w+)'\)/);
-    if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang];
+    if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang]||navMap[m[1]].en;
   });
 
   // header buttons
-  document.getElementById('donate-header-btn').textContent=lang==='zh'?'❤ 捐款':'❤ Donate';
-  document.getElementById('donate-banner-text').innerHTML=lang==='zh'
-    ?'<strong>支持癌症儿童。</strong>我们的科普内容永久免费——但抗癌之战需要资金。请考虑向我们的合作机构捐款。'
-    :'<strong>Support children with cancer.</strong> Our science education is free — but the fight isn\'t. Consider donating to our partner organisations.';
-  document.getElementById('donate-intl-name').textContent=lang==='zh'?'国际机构 — 待确认':'International — TBC';
-  document.getElementById('donate-cn-name').textContent=lang==='zh'?'中国机构 — 待确认':'China — TBC';
+  document.getElementById('donate-header-btn').textContent=t('❤ Donate','❤ 捐款','❤ Spenden');
+  document.getElementById('donate-banner-text').innerHTML=t(
+    '<strong>Support children with cancer.</strong> Our science education is free — but the fight isn\'t. Consider donating to our partner organisations.',
+    '<strong>支持癌症儿童。</strong>我们的科普内容永久免费——但抗癌之战需要资金。请考虑向我们的合作机构捐款。',
+    '<strong>Kinder mit Krebs unterstützen.</strong> Unsere Wissenschaftsbildung ist kostenlos — aber der Kampf nicht. Bitte erwägen Sie eine Spende.'
+  );
+  document.getElementById('donate-intl-name').textContent=t('International — TBC','国际机构 — 待确认','International — TBC');
+  document.getElementById('donate-cn-name').textContent=t('China — TBC','中国机构 — 待确认','China — TBC');
 
   // title tag
-  document.title=lang==='zh'?'PDEOutreach — 癌症科学，人人可懂':'PDEOutreach — Cancer Science for Everyone';
+  document.title=t('PDEOutreach — Cancer Science for Everyone','PDEOutreach — 癌症科学，人人可懂','PDEOutreach — Krebswissenschaft für alle');
 
   // HOME tab
-  setHtml('home-sub',lang==='zh'
-    ?'癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。'
-    :'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.');
+  setHtml('home-sub',t(
+    'Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.',
+    '癌症科学，人人可懂。我们将 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究转化为每个人都能真正感受到的互动体验——不需要公式，不需要教科书。',
+    'Krebswissenschaft für alle. Wir verwandeln die Forschung hinter <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> in interaktive Erlebnisse — keine Gleichungen, keine Lehrbücher.'
+  ));
   setHtml('home-title',lang==='zh'?'<span class="pde">PDE</span><span class="pub">Outreach</span>':'<span class="pde">PDE</span><span class="pub">Outreach</span>');
-  setText('home-chips-i',lang==='zh'?'中英双语':'bilingual');
-  setText('home-chips-ii',lang==='zh'?'互动体验':'interactive');
-  setText('home-chips-iii',lang==='zh'?'循证内容':'evidence-based');
-  setText('home-chips-iv',lang==='zh'?'永久免费':'free forever');
-  const heroCta=document.getElementById('hero-cta');if(heroCta)heroCta.textContent=lang==='zh'?'开始探索 →':'Start Exploring →';
-  setText('home-cards-title',lang==='zh'?'关于癌症，没人告诉你的五件事':'Five things about cancer nobody told you');
-  setText('card-h2-journal', lang==='zh'?'期刊':'Journal');
-  setText('card-h3-journal', lang==='zh'?'顶级癌症研究，通俗易懂——订阅费全部捐给慈善机构':'Top cancer research, made readable — fees go to charity');
-  setText('card-p-journal', lang==='zh'?'我们将CA、Nature Reviews Cancer、JCO、Cancer Cell等期刊的最新研究整理成通俗语言。月度订阅低至$4——100%捐给我们的慈善伙伴。':'We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Monthly subscription from $4 — 100% goes to our charity partners.');
+  setText('home-chips-i',t('bilingual','中英双语','mehrsprachig'));
+  setText('home-chips-ii',t('interactive','互动体验','interaktiv'));
+  setText('home-chips-iii',t('evidence-based','循证内容','evidenzbasiert'));
+  setText('home-chips-iv',t('free forever','永久免费','kostenlos'));
+  const heroCta=document.getElementById('hero-cta');if(heroCta)heroCta.textContent=t('Start Exploring →','开始探索 →','Erkunden →');
+  setText('home-cards-title',t('Five things about cancer nobody told you','关于癌症，没人告诉你的五件事','Fünf Dinge über Krebs, die niemand erklärt'));
+  setText('card-h2-journal', t('Journal','期刊','Journal'));
+  setText('card-h3-journal', t('Top cancer research, made readable — fees go to charity','顶级癌症研究，通俗易懂——订阅费全部捐给慈善机构','Aktuelle Krebsforschung, verständlich erklärt — Gebühren gehen an Wohltätigkeitsorganisationen'));
+  setText('card-p-journal', t('We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Monthly subscription from $4 — 100% goes to our charity partners.','我们将CA、Nature Reviews Cancer、JCO、Cancer Cell等期刊的最新研究整理成通俗语言。月度订阅低至$4——100%捐给我们的慈善伙伴。','Wir fassen die neuesten Studien aus CA, Nature Reviews Cancer, JCO, Cancer Cell und anderen in verständlicher Sprache zusammen. Monatsabo ab $4 — 100% für wohltätige Zwecke.'));
   setText('card-tag-journal1', 'EN / 中文 / DE');
-  setText('card-tag-journal2', lang==='zh'?'费用 → 慈善':'fees → charity');
-  setText('home-quiz-title',lang==='zh'?'先来猜一猜——':'Quick — what do you think?');
-  setHtml('home-quiz-q',lang==='zh'
-    ?'一种强效化疗药物进入血液并到达肿瘤。它通常能消灭多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>'
-    :'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?<div class="quiz-sub">No googling. Go with your gut.</div>');
+  setText('card-tag-journal2', t('fees → charity','费用 → 慈善','Gebühren → Spende'));
+  setText('home-quiz-title',t('Quick — what do you think?','先来猜一猜——','Schnell — was denkst du?'));
+  setHtml('home-quiz-q',t(
+    'A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?<div class="quiz-sub">No googling. Go with your gut.</div>',
+    '一种强效化疗药物进入血液并到达肿瘤。它通常能消灭多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>',
+    'Ein starkes Chemotherapeutikum gelangt in den Blutkreislauf und erreicht den Tumor. Wie viele Krebszellen tötet es typischerweise ab?<div class="quiz-sub">Nicht googeln. Vertrau deinem Bauchgefühl.</div>'
+  ));
 
   // HOME quiz options
   const homeOpts=document.querySelectorAll('#home-quiz-opts .quiz-option');
   const homeOptsTxt=lang==='zh'
     ?['大部分——这不就是化疗的目的吗','大约一半——化疗不太精准','只有外层——药物无法到达核心','几乎没有——肿瘤完全耐药']
+    :lang==='de'
+    ?['Die meisten — das ist der Sinn der Chemo','Etwa die Hälfte — Chemo ist ungenau','Nur die äußere Schicht — das Medikament erreicht den Kern nicht','Fast keine — Tumore sind völlig resistend']
     :['Most of them — that\'s the whole point of chemo','About half — chemo is not very precise','Only the outer layer — drug can\'t reach the core','Almost none — tumors are completely drug-resistant'];
   homeOpts.forEach((o,i)=>{const letter=o.querySelector('.quiz-letter');const txt=homeOptsTxt[i];o.childNodes[o.childNodes.length-1].textContent=' '+txt;});
 
   // HOME cards
-  const cards=[
-    {h:lang==='zh'?'为什么药物失效':'Why drugs fail', p:lang==='zh'?'即使是最有效的化疗药物，有时也会失效——不是因为它们失去了作用，而是因为它们在物理上无法穿透到足够深的位置。我们用真实的数学来模拟这一过程。':'Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.', t1:lang==='zh'?'互动模拟':'interactive sim', t2:lang==='zh'?'内含测验':'quiz inside'},
-    {h:lang==='zh'?'早期发现':'Early detection', p:lang==='zh'?'1 厘米和 5 厘米发现的肿瘤是完全不同的问题。拖动滑块——亲眼看看随着肿瘤生长，治疗变得有多难。':'A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.', t1:lang==='zh'?'拖动探索':'drag & explore', t2:lang==='zh'?'内含测验':'quiz inside'},
-    {h:lang==='zh'?'生活方式与风险':'Lifestyle & risk', p:lang==='zh'?'吸烟和肥胖不只会导致癌症——它们还会改变肿瘤微环境，使化疗效果更差。获取你的个性化风险画像。':'Smoking and obesity don\'t just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.', t1:lang==='zh'?'风险画像':'risk profile', t2:lang==='zh'?'个性化':'personalised'},
-    {h:lang==='zh'?'精准医疗':'Precision medicine', p:lang==='zh'?'两个患者，相同的癌症，相同的药物——结果却截然不同。基因和肿瘤生物学都起着关键作用。亲眼看看差异。':'Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.', t1:lang==='zh'?'对比':'compare', t2:lang==='zh'?'内含测验':'quiz inside'},
+  const cards=lang==='de'?[
+    {h:'Warum Medikamente versagen', p:'Selbst die wirksamsten Chemotherapeutika versagen manchmal — nicht weil sie aufhören zu wirken, sondern weil sie physisch nicht tief genug eindringen können.', t1:'interaktive Sim.', t2:'Quiz enthalten'},
+    {h:'Früherkennung', p:'Ein 1 cm und ein 5 cm großer Tumor sind völlig verschiedene Probleme. Ziehe einen Schieberegler — und sieh, wie viel schwieriger die Behandlung wird.', t1:'erkunden', t2:'Quiz enthalten'},
+    {h:'Lebensstil & Risiko', p:'Rauchen und Fettleibigkeit verursachen nicht nur Krebs — sie verändern das Tumormikroenvironment auf eine Weise, die Chemotherapie weniger wirksam macht.', t1:'Risikoprofil', t2:'personalisiert'},
+    {h:'Präzisionsmedizin', p:'Zwei Patienten, gleiche Diagnose, gleiches Medikament — völlig unterschiedliche Ergebnisse. Genetik und Tumorbiologie spielen eine Rolle.', t1:'vergleichen', t2:'Quiz enthalten'},
+  ]:lang==='zh'?[
+    {h:'为什么药物失效', p:'即使是最有效的化疗药物，有时也会失效——不是因为它们失去了作用，而是因为它们在物理上无法穿透到足够深的位置。我们用真实的数学来模拟这一过程。', t1:'互动模拟', t2:'内含测验'},
+    {h:'早期发现', p:'1 厘米和 5 厘米发现的肿瘤是完全不同的问题。拖动滑块——亲眼看看随着肿瘤生长，治疗变得有多难。', t1:'拖动探索', t2:'内含测验'},
+    {h:'生活方式与风险', p:'吸烟和肥胖不只会导致癌症——它们还会改变肿瘤微环境，使化疗效果更差。获取你的个性化风险画像。', t1:'风险画像', t2:'个性化'},
+    {h:'精准医疗', p:'两个患者，相同的癌症，相同的药物——结果却截然不同。基因和肿瘤生物学都起着关键作用。亲眼看看差异。', t1:'对比', t2:'内含测验'},
+  ]:[
+    {h:'Why drugs fail', p:'Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.', t1:'interactive sim', t2:'quiz inside'},
+    {h:'Early detection', p:'A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.', t1:'drag & explore', t2:'quiz inside'},
+    {h:'Lifestyle & risk', p:'Smoking and obesity don\'t just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.', t1:'risk profile', t2:'personalised'},
+    {h:'Precision medicine', p:'Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.', t1:'compare', t2:'quiz inside'},
   ];
   document.querySelectorAll('.home-card').forEach((card,i)=>{
     if(!cards[i])return;
@@ -2615,23 +2690,27 @@ function applyLang(lang){
   });
 
   // WHY DRUGS FAIL tab
-  setText('drug-title-h1',lang==='zh'?'为什么药物失效':'Why Drugs Fail');
-  setText('drug-sub',lang==='zh'?'化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。':'The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.');
-  setText('drug-quiz-title',lang==='zh'?'先来猜一猜——':'Before we explain — what\'s your guess?');
-  setHtml('drug-quiz-q',lang==='zh'
-    ?'胰腺癌是生存率最低的癌症之一。化疗效果如此差的主要原因是什么？'
-    :'Pancreatic cancer has one of the lowest survival rates of any cancer. What is the main reason chemotherapy is so ineffective?');
+  setText('drug-title-h1',t('Why Drugs Fail','为什么药物失效','Warum Medikamente versagen'));
+  setText('drug-sub',t('The most common reason chemotherapy fails isn\'t drug resistance — it\'s a physical problem. The drug simply cannot reach the cells it needs to kill.','化疗失败最常见的原因不是耐药性——而是一个物理问题。药物根本无法到达它需要杀死的细胞。','Der häufigste Grund für das Versagen einer Chemotherapie ist kein Widerstand — es ist ein physisches Problem. Das Medikament erreicht die Zellen, die es abtöten muss, einfach nicht.'));
+  setText('drug-quiz-title',t('Before we explain — what\'s your guess?','先来猜一猜——','Bevor wir erklären — was ist deine Vermutung?'));
+  setHtml('drug-quiz-q',t(
+    'Pancreatic cancer has one of the lowest survival rates of any cancer. What is the main reason chemotherapy is so ineffective?',
+    '胰腺癌是生存率最低的癌症之一。化疗效果如此差的主要原因是什么？',
+    'Bauchspeicheldrüsenkrebs hat eine der niedrigsten Überlebensraten. Was ist der Hauptgrund, warum Chemotherapie so unwirksam ist?'
+  ));
   const drugOpts=document.querySelectorAll('#drug-quiz-opts .quiz-option');
   const drugOptsTxt=lang==='zh'
     ?['癌细胞变异太快，产生耐药性','药物毒性太强，只能低剂量使用','肿瘤内的物理屏障阻止了药物到达癌细胞','胰腺在药物发挥作用前将其降解']
+    :lang==='de'
+    ?['Krebszellen mutieren zu schnell und werden resistent','Die Medikamente sind toxisch und müssen niedrig dosiert werden','Physische Barrieren im Tumor verhindern, dass Medikamente Krebszellen erreichen','Die Bauchspeicheldrüse baut Medikamente ab, bevor sie wirken können']
     :['Cancer cells mutate too fast and become drug-resistant','The drugs are toxic and have to be given at low doses','Physical barriers in the tumor prevent drugs from reaching cancer cells','The pancreas breaks down drugs before they can work'];
   drugOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+drugOptsTxt[i];});
-  setText('drug-explainer-title',lang==='zh'?'肿瘤内部到底发生了什么':'What\'s really happening inside');
-  setText('drug-wall-title',lang==='zh'?'肿瘤建起了屏障':'The tumor builds walls');
-  setText('drug-math-title',lang==='zh'?'我们可以量化这个过程':'We can measure this');
-  setText('drug-sim-title',lang==='zh'?'亲眼看看':'See it for yourself');
-  setText('drug-sim-p',lang==='zh'?'选择药物和肿瘤类型，运行模拟，看看药物究竟能渗透多远。':'Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.');
-  setText('drug-run-btn',lang==='zh'?'▶ 运行模拟':'▶ Run simulation');
+  setText('drug-explainer-title',t('What\'s really happening inside','肿瘤内部到底发生了什么','Was wirklich im Inneren passiert'));
+  setText('drug-wall-title',t('The tumor builds walls','肿瘤建起了屏障','Der Tumor baut Mauern'));
+  setText('drug-math-title',t('We can measure this','我们可以量化这个过程','Wir können das messen'));
+  setText('drug-sim-title',t('See it for yourself','亲眼看看','Selbst nachsehen'));
+  setText('drug-sim-p',t('Pick a drug and tumor. Run the simulation. Watch how far the drug actually gets.','选择药物和肿瘤类型，运行模拟，看看药物究竟能渗透多远。','Wähle ein Medikament und einen Tumor. Starte die Simulation. Beobachte, wie weit das Medikament wirklich gelangt.'));
+  setText('drug-run-btn',t('▶ Run simulation','▶ 运行模拟','▶ Simulation starten'));
   const drug1Btn=document.getElementById('drug1-btn');if(drug1Btn&&!drug1Btn.disabled)drug1Btn.textContent=lang==='zh'?'▶ 运行模拟':'▶ Run simulation';
   setText('drug-reset-btn',lang==='zh'?'重置':'Reset');
   const drugLabel=document.querySelector('[for="drug1-select"]')||document.querySelector('label[id="drug-label"]');
@@ -2673,9 +2752,9 @@ function applyLang(lang){
   ['tumor1-select'].forEach(id=>{const s=document.getElementById(id);if(!s)return;Array.from(s.options).forEach(o=>{if(tumorMap[o.value])o.textContent=tumorMap[o.value][lang];});});
 
   // EARLY DETECTION tab
-  setText('early-title-h1',lang==='zh'?'早期发现':'Early Detection');
-  setText('early-sub',lang==='zh'?'你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。':'You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.');
-  setText('early-quiz-title',lang==='zh'?'测试你的直觉——':'Test your intuition');
+  setText('early-title-h1',t('Early Detection','早期发现','Früherkennung'));
+  setText('early-sub',t('You\'ve heard "catch it early." But do you know what that actually means in physical terms? First — a question.','你一定听说过"早发现、早治疗"。但你知道这在物理上究竟意味着什么吗？先来回答一个问题。','Du hast gehört: „Früh erkennen." Aber weißt du, was das physisch bedeutet? Erst — eine Frage.'));
+  setText('early-quiz-title',t('Test your intuition','测试你的直觉——','Teste deine Intuition'));
   setHtml('early-quiz-q',lang==='zh'
     ?'肿瘤从一期长到三期，大小翻倍。药物覆盖率（化疗能到达的肿瘤比例）会如何变化？'
     :'A tumor doubles in size from Stage I to Stage III. How much does drug coverage (the percentage of the tumor reached by chemo) change?');
@@ -2687,7 +2766,7 @@ function applyLang(lang){
   setText('early-drag-title',lang==='zh'?'拖动来发现真相':'Drag to discover');
   setText('early-drag-p',lang==='zh'?'移动滑块，看数字如何变化。这就是为什么早期筛查能够拯救生命。':'Move the slider. Watch the numbers change. This is why early screening saves lives.');
   setText('size-slider-label',lang==='zh'?'肿瘤半径':'Tumor radius');
-  setText('early-run-btn',lang==='zh'?'▶ 模拟当前大小':'▶ Simulate this size');
+  setText('early-run-btn',t('▶ Simulate this size','▶ 模拟当前大小','▶ Diese Größe simulieren'));
   setText('early-stage-label',lang==='zh'?'分期':'Stage');
   setText('early-survival-label',lang==='zh'?'5年生存率':'5-yr survival');
   setText('early-cov-label',lang==='zh'?'药物覆盖率':'Drug coverage');
@@ -2697,34 +2776,34 @@ function applyLang(lang){
   setText('early-story-ph-p',lang==='zh'?'一个关于早期（或晚期）发现如何改变患者治疗之路的故事。':'A story about how early (or late) detection changed a patient\'s treatment journey.');
 
   // LIFESTYLE tab
-  setText('ls-title-h1',lang==='zh'?'生活方式与风险':'Lifestyle & Risk');
-  setText('ls-sub',lang==='zh'?'你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗效果好不好。填写下方信息，生成你的专属画像。':'Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.');
-  setText('ls-profile-title',lang==='zh'?'建立你的微环境画像':'Build your microenvironment profile');
-  setText('ls-profile-p',lang==='zh'?'调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。':'Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.');
-  setText('ls-smoking-label',lang==='zh'?'吸烟（包年）':'Smoking (pack-years)');
-  setText('ls-bmi-label',lang==='zh'?'BMI 体重指数':'BMI');
-  setText('ls-inflam-label',lang==='zh'?'慢性炎症程度':'Chronic inflammation');
-  setText('ls-exercise-label',lang==='zh'?'运动（小时/周）':'Exercise (hrs/week)');
-  setText('ls-alcohol-label',lang==='zh'?'饮酒（单位/周）':'Alcohol (units/week)');
-  setText('ls-diet-label',lang==='zh'?'饮食质量':'Diet quality');
-  setText('ls-sleep-label',lang==='zh'?'睡眠时长（小时/晚）':'Sleep (hrs/night)');
-  setText('ls-stress-label',lang==='zh'?'慢性压力':'Chronic stress');
+  setText('ls-title-h1',t('Lifestyle & Risk','生活方式与风险','Lebensstil & Risiko'));
+  setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','你的生活方式不只影响患癌风险——还会影响如果真的患癌，治疗效果好不好。填写下方信息，生成你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko — er beeinflusst auch, wie gut die Behandlung wirkt. Fülle das Profil aus, um dein persönliches Ergebnis zu sehen.'));
+  setText('ls-profile-title',t('Build your microenvironment profile','建立你的微环境画像','Erstelle dein Mikromilieu-Profil'));
+  setText('ls-profile-p',t('Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.','调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。','Passe die Schieberegler an deinen Lebensstil an. Wir zeigen, wie jeder Faktor die Medikamentenpenetration beeinflusst.'));
+  setText('ls-smoking-label',t('Smoking (pack-years)','吸烟（包年）','Rauchen (Packungsjahre)'));
+  setText('ls-bmi-label',t('BMI','BMI 体重指数','BMI'));
+  setText('ls-inflam-label',t('Chronic inflammation','慢性炎症程度','Chronische Entzündung'));
+  setText('ls-exercise-label',t('Exercise (hrs/week)','运动（小时/周）','Sport (Std./Woche)'));
+  setText('ls-alcohol-label',t('Alcohol (units/week)','饮酒（单位/周）','Alkohol (Einheiten/Woche)'));
+  setText('ls-diet-label',t('Diet quality','饮食质量','Ernährungsqualität'));
+  setText('ls-sleep-label',t('Sleep (hrs/night)','睡眠时长（小时/晚）','Schlaf (Std./Nacht)'));
+  setText('ls-stress-label',t('Chronic stress','慢性压力','Chronischer Stress'));
 
   // Early Detection cancer type guide
-  setText('early-typeguide-title',lang==='zh'?'分癌种筛查指南':'Cancer-by-cancer screening guide');
-  setText('early-typeguide-sub',lang==='zh'?'选择癌症类型，查看详细筛查建议和生存数据。':'Select a cancer type to see detailed screening recommendations and survival data.');
-  setText('ct-breast-name',lang==='zh'?'乳腺癌':'Breast cancer');
-  setText('ct-breast-if',lang==='zh'?'40岁起乳腺X光':'Mammogram from 40');
-  setText('ct-colorectal-name',lang==='zh'?'结直肠癌':'Colorectal cancer');
-  setText('ct-colorectal-if',lang==='zh'?'45岁起结肠镜':'Colonoscopy from 45');
-  setText('ct-lung-name',lang==='zh'?'肺癌':'Lung cancer');
-  setText('ct-lung-if',lang==='zh'?'低剂量CT，高风险人群':'Low-dose CT, high risk');
-  setText('ct-cervical-name',lang==='zh'?'宫颈癌':'Cervical cancer');
-  setText('ct-cervical-if',lang==='zh'?'21岁起宫颈涂片':'Pap smear from 21');
-  setText('ct-prostate-name',lang==='zh'?'前列腺癌':'Prostate cancer');
-  setText('ct-prostate-if',lang==='zh'?'50岁起PSA检测':'PSA test from 50');
-  setText('ct-pancreatic-name',lang==='zh'?'胰腺癌':'Pancreatic cancer');
-  setText('ct-pancreatic-if',lang==='zh'?'暂无标准筛查':'No standard screening');
+  setText('early-typeguide-title',t('Cancer-by-cancer screening guide','分癌种筛查指南','Krebsspezifischer Screening-Leitfaden'));
+  setText('early-typeguide-sub',t('Select a cancer type to see detailed screening recommendations and survival data.','选择癌症类型，查看详细筛查建议和生存数据。','Wähle eine Krebsart, um detaillierte Screening-Empfehlungen und Überlebensdaten zu sehen.'));
+  setText('ct-breast-name',t('Breast cancer','乳腺癌','Brustkrebs'));
+  setText('ct-breast-if',t('Mammogram from 40','40岁起乳腺X光','Mammographie ab 40'));
+  setText('ct-colorectal-name',t('Colorectal cancer','结直肠癌','Darmkrebs'));
+  setText('ct-colorectal-if',t('Colonoscopy from 45','45岁起结肠镜','Koloskopie ab 45'));
+  setText('ct-lung-name',t('Lung cancer','肺癌','Lungenkrebs'));
+  setText('ct-lung-if',t('Low-dose CT, high risk','低剂量CT，高风险人群','Niedrigdosis-CT, Hochrisiko'));
+  setText('ct-cervical-name',t('Cervical cancer','宫颈癌','Gebärmutterhalskrebs'));
+  setText('ct-cervical-if',t('Pap smear from 21','21岁起宫颈涂片','Pap-Abstrich ab 21'));
+  setText('ct-prostate-name',t('Prostate cancer','前列腺癌','Prostatakrebs'));
+  setText('ct-prostate-if',t('PSA test from 50','50岁起PSA检测','PSA-Test ab 50'));
+  setText('ct-pancreatic-name',t('Pancreatic cancer','胰腺癌','Bauchspeicheldrüsenkrebs'));
+  setText('ct-pancreatic-if',t('No standard screening','暂无标准筛查','Kein Standardscreening'));
 
   // Drug FAQ accordion
   setText('drug-faq-title',lang==='zh'?'常见问题解答':'Frequently asked questions');
@@ -2747,35 +2826,39 @@ function applyLang(lang){
   setText('prec-tx-q3',lang==='zh'?'免疫治疗（免疫检查点抑制剂）':'Immunotherapy (checkpoint inhibitors)');
   setText('prec-tx-q4',lang==='zh'?'CAR-T细胞疗法':'CAR-T cell therapy');
   setText('prec-tx-q5',lang==='zh'?'抗体药物偶联物（ADC）':'Antibody-drug conjugates (ADCs)');
-  setText('ls-gen-btn',lang==='zh'?'生成我的画像 →':'Generate my profile →');
-  setText('ls-reset-btn',lang==='zh'?'重置':'Reset');
-  setText('ls-live-title',lang==='zh'?'实时微环境估计':'Live microenvironment estimate');
-  setText('ls-D-label',lang==='zh'?'D 系数':'D modifier');
-  setText('ls-risk-title-label',lang==='zh'?'风险等级':'Risk level');
-  setText('ls-profile-result-title',lang==='zh'?'你的微环境画像':'Your microenvironment profile');
-  setText('ls-prev-title',lang==='zh'?'循证预防建议':'Evidence-based actions');
-  setText('ls-prev1-title',lang==='zh'?'不要吸烟':'Don\'t smoke');
-  setText('ls-prev2-title',lang==='zh'?'保持健康体重':'Healthy weight');
-  setText('ls-prev3-title',lang==='zh'?'规律运动':'Exercise regularly');
+  setText('ls-gen-btn',t('Generate my profile →','生成我的画像 →','Mein Profil erstellen →'));
+  setText('ls-reset-btn',t('Reset','重置','Zurücksetzen'));
+  setText('ls-live-title',t('Live microenvironment estimate','实时微环境估计','Echtzeit-Mikromilieu-Schätzung'));
+  setText('ls-D-label',t('D modifier','D 系数','D-Faktor'));
+  setText('ls-risk-title-label',t('Risk level','风险等级','Risikoniveau'));
+  setText('ls-profile-result-title',t('Your microenvironment profile','你的微环境画像','Dein Mikromilieu-Profil'));
+  setText('ls-prev-title',t('Evidence-based actions','循证预防建议','Evidenzbasierte Maßnahmen'));
+  setText('ls-prev1-title',t('Don\'t smoke','不要吸烟','Nicht rauchen'));
+  setText('ls-prev2-title',t('Healthy weight','保持健康体重','Gesundes Gewicht'));
+  setText('ls-prev3-title',t('Exercise regularly','规律运动','Regelmäßig Sport'));
   setText('ls-story-ph-title',lang==='zh'?'— 故事即将上线 —':'— STORY COMING SOON —');
   setText('ls-story-ph-p',lang==='zh'?'一个关于生活方式改变如何影响患者治疗反应的故事。':'A story about how lifestyle changes affected a patient\'s treatment response.');
 
   // PRECISION tab
-  setText('prec-title-h1',lang==='zh'?'精准医疗':'Precision Medicine');
-  setText('prec-sub',lang==='zh'?'两个患者，相同的癌症，相同的药物。一个有效，一个无效。这不是运气问题，这是生物学。先来猜一猜。':'Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology. First, a guess.');
-  setText('prec-quiz-title',lang==='zh'?'你认为呢？':'What do you think?');
-  setHtml('prec-quiz-q',lang==='zh'
-    ?'曲妥珠单抗（赫赛汀）是一种高效乳腺癌药物。哪些患者能从中获益？'
-    :'Trastuzumab (Herceptin) is a highly effective breast cancer drug. In which patients does it work?');
+  setText('prec-title-h1',t('Precision Medicine','精准医疗','Präzisionsmedizin'));
+  setText('prec-sub',t('Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology. First, a guess.','两个患者，相同的癌症，相同的药物。一个有效，一个无效。这不是运气问题，这是生物学。先来猜一猜。','Zwei Patienten. Gleicher Krebs. Gleiches Medikament. Einer spricht an — der andere nicht. Kein Pech. Biologie. Erst eine Vermutung.'));
+  setText('prec-quiz-title',t('What do you think?','你认为呢？','Was denkst du?'));
+  setHtml('prec-quiz-q',t(
+    'Trastuzumab (Herceptin) is a highly effective breast cancer drug. In which patients does it work?',
+    '曲妥珠单抗（赫赛汀）是一种高效乳腺癌药物。哪些患者能从中获益？',
+    'Trastuzumab (Herceptin) ist ein hochwirksames Brustkrebsmedikament. Bei welchen Patienten wirkt es?'
+  ));
   const precOpts=document.querySelectorAll('#prec-quiz-opts .quiz-option');
   const precOptsTxt=lang==='zh'
     ?['所有乳腺癌患者——这是通用治疗方案','仅限 HER2 蛋白过表达的患者（约 20% 的病例）','仅限年轻患者——该药物与年龄有关','仅限已经接受过化疗的患者']
+    :lang==='de'
+    ?['Alle Brustkrebspatientinnen — es ist eine allgemeine Behandlung','Nur Patientinnen, deren Tumoren HER2 überexprimieren (~20% der Fälle)','Nur jüngere Patientinnen — das Medikament ist altersabhängig','Nur Patientinnen, die bereits eine Chemotherapie hatten']
     :['All breast cancer patients — it\'s a general treatment','Only patients whose tumors overexpress the HER2 protein (~20% of cases)','Only younger patients — the drug is age-dependent','Only patients who have already had chemotherapy'];
   precOpts.forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+precOptsTxt[i];});
-  setText('prec-compare-title',lang==='zh'?'并排看看差异':'See the difference side by side');
-  setText('prec-scenario-label',lang==='zh'?'选择对比场景':'Choose a comparison scenario');
-  setText('prec-run-btn',lang==='zh'?'▶ 运行对比':'▶ Run comparison');
-  setText('prec-ask-label',lang==='zh'?'建议向肿瘤科医生提问：':'Questions to ask your oncologist');
+  setText('prec-compare-title',t('See the difference side by side','并排看看差异','Vergleiche die Unterschiede'));
+  setText('prec-scenario-label',t('Choose a comparison scenario','选择对比场景','Wähle ein Vergleichsszenario'));
+  setText('prec-run-btn',t('▶ Run comparison','▶ 运行对比','▶ Vergleich starten'));
+  setText('prec-ask-label',t('Questions to ask your oncologist','建议向肿瘤科医生提问：','Fragen an Ihren Onkologen'));
   setText('prec-ask-1',lang==='zh'?'我的肿瘤是否检测过 HER2、KRAS 或 EGFR 等生物标志物？':'Has my tumor been tested for biomarkers like HER2, KRAS, or EGFR?');
   setText('prec-ask-2',lang==='zh'?'针对我的特定突变，是否有靶向治疗方案？':'Is there a targeted therapy available for my specific mutation?');
   setText('prec-ask-3',lang==='zh'?'基因检测会改变我的治疗计划吗？':'Would genetic testing change my treatment plan?');
@@ -2802,91 +2885,95 @@ function applyLang(lang){
 
   // footer
   const fc=document.getElementById('footer-copy');
-  if(fc)fc.textContent=lang==='zh'?'癌症科学，人人可懂——仅供教育使用，非医疗建议':'Cancer science for everyone — educational use only, not medical advice';
+  if(fc)fc.textContent=t('Cancer science for everyone — educational use only, not medical advice','癌症科学，人人可懂——仅供教育使用，非医疗建议','Krebswissenschaft für alle — nur zur Bildung, kein medizinischer Rat');
 
   // screening table
-  setText('screen-th1', lang==='zh'?'癌症类型':'Cancer');
-  setText('screen-th2', lang==='zh'?'筛查方法':'Screening method');
-  setText('screen-th3', lang==='zh'?'开始年龄':'Start age');
-  setText('screen-th4', lang==='zh'?'为什么重要':'Why it matters');
-  setText('screen-1-cancer', lang==='zh'?'乳腺癌':'Breast');
-  setText('screen-1-method', lang==='zh'?'乳腺X线摄影':'Mammogram');
-  setText('screen-1-why',    lang==='zh'?'第一期：99% 生存率 → 第四期：28%':'Stage I: 99% survival → Stage IV: 28%');
-  setText('screen-2-cancer', lang==='zh'?'结直肠癌':'Colorectal');
-  setText('screen-2-method', lang==='zh'?'结肠镜检查':'Colonoscopy');
-  setText('screen-2-why',    lang==='zh'?'早期发现息肉可预防大多数病例':'Most cases preventable if polyps caught early');
-  setText('screen-3-cancer', lang==='zh'?'宫颈癌':'Cervical');
-  setText('screen-3-method', lang==='zh'?'宫颈涂片 + HPV 检测':'Pap smear + HPV test');
-  setText('screen-3-why',    lang==='zh'?'筛查后近 100% 可预防':'Near 100% preventable with screening');
-  setText('screen-4-cancer', lang==='zh'?'肺癌':'Lung');
-  setText('screen-4-method', lang==='zh'?'低剂量 CT':'Low-dose CT');
-  const age4=document.getElementById('screen-4-age');if(age4)age4.textContent=lang==='zh'?'50岁（吸烟者）':'50 (smokers)';
-  setText('screen-4-why',    lang==='zh'?'早期发现可将生存率提高三倍':'Early finding triples survival rate');
-  setText('screen-5-cancer', lang==='zh'?'胰腺癌':'Pancreatic');
-  setText('screen-5-method', lang==='zh'?'暂无标准筛查方案':'No standard screening');
-  setText('screen-5-why',    lang==='zh'?'预防是目前唯一的策略':'Prevention is the only current strategy');
+  setText('screen-th1', t('Cancer','癌症类型','Krebsart'));
+  setText('screen-th2', t('Screening method','筛查方法','Screeningmethode'));
+  setText('screen-th3', t('Start age','开始年龄','Startalter'));
+  setText('screen-th4', t('Why it matters','为什么重要','Warum es wichtig ist'));
+  setText('screen-1-cancer', t('Breast','乳腺癌','Brust'));
+  setText('screen-1-method', t('Mammogram','乳腺X线摄影','Mammographie'));
+  setText('screen-1-why',    t('Stage I: 99% survival → Stage IV: 28%','第一期：99% 生存率 → 第四期：28%','Stadium I: 99% Überleben → Stadium IV: 28%'));
+  setText('screen-2-cancer', t('Colorectal','结直肠癌','Darmkrebs'));
+  setText('screen-2-method', t('Colonoscopy','结肠镜检查','Koloskopie'));
+  setText('screen-2-why',    t('Most cases preventable if polyps caught early','早期发现息肉可预防大多数病例','Die meisten Fälle verhinderbar, wenn Polypen früh entdeckt werden'));
+  setText('screen-3-cancer', t('Cervical','宫颈癌','Gebärmutterhalskrebs'));
+  setText('screen-3-method', t('Pap smear + HPV test','宫颈涂片 + HPV 检测','Pap-Abstrich + HPV-Test'));
+  setText('screen-3-why',    t('Near 100% preventable with screening','筛查后近 100% 可预防','Nahezu 100% mit Screening verhinderbar'));
+  setText('screen-4-cancer', t('Lung','肺癌','Lungenkrebs'));
+  setText('screen-4-method', t('Low-dose CT','低剂量 CT','Niedrigdosis-CT'));
+  const age4=document.getElementById('screen-4-age');if(age4)age4.textContent=t('50 (smokers)','50岁（吸烟者）','50 (Raucher)');
+  setText('screen-4-why',    t('Early finding triples survival rate','早期发现可将生存率提高三倍','Früherkennung verdreifacht Überlebensrate'));
+  setText('screen-5-cancer', t('Pancreatic','胰腺癌','Bauchspeicheldrüsenkrebs'));
+  setText('screen-5-method', t('No standard screening','暂无标准筛查方案','Kein Standardscreening'));
+  setText('screen-5-why',    t('Prevention is the only current strategy','预防是目前唯一的策略','Prävention ist die einzige aktuelle Strategie'));
 
   // colorbar drug label
-  setText('drug-colorbar-label', lang==='zh'?'药物浓度':'drug concentration');
-  setText('drug-hi', lang==='zh'?'高':'high');
-  setText('drug-lo', lang==='zh'?'低':'low');
+  setText('drug-colorbar-label', t('drug concentration','药物浓度','Medikamentenkonzentration'));
+  setText('drug-hi', t('high','高','hoch'));
+  setText('drug-lo', t('low','低','niedrig'));
 
   // Journal tab translations
-  setText('journal-h1', lang==='zh'?'癌症科学期刊':'Cancer Science Journal');
-  setText('journal-sub', lang==='zh'?
-    '顶级癌症研究，通俗易懂。我们的团队从高影响因子期刊中精选文章并提供摘要——CA、Nature Reviews Cancer、JCO、Cancer Cell、Lancet Oncology、Cancer Discovery。所有订阅费用直接捐给慈善机构。':
-    'World-class cancer research, made readable. Every article is summarised by our team from high-impact journals — CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, Cancer Discovery. All subscription fees go directly to our charity partners.');
-  setText('journal-chip-1', lang==='zh'?'高影响因子期刊':'High-IF journals');
-  setText('journal-chip-2', lang==='zh'?'通俗语言':'Plain language');
+  setText('journal-h1', t('Cancer Science Journal','癌症科学期刊','Krebsmedizin Journal'));
+  setText('journal-sub', t(
+    'World-class cancer research, made readable. Every article is summarised by our team from high-impact journals — CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, Cancer Discovery. All subscription fees go directly to our charity partners.',
+    '顶级癌症研究，通俗易懂。我们的团队从高影响因子期刊中精选文章并提供摘要——CA、Nature Reviews Cancer、JCO、Cancer Cell、Lancet Oncology、Cancer Discovery。所有订阅费用直接捐给慈善机构。',
+    'Erstklassige Krebsforschung, verständlich erklärt. Jeder Artikel wird von unserem Team aus hochrangigen Fachzeitschriften zusammengefasst. Alle Abonnementgebühren gehen direkt an unsere Wohltätigkeitspartner.'
+  ));
+  setText('journal-chip-1', t('High-IF journals','高影响因子期刊','Top-Fachzeitschriften'));
+  setText('journal-chip-2', t('Plain language','通俗语言','Verständliche Sprache'));
   setText('journal-chip-3', 'EN / 中文 / DE');
-  setText('journal-chip-4', lang==='zh'?'费用 → 慈善':'Fees → charity');
-  setText('journal-plans-title', lang==='zh'?'选择方案':'Choose a plan');
-  setText('plan-free-label', lang==='zh'?'免费':'Free');
-  setText('plan-free-period', lang==='zh'?'永久':'forever');
-  setText('pf-1', lang==='zh'?'✓ 每月1篇免费文章':'✓ 1 free article per month');
-  setText('pf-2', lang==='zh'?'✓ 仅英文':'✓ English only');
-  setText('pf-3', lang==='zh'?'✓ 所有测验内容':'✓ Access to all quiz content');
-  setText('pf-4', lang==='zh'?'✗ 往期文章':'✗ Previous articles');
-  setText('pf-5', lang==='zh'?'✗ 中文 / 德文':'✗ 中文 / Deutsch');
-  setText('plan-free-btn', lang==='zh'?'免费开始':'Get started');
-  setText('plan-popular-badge', lang==='zh'?'最受欢迎':'MOST POPULAR');
-  setText('plan-monthly-label', lang==='zh'?'月度订阅':'Monthly');
-  setText('plan-monthly-period', lang==='zh'?'每月':'per month');
-  setText('pm-1', lang==='zh'?'✓ 每月4篇文章':'✓ 4 articles per month');
-  setText('pm-2', lang==='zh'?'✓ 中英德三语':'✓ EN / 中文 / Deutsch');
-  setText('pm-3', lang==='zh'?'✓ 随时取消':'✓ Cancel anytime');
-  setText('pm-4', lang==='zh'?'✓ 100% 费用 → 慈善':'✓ 100% fees → charity');
-  setText('pm-5', lang==='zh'?'✗ 往期文章档案':'✗ Previous articles archive');
-  setText('plan-monthly-btn', lang==='zh'?'订阅 — $4/月':'Subscribe — $4/mo');
-  setText('plan-archive-label', lang==='zh'?'单篇购买':'Single article');
-  setText('plan-archive-period', lang==='zh'?'每篇':'per article');
-  setText('pa-1', lang==='zh'?'✓ 购买任意往期文章':'✓ Buy any past article');
-  setText('pa-2', lang==='zh'?'✓ 中英德三语':'✓ EN / 中文 / Deutsch');
-  setText('pa-3', lang==='zh'?'✓ 永久访问':'✓ Permanent access');
-  setText('pa-4', lang==='zh'?'✓ 100% 费用 → 慈善':'✓ 100% fees → charity');
-  setText('pa-5', lang==='zh'?'✓ 无需订阅':'✓ No subscription needed');
-  setText('plan-archive-btn', lang==='zh'?'浏览档案':'Browse archive');
-  setText('journal-charity-note', lang==='zh'?
-    '❤ 所有订阅费用100%直接捐给我们经过认证的儿童癌症研究与患者支持慈善伙伴。PDEOutreach不经手任何款项。':
-    '❤ 100% of subscription fees go directly to our verified charity partners in childhood cancer research and patient support. PDEOutreach handles no money.');
-  setText('journal-sample-title', lang==='zh'?'示例文章':'Sample articles');
-  setText('art1-title', lang==='zh'?'2024年全球癌症统计：格局如何变化？':'Global Cancer Statistics 2024: How has the landscape shifted?');
-  setText('art1-desc', lang==='zh'?'GLOBOCAN 2024对185个国家36种癌症的估算——哪些上升、哪些下降，以及对预防意味着什么。':'GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what\'s risen, what\'s fallen, and what it means for prevention.');
-  setText('art1-read', lang==='zh'?'5分钟阅读':'5 min read');
-  setText('art1-free-tag', lang==='zh'?'本月免费':'Free this month');
-  setText('art2-title', lang==='zh'?'肿瘤微环境重塑：药物递送新靶点':'Tumour microenvironment remodelling: new targets for drug delivery');
-  setText('art2-desc', lang==='zh'?'间质密度和IFP梯度如何在物理上阻挡化疗——以及克服这些障碍的新兴策略。':'How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.');
-  setText('art2-read', lang==='zh'?'7分钟阅读':'7 min read');
-  setText('art2-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
-  setText('art3-title', lang==='zh'?'液体活检早期检测：2025年临床进展':'Liquid biopsies in early detection: 2025 clinical update');
-  setText('art3-desc', lang==='zh'?'ctDNA和CancerSEEK在临床试验中的现状，以及最新敏感性/特异性数据的真实含义。':'ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.');
-  setText('art3-read', lang==='zh'?'6分钟阅读':'6 min read');
-  setText('art3-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
-  setText('art4-title', lang==='zh'?'CAR-T疗法攻克实体瘤：突破间质屏障':'CAR-T in solid tumours: breaking through the stromal barrier');
-  setText('art4-desc', lang==='zh'?'为什么CAR-T在血液癌中效果显著，却在实体瘤中举步维艰——以及正在改变这一局面的三种工程方案。':'Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.');
-  setText('art4-read', lang==='zh'?'8分钟阅读':'8 min read');
-  setText('art4-lock-tag', lang==='zh'?'🔒 订阅者专属':'🔒 Subscribers');
-  setText('journal-sources-title', lang==='zh'?'来源期刊':'Source journals');
+  setText('journal-chip-4', t('Fees → charity','费用 → 慈善','Gebühren → Spende'));
+  setText('journal-plans-title', t('Choose a plan','选择方案','Plan wählen'));
+  setText('plan-free-label', t('Free','免费','Kostenlos'));
+  setText('plan-free-period', t('forever','永久','für immer'));
+  setText('pf-1', t('✓ 1 free article per month','✓ 每月1篇免费文章','✓ 1 kostenloser Artikel pro Monat'));
+  setText('pf-2', t('✓ English only','✓ 仅英文','✓ Nur Englisch'));
+  setText('pf-3', t('✓ Access to all quiz content','✓ 所有测验内容','✓ Zugang zu allen Quiz-Inhalten'));
+  setText('pf-4', t('✗ Previous articles','✗ 往期文章','✗ Ältere Artikel'));
+  setText('pf-5', t('✗ 中文 / Deutsch','✗ 中文 / 德文','✗ 中文 / Chinesisch'));
+  setText('plan-free-btn', t('Get started','免费开始','Kostenlos starten'));
+  setText('plan-popular-badge', t('MOST POPULAR','最受欢迎','BELIEBTESTE'));
+  setText('plan-monthly-label', t('Monthly','月度订阅','Monatlich'));
+  setText('plan-monthly-period', t('per month','每月','pro Monat'));
+  setText('pm-1', t('✓ 4 articles per month','✓ 每月4篇文章','✓ 4 Artikel pro Monat'));
+  setText('pm-2', t('✓ EN / 中文 / Deutsch','✓ 中英德三语','✓ EN / 中文 / Deutsch'));
+  setText('pm-3', t('✓ Cancel anytime','✓ 随时取消','✓ Jederzeit kündbar'));
+  setText('pm-4', t('✓ 100% fees → charity','✓ 100% 费用 → 慈善','✓ 100% Gebühren → Spende'));
+  setText('pm-5', t('✗ Previous articles archive','✗ 往期文章档案','✗ Archiv älterer Artikel'));
+  setText('plan-monthly-btn', t('Subscribe — $4/mo','订阅 — $4/月','Abonnieren — $4/Monat'));
+  setText('plan-archive-label', t('Single article','单篇购买','Einzelartikel'));
+  setText('plan-archive-period', t('per article','每篇','pro Artikel'));
+  setText('pa-1', t('✓ Buy any past article','✓ 购买任意往期文章','✓ Beliebigen Artikel kaufen'));
+  setText('pa-2', t('✓ EN / 中文 / Deutsch','✓ 中英德三语','✓ EN / 中文 / Deutsch'));
+  setText('pa-3', t('✓ Permanent access','✓ 永久访问','✓ Dauerhafter Zugang'));
+  setText('pa-4', t('✓ 100% fees → charity','✓ 100% 费用 → 慈善','✓ 100% Gebühren → Spende'));
+  setText('pa-5', t('✓ No subscription needed','✓ 无需订阅','✓ Kein Abo erforderlich'));
+  setText('plan-archive-btn', t('Browse archive','浏览档案','Archiv durchsuchen'));
+  setText('journal-charity-note', t(
+    '❤ 100% of subscription fees go directly to our verified charity partners in childhood cancer research and patient support. PDEOutreach handles no money.',
+    '❤ 所有订阅费用100%直接捐给我们经过认证的儿童癌症研究与患者支持慈善伙伴。PDEOutreach不经手任何款项。',
+    '❤ 100% der Abonnementgebühren gehen direkt an unsere geprüften Wohltätigkeitspartner. PDEOutreach verwaltet kein Geld.'
+  ));
+  setText('journal-sample-title', t('Sample articles','示例文章','Beispielartikel'));
+  setText('art1-title', t('Global Cancer Statistics 2024: How has the landscape shifted?','2024年全球癌症统计：格局如何变化？','Globale Krebsstatistik 2024: Wie hat sich die Lage verändert?'));
+  setText('art1-desc', t('GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what\'s risen, what\'s fallen, and what it means for prevention.','GLOBOCAN 2024对185个国家36种癌症的估算——哪些上升、哪些下降，以及对预防意味着什么。','GLOBOCAN 2024 Schätzungen für 36 Krebsarten in 185 Ländern — was gestiegen ist, was gefallen ist.'));
+  setText('art1-read', t('5 min read','5分钟阅读','5 Min. Lesezeit'));
+  setText('art1-free-tag', t('Free this month','本月免费','Diesen Monat kostenlos'));
+  setText('art2-title', t('Tumour microenvironment remodelling: new targets for drug delivery','肿瘤微环境重塑：药物递送新靶点','Tumormikroenvironment-Remodellierung: neue Ziele für die Medikamentenabgabe'));
+  setText('art2-desc', t('How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.','间质密度和IFP梯度如何在物理上阻挡化疗——以及克服这些障碍的新兴策略。','Wie Stromadickte und IFP-Gradienten die Chemotherapie physisch blockieren und neue Strategien dagegen.'));
+  setText('art2-read', t('7 min read','7分钟阅读','7 Min. Lesezeit'));
+  setText('art2-lock-tag', t('🔒 Subscribers','🔒 订阅者专属','🔒 Abonnenten'));
+  setText('art3-title', t('Liquid biopsies in early detection: 2025 clinical update','液体活检早期检测：2025年临床进展','Flüssigbiopsien zur Früherkennung: klinisches Update 2025'));
+  setText('art3-desc', t('ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.','ctDNA和CancerSEEK在临床试验中的现状，以及最新敏感性/特异性数据的真实含义。','ctDNA und CancerSEEK — aktueller Stand in klinischen Studien und was die Daten wirklich bedeuten.'));
+  setText('art3-read', t('6 min read','6分钟阅读','6 Min. Lesezeit'));
+  setText('art3-lock-tag', t('🔒 Subscribers','🔒 订阅者专属','🔒 Abonnenten'));
+  setText('art4-title', t('CAR-T in solid tumours: breaking through the stromal barrier','CAR-T疗法攻克实体瘤：突破间质屏障','CAR-T bei soliden Tumoren: Durchbruch der Stromabarriere'));
+  setText('art4-desc', t('Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.','为什么CAR-T在血液癌中效果显著，却在实体瘤中举步维艰——以及正在改变这一局面的三种工程方案。','Warum CAR-T bei Blutkrebs funktioniert, bei soliden Tumoren scheitert — und drei Ansätze, die das ändern.'));
+  setText('art4-read', t('8 min read','8分钟阅读','8 Min. Lesezeit'));
+  setText('art4-lock-tag', t('🔒 Subscribers','🔒 订阅者专属','🔒 Abonnenten'));
+  setText('journal-sources-title', t('Source journals','来源期刊','Quelljournale'));
 
   // Real stories headings
   document.querySelectorAll('.real-stories-h2').forEach(el=>el.textContent=lang==='zh'?'真实故事':'Real stories');
@@ -2910,24 +2997,30 @@ function applyLang(lang){
 function setText(id,txt){const el=document.getElementById(id);if(el)el.textContent=txt;}
 function setHtml(id,html){const el=document.getElementById(id);if(el)el.innerHTML=html;}
 
+function toggleLangDropdown(){
+  document.getElementById('lang-dropdown').classList.toggle('open');
+}
+document.addEventListener('click',function(e){
+  const dd=document.getElementById('lang-dropdown');
+  if(dd && !dd.contains(e.target)) dd.classList.remove('open');
+});
 function setLang(lang){
-  if(lang==='de'){
-    // German: show EN content with DE badge for now (full DE translation TBD)
-    applyLang('en');
-    const sel=document.getElementById('lang-select');
-    if(sel)sel.value='de';
-    // Show a small notice
-    const existing=document.getElementById('de-notice');
-    if(!existing){
-      const notice=document.createElement('div');
-      notice.id='de-notice';
-      notice.style.cssText='position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);background:var(--bg2);border:1px solid var(--border2);border-radius:10px;padding:.6rem 1.25rem;font-size:.78rem;color:var(--text2);z-index:9998;font-family:var(--mono);white-space:nowrap;';
-      notice.textContent='🇩🇪 Deutsche Übersetzung kommt bald — showing English';
-      document.body.appendChild(notice);
-      setTimeout(()=>notice.remove(),3500);
-    }
-    return;
-  }
+  // Close dropdown
+  const dd=document.getElementById('lang-dropdown');
+  if(dd) dd.classList.remove('open');
+  // Update button label + flag
+  const flags={en:'🇬🇧',zh:'🇨🇳',de:'🇩🇪'};
+  const labels={en:'EN',zh:'中文',de:'DE'};
+  const flagEl=document.getElementById('lang-flag');
+  const labelEl=document.getElementById('lang-label');
+  if(flagEl) flagEl.textContent=flags[lang]||'🇬🇧';
+  if(labelEl) labelEl.textContent=labels[lang]||'EN';
+  // Update active state
+  ['en','zh','de'].forEach(l=>{
+    const item=document.getElementById('lang-item-'+l);
+    if(item) item.classList.toggle('active',l===lang);
+  });
+  // Apply language
   applyLang(lang);
   try {
     const url=new URL(window.location.href);
@@ -3016,7 +3109,7 @@ updateLifestyle();
 try {
   const params = new URLSearchParams(window.location.search);
   const urlLang = params.get('lang');
-  if (urlLang === 'zh' || urlLang === 'en') applyLang(urlLang);
+  if (urlLang === 'zh' || urlLang === 'en' || urlLang === 'de') applyLang(urlLang);
 } catch(e) { /* sandboxed environment — skip */ }
 </script>
 </body>
