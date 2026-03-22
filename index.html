@@ -1644,5 +1644,22 @@ function applyLang(lang){
   setText('about-contact-h3',t('We welcome corrections, collaborations, and patient stories.','我们欢迎更正、合作和患者故事。','Wir freuen uns über Korrekturen, Kooperationen und Patientengeschichten.'));
   setText('about-contact-p',t('If you\'ve spotted an error, want to contribute a translation, or would like to share a patient story — please get in touch.','如果您发现了错误，想贡献翻译，或想分享患者故事——请联系我们。','Wenn Sie einen Fehler gefunden haben, eine Übersetzung beitragen oder eine Patientengeschichte teilen möchten — melden Sie sich.'));
 
-  // footer
-  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2025 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 
+  setText('footer-tagline',t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
+  setText('footer-links-title',t('Links','链接','Links'));setText('footer-contact-title',t('Contact','联系我们','Kontakt'));
+  setText('footer-link-about',t('About us','关于我们','Über uns'));
+  setText('footer-license-link','CC BY-NC 4.0');
+
+  // canvas overlay default labels
+  const d1Lbl=document.getElementById('drug1-lbl');if(d1Lbl&&(d1Lbl.textContent==='press Run to simulate'||d1Lbl.textContent==='按运行开始'))d1Lbl.textContent=t('press Run to simulate','按运行开始','Simulation starten');
+
+  updateSizeDemo(document.getElementById('size-slider').value);
+  updateLifestyle();
+}
+
+/* INIT */
+updateSizeDemo(12);
+updateLifestyle();
+try{const params=new URLSearchParams(window.location.search);const urlLang=params.get('lang');if(urlLang==='zh'||urlLang==='en'||urlLang==='de')applyLang(urlLang);}catch(e){}
+</script>
+</body>
+</html>
