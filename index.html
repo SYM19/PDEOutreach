@@ -420,28 +420,28 @@
       <h2 id="home-cards-title">Five things about cancer nobody told you</h2>
       <div class="grid-2 section">
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--blue);" onclick="switchTab('drug')">
-          <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);">Why drugs fail</h2></div>
+          <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);" id="card-hdr-drug">Why drugs fail</h2></div>
           <h3 id="card-h3-drug">Good drugs can't always reach the tumor</h3>
           <p id="card-p-drug">Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.</p>
-          <span class="tag blue">interactive sim</span><span class="tag">quiz inside</span>
+          <span class="tag blue" id="tag-drug-1">interactive sim</span><span class="tag" id="tag-drug-2">quiz inside</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--green);" onclick="switchTab('early')">
-          <div class="card-header"><div class="card-icon">🔍</div><h2 style="margin:0;color:var(--green);">Early detection</h2></div>
+          <div class="card-header"><div class="card-icon">🔍</div><h2 style="margin:0;color:var(--green);" id="card-hdr-early">Early detection</h2></div>
           <h3 id="card-h3-early">Tumor size changes everything</h3>
           <p id="card-p-early">A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.</p>
-          <span class="tag green">drag &amp; explore</span><span class="tag">quiz inside</span>
+          <span class="tag green" id="tag-early-1">drag &amp; explore</span><span class="tag" id="tag-early-2">quiz inside</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--amber);" onclick="switchTab('lifestyle')">
-          <div class="card-header"><div class="card-icon">🧬</div><h2 style="margin:0;color:var(--amber);">Lifestyle &amp; risk</h2></div>
+          <div class="card-header"><div class="card-icon">🧬</div><h2 style="margin:0;color:var(--amber);" id="card-hdr-ls">Lifestyle &amp; risk</h2></div>
           <h3 id="card-h3-ls">Your habits change how drugs work</h3>
           <p id="card-p-ls">Smoking and obesity don't just cause cancer — they change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.</p>
-          <span class="tag amber">risk profile</span><span class="tag">personalised</span>
+          <span class="tag amber" id="tag-ls-1">risk profile</span><span class="tag" id="tag-ls-2">personalised</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--purple);" onclick="switchTab('precision')">
-          <div class="card-header"><div class="card-icon">🎯</div><h2 style="margin:0;color:var(--purple);">Precision medicine</h2></div>
+          <div class="card-header"><div class="card-icon">🎯</div><h2 style="margin:0;color:var(--purple);" id="card-hdr-prec">Precision medicine</h2></div>
           <h3 id="card-h3-prec">Why the same drug works differently for everyone</h3>
           <p id="card-p-prec">Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.</p>
-          <span class="tag purple">compare</span><span class="tag">quiz inside</span>
+          <span class="tag purple" id="tag-prec-1">compare</span><span class="tag" id="tag-prec-2">quiz inside</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--coral);grid-column:1/-1;" onclick="switchTab('journal')">
           <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;color:var(--coral);" id="card-h2-journal">Journal</h2></div>
@@ -1771,7 +1771,19 @@ function applyLang(lang){
   setText('card-p-early',t('A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.','在 1 厘米和 5 厘米时发现的肿瘤是完全不同的问题。拖动滑块——亲眼看看随着肿瘤生长，治疗会变得多难。','Ein bei 1 cm und bei 5 cm gefundener Tumor sind völlig verschiedene Probleme.'));
   setText('card-p-ls',t('Smoking and obesity change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.','吸烟和肥胖不只是会导致癌症——它们会改变肿瘤微环境，使化疗效果降低。获取你的个性化风险画像。','Rauchen und Fettleibigkeit veraendern das Tumormikromilieu und machen Chemotherapie weniger wirksam.'));
   setText('card-p-prec',t('Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.','两个患者，相同诊断，相同药物——结果却完全不同。基因和肿瘤生物学都发挥着作用。亲眼看看差异。','Zwei Patienten, gleiche Diagnose, gleiches Medikament — voellig unterschiedliche Ergebnisse.'));
-  // Additional missing translations
+  // Home card headers and tags
+  setText('card-hdr-drug',t('Why drugs fail','为什么药物失效','Warum Medikamente versagen'));
+  setText('card-hdr-early',t('Early detection','早期发现','Früherkennung'));
+  setText('card-hdr-ls',t('Lifestyle & risk','生活方式与风险','Lebensstil & Risiko'));
+  setText('card-hdr-prec',t('Precision medicine','精准医疗','Präzisionsmedizin'));
+  setText('tag-drug-1',t('interactive sim','互动模拟','Interaktive Sim'));
+  setText('tag-drug-2',t('quiz inside','含测验','Quiz enthalten'));
+  setText('tag-early-1',t('drag & explore','拖动探索','Ziehen & Entdecken'));
+  setText('tag-early-2',t('quiz inside','含测验','Quiz enthalten'));
+  setText('tag-ls-1',t('risk profile','风险画像','Risikoprofil'));
+  setText('tag-ls-2',t('personalised','个性化','Personalisiert'));
+  setText('tag-prec-1',t('compare','对比','Vergleichen'));
+  setText('tag-prec-2',t('quiz inside','含测验','Quiz enthalten'));
   setText('drug-sim-title',t('See it for yourself','亲眼看看','Selbst nachsehen'));
   setText('drug-explainer-title',t('What\'s really happening inside','肿瘤内部到底发生了什么','Was wirklich im Inneren passiert'));
   setText('prec-quiz-title',t('What do you think?','先来猜一猜——','Was denkst du?'));
