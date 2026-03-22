@@ -161,6 +161,20 @@
     .footer-license{font-size:.68rem;color:rgba(255,255,255,.25);}
     .footer-license a{color:rgba(255,255,255,.35);text-decoration:none;}
     .footer-license a:hover{color:var(--teal);}
+    /* WeChat copy modal */
+    #wechat-modal{display:none;position:fixed;inset:0;z-index:9998;align-items:center;justify-content:center;padding:1rem;}
+    #wechat-modal.show{display:flex;}
+    .wechat-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);}
+    .wechat-box{position:relative;background:#fff;border-radius:20px;padding:2rem;max-width:340px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.25);text-align:center;z-index:1;}
+    .wechat-icon{width:56px;height:56px;background:#07C160;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+    .wechat-title{font-family:var(--mono);font-size:1rem;font-weight:700;color:var(--text);margin-bottom:.4rem;}
+    .wechat-sub{font-size:.82rem;color:var(--text3);margin-bottom:1.25rem;line-height:1.6;}
+    .wechat-url-row{display:flex;gap:8px;align-items:center;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:.5rem .75rem;margin-bottom:1rem;}
+    .wechat-url{font-family:var(--mono);font-size:.8rem;color:var(--text2);flex:1;text-align:left;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+    .wechat-copy-btn{background:var(--teal);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-size:.78rem;font-weight:600;cursor:pointer;white-space:nowrap;transition:filter .2s;}
+    .wechat-copy-btn:hover{filter:brightness(.92);}
+    .wechat-copied{font-size:.78rem;color:var(--teal);font-weight:600;min-height:1.2em;}
+    .wechat-close{position:absolute;top:.75rem;right:.75rem;background:rgba(0,0,0,.06);border:none;width:28px;height:28px;border-radius:50%;cursor:pointer;font-size:.9rem;color:#666;display:flex;align-items:center;justify-content:center;}
     .quiz-box{background:#FFFFFF;border:none;border-radius:20px;padding:2rem;box-shadow:0 4px 24px rgba(0,0,0,0.07);margin-bottom:1.5rem;}
     .quiz-question{font-size:1.1rem;font-weight:600;color:var(--text);line-height:1.6;margin-bottom:1.5rem;}
     .quiz-sub{font-size:.82rem;color:var(--text3);margin-top:.5rem;font-weight:400;}
@@ -1050,6 +1064,7 @@
         <span class="footer-logo"><span class="pde">PDE</span><span class="pub">Outreach</span></span>
         <p class="footer-tagline" id="footer-tagline">Cancer science for everyone.<br>Made by students, for the world.</p>
         <div class="footer-social">
+          <a href="#" onclick="showWechatCopy();return false;" title="微信分享"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zM17.547 9.05c-4.013 0-7.277 2.86-7.277 6.39 0 3.531 3.264 6.392 7.277 6.392.842 0 1.65-.13 2.406-.365a.733.733 0 01.607.083l1.616.945a.277.277 0 00.142.046c.136 0 .247-.111.247-.25a.657.657 0 00-.041-.181l-.331-1.256a.501.501 0 01.181-.565C23.014 19.71 24 18.158 24 16.439c0-3.53-2.91-6.39-6.453-6.39zm-2.318 5.06a.996.996 0 01-.987-.992.996.996 0 01.987-.993.996.996 0 01.988.993.996.996 0 01-.988.993zm4.636 0a.996.996 0 01-.987-.992.996.996 0 01.987-.993.996.996 0 01.988.993.996.996 0 01-.988.993z"/></svg></a>
           <a href="https://xhslink.com/m/1Y1wTEVOtGd" target="_blank" title="小红书"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg></a>
           <a href="https://b23.tv/t6dCsI2" target="_blank" title="Bilibili"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.813 4.653h.854c1.51.054 2.769.578 3.773 1.574 1.004.995 1.524 2.249 1.56 3.76v7.36c-.036 1.51-.556 2.769-1.56 3.773s-2.262 1.524-3.773 1.56H5.333c-1.51-.036-2.769-.556-3.773-1.56S.036 18.858 0 17.347v-7.36c.036-1.511.556-2.765 1.56-3.76 1.004-.996 2.262-1.52 3.773-1.574h.774l-1.174-1.12a1.234 1.234 0 0 1-.373-.906c0-.356.124-.658.373-.907l.027-.027c.267-.249.573-.373.92-.373.347 0 .653.124.92.373L8.12 3.747c.027.027.04.053.067.08h7.547c.027-.027.04-.053.067-.08l1.307-1.227c.267-.249.573-.373.92-.373.347 0 .662.124.92.373.267.249.391.551.391.907 0 .355-.124.657-.373.906zM5.333 7.24c-.746.018-1.373.276-1.88.773-.506.498-.769 1.13-.786 1.894v7.52c.017.764.28 1.395.786 1.893.507.498 1.134.756 1.88.773h13.334c.746-.017 1.373-.275 1.88-.773.506-.498.769-1.129.786-1.893v-7.52c-.017-.765-.28-1.396-.786-1.894-.507-.497-1.134-.755-1.88-.773zM8 11.107c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c0-.373.129-.689.386-.947.258-.257.574-.386.947-.386zm8 0c.373 0 .684.124.933.373.25.249.383.569.4.96v1.173c-.017.391-.15.711-.4.96-.249.25-.56.374-.933.374s-.684-.125-.933-.374c-.25-.249-.383-.569-.4-.96V12.44c.017-.391.15-.711.4-.96.249-.249.56-.373.933-.373z"/></svg></a>
           <a href="https://www.instagram.com/pdeoncology" target="_blank" title="Instagram"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg></a>
@@ -1072,6 +1087,22 @@
       <span class="footer-license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" id="footer-license-link">CC BY-NC 4.0</a></span>
     </div>
   </footer>
+  <!-- WeChat share modal -->
+  <div id="wechat-modal" onclick="if(event.target===this||event.target.classList.contains('wechat-backdrop'))closeWechatModal()">
+    <div class="wechat-backdrop"></div>
+    <div class="wechat-box">
+      <button class="wechat-close" onclick="closeWechatModal()">✕</button>
+      <div class="wechat-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="white"><path d="M8.691 2.188C3.891 2.188 0 5.476 0 9.53c0 2.212 1.17 4.203 3.002 5.55a.59.59 0 01.213.665l-.39 1.48c-.019.07-.048.141-.048.213 0 .163.13.295.29.295a.326.326 0 00.167-.054l1.903-1.114a.864.864 0 01.717-.098 10.16 10.16 0 002.837.403c.276 0 .543-.027.811-.05-.857-2.578.157-4.972 1.932-6.446 1.703-1.415 3.882-1.98 5.853-1.838-.576-3.583-4.196-6.348-8.596-6.348zM5.785 5.991c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178A1.17 1.17 0 014.623 7.17c0-.651.52-1.18 1.162-1.18zm5.813 0c.642 0 1.162.529 1.162 1.18a1.17 1.17 0 01-1.162 1.178 1.17 1.17 0 01-1.162-1.178c0-.651.52-1.18 1.162-1.18zM17.547 9.05c-4.013 0-7.277 2.86-7.277 6.39 0 3.531 3.264 6.392 7.277 6.392.842 0 1.65-.13 2.406-.365a.733.733 0 01.607.083l1.616.945a.277.277 0 00.142.046c.136 0 .247-.111.247-.25a.657.657 0 00-.041-.181l-.331-1.256a.501.501 0 01.181-.565C23.014 19.71 24 18.158 24 16.439c0-3.53-2.91-6.39-6.453-6.39zm-2.318 5.06a.996.996 0 01-.987-.992.996.996 0 01.987-.993.996.996 0 01.988.993.996.996 0 01-.988.993zm4.636 0a.996.996 0 01-.987-.992.996.996 0 01.987-.993.996.996 0 01.988.993.996.996 0 01-.988.993z"/></svg></div>
+      <div class="wechat-title" id="wechat-modal-title">分享到微信</div>
+      <div class="wechat-sub" id="wechat-modal-sub">复制链接，粘贴到微信即可分享</div>
+      <div class="wechat-url-row">
+        <span class="wechat-url">pdeoutreach.com</span>
+        <button class="wechat-copy-btn" id="wechat-copy-btn" onclick="doWechatCopy()">复制</button>
+      </div>
+      <div class="wechat-copied" id="wechat-copied"></div>
+    </div>
+  </div>
+
 </div>
 <script>
 window.addEventListener('load', () => {
@@ -1086,6 +1117,43 @@ function copyLink() {
     });
   });
   return false;
+}
+
+function showWechatCopy() {
+  const modal = document.getElementById('wechat-modal');
+  modal.classList.add('show');
+  // apply lang
+  const isZh = currentLang === 'zh';
+  const isDe = currentLang === 'de';
+  document.getElementById('wechat-modal-title').textContent = isZh ? '分享到微信' : isDe ? 'Mit WeChat teilen' : 'Share via WeChat';
+  document.getElementById('wechat-modal-sub').textContent = isZh ? '复制链接，粘贴到微信即可分享' : isDe ? 'Link kopieren und in WeChat einfügen' : 'Copy the link and paste it into WeChat';
+  document.getElementById('wechat-copy-btn').textContent = isZh ? '复制' : isDe ? 'Kopieren' : 'Copy';
+  document.getElementById('wechat-copied').textContent = '';
+}
+
+function closeWechatModal() {
+  document.getElementById('wechat-modal').classList.remove('show');
+}
+
+function doWechatCopy() {
+  const isZh = currentLang === 'zh';
+  const isDe = currentLang === 'de';
+  navigator.clipboard.writeText('https://pdeoutreach.com').then(() => {
+    const btn = document.getElementById('wechat-copy-btn');
+    const msg = document.getElementById('wechat-copied');
+    btn.textContent = isZh ? '已复制 ✓' : isDe ? 'Kopiert ✓' : 'Copied ✓';
+    btn.style.background = '#4ECDC4';
+    msg.textContent = isZh ? '链接已复制！打开微信粘贴发送即可 🎉' : isDe ? 'Link kopiert! In WeChat einfügen 🎉' : 'Link copied! Paste it in WeChat 🎉';
+    setTimeout(() => {
+      btn.textContent = isZh ? '复制' : isDe ? 'Kopieren' : 'Copy';
+      btn.style.background = '';
+    }, 2500);
+  }).catch(() => {
+    // fallback for browsers that don't support clipboard API
+    const msg = document.getElementById('wechat-copied');
+    msg.textContent = 'pdeoutreach.com';
+    msg.style.color = 'var(--text2)';
+  });
 }
 
 async function simRunGuarded(fn, onError) {
