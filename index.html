@@ -381,6 +381,7 @@
               <span class="hero-chip" id="home-chips-ii">interactive</span>
               <span class="hero-chip" id="home-chips-iii">evidence-based</span>
               <span class="hero-chip" id="home-chips-iv">free forever</span>
+              <span class="hero-chip" id="home-chips-v">❤ childhood cancer focus</span>
             </div>
             <button class="hero-cta" id="hero-cta" onclick="switchTab('drug')">Start Exploring →</button>
           </div>
@@ -521,6 +522,7 @@
               <option value="breast">Breast cancer</option>
               <option value="pancreatic">Pancreatic cancer (hardest to treat)</option>
               <option value="glioma">Glioma (brain tumor)</option>
+              <option value="medulloblastoma">Medulloblastoma (childhood brain tumor)</option>
             </select>
           </div>
         </div>
@@ -655,6 +657,31 @@
           <div class="cancer-type-card" data-cancer="pancreatic" onclick="selectCancerType('pancreatic')"><div class="ct-name" id="ct-pancreatic-name">Pancreatic cancer</div><div class="ct-if" id="ct-pancreatic-if">No standard screening</div></div>
         </div>
         <div class="cancer-detail-panel" id="cancer-detail-panel"></div>
+      </div>
+      <div class="card section">
+        <div class="card-header"><div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div><h2 style="margin:0;" id="child-warn-title">Childhood cancer warning signs</h2></div>
+        <p id="child-warn-sub" style="margin-bottom:1rem;">Unlike adult cancers, childhood cancers are rarely caused by lifestyle factors. Parents and caregivers should know these warning signs — early detection dramatically improves outcomes.</p>
+        <div class="grid-2">
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--coral);margin-bottom:.5rem;" id="child-warn-leuk-title">Leukaemia (ALL/AML)</div>
+            <p style="font-size:.82rem;color:var(--text2);margin:0;line-height:1.8;" id="child-warn-leuk-text">Persistent fever · unexplained bruising · pallor · fatigue · bone or joint pain · swollen lymph nodes. ALL is the most common childhood cancer — and has a ~90% cure rate with early treatment.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--blue);margin-bottom:.5rem;" id="child-warn-brain-title">Brain tumours (incl. medulloblastoma)</div>
+            <p style="font-size:.82rem;color:var(--text2);margin:0;line-height:1.8;" id="child-warn-brain-text">Morning headaches · vomiting on waking · balance or gait changes · vision changes · personality change. Symptoms are often subtle and mistaken for other conditions.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--amber);margin-bottom:.5rem;" id="child-warn-neuro-title">Neuroblastoma</div>
+            <p style="font-size:.82rem;color:var(--text2);margin:0;line-height:1.8;" id="child-warn-neuro-text">Abdominal mass · dark circles around eyes (periorbital bruising) · bone pain · high blood pressure. Most common in children under 5.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--teal);margin-bottom:.5rem;" id="child-warn-retino-title">Retinoblastoma</div>
+            <p style="font-size:.82rem;color:var(--text2);margin:0;line-height:1.8;" id="child-warn-retino-text">White pupil reflex in photos (leukocoria) · squinting · red or swollen eye. If a flash photo shows one pupil glowing white, see a doctor immediately. Highly treatable when caught early.</p>
+          </div>
+        </div>
+        <div style="margin-top:1rem;padding:.875rem 1.25rem;background:rgba(255,107,107,.06);border-radius:var(--radius);border-left:3px solid var(--coral);">
+          <p style="font-size:.82rem;color:var(--text2);margin:0;line-height:1.75;" id="child-warn-note">These symptoms alone do not mean cancer — they are common in many childhood illnesses. But if symptoms are persistent, unexplained, or worsening, always consult a doctor promptly.</p>
+        </div>
       </div>
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
@@ -861,6 +888,34 @@
         <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="prec-tx-q3">Immunotherapy (checkpoint inhibitors)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><div class="tx-compare-grid"><div class="tx-card"><div class="tx-name">How it works</div><div class="tx-desc" id="prec-tx3-how">Removes the "brakes" on the immune system so T-cells can recognise and attack cancer cells. The immune system does the killing — not the drug itself.</div><span class="tx-badge good" id="tx-badge-immuno-1">Long-lasting responses</span><span class="tx-badge good" id="tx-badge-immuno-2">Works without penetrating tumor</span></div><div class="tx-card"><div class="tx-name">Limitations</div><div class="tx-desc" id="prec-tx3-lim">Only works in tumors with high mutation burden or PD-L1 expression (~20–40%). Autoimmune side effects can be severe. Dense tumors may exclude T-cells.</div><span class="tx-badge bad" id="tx-badge-immuno-3">Expensive</span><span class="tx-badge ok" id="tx-badge-immuno-4">Patient selection critical</span></div></div></div></div></div>
         <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="prec-tx-q4">CAR-T cell therapy</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><div class="tx-compare-grid"><div class="tx-card"><div class="tx-name">How it works</div><div class="tx-desc" id="prec-tx4-how">Patient's own T-cells are extracted, genetically engineered to target cancer-specific proteins, then reinfused. A living drug that can persist for years.</div><span class="tx-badge good" id="tx-badge-cart-1">Highly effective in blood cancers</span><span class="tx-badge good" id="tx-badge-cart-2">Potentially curative</span></div><div class="tx-card"><div class="tx-name">Limitations</div><div class="tx-desc" id="prec-tx4-lim">Currently works mainly in blood cancers — solid tumors present physical barriers. Cytokine release syndrome can be life-threatening. Cost: $400–500k per treatment.</div><span class="tx-badge bad" id="tx-badge-cart-3">Limited in solid tumors</span><span class="tx-badge bad" id="tx-badge-cart-4">Extremely expensive</span></div></div></div></div></div>
         <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="prec-tx-q5">Antibody-drug conjugates (ADCs)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><div class="tx-compare-grid"><div class="tx-card"><div class="tx-name">How it works</div><div class="tx-desc" id="prec-tx5-how">An antibody linked to a highly toxic drug payload — acting as a guided missile to cancer cells. Examples: trastuzumab emtansine (T-DM1), enfortumab vedotin.</div><span class="tx-badge good" id="tx-badge-adc-1">Targeted + toxic payload</span><span class="tx-badge good" id="tx-badge-adc-2">Better than naked antibodies</span></div><div class="tx-card"><div class="tx-name">Limitations</div><div class="tx-desc" id="prec-tx5-lim">Large antibody still faces tumor penetration barriers. Linker stability is critical: premature drug release causes systemic toxicity.</div><span class="tx-badge ok" id="tx-badge-adc-3">Still faces penetration barriers</span><span class="tx-badge bad" id="tx-badge-adc-4">Linker toxicity risk</span></div></div></div></div></div>
+      </div>
+      <div class="card section" style="border-left:3px solid var(--coral);">
+        <div class="card-header"><div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div><h2 style="margin:0;" id="prec-child-title">Childhood cancer: precision medicine success story</h2></div>
+        <div class="grid-2">
+          <div>
+            <h3 id="prec-child-all-title" style="color:var(--coral);margin-bottom:.5rem;">Acute Lymphoblastic Leukaemia (ALL)</h3>
+            <p id="prec-child-all-p" style="font-size:.875rem;">In the 1960s, childhood ALL had a survival rate of under 10%. Today, with precision genetic subtyping and risk-stratified chemotherapy, it exceeds 90% in high-income countries — one of oncology greatest achievements, made possible entirely through precision medicine.</p>
+            <div style="background:var(--bg2);border-radius:var(--radius);padding:.875rem;margin-top:.75rem;">
+              <div style="font-size:.72rem;font-family:var(--mono);color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.5rem;" id="prec-child-how-label">How genetic subtyping transformed treatment</div>
+              <ul style="font-size:.82rem;color:var(--text2);line-height:2;padding-left:1.25rem;margin:0;">
+                <li id="prec-child-li1"><strong>BCR-ABL fusion</strong> — imatinib (targeted) added to chemo</li>
+                <li id="prec-child-li2"><strong>ETV6-RUNX1 fusion</strong> — lower intensity, excellent prognosis</li>
+                <li id="prec-child-li3"><strong>High hyperdiploid</strong> — high drug sensitivity, reduce toxicity</li>
+              </ul>
+            </div>
+          </div>
+          <div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);margin-bottom:.875rem;text-transform:uppercase;letter-spacing:.06em;" id="prec-child-survival-label">5-year survival, childhood ALL</div>
+              <div style="display:flex;flex-direction:column;gap:.5rem;">
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.72rem;color:var(--text3);width:50px;">1960s</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:10%;height:100%;background:var(--coral);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">&lt;10%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.72rem;color:var(--text3);width:50px;">1980s</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:65%;height:100%;background:var(--amber);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~65%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.72rem;color:var(--text3);width:50px;">Today</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:90%;height:100%;background:var(--teal);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">&gt;90%</span></div></div>
+              </div>
+              <p style="font-size:.75rem;color:var(--text3);margin-top:.875rem;margin-bottom:0;line-height:1.6;" id="prec-child-gap-note">In low-income countries, survival remains 30-50% — not because the biology differs, but because genetic testing and treatment access are limited.</p>
+            </div>
+          </div>
+        </div>
       </div>
       <div class="section">
         <h2 class="real-stories-h2">Real stories</h2>
@@ -1348,7 +1403,7 @@ function answerQuiz(section,el,choice){
 }
 
 /* DRUG SIM */
-const DRUG1P={cisplatin:{breast:{D:.12,lam:.003,k:.08,r:22},pancreatic:{D:.03,lam:.005,k:.05,r:28},glioma:{D:.15,lam:.002,k:.07,r:20}},doxorubicin:{breast:{D:.08,lam:.005,k:.06,r:22},pancreatic:{D:.02,lam:.008,k:.04,r:28},glioma:{D:.10,lam:.003,k:.05,r:20}},trastuzumab:{breast:{D:.01,lam:.001,k:.12,r:22},pancreatic:{D:.005,lam:.002,k:.08,r:28},glioma:{D:.008,lam:.001,k:.10,r:20}}};
+const DRUG1P={cisplatin:{breast:{D:.12,lam:.003,k:.08,r:22},pancreatic:{D:.03,lam:.005,k:.05,r:28},glioma:{D:.15,lam:.002,k:.07,r:20},medulloblastoma:{D:.06,lam:.004,k:.07,r:18}},doxorubicin:{breast:{D:.08,lam:.005,k:.06,r:22},pancreatic:{D:.02,lam:.008,k:.04,r:28},glioma:{D:.10,lam:.003,k:.05,r:20},medulloblastoma:{D:.04,lam:.005,k:.06,r:18}},trastuzumab:{breast:{D:.01,lam:.001,k:.12,r:22},pancreatic:{D:.005,lam:.002,k:.08,r:28},glioma:{D:.008,lam:.001,k:.10,r:20},medulloblastoma:{D:.005,lam:.001,k:.09,r:18}}};
 const DRUG1I={cisplatin_breast:{en:'Cisplatin is a small platinum molecule — one of the best-penetrating drugs. Even so, coverage is incomplete — the outer rim receives far more drug than the core.',zh:'顺铂是一种小分子铂类药物，渗透性最强之一。即便如此，覆盖仍不完全——外缘的药物浓度远高于肿瘤核心。'},cisplatin_pancreatic:{en:'Even the best-penetrating drug struggles here. Dense stroma reduces D by ~75%, explaining the ~12% 5-year survival rate.',zh:'哪怕渗透性最强的药物，在胰腺癌面前也无能为力。致密的基质让扩散系数 D 下降约 75%。'},cisplatin_glioma:{en:'Good penetration in brain tissue, but the blood-brain barrier (not modelled) adds another restriction in real patients.',zh:'脑组织内渗透尚可，但真实患者还面临血脑屏障的阻拦——这部分本模型暂未纳入。'},doxorubicin_breast:{en:'Moderate penetration covers the tumor outer portion well. The inner core remains under-dosed — combination regimens typically address this.',zh:'中等渗透性使肿瘤外部覆盖较好，但内核剂量不足，通常需要联合方案来解决。'},doxorubicin_pancreatic:{en:'Pancreatic cancer physical barriers are clearly visible — only the very edge receives meaningful drug concentration.',zh:'胰腺癌的物理屏障在这里一目了然——药物几乎只能停留在肿瘤最外层。'},doxorubicin_glioma:{en:'Moderate penetration, but the blood-brain barrier significantly limits delivery beyond what this model shows.',zh:'渗透性居中，但现实中血脑屏障的阻碍远比模型显示的严峻。'},trastuzumab_breast:{en:'Large antibody molecules are slow diffusers — D is 12× lower than small molecules. For HER2+ patients, high k makes it highly effective despite poor penetration.',zh:'大分子抗体扩散慢，D 比小分子低 12 倍。但对 HER2+ 患者，高摄取率使其即使渗透差也非常有效。'},trastuzumab_pancreatic:{en:'Large molecules + dense stroma = near-zero penetration. This is why antibody therapies are not used in pancreatic cancer.',zh:'大分子 + 致密基质 = 近乎零渗透。这也是抗体疗法在胰腺癌中基本无效的原因。'},trastuzumab_glioma:{en:'Lowest D of any modelled drug, combined with blood-brain barrier. Special delivery strategies are needed.',zh:'所有模拟药物里扩散系数最低，再叠加血脑屏障，几乎完全无法到达肿瘤。'}};
 
 async function runDrug1(){
@@ -1771,7 +1826,29 @@ function applyLang(lang){
   setText('card-p-early',t('A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.','在 1 厘米和 5 厘米时发现的肿瘤是完全不同的问题。拖动滑块——亲眼看看随着肿瘤生长，治疗会变得多难。','Ein bei 1 cm und bei 5 cm gefundener Tumor sind völlig verschiedene Probleme.'));
   setText('card-p-ls',t('Smoking and obesity change the tumor microenvironment in ways that make chemotherapy less effective. Get your personalised risk profile.','吸烟和肥胖不只是会导致癌症——它们会改变肿瘤微环境，使化疗效果降低。获取你的个性化风险画像。','Rauchen und Fettleibigkeit veraendern das Tumormikromilieu und machen Chemotherapie weniger wirksam.'));
   setText('card-p-prec',t('Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.','两个患者，相同诊断，相同药物——结果却完全不同。基因和肿瘤生物学都发挥着作用。亲眼看看差异。','Zwei Patienten, gleiche Diagnose, gleiches Medikament — voellig unterschiedliche Ergebnisse.'));
-  // Home card headers and tags
+  setText('home-chips-v',t('❤ childhood cancer focus','❤ 关注儿童癌症','❤ Kinderkrebsfokus'));
+  // Childhood warning signs (Early Detection tab)
+  setText('child-warn-title',t('Childhood cancer warning signs','儿童癌症预警信号','Warnsignale bei Kinderkrebs'));
+  setText('child-warn-sub',t('Unlike adult cancers, childhood cancers are rarely caused by lifestyle factors. Parents and caregivers should know these warning signs — early detection dramatically improves outcomes.','与成人癌症不同，儿童癌症很少由生活方式因素引起。家长和看护者应了解以下预警信号——早期发现可以显著改善预后。','Im Gegensatz zu Erwachsenenkrebs werden Kinderkrebserkrankungen selten durch Lebensstilfaktoren verursacht.'));
+  setText('child-warn-leuk-title',t('Leukaemia (ALL/AML)','白血病（ALL/AML）','Leukämie (ALL/AML)'));
+  setText('child-warn-leuk-text',t('Persistent fever · unexplained bruising · pallor · fatigue · bone or joint pain · swollen lymph nodes. ALL is the most common childhood cancer — and has a ~90% cure rate with early treatment.','持续发烧 · 不明原因瘀伤 · 面色苍白 · 疲乏 · 骨骼或关节疼痛 · 淋巴结肿大。急性淋巴细胞白血病（ALL）是最常见的儿童癌症——早期治疗治愈率约 90%。','Anhaltende Fieber · unerklärliche Blutergüsse · Blässe · Erschöpfung · Knochen- oder Gelenkschmerzen · geschwollene Lymphknoten.'));
+  setText('child-warn-brain-title',t('Brain tumours (incl. medulloblastoma)','脑肿瘤（含髓母细胞瘤）','Hirntumoren (inkl. Medulloblastom)'));
+  setText('child-warn-brain-text',t('Morning headaches · vomiting on waking · balance or gait changes · vision changes · personality change. Symptoms are often subtle and mistaken for other conditions.','晨起头痛 · 醒时呕吐 · 平衡或步态改变 · 视力变化 · 性格改变。症状初期常不明显，容易被误认为其他疾病。','Morgendliche Kopfschmerzen · Erbrechen beim Aufwachen · Gleichgewichts- oder Gangveränderungen · Sehveränderungen.'));
+  setText('child-warn-neuro-title',t('Neuroblastoma','神经母细胞瘤','Neuroblastom'));
+  setText('child-warn-neuro-text',t('Abdominal mass · dark circles around eyes (periorbital bruising) · bone pain · high blood pressure. Most common in children under 5.','腹部肿块 · 眼眶周围黑眼圈（眶周瘀血）· 骨痛 · 高血压。多见于 5 岁以下儿童。','Abdominale Masse · dunkle Ringe um die Augen · Knochenschmerzen. Am häufigsten bei Kindern unter 5 Jahren.'));
+  setText('child-warn-retino-title',t('Retinoblastoma','视网膜母细胞瘤','Retinoblastom'));
+  setText('child-warn-retino-text',t('White pupil reflex in photos (leukocoria) · squinting · red or swollen eye. If a flash photo shows one pupil glowing white, see a doctor immediately. Highly treatable when caught early.','照片中的白瞳反射（白瞳症）· 斜视 · 眼红或眼肿。如果闪光照片显示一只瞳孔发白，应立即就医。早期发现治疗效果极好。','Weißer Pupillenreflex in Fotos (Leukokorie) · Schielen · rotes oder geschwollenes Auge.'));
+  setText('child-warn-note',t('These symptoms alone do not mean cancer — they are common in many childhood illnesses. But if symptoms are persistent, unexplained, or worsening, always consult a doctor promptly.','仅凭这些症状不能确定是癌症——它们在许多儿童疾病中都很常见。但如果症状持续、原因不明或逐渐加重，请及时就医。','Diese Symptome allein bedeuten nicht Krebs — sie sind bei vielen Kinderkrankheiten häufig. Bei anhaltenden oder sich verschlechternden Symptomen immer einen Arzt aufsuchen.'));
+  // ALL precision medicine card
+  setText('prec-child-title',t('Childhood cancer: precision medicine success story','儿童癌症：精准医疗的成功典范','Kinderkrebs: Erfolgsgeschichte der Präzisionsmedizin'));
+  setText('prec-child-all-title',t('Acute Lymphoblastic Leukaemia (ALL)','急性淋巴细胞白血病（ALL）','Akute lymphoblastische Leukämie (ALL)'));
+  setText('prec-child-all-p',t("In the 1960s, childhood ALL had a survival rate of under 10%. Today, with precision genetic subtyping and risk-stratified chemotherapy, it exceeds 90% in high-income countries — one of oncology's greatest achievements, made possible entirely through precision medicine.",'20世纪60年代，儿童 ALL 的生存率不足 10%。如今，凭借精准基因分型和风险分层化疗，高收入国家的生存率已超过 90%——这是肿瘤学领域最伟大的成就之一，完全依赖于精准医疗的发展。','In den 1960ern hatte ALL eine Überlebensrate von unter 10%. Heute übersteigt sie in Hocheinkommensländern 90%.'));
+  setText('prec-child-how-label',t('How genetic subtyping transformed treatment','基因分型如何改变了治疗','Wie genetische Subtypisierung die Behandlung veränderte'));
+  setHtml('prec-child-li1',t('<strong>BCR-ABL fusion</strong> — imatinib (targeted) added to chemo','<strong>BCR-ABL 融合基因</strong>——伊马替尼（靶向）加入化疗','<strong>BCR-ABL-Fusion</strong> — Imatinib (zielgerichtet) zur Chemo hinzugefügt'));
+  setHtml('prec-child-li2',t('<strong>ETV6-RUNX1 fusion</strong> — lower intensity, excellent prognosis','<strong>ETV6-RUNX1 融合基因</strong>——强度较低，预后极好','<strong>ETV6-RUNX1-Fusion</strong> — niedrigere Intensität, ausgezeichnete Prognose'));
+  setHtml('prec-child-li3',t('<strong>High hyperdiploid</strong> — high drug sensitivity, reduce toxicity','<strong>高超二倍体</strong>——高药物敏感性，减少毒性','<strong>Hohe Hyperdiploidie</strong> — hohe Medikamentenempfindlichkeit'));
+  setText('prec-child-survival-label',t('5-year survival, childhood ALL','儿童 ALL 五年生存率','5-Jahres-Überleben, kindliche ALL'));
+  setText('prec-child-gap-note',t('In low-income countries, survival remains 30-50% — not because the biology differs, but because genetic testing and treatment access are limited.','在低收入国家，生存率仍在 30-50%——不是因为生物学不同，而是因为基因检测和治疗获取受限。','In Ländern mit niedrigem Einkommen liegt die Überlebensrate bei 30-50% — nicht wegen unterschiedlicher Biologie, sondern wegen begrenztem Zugang zu Tests und Behandlung.'));
   setText('card-hdr-drug',t('Why drugs fail','为什么药物失效','Warum Medikamente versagen'));
   setText('card-hdr-early',t('Early detection','早期发现','Früherkennung'));
   setText('card-hdr-ls',t('Lifestyle & risk','生活方式与风险','Lebensstil & Risiko'));
