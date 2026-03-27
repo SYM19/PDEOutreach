@@ -293,8 +293,7 @@
     /* Slider tooltip */
     .slider-tooltip-btn{background:none;border:1px solid var(--border2);border-radius:50%;width:16px;height:16px;font-size:.65rem;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle;flex-shrink:0;transition:border-color .2s,color .2s;}
     .slider-tooltip-btn:hover{border-color:var(--blue);color:var(--blue);}
-    .slider-tooltip-popup{display:none;position:absolute;z-index:200;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:.875rem 1rem;font-size:.8rem;color:var(--text2);line-height:1.75;max-width:340px;left:0;top:calc(100% + 6px);}
-    .slider-tooltip-popup.show{display:block;}
+    .slider-tooltip-popup{display:none;position:fixed;z-index:9990;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:1rem 1.25rem;font-size:.82rem;color:var(--text2);line-height:1.8;width:360px;max-width:calc(100vw - 2rem);} .slider-tooltip-popup.show{display:block;}
     .slider-tooltip-wrap{position:relative;display:inline-block;}
     .prev-evidence{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.4rem;}
     /* Loader */
@@ -728,6 +727,7 @@
               <input type="range" id="ls-smoking" min="0" max="40" step="5" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-smoking-val">0</span>
             </div>
+            <div class="slider-hint" id="ls-smoking-hint"></div>
             
             <div class="slider-row">
               <span class="slider-name">
@@ -740,6 +740,7 @@
               <input type="range" id="ls-bmi" min="16" max="42" step="1" value="22" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-bmi-val">22</span>
             </div>
+            <div class="slider-hint" id="ls-bmi-hint"></div>
             
             <div class="slider-row">
               <span class="slider-name">
@@ -752,6 +753,7 @@
               <input type="range" id="ls-inflam" min="0" max="10" step="1" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-inflam-val">none</span>
             </div>
+            <div class="slider-hint" id="ls-inflam-hint"></div>
             
             <div class="slider-row">
               <span class="slider-name">
@@ -776,6 +778,7 @@
               <input type="range" id="ls-alcohol" min="0" max="40" step="2" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-alcohol-val">0</span>
             </div>
+            <div class="slider-hint" id="ls-alcohol-hint"></div>
             
             <div class="slider-row">
               <span class="slider-name">
@@ -788,6 +791,7 @@
               <input type="range" id="ls-diet" min="0" max="10" step="1" value="5" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-diet-val">5/10</span>
             </div>
+            <div class="slider-hint" id="ls-diet-hint"></div>
             
             <div class="slider-row">
               <span class="slider-name">
@@ -2411,7 +2415,6 @@ try{const params=new URLSearchParams(window.location.search);const urlLang=param
 //tooltip JS function 
 function toggleTooltip(id, e) {
   e.stopPropagation();
-  // populate content from the setText calls already made
   const tooltipMap = {
     'ls-smoking-tp': 'ls-smoking-tooltip',
     'ls-bmi-tp':     'ls-bmi-tooltip',
@@ -2426,12 +2429,31 @@ function toggleTooltip(id, e) {
   const popup = document.getElementById(id);
   const src   = document.getElementById(srcId);
   if (!popup) return;
-  // Copy content from the hidden source element
   if (src) popup.innerHTML = src.textContent;
   const isOpen = popup.classList.contains('show');
-  // Close all first
   document.querySelectorAll('.slider-tooltip-popup.show').forEach(p => p.classList.remove('show'));
-  if (!isOpen) popup.classList.add('show');
+  if (!isOpen) {
+    popup.classList.add('show');
+    // Position relative to the ? button
+    const btn = e.currentTarget;
+    const rect = btn.getBoundingClientRect();
+    const popupWidth = 360;
+    let left = rect.left;
+    // Clamp so it doesn't overflow right edge
+    if (left + popupWidth > window.innerWidth - 16) {
+      left = window.innerWidth - popupWidth - 16;
+    }
+    let top = rect.bottom + 8;
+    // Flip above if not enough space below
+    if (top + 300 > window.innerHeight) {
+      top = rect.top - 8;
+      popup.style.transform = 'translateY(-100%)';
+    } else {
+      popup.style.transform = '';
+    }
+    popup.style.left = left + 'px';
+    popup.style.top = top + 'px';
+  }
 }
 // Close tooltips when clicking elsewhere
 document.addEventListener('click', () => {
