@@ -290,6 +290,13 @@
     .about-contact{background:var(--bg2);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;border:1px solid var(--border);}
     .about-contact h3{font-size:1rem;font-weight:700;margin-bottom:.75rem;}
     .about-contact a{color:var(--blue);font-family:var(--mono);font-size:.875rem;}
+    /* Slider tooltip */
+    .slider-tooltip-btn{background:none;border:1px solid var(--border2);border-radius:50%;width:16px;height:16px;font-size:.65rem;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle;flex-shrink:0;transition:border-color .2s,color .2s;}
+    .slider-tooltip-btn:hover{border-color:var(--blue);color:var(--blue);}
+    .slider-tooltip-popup{display:none;position:absolute;z-index:200;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-md);padding:.875rem 1rem;font-size:.8rem;color:var(--text2);line-height:1.75;max-width:340px;left:0;top:calc(100% + 6px);}
+    .slider-tooltip-popup.show{display:block;}
+    .slider-tooltip-wrap{position:relative;display:inline-block;}
+    .prev-evidence{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.4rem;}
     /* Loader */
     #loader{position:fixed;inset:0;background:#FAFAF8;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease,visibility 0.5s ease;}
     #loader.done{opacity:0;visibility:hidden;}
@@ -709,48 +716,99 @@
         <p id="ls-profile-p">Adjust the sliders to match your lifestyle. We'll show you how each factor affects drug penetration — and generate your personal profile.</p>
         <div class="grid-2">
           <div>
+            <!-- Replace each slider-name span. Example for smoking: -->
             <div class="slider-row">
-              <span class="slider-name" id="ls-smoking-label">Smoking (pack-years)</span>
+              <span class="slider-name">
+                <span id="ls-smoking-label">Smoking (pack-years)</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-smoking-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-smoking-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-smoking" min="0" max="40" step="5" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-smoking-val">0</span>
             </div>
-            <div class="slider-hint" id="ls-smoking-hint">1 pack-year = smoking 20 cigarettes/day for 1 year. Never smoker = 0.</div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-bmi-label">BMI</span>
+              <span class="slider-name">
+                <span id="ls-bmi-label">BMI</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-bmi-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-bmi-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-bmi" min="16" max="42" step="1" value="22" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-bmi-val">22</span>
             </div>
-            <div class="slider-hint" id="ls-bmi-hint">Healthy: 18.5–24.9 · Overweight: 25–29.9 · Obese: 30+</div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-inflam-label">Chronic inflammation</span>
+              <span class="slider-name">
+                <span id="ls-inflam-label">Chronic inflammation</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-inflam-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-inflam-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-inflam" min="0" max="10" step="1" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-inflam-val">none</span>
             </div>
-            <div class="slider-hint" id="ls-inflam-hint">0 = no known inflammatory conditions · 5 = mild IBD or frequent infections · 10 = severe autoimmune/inflammatory disease</div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-exercise-label">Exercise (hrs/week)</span>
+              <span class="slider-name">
+                <span id="ls-exercise-label">Exercise (hrs/week)</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-exercise-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-exercise-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-exercise" min="0" max="14" step="1" value="3" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-exercise-val">3h</span>
             </div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-alcohol-label">Alcohol (units/week)</span>
+              <span class="slider-name">
+                <span id="ls-alcohol-label">Alcohol (units/week)</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-alcohol-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-alcohol-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-alcohol" min="0" max="40" step="2" value="0" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-alcohol-val">0</span>
             </div>
-            <div class="slider-hint" id="ls-alcohol-hint">UK unit = 8g alcohol (half a pint of beer, small glass of wine). UK guidelines: ≤14 units/week. 0 = non-drinker.</div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-diet-label">Diet quality</span>
+              <span class="slider-name">
+                <span id="ls-diet-label">Diet quality</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-diet-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-diet-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-diet" min="0" max="10" step="1" value="5" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-diet-val">5/10</span>
             </div>
-            <div class="slider-hint" id="ls-diet-hint">0 = heavily processed, high sugar/fat · 5 = mixed diet · 10 = Mediterranean-style, high vegetables, low processed food</div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-sleep-label">Sleep (hrs/night)</span>
+              <span class="slider-name">
+                <span id="ls-sleep-label">Sleep (hrs/night)</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-sleep-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-sleep-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-sleep" min="4" max="10" step="0.5" value="7" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-sleep-val">7h</span>
             </div>
+            
             <div class="slider-row">
-              <span class="slider-name" id="ls-stress-label">Chronic stress</span>
+              <span class="slider-name">
+                <span id="ls-stress-label">Chronic stress</span>
+                <span class="slider-tooltip-wrap">
+                  <button class="slider-tooltip-btn" onclick="toggleTooltip('ls-stress-tp',event)" aria-label="Help">?</button>
+                  <div class="slider-tooltip-popup" id="ls-stress-tp"></div>
+                </span>
+              </span>
               <input type="range" id="ls-stress" min="0" max="10" step="1" value="3" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-stress-val">3/10</span>
             </div>
@@ -774,6 +832,7 @@
         </div>
       </div>
       <div id="ls-profile-result" style="display:none;" class="section">
+        <p id="ls-profile-result-intro" style="font-size:.875rem;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;padding:1rem 1.25rem;background:rgba(77,158,255,0.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;"></p>
         <h2 id="ls-profile-result-title">Your microenvironment profile</h2>
         <div class="grid-2">
           <div id="ls-profile-card" class="profile-card"></div>
@@ -785,19 +844,51 @@
       </div>
       <div class="card section">
         <div class="card-header"><div class="card-icon">✦</div><h2 style="margin:0;" id="ls-prev-title">Evidence-based actions</h2></div>
-        <div class="grid-3">
+        <!-- Replace the existing grid-3 inside the evidence-based actions card -->
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;">
+        
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
             <div id="ls-prev1-title" style="color:var(--green);font-weight:600;margin-bottom:.5rem;">Don't smoke</div>
-            <p style="margin:0;font-size:.82rem;" id="ls-prev1-p">Smoking accounts for ~30% of all cancer deaths. Quitting at any age reduces both cancer risk and ECM density — improving potential drug penetration.</p>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev1-p">Smoking accounts for ~30% of all cancer deaths.</p>
+            <div class="prev-evidence" id="ls-prev1-evidence"></div>
           </div>
+        
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
             <div id="ls-prev2-title" style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Healthy weight</div>
-            <p style="margin:0;font-size:.82rem;" id="ls-prev2-p">Obesity increases risk for 13 cancer types. Excess fat tissue promotes chronic inflammation, elevating IFP and reducing drug diffusion coefficient D.</p>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev2-p">Obesity increases risk for 13 cancer types.</p>
+            <div class="prev-evidence" id="ls-prev2-evidence"></div>
           </div>
+        
           <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
             <div id="ls-prev3-title" style="color:var(--amber);font-weight:600;margin-bottom:.5rem;">Exercise regularly</div>
-            <p style="margin:0;font-size:.82rem;" id="ls-prev3-p">150 min/week of moderate exercise reduces cancer risk by 10–20% and reduces systemic inflammation — keeping your tissue microenvironment healthier.</p>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev3-p">150 min/week reduces cancer risk by 10–20%.</p>
+            <div class="prev-evidence" id="ls-prev3-evidence"></div>
           </div>
+        
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div id="ls-prev4-title" style="color:var(--coral);font-weight:600;margin-bottom:.5rem;">Reduce alcohol</div>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev4-p">Alcohol is a Group 1 IARC carcinogen.</p>
+            <div class="prev-evidence" id="ls-prev4-evidence"></div>
+          </div>
+        
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div id="ls-prev5-title" style="color:var(--teal);font-weight:600;margin-bottom:.5rem;">Improve diet</div>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev5-p">Mediterranean diet reduces overall cancer risk 10–30%.</p>
+            <div class="prev-evidence" id="ls-prev5-evidence"></div>
+          </div>
+        
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+            <div id="ls-prev6-title" style="color:var(--purple);font-weight:600;margin-bottom:.5rem;">Manage stress</div>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev6-p">Chronic stress activates the HPA axis, elevating IFP.</p>
+            <div class="prev-evidence" id="ls-prev6-evidence"></div>
+          </div>
+        
+          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);grid-column:1/-1;">
+            <div id="ls-prev7-title" style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Prioritise sleep</div>
+            <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev7-p">Under 6 hrs/night is linked to elevated cancer mortality.</p>
+            <div class="prev-evidence" id="ls-prev7-evidence"></div>
+          </div>
+        
         </div>
       </div>
       <div class="section">
@@ -2317,6 +2408,46 @@ if (lspEl) lspEl.innerHTML = t(
 updateSizeDemo(12);
 updateLifestyle();
 try{const params=new URLSearchParams(window.location.search);const urlLang=params.get('lang');if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){applyLang(urlLang);}else{applyLang('en');}}catch(e){applyLang('en');}
+//tooltip JS function 
+function toggleTooltip(id, e) {
+  e.stopPropagation();
+  // populate content from the setText calls already made
+  const tooltipMap = {
+    'ls-smoking-tp': 'ls-smoking-tooltip',
+    'ls-bmi-tp':     'ls-bmi-tooltip',
+    'ls-inflam-tp':  'ls-inflam-tooltip',
+    'ls-exercise-tp':'ls-exercise-tooltip',
+    'ls-alcohol-tp': 'ls-alcohol-tooltip',
+    'ls-diet-tp':    'ls-diet-tooltip',
+    'ls-sleep-tp':   'ls-sleep-tooltip',
+    'ls-stress-tp':  'ls-stress-tooltip',
+  };
+  const srcId = tooltipMap[id];
+  const popup = document.getElementById(id);
+  const src   = document.getElementById(srcId);
+  if (!popup) return;
+  // Copy content from the hidden source element
+  if (src) popup.innerHTML = src.textContent;
+  const isOpen = popup.classList.contains('show');
+  // Close all first
+  document.querySelectorAll('.slider-tooltip-popup.show').forEach(p => p.classList.remove('show'));
+  if (!isOpen) popup.classList.add('show');
+}
+// Close tooltips when clicking elsewhere
+document.addEventListener('click', () => {
+  document.querySelectorAll('.slider-tooltip-popup.show').forEach(p => p.classList.remove('show'));
+});
 </script>
+  <!-- Hidden tooltip content sources (populated by applyLang JS) -->
+<div style="display:none;">
+  <span id="ls-smoking-tooltip"></span>
+  <span id="ls-bmi-tooltip"></span>
+  <span id="ls-inflam-tooltip"></span>
+  <span id="ls-exercise-tooltip"></span>
+  <span id="ls-alcohol-tooltip"></span>
+  <span id="ls-diet-tooltip"></span>
+  <span id="ls-sleep-tooltip"></span>
+  <span id="ls-stress-tooltip"></span>
+</div>
 </body>
 </html>
