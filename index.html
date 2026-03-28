@@ -1765,9 +1765,10 @@
 
 </div>
 <script>
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
   setTimeout(() => { document.getElementById('loader').classList.add('done'); }, 1800);
 });
+setTimeout(() => { const l = document.getElementById('loader'); if(l) l.classList.add('done'); }, 4000);
 
 function copyLink() {
   navigator.clipboard.writeText('https://pdeoutreach.com').then(() => {
