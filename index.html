@@ -515,6 +515,7 @@
       <button onclick="switchTab('lifestyle')">Lifestyle &amp; Risk</button>
       <button onclick="switchTab('precision')">Precision Medicine</button>
       <button onclick="switchTab('journal')">📖 Journal</button>
+      <button onclick="switchTab('child')">❤ Childhood Cancer</button>
       <button onclick="switchTab('about')">About Us</button>
     </nav>
   </header>
@@ -1169,6 +1170,294 @@
       </div>
     </div>
 
+    <!-- CHILDHOOD CANCER TAB -->
+    <div id="tab-child" class="tab-panel">
+      <div class="section">
+        <h1 id="child-title-h1">Childhood <span class="accent">Cancer</span></h1>
+        <p style="max-width:680px;" id="child-sub">Every year, 300,000 children are diagnosed with cancer worldwide. In high-income countries, around 80% survive. In low-income countries, fewer than 30% do. This gap is not about biology — it's about access. Here's what you need to know.</p>
+      </div>
+    
+      <!-- Impact stat banner -->
+      <div style="background:linear-gradient(135deg,rgba(255,107,107,0.08),rgba(78,205,196,0.08));border:1px solid rgba(255,107,107,0.2);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-bottom:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center;" id="child-stats-grid">
+        <div>
+          <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--coral);" id="child-stat-1-n">300,000</div>
+          <div style="font-size:.82rem;color:var(--text2);margin-top:.25rem;" id="child-stat-1-l">children diagnosed per year worldwide</div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--teal);" id="child-stat-2-n">>80%</div>
+          <div style="font-size:.82rem;color:var(--text2);margin-top:.25rem;" id="child-stat-2-l">survival rate in high-income countries</div>
+        </div>
+        <div>
+          <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--amber);" id="child-stat-3-n"><30%</div>
+          <div style="font-size:.82rem;color:var(--text2);margin-top:.25rem;" id="child-stat-3-l">survival rate in low-income countries</div>
+        </div>
+      </div>
+    
+      <div class="disclaimer-box section">
+        📋 <strong id="child-disc-label">Educational content only.</strong>
+        <span id="child-disc-text"> This page summarises published scientific research. It is not medical advice. Always consult a qualified healthcare professional for any health concerns.</span>
+        <a href="#" onclick="switchTab('about');return false;" id="child-disc-link"> About us →</a>
+      </div>
+    
+      <!-- CAUSES -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon" style="background:rgba(255,107,107,.12);">🧬</div><h2 style="margin:0;" id="child-causes-title">Why do children get cancer?</h2></div>
+        <div class="grid-2">
+          <div>
+            <p id="child-causes-p1">Unlike most adult cancers, childhood cancers are <strong>almost never caused by lifestyle factors</strong> like smoking, diet, or alcohol. This is a critical distinction — parents should never feel that their child's cancer was preventable through different choices.</p>
+            <p id="child-causes-p2">The causes are mostly related to genetic changes that occur during the rapid cell division of childhood development. In most cases, no specific cause can be identified.</p>
+          </div>
+          <div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem;" id="child-causes-factors-label">Known contributing factors</div>
+              <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-cause-1-title">Genetic predispositions</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-cause-1-p">Certain inherited gene mutations significantly increase risk. Examples include BRCA1/2 (breast/ovarian), RB1 (retinoblastoma), TP53 (Li-Fraumeni syndrome), and NF1 (neurofibromatosis). These account for roughly 10% of childhood cancers.</p></div></div></div>
+              <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-cause-2-title">Random DNA copy errors</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-cause-2-p">The majority of childhood cancers result from random mutations during DNA replication — unavoidable errors that accumulate during the extraordinarily rapid cell division of early development. These are not heritable and not preventable.</p></div></div></div>
+              <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-cause-3-title">Chromosomal abnormalities</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-cause-3-p">Down syndrome (trisomy 21) increases the risk of leukaemia by 10–20×. Other chromosomal conditions including Turner syndrome and Klinefelter syndrome are also associated with elevated cancer risk.</p></div></div></div>
+              <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-cause-4-title">Environmental exposures (rare)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-cause-4-p">High-dose ionising radiation (including previous radiotherapy) increases risk. Some childhood cancer clusters near nuclear sites have been studied but causal links are not definitively established for most. Unlike adult cancers, environmental exposure plays a minor role overall.</p></div></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- CANCER TYPES -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">🔬</div><h2 style="margin:0;" id="child-types-title">Common childhood cancers</h2></div>
+        <p style="margin-bottom:1rem;" id="child-types-sub">Click any cancer type to learn what it is, who it affects, how it's treated, and why drug delivery is particularly challenging.</p>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-all-h">Acute Lymphoblastic Leukaemia (ALL) — Most common, ~25% of cases</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-all-what"><strong>What it is:</strong> A cancer of the blood and bone marrow where immature white blood cells (lymphoblasts) multiply uncontrollably, crowding out normal blood cells. It progresses rapidly and requires urgent treatment.</p>
+              <p id="child-type-all-who"><strong>Who gets it:</strong> Peak incidence is ages 2–5. ALL accounts for ~75% of all childhood leukaemia. Boys are slightly more affected than girls. Children with Down syndrome have a 20× higher risk.</p>
+              <p id="child-type-all-signs"><strong>Warning signs:</strong> Persistent fever · unexplained bruising or bleeding · pallor · extreme fatigue · bone/joint pain · swollen lymph nodes · recurrent infections.</p>
+              <p id="child-type-all-treat"><strong>Treatment:</strong> Chemotherapy in three phases — induction (remission), consolidation (eliminate remaining cells), maintenance (2–3 years). CNS prophylaxis prevents brain spread. Targeted therapy (imatinib) added for BCR-ABL fusion subtype. CAR-T for relapsed cases. Bone marrow transplant in high-risk or relapsed disease.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:90px;font-family:var(--mono);">High-income</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:92%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>90%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:90px;font-family:var(--mono);">Low-income</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:35%;height:100%;background:var(--coral);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">30–40%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-all-pde"><strong>Drug delivery challenge:</strong> ALL is a blood cancer — chemotherapy can reach leukaemic cells directly via the bloodstream. The main challenge is CNS penetration: the blood-brain barrier prevents many drugs reaching the cerebrospinal fluid, where leukaemic cells can hide and cause relapse.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-brain-h">Brain & CNS tumours — 2nd most common, ~20% of cases</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-brain-what"><strong>What it is:</strong> A broad category including medulloblastoma (most common malignant brain tumour in children, arising in the cerebellum), gliomas (astrocytoma, glioblastoma), ependymoma, and DIPG (diffuse intrinsic pontine glioma — one of the most treatment-resistant cancers known).</p>
+              <p id="child-type-brain-who"><strong>Who gets it:</strong> Brain tumours can occur at any childhood age. Medulloblastoma peaks at 3–8 years. DIPG almost exclusively affects children aged 5–10. Together, brain tumours are the leading cause of cancer-related death in children.</p>
+              <p id="child-type-brain-signs"><strong>Warning signs:</strong> Morning headaches (worse on waking) · vomiting without nausea · balance/gait changes · vision changes · personality or behaviour change · new seizures. These are often subtle and initially misdiagnosed.</p>
+              <p id="child-type-brain-treat"><strong>Treatment:</strong> Surgery (where accessible) + radiation + chemotherapy. Medulloblastoma: molecular subgrouping now guides treatment intensity. DIPG has no effective standard treatment — radiation buys time, but median survival remains ~11 months despite decades of research. Convection-enhanced delivery (CED) is being trialled to bypass the blood-brain barrier.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival (by subtype)</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:110px;font-family:var(--mono);">Medulloblastoma</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:75%;height:100%;background:var(--amber);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~70–75%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:110px;font-family:var(--mono);">Low-grade glioma</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:85%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>85%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:110px;font-family:var(--mono);">DIPG</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:5%;height:100%;background:var(--coral);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;"><1%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-brain-pde"><strong>Drug delivery challenge:</strong> The blood-brain barrier (BBB) excludes ~98% of drugs from the brain. Large molecules are blocked entirely. Even small molecules must be lipid-soluble and avoid efflux pumps. DIPG sits in the brainstem — surgically unreachable — and the BBB is intact, making drug delivery exceptionally difficult. This is why DIPG remains almost uniformly fatal despite enormous research effort.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-neuro-h">Neuroblastoma — ~8% of cases, most common solid tumour in infants</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-neuro-what"><strong>What it is:</strong> A cancer of immature nerve cells (neuroblasts), most commonly arising in the adrenal glands (above the kidneys) or along the sympathetic nervous system. Biologically unique: some tumours spontaneously regress, while others are among the most aggressive childhood cancers.</p>
+              <p id="child-type-neuro-who"><strong>Who gets it:</strong> Almost exclusively children under 5 (median diagnosis age: 17 months). Around 40% of cases have metastasised at diagnosis. MYCN gene amplification identifies high-risk cases.</p>
+              <p id="child-type-neuro-signs"><strong>Warning signs:</strong> Abdominal mass or swelling · dark circles around eyes (periorbital bruising, "raccoon eyes") · bone pain · lump in neck or chest · high blood pressure · persistent diarrhoea · unusual eye movements (opsoclonus).</p>
+              <p id="child-type-neuro-treat"><strong>Treatment:</strong> Low-risk: surgery alone or observation. High-risk: intensive chemotherapy + surgery + radiation + high-dose chemo with stem cell rescue + immunotherapy (anti-GD2 antibody dinutuximab) + isotretinoin. Despite aggressive treatment, high-risk neuroblastoma has only ~50% long-term survival.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival (by risk)</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">Low-risk</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:95%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>95%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">Int-risk</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:85%;height:100%;background:var(--amber);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~85%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">High-risk</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:50%;height:100%;background:var(--coral);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~50%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-neuro-pde"><strong>Drug delivery challenge:</strong> High-risk neuroblastoma often involves dense stromal ECM that reduces drug diffusion coefficient D. Bone marrow metastases create a complex tumour microenvironment with elevated IFP. The anti-GD2 antibody dinutuximab faces penetration barriers as a large molecule — it works primarily via immune recruitment rather than direct cell killing.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-wilms-h">Wilms Tumour (Nephroblastoma) — most common kidney cancer in children</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-wilms-what"><strong>What it is:</strong> A kidney tumour arising from embryonic kidney cells (metanephric blastema) that failed to differentiate normally. One of oncology's great success stories — survival has risen from under 30% in the 1960s to over 90% today through multimodal treatment.</p>
+              <p id="child-type-wilms-who"><strong>Who gets it:</strong> Peak age 3–4 years. Usually presents as a painless abdominal mass. Associated with WAGR syndrome, Beckwith-Wiedemann syndrome, and Denys-Drash syndrome. Bilateral (both kidneys) in ~5–10% of cases.</p>
+              <p id="child-type-wilms-signs"><strong>Warning signs:</strong> Painless abdominal swelling or mass (often discovered by a parent during bathing) · abdominal pain · blood in urine (haematuria) · high blood pressure · fever.</p>
+              <p id="child-type-wilms-treat"><strong>Treatment:</strong> Surgery (nephrectomy) + chemotherapy (vincristine, actinomycin D, doxorubicin depending on stage) ± radiation for advanced stages. The SIOP (European) protocol uses pre-operative chemo to shrink the tumour before surgery. Overall survival exceeds 90% — a benchmark for what childhood cancer treatment can achieve.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival</div>
+                <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">Overall</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:92%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>90%</span></div></div>
+              </div>
+              <div style="background:rgba(78,205,196,.06);border-left:3px solid var(--teal);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);margin-bottom:.75rem;">Wilms tumour is one of childhood oncology's greatest success stories — survival has risen from under 30% in the 1960s to over 90% today, showing what coordinated research and treatment protocols can achieve.</div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-wilms-pde"><strong>Drug delivery:</strong> Kidney tumours have relatively good vascular access compared to pancreatic cancer. Pre-operative chemotherapy is effective at shrinking Wilms tumours — partly because the ECM is less dense than in adult solid tumours at equivalent stages. This helps explain why Wilms outcomes are so much better than neuroblastoma.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-retino-h">Retinoblastoma — most common eye tumour in children</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-retino-what"><strong>What it is:</strong> A malignant tumour of the retina, caused by mutation or deletion of both copies of the RB1 tumour suppressor gene. Around 40% of cases are hereditary (germline RB1 mutation) — these children have bilateral disease and are at lifelong risk of other cancers.</p>
+              <p id="child-type-retino-who"><strong>Who gets it:</strong> Almost exclusively infants and young children — median diagnosis age 18 months. Bilateral in ~40% of hereditary cases. One of the most treatable childhood cancers when caught early.</p>
+              <p id="child-type-retino-signs"><strong>Warning signs:</strong> White pupil reflex in photographs (leukocoria) — the single most important sign. <strong>If a flash photo shows one pupil glowing white instead of red, see a doctor immediately.</strong> Also: squinting (strabismus) · red or swollen eye · vision loss.</p>
+              <p id="child-type-retino-treat"><strong>Treatment:</strong> Depends on stage. Small tumours: laser photocoagulation or cryotherapy. Moderate: intra-arterial chemotherapy (direct injection into the ophthalmic artery), intra-vitreal chemotherapy. Advanced: systemic chemotherapy + enucleation (eye removal) as last resort. Survival >95% in high-income countries; eye salvage rates now >80% with modern techniques.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:90px;font-family:var(--mono);">High-income</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:96%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>95%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:90px;font-family:var(--mono);">Low-income</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:40%;height:100%;background:var(--coral);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~40%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-retino-pde"><strong>Drug delivery innovation:</strong> Intra-arterial chemotherapy (IAC) directly addresses the drug delivery problem by bypassing systemic circulation entirely — delivering high drug concentrations directly to the ophthalmic artery feeding the tumour. This is a real-world application of the PDE principle: maximise local drug concentration by minimising the diffusion distance.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-bone-h">Bone tumours: Osteosarcoma & Ewing sarcoma — ~5% of cases</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-bone-what"><strong>What they are:</strong> <strong>Osteosarcoma</strong> is the most common primary bone cancer, arising from bone-forming cells (osteoblasts), most commonly in the metaphysis of long bones near the knee or shoulder. <strong>Ewing sarcoma</strong> arises from primitive neuroectodermal cells, can occur in any bone, and is characterised by the EWS-FLI1 chromosomal translocation.</p>
+              <p id="child-type-bone-who"><strong>Who gets it:</strong> Both peak during adolescence (10–20 years) — coinciding with puberty-driven bone growth spurts, which may explain the association. Osteosarcoma is more common in males. Ewing sarcoma disproportionately affects white children.</p>
+              <p id="child-type-bone-signs"><strong>Warning signs:</strong> Persistent localised bone pain (especially at night) · swelling near a bone · unexplained limb pain · fracture from minor injury. Often initially misdiagnosed as growing pains.</p>
+              <p id="child-type-bone-treat"><strong>Treatment:</strong> Both: neoadjuvant chemotherapy (before surgery) + surgical resection (limb-sparing where possible) + adjuvant chemotherapy. Ewing: often radiation as well. Key drugs: osteosarcoma uses MAP regimen (methotrexate, doxorubicin, cisplatin); Ewing uses VIDE/VAI regimens. Histological response to neoadjuvant chemo is the strongest prognostic factor.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:100px;font-family:var(--mono);">OS localised</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:70%;height:100%;background:var(--amber);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~70%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:100px;font-family:var(--mono);">OS metastatic</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:20%;height:100%;background:var(--coral);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~20%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:100px;font-family:var(--mono);">Ewing localised</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:65%;height:100%;background:var(--amber);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~65%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(77,158,255,.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-type-bone-pde"><strong>Drug delivery challenge:</strong> Bone tumours have naturally dense mineralised ECM — one of the most physically impenetrable tumour environments. Interstitial fluid pressure in osteosarcoma can be extremely high. Neoadjuvant chemotherapy response is poor in ~40% of patients, likely partly due to physical delivery barriers in addition to drug resistance.</div>
+            </div>
+          </div>
+        </div></div></div>
+    
+        <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-type-lymph-h">Hodgkin Lymphoma — highly treatable, >95% survival</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner">
+          <div class="grid-2">
+            <div>
+              <p id="child-type-lymph-what"><strong>What it is:</strong> A cancer of the lymphatic system characterised by the presence of Reed-Sternberg cells. Hodgkin lymphoma (HL) is one of the most curable cancers — it represents one of the earliest examples of chemotherapy curing a cancer. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology and treatment.</p>
+              <p id="child-type-lymph-who"><strong>Who gets it:</strong> Two peaks — adolescence/young adulthood and >55 years. EBV (Epstein-Barr virus) infection is associated with some subtypes. More common in males. Immunosuppressed children (HIV, organ transplant) have higher risk.</p>
+              <p id="child-type-lymph-signs"><strong>Warning signs:</strong> Painless enlarged lymph nodes (neck, armpit, groin) · "B symptoms" — drenching night sweats, unexplained fever, unintentional weight loss >10% · itching without rash · shortness of breath (mediastinal mass).</p>
+              <p id="child-type-lymph-treat"><strong>Treatment:</strong> ABVD chemotherapy regimen (adriamycin, bleomycin, vinblastine, dacarbazine) ± radiation. Modern protocols use response-adapted therapy (PET scan after 2 cycles guides whether radiation is needed). 5-year survival >95% for early stage, ~85% for advanced. Long-term side effects (cardiac, pulmonary, secondary cancers) from radiation are now a major focus of treatment reduction research.</p>
+            </div>
+            <div>
+              <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+                <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;margin-bottom:.5rem;">5-year survival</div>
+                <div style="display:flex;flex-direction:column;gap:.375rem;">
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">Early stage</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:96%;height:100%;background:var(--teal);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">>95%</span></div></div>
+                  <div style="display:flex;align-items:center;gap:.5rem;"><span style="font-size:.72rem;color:var(--text3);width:80px;font-family:var(--mono);">Advanced</span><div style="flex:1;background:var(--border);border-radius:3px;height:20px;position:relative;"><div style="width:84%;height:100%;background:var(--amber);border-radius:3px;"></div><span style="position:absolute;left:6px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.68rem;color:#fff;font-weight:700;">~84%</span></div></div>
+                </div>
+              </div>
+              <div style="background:rgba(78,205,196,.06);border-left:3px solid var(--teal);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);">Hodgkin lymphoma is one of oncology's clearest proof points: with the right drugs at the right time, even widespread cancer can be cured. The challenge now is reducing long-term treatment side effects without sacrificing cure rates.</div>
+            </div>
+          </div>
+        </div></div></div>
+      </div>
+    
+      <!-- DIAGNOSIS -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">📋</div><h2 style="margin:0;" id="child-diag-title">How childhood cancer is diagnosed</h2></div>
+        <p id="child-diag-intro">Early and accurate diagnosis is the single most important factor in childhood cancer outcomes. The diagnostic pathway typically involves several steps.</p>
+        <div class="grid-2">
+          <div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-diag-1-h">Blood tests & bone marrow biopsy</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-diag-1-p">Full blood count (FBC) is usually the first test — leukaemias often show abnormal white cell counts, anaemia, or thrombocytopenia. A bone marrow biopsy (aspirate + trephine) is required to confirm leukaemia diagnosis, assess blast percentage, and collect material for genetic testing. Results typically within 24–48 hours for FBC, 1–2 weeks for full genetic panel.</p></div></div></div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-diag-2-h">Imaging (CT, MRI, PET, ultrasound)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-diag-2-p">CT scans show tumour location, size, and whether it has spread to lymph nodes or organs. MRI provides better soft tissue detail — essential for brain tumours. PET scans (using radiolabelled glucose) show metabolically active cancer tissue and are standard in lymphoma staging. Ultrasound is first-line for abdominal masses — quick, no radiation, readily available.</p></div></div></div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-diag-3-h">Biopsy & histopathology</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-diag-3-p">Tissue biopsy is required for most solid tumours — a small sample is removed (needle biopsy or surgical) and examined under a microscope by a pathologist. This confirms the cancer type, grade, and growth rate. Results typically take 1–2 weeks. In DIPG, biopsy has historically been avoided due to surgical risk, but is now increasingly performed at specialist centres.</p></div></div></div>
+          </div>
+          <div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-diag-4-h">Genetic & molecular testing</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-diag-4-p">This is where precision medicine transforms outcomes. FISH, PCR, and next-generation sequencing (NGS) identify specific chromosomal translocations, gene fusions (BCR-ABL, EWS-FLI1), copy number variations (MYCN amplification), and point mutations. These results determine risk group, treatment intensity, and eligibility for targeted therapies. Takes 2–4 weeks but is now standard of care in high-income countries.</p></div></div></div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)"><h3 id="child-diag-5-h">Lumbar puncture (spinal tap)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-diag-5-p">Used in leukaemia and brain tumours to check whether cancer cells have entered the cerebrospinal fluid (CSF). A needle is inserted into the lower spine under local anaesthetic. If CNS disease is confirmed, additional intrathecal chemotherapy (injected directly into the CSF) is added to treatment.</p></div></div></div>
+            <div style="background:rgba(255,107,107,.06);border-left:3px solid var(--coral);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);margin-top:.5rem;" id="child-diag-gap-note"><strong>The diagnosis gap:</strong> In high-income countries, average time from first symptom to diagnosis is 2–3 months. In low-income countries, this can extend to 6–12 months or longer, by which point many tumours have metastasised. Diagnostic delay is a major driver of the survival gap.</div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- TREATMENT -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;" id="child-treat-title">How childhood cancer is treated</h2></div>
+        <p id="child-treat-intro">Most children receive a combination of treatments. The specific regimen depends on cancer type, genetic subtype, stage, and the child's age and general health. Treatment decisions are always made by a multidisciplinary team.</p>
+        <div class="grid-2" style="margin-bottom:1rem;">
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--blue);margin-bottom:.5rem;" id="child-treat-chemo-title">Chemotherapy</div>
+            <p style="font-size:.82rem;margin:0;line-height:1.75;" id="child-treat-chemo-p">The backbone of most childhood cancer treatment. Drugs are given in cycles — periods of treatment followed by recovery. Common regimens: ABVD (lymphoma), MAP (osteosarcoma), VIDE (Ewing), multidrug protocols for ALL. Children generally tolerate chemotherapy better than adults due to greater bone marrow reserve and organ resilience, but long-term side effects (growth, fertility, cardiac, secondary cancers) remain a serious concern.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--coral);margin-bottom:.5rem;" id="child-treat-surg-title">Surgery</div>
+            <p style="font-size:.82rem;margin:0;line-height:1.75;" id="child-treat-surg-p">Aims to remove the primary tumour while preserving as much function as possible. Limb-sparing surgery has replaced amputation for most bone tumours. Tumour surgery is ideally performed at specialist centres with paediatric surgical expertise. Pre-operative (neoadjuvant) chemotherapy is often used first to shrink tumours and improve surgical outcomes.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--amber);margin-bottom:.5rem;" id="child-treat-radio-title">Radiation therapy</div>
+            <p style="font-size:.82rem;margin:0;line-height:1.75;" id="child-treat-radio-p">Uses high-energy X-rays to destroy cancer cells. Essential for brain tumours, Ewing sarcoma, and some lymphomas. Modern techniques (proton therapy, stereotactic radiosurgery) target tumours precisely, minimising radiation to surrounding developing tissue. Avoided or minimised in very young children when possible due to effects on brain development.</p>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;">
+            <div style="font-weight:700;font-size:.875rem;color:var(--teal);margin-bottom:.5rem;" id="child-treat-targeted-title">Targeted therapy & immunotherapy</div>
+            <p style="font-size:.82rem;margin:0;line-height:1.75;" id="child-treat-targeted-p">Imatinib for BCR-ABL+ ALL · Anti-GD2 (dinutuximab) for neuroblastoma · CAR-T (tisagenlecleucel/Kymriah — FDA-approved for paediatric ALL) · Checkpoint inhibitors in some lymphomas. Targeted therapies are only effective when the specific molecular target is present — reinforcing the importance of genetic testing at diagnosis.</p>
+          </div>
+        </div>
+        <div style="background:rgba(167,139,250,.07);border:1px solid rgba(167,139,250,.2);border-radius:var(--radius);padding:.875rem 1.25rem;font-size:.82rem;color:var(--text2);line-height:1.75;" id="child-treat-trial-note">
+          <strong style="color:var(--purple);">Clinical trials:</strong> Many children are treated within clinical trials — not as a last resort, but because trials deliver the most cutting-edge treatment and generate the data that improves survival for future patients. Parents can ask their oncologist whether an appropriate trial is open. In high-income countries, >60% of children with cancer are enrolled in trials.
+        </div>
+      </div>
+    
+      <!-- SURVIVAL GAP -->
+      <div class="card section" style="border-left:3px solid var(--coral);">
+        <div class="card-header"><div class="card-icon" style="background:rgba(255,107,107,.12);">🌍</div><h2 style="margin:0;" id="child-gap-title">The global survival gap</h2></div>
+        <p id="child-gap-intro">The same childhood cancer has dramatically different outcomes depending on where a child is born. This is not biology — it is access to diagnosis, treatment, and expertise.</p>
+        <div class="grid-2">
+          <div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem;" id="child-gap-chart-label">ALL 5-year survival by region</div>
+              <div style="display:flex;flex-direction:column;gap:.5rem;">
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">UK/US</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:92%;height:100%;background:var(--teal);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">>90%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">China</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:80%;height:100%;background:var(--blue);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~75–80%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">India</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:55%;height:100%;background:var(--amber);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~50–60%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">Sub-Saharan</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:30%;height:100%;background:var(--coral);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~25–35%</span></div></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <p id="child-gap-p1">The gap exists because of three interconnected problems. First, <strong>late diagnosis</strong> — in low-income settings, children present at far more advanced stages because access to imaging and laboratory testing is limited and awareness among primary care doctors is lower. Second, <strong>treatment abandonment</strong> — families cannot afford prolonged hospital stays, drug costs, or travel. Around 30–60% of children in some LMICs abandon treatment before completion. Third, <strong>drug availability</strong> — even where treatment is theoretically affordable, supply chain failures mean critical chemotherapy agents are frequently unavailable.</p>
+            <p id="child-gap-p2" style="margin-bottom:0;">Organisations working to close this gap focus on improving diagnostic capacity, training local oncologists, subsidising treatment costs, and ensuring drug supply reliability. The science is largely solved — the challenge is delivery.</p>
+          </div>
+        </div>
+      </div>
+    
+      <!-- SUPPORT -->
+      <div class="support-card section">
+        <h3 id="child-support-title">Childhood cancer research is underfunded relative to its burden.</h3>
+        <p id="child-support-p">Paediatric cancers receive a fraction of the research funding of common adult cancers, despite being the leading cause of disease-related death in children. We are working to partner with childhood cancer charities to direct support where it matters most. If you'd like to get involved, contact us.</p>
+        <a href="mailto:outreach@pdeo.org" class="support-btn" id="child-support-btn">❤ Contact us about supporting</a>
+      </div>
+    
+      <div class="section">
+        <h2 class="real-stories-h2">Real stories</h2>
+        <div class="story-placeholder">
+          <div class="story-placeholder-icon">📝</div>
+          <div class="story-placeholder-title" id="child-story-ph-title">Share your story</div>
+          <div class="story-placeholder-text" id="child-story-ph-p">We're collecting patient and family stories about childhood cancer experiences. If you'd like to share, email <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a></div>
+        </div>
+      </div>
+    </div>
+    
     <!-- JOURNAL TAB -->
     <div id="tab-journal" class="tab-panel">
       <div class="section">
@@ -1380,7 +1669,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <span class="footer-copy-text" id="footer-copy">© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice</span>
+      <span class="footer-copy-text" id="footer-copy">© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice</span>
       <span class="footer-license"><a href="https://creativecommons.org/licenses/by-nc/4.0/" target="_blank" id="footer-license-link">CC BY-NC 4.0</a></span>
     </div>
   </footer>
@@ -1520,7 +1809,7 @@ function switchTab(name){
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
   const panel = document.getElementById('tab-'+name);
   if (panel) panel.classList.add('active');
-  const tabs = ['home','drug','early','lifestyle','precision','journal','about'];
+  const tabs = ['home','drug','early','lifestyle','precision','journal','child','about'];
   const navBtns = document.querySelectorAll('#nav button');
   tabs.forEach((t,i) => { if(t===name && navBtns[i]) navBtns[i].classList.add('active'); });
 }
@@ -1852,8 +2141,8 @@ function applyLang(lang){
   ['en','zh','de'].forEach(l=>{const item=document.getElementById('lang-item-'+l);if(item)item.classList.toggle('active',l===lang);});
   function t(en,zh,de){return lang==='zh'?zh:lang==='de'?(de||en):en;}
 
-  // nav (now includes About)
-  const navMap={home:{en:'Home',zh:'首页',de:'Start'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效',de:'Warum Medikamente versagen'},early:{en:'Early Detection',zh:'早期发现',de:'Früherkennung'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险',de:'Lebensstil & Risiko'},precision:{en:'Precision Medicine',zh:'精准医疗',de:'Präzisionsmedizin'},journal:{en:'📖 Journal',zh:'📖 期刊',de:'📖 Journal'},about:{en:'About Us',zh:'关于我们',de:'Über uns'}};
+  // nav 
+  const navMap={home:{en:'Home',zh:'首页',de:'Start'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效',de:'Warum Medikamente versagen'},early:{en:'Early Detection',zh:'早期发现',de:'Früherkennung'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险',de:'Lebensstil & Risiko'},precision:{en:'Precision Medicine',zh:'精准医疗',de:'Präzisionsmedizin'},journal:{en:'📖 Journal',zh:'📖 期刊',de:'📖 Journal'},child:{en:'❤ Childhood Cancer',zh:'❤ 儿童癌症',de:'❤ Kinderkrebs'},about:{en:'About Us',zh:'关于我们',de:'Über uns'}};
   document.querySelectorAll('#nav button').forEach(btn=>{const m=btn.getAttribute('onclick').match(/switchTab\('(\w+)'\)/);if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang]||navMap[m[1]].en;});
 
   document.title=t('PDEOutreach — Cancer Science for Everyone','PDEOutreach — 癌症科学，人人可懂','PDEOutreach — Krebswissenschaft für alle');
@@ -2088,7 +2377,6 @@ function applyLang(lang){
   if (lspEl) lspEl.innerHTML = t("We're currently collecting patient stories about how lifestyle changes affected treatment response. Email <a href=\"mailto:outreach@pdeo.org\">outreach@pdeo.org</a>", '我们正在收集生活方式改变如何影响治疗反应的患者故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>', 'Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>');
 
   // PRECISION MEDICINE
-  // PRECISION MEDICINE
   setText('prec-title-h1',t('Precision Medicine','精准医疗','Präzisionsmedizin'));
   setText('prec-sub',t('Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology. First, a guess.','两个患者，相同的癌症，相同的药物。一个有效，一个无效。这不是运气问题，这是生物学。先来猜一猜。','Zwei Patienten. Gleicher Krebs. Gleiches Medikament. Einer spricht an — der andere nicht.'));
   setText('prec-disc-label',t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));setText('prec-disc-text',t(' This page summarises published scientific research on precision oncology. It is not medical advice.',' 本页内容总结了精准肿瘤学的已发表研究，不构成医疗建议。',' Diese Seite fasst veröffentlichte Forschung zur Präzisionsonkologie zusammen. Kein medizinischer Rat.'));
@@ -2225,6 +2513,29 @@ function applyLang(lang){
   // story placeholders generic fallback
   document.querySelectorAll('.real-stories-h2').forEach(el=>el.textContent=t('Real stories','真实故事','Echte Geschichten'));
 
+  // CHILDHOOD CANCER TAB
+  setText('child-title-h1',t('Childhood Cancer','儿童癌症','Kinderkrebs'));
+  setText('child-sub',t('Every year, 300,000 children are diagnosed with cancer worldwide. In high-income countries, around 80% survive. In low-income countries, fewer than 30% do. This gap is not about biology — it\'s about access.','每年，全球有30万儿童被诊断出癌症。在高收入国家，约80%能存活。在低收入国家，不足30%。这一差距不是生物学问题——而是医疗资源获取的问题。','Jedes Jahr werden weltweit 300.000 Kinder mit Krebs diagnostiziert. In Hocheinkommensländern überleben ~80%. In Niedrigeinkommensländern weniger als 30%.'));
+  setText('child-disc-label',t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));
+  setText('child-disc-text',t(' This page summarises published scientific research. It is not medical advice.',' 本页内容总结已发表的科学研究，不构成医疗建议。',' Diese Seite fasst veröffentlichte Forschung zusammen. Kein medizinischer Rat.'));
+  setText('child-disc-link',t(' About us →',' 关于我们 →',' Über uns →'));
+  setText('child-stat-1-n','300,000');setText('child-stat-1-l',t('children diagnosed per year worldwide','每年全球儿童新发癌症患者','Kinder werden jährlich weltweit diagnostiziert'));
+  setText('child-stat-2-n','>80%');setText('child-stat-2-l',t('survival rate in high-income countries','高收入国家的生存率','Überlebensrate in Hocheinkommensländern'));
+  setText('child-stat-3-n','<30%');setText('child-stat-3-l',t('survival rate in low-income countries','低收入国家的生存率','Überlebensrate in Niedrigeinkommensländern'));
+  setText('child-causes-title',t('Why do children get cancer?','为什么儿童会得癌症？','Warum erkranken Kinder an Krebs?'));
+  setText('child-causes-p1',t('Unlike most adult cancers, childhood cancers are almost never caused by lifestyle factors like smoking, diet, or alcohol. Parents should never feel that their child\'s cancer was preventable through different choices.','与大多数成人癌症不同，儿童癌症几乎从不是由吸烟、饮食或饮酒等生活方式因素引起的。家长永远不应感到孩子的癌症是可以通过不同选择来预防的。','Im Gegensatz zu den meisten Erwachsenenkrebserkrankungen werden Kinderkrebse fast nie durch Lebensstilfaktoren verursacht.'));
+  setText('child-types-title',t('Common childhood cancers','常见儿童癌症','Häufige Kinderkrebserkrankungen'));
+  setText('child-types-sub',t('Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.','点击任意癌症类型，了解其定义、影响人群、治疗方式，以及为什么药物递送尤为困难。','Klicke auf einen Krebstyp für Details.'));
+  setText('child-diag-title',t('How childhood cancer is diagnosed','儿童癌症如何诊断','Wie wird Kinderkrebs diagnostiziert'));
+  setText('child-treat-title',t('How childhood cancer is treated','儿童癌症如何治疗','Wie wird Kinderkrebs behandelt'));
+  setText('child-gap-title',t('The global survival gap','全球生存率差距','Die globale Überlebenslücke'));
+  setText('child-gap-intro',t('The same childhood cancer has dramatically different outcomes depending on where a child is born. This is not biology — it is access to diagnosis, treatment, and expertise.','同一种儿童癌症，因出生地不同，结果可能天差地别。这不是生物学问题——而是诊断、治疗和专业知识获取的问题。','Dieselbe Kinderkrebserkrankung hat je nach Geburtsort dramatisch unterschiedliche Ergebnisse.'));
+  setText('child-support-title',t('Childhood cancer research is underfunded relative to its burden.','相对于其负担，儿童癌症研究经费严重不足。','Kinderkrebsforschung ist im Verhältnis zu ihrer Belastung unterfinanziert.'));
+  setText('child-support-p',t('Paediatric cancers receive a fraction of the research funding of common adult cancers, despite being the leading cause of disease-related death in children. We are working to partner with childhood cancer charities to direct support where it matters most.','儿科癌症获得的研究资金仅是常见成人癌症的一小部分，尽管它是儿童疾病相关死亡的主要原因。我们正在与儿童癌症慈善机构合作，将支持引导至最需要的地方。','Pädiatrische Krebserkrankungen erhalten einen Bruchteil der Forschungsfinanzierung, obwohl sie die häufigste krankheitsbedingte Todesursache bei Kindern sind.'));
+  setText('child-support-btn',t('❤ Contact us about supporting','❤ 联系我们了解支持方式','❤ Kontakt wegen Unterstützung'));
+  const cstEl=document.getElementById('child-story-ph-title');if(cstEl)cstEl.textContent=t('Share your story','分享你的故事','Teile deine Geschichte');
+  const cspEl=document.getElementById('child-story-ph-p');if(cspEl)cspEl.innerHTML=t('We\'re collecting patient and family stories about childhood cancer experiences. Email <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','我们正在收集儿童癌症患者及家庭的故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>');
+    
   // ABOUT US tab
   setText('about-title',t('About PDEOutreach','关于 PDEOutreach','Über PDEOutreach'));
   setHtml('about-tagline',t('PDEOutreach is a free cancer science education platform built by students, for everyone. We turn the research behind PDEOncology — which models how drugs move through tumours using PDE equations — into interactive experiences that anyone can understand. No medical degree required.','PDEOutreach 是一个由学生打造、面向所有人的免费癌症科学教育平台。我们将 PDEOncology 背后的研究——用偏微分方程模拟药物在肿瘤中的运动——转化为任何人都能理解的交互体验。无需医学学位。','PDEOutreach ist eine kostenlose Krebswissenschafts-Bildungsplattform, gebaut von Studierenden für alle.'));
@@ -2250,7 +2561,7 @@ function applyLang(lang){
   setText('about-contact-p',t('If you\'ve spotted an error, want to contribute a translation, or would like to share a patient story — please get in touch.','若您发现内容有误、希望贡献译文，或有意分享患者故事，欢迎与我们联系。','Wenn Sie einen Fehler gefunden haben, eine Übersetzung beitragen oder eine Patientengeschichte teilen möchten — melden Sie sich.'));
 
   // footer
-  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2025 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2025 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
+  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2026 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2026 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
   setText('footer-tagline',t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
   setText('footer-links-title',t('Links','链接','Links'));setText('footer-contact-title',t('Contact','联系我们','Kontakt'));
   setText('footer-link-about',t('About us','关于我们','Über uns'));
