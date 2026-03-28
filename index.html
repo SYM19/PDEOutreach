@@ -31,7 +31,153 @@
     nav button{background:transparent;border:none;color:var(--text2);cursor:pointer;font-family:var(--sans);font-size:.78rem;font-weight:500;padding:5px 12px;border-radius:20px;white-space:nowrap;flex-shrink:0;transition:background .2s,color .2s,box-shadow .2s;}
     nav button:hover{background:rgba(78,205,196,0.1);color:var(--teal);}
     nav button.active{background:var(--teal);color:#fff;box-shadow:0 2px 10px rgba(78,205,196,0.28);}
-    @media(max-width:640px){.header-top{height:48px;padding:0 1rem;}nav{padding:0 1rem;height:38px;}nav button{font-size:.7rem;padding:4px 10px;}.header-right{gap:6px;}.v-badge{display:none;}.pde-link{display:none;}}
+    /* ── TABLET 900px ── */
+    @media(max-width:900px){
+      .grid-2,.grid-3{grid-template-columns:1fr;}
+      .grid-4{grid-template-columns:1fr 1fr;}
+      .prev-actions-grid{grid-template-columns:1fr 1fr;}
+    }
+
+    /* ── MOBILE 768px ── */
+    @media(max-width:768px){
+      /* Header */
+      .header-top{height:48px;padding:0 1rem;}
+      .header-right{gap:6px;}
+      .v-badge{display:none;}
+      .pde-link{display:none;}
+      nav{padding:0 1rem;height:38px;}
+      nav button{font-size:.7rem;padding:4px 10px;}
+
+      /* Main */
+      main{padding:1rem .875rem;}
+
+      /* Typography */
+      h1{font-size:1.25rem;}
+      p{font-size:.84rem;}
+
+      /* Hero home */
+      #tab-home .hero-grid{grid-template-columns:1fr;}
+      #tab-home .hero-right{order:2;margin-top:1.25rem;}
+      #tab-home .hero-illus{width:200px;height:200px;}
+      .ring-a{width:180px;height:180px;}
+      .ring-b{width:130px;height:130px;}
+      .ring-c{width:86px;height:86px;}
+      .arm-1 .illus-dot{top:-90px;}
+      .arm-2 .illus-dot{top:-65px;}
+      .arm-3 .illus-dot{top:-43px;}
+      #tab-home .hero-illus-core{width:52px;height:52px;}
+      .illus-core-inner{width:21px;height:21px;}
+      .illus-wave{width:52px;height:52px;}
+      #tab-home .hero-title{font-size:2rem;}
+      #tab-home .hero-left p{font-size:.9rem;}
+      #tab-home .hero-cta{padding:11px 24px;font-size:.9rem;}
+
+      /* General hero chips */
+      .hero-chips{gap:5px;}
+      .hero-chip{font-size:.65rem;padding:3px 9px;}
+
+      /* Cards */
+      .card{padding:1rem;}
+      .home-card{padding:1.125rem;}
+      .card-header{margin-bottom:.75rem;padding-bottom:.5rem;}
+
+      /* Grids */
+      .grid-2,.grid-3{grid-template-columns:1fr!important;}
+      .grid-4{grid-template-columns:1fr 1fr;}
+      .prev-actions-grid{grid-template-columns:1fr 1fr;}
+      .prev-action-wide{grid-column:1/-1;}
+
+      /* Quiz */
+      .quiz-box{padding:1.25rem 1rem;}
+      .quiz-option{padding:.75rem 1rem;}
+      .quiz-question{font-size:.95rem;}
+
+      /* Sliders */
+      .slider-row{gap:8px;margin-bottom:1rem;}
+      .slider-name{width:110px!important;font-size:.75rem;}
+      .slider-val{width:52px;font-size:.74rem;}
+      .slider-hint{font-size:.7rem;padding-left:0;}
+
+      /* Canvas */
+      .canvas-box{width:100%;}
+      canvas{max-height:300px;object-fit:contain;}
+
+      /* Donate banner */
+      .donate-banner{flex-direction:column;align-items:flex-start;padding:.875rem 1rem;}
+      .donate-links{width:100%;}
+
+      /* Share bar */
+      .share-bar{padding:1rem;gap:.75rem;}
+      .share-btn{width:36px;height:36px;}
+
+      /* Cancer type grid */
+      .cancer-type-grid{grid-template-columns:1fr 1fr;}
+
+      /* Accordion */
+      .accordion-header{padding:.75rem 1rem;}
+      .accordion-header h3{font-size:.85rem;}
+      .accordion-inner{padding:.875rem 1rem 1rem;}
+      .accordion-inner p,.accordion-inner li{font-size:.82rem;}
+
+      /* TX compare */
+      .tx-compare-grid{grid-template-columns:1fr;}
+
+      /* About principles */
+      .principles-grid{grid-template-columns:1fr;}
+      .about-hero{padding:1.75rem;}
+      .about-hero h1{font-size:1.5rem;}
+      .about-person{flex-direction:column;gap:.75rem;}
+      .about-person-avatar{width:44px;height:44px;font-size:1.1rem;}
+
+      /* Journal */
+      .footer-grid{grid-template-columns:1fr;gap:1.25rem;}
+
+      /* Metric */
+      .metric{padding:.625rem .75rem;}
+      .metric-value{font-size:1.1rem;}
+
+      /* Table */
+      .table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+      th,td{padding:6px 8px;font-size:.75rem;}
+
+      /* Btn */
+      .btn{padding:7px 13px;font-size:.78rem;}
+      .btn-row{gap:6px;margin-top:.75rem;}
+
+      /* Disclaimer */
+      .disclaimer-box{font-size:.78rem;padding:.75rem 1rem;}
+
+      /* Profile result */
+      .profile-score{font-size:2.25rem;}
+    }
+
+    /* ── SMALL MOBILE 480px ── */
+    @media(max-width:480px){
+      main{padding:.75rem;}
+      h1{font-size:1.15rem;}
+      #tab-home .hero-title{font-size:1.7rem;}
+      .hero-chip{font-size:.6rem;padding:2px 7px;}
+
+      .grid-4{grid-template-columns:1fr 1fr;}
+      .prev-actions-grid{grid-template-columns:1fr;}
+      .prev-action-wide{grid-column:auto;}
+
+      .quiz-box{padding:1rem .875rem;}
+      .quiz-option{padding:.625rem .875rem;font-size:.82rem;}
+
+      .slider-name{width:90px!important;font-size:.68rem;}
+      .slider-val{width:44px;font-size:.68rem;}
+
+      canvas{max-height:240px;}
+      .metric-value{font-size:1rem;}
+      .btn{padding:6px 10px;font-size:.72rem;}
+      .card{padding:.875rem;}
+
+      .cancer-type-grid{grid-template-columns:1fr;}
+      .about-hero{padding:1.25rem;}
+      th,td{font-size:.7rem;padding:5px 6px;}
+      .profile-score{font-size:2rem;}
+    }
     main{flex:1;padding:2rem 1.5rem;max-width:1280px;width:100%;margin:0 auto;}
     .tab-panel{display:none;}
     .tab-panel.active{display:block;animation:fadein .25s ease;}
@@ -40,8 +186,7 @@
     .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:1rem;}
     .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;}
     .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;}
-    @media(max-width:900px){.grid-2,.grid-3{grid-template-columns:1fr;}.grid-4{grid-template-columns:1fr 1fr;}}
-    @media(max-width:600px){main{padding:1rem;}}
+    /* grid/padding responsive — handled in consolidated block above */
     h1{font-family:var(--mono);font-size:1.5rem;font-weight:700;color:var(--text);letter-spacing:-.03em;margin-bottom:.5rem;}
     h1 .accent{color:var(--blue);}
     h2{font-size:.8rem;font-weight:600;color:var(--text2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.875rem;}
@@ -133,9 +278,8 @@
     .illus-wave{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:50%;border:1.5px solid rgba(78,205,196,0.55);width:76px;height:76px;animation:wavePulse 3.2s ease-out infinite;}
     .wave-2{animation-delay:1.07s;}.wave-3{animation-delay:2.13s;}
     @keyframes wavePulse{0%{transform:translate(-50%,-50%) scale(1);opacity:.7;}100%{transform:translate(-50%,-50%) scale(3.8);opacity:0;}}
-    @media(max-width:768px){#tab-home .hero-grid{grid-template-columns:1fr;}#tab-home .hero-right{order:2;margin-top:1.5rem;}#tab-home .hero-illus{width:210px;height:210px;}.ring-a{width:188px;height:188px;}.ring-b{width:136px;height:136px;}.ring-c{width:90px;height:90px;}.arm-1 .illus-dot{top:-94px;}.arm-2 .illus-dot{top:-68px;}.arm-3 .illus-dot{top:-45px;}#tab-home .hero-illus-core{width:54px;height:54px;}.illus-core-inner{width:22px;height:22px;}.illus-wave{width:54px;height:54px;}}
-    @media(max-width:768px){nav{overflow-x:auto;}.donate-banner{flex-direction:column;align-items:flex-start;}.donate-links{width:100%;}main{padding:1rem;}h1{font-size:1.3rem;}.hero{flex-direction:column !important;padding:2rem 0 1rem;}.hero-title{font-size:2rem;}.grid-2{grid-template-columns:1fr !important;}.grid-3{grid-template-columns:1fr !important;}.quiz-box{padding:1.25rem;}.quiz-option{padding:0.875rem 1rem;}.slider-name{width:120px;font-size:0.75rem;}}
-    @media(max-width:480px){.hero-title{font-size:1.6rem;}}
+    /* hero responsive — in consolidated block */
+    /* general mobile — in consolidated block */
     .table-wrap{overflow-x:auto;}
     table{width:100%;border-collapse:collapse;font-size:.82rem;}
     th{text-align:left;font-size:.68rem;font-weight:600;color:var(--text3);padding:8px 12px;border-bottom:1px solid var(--border);text-transform:uppercase;letter-spacing:.07em;}
@@ -144,7 +288,7 @@
     tr:hover td{background:rgba(77,158,255,.03);color:var(--text);}
     footer{background:linear-gradient(135deg,#1a0a0a 0%,#1f0f0f 50%,#0f1a1a 100%);border-top:2px solid rgba(255,107,107,.2);padding:2.5rem 1.5rem 1.5rem;color:rgba(255,255,255,.55);font-size:.78rem;}
     .footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:2rem;max-width:900px;margin:0 auto 2rem;}
-    @media(max-width:680px){.footer-grid{grid-template-columns:1fr;gap:1.5rem;}}
+    /* footer grid — in consolidated block */
     .footer-brand .footer-logo{font-family:var(--mono);font-size:1.1rem;font-weight:700;color:#fff;display:block;margin-bottom:.5rem;}
     .footer-brand .footer-logo .pde{color:var(--coral);}
     .footer-brand .footer-logo .pub{color:var(--teal);}
@@ -228,7 +372,7 @@
     .share-btn{width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform 0.2s ease,box-shadow 0.2s ease;color:white;}
     .share-btn:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.15);}
     .share-btn.github{background:#24292E;}.share-btn.wechat{background:#07C160;}.share-btn.xiaohongshu{background:#FF2442;}.share-btn.bilibili{background:#00A1D6;}.share-btn.instagram{background:linear-gradient(45deg,#F58529,#DD2A7B,#8134AF);}
-    @media(max-width:768px){.share-bar{padding:1rem;gap:0.75rem;}.share-btn{width:36px;height:36px;}}
+    /* share bar — in consolidated block */
     .accordion{border:1px solid var(--border);border-radius:var(--radius-lg);overflow:hidden;margin-bottom:.5rem;}
     .accordion-header{display:flex;align-items:center;justify-content:space-between;padding:.875rem 1.25rem;cursor:pointer;background:var(--bg1);transition:background .2s;user-select:none;gap:1rem;}
     .accordion-header:hover{background:var(--bg2);}
@@ -242,8 +386,7 @@
     .accordion-inner p:last-child{margin-bottom:0;}
     .accordion-inner ul{font-size:.855rem;line-height:2;color:var(--text2);padding-left:1.25rem;}
     .cancer-type-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
-    @media(max-width:768px){.cancer-type-grid{grid-template-columns:repeat(2,1fr);}}
-    @media(max-width:480px){.cancer-type-grid{grid-template-columns:1fr;}}
+    /* cancer type grid — in consolidated block */
     .cancer-type-card{border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;cursor:pointer;transition:all .2s;background:var(--bg1);}
     .cancer-type-card:hover{border-color:var(--teal);background:var(--bg2);}
     .cancer-type-card.active{border-color:var(--teal);background:rgba(78,205,196,.08);box-shadow:0 0 14px rgba(78,205,196,.12);}
@@ -252,7 +395,7 @@
     .cancer-detail-panel{display:none;background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-top:.75rem;animation:fadein .2s ease;}
     .cancer-detail-panel.visible{display:block;}
     .tx-compare-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;}
-    @media(max-width:600px){.tx-compare-grid{grid-template-columns:1fr;}}
+    /* tx-compare — in consolidated block */
     .tx-card{border:1px solid var(--border);border-radius:var(--radius-lg);padding:1rem 1.25rem;background:var(--bg1);}
     .tx-card .tx-name{font-family:var(--mono);font-weight:700;font-size:.82rem;color:var(--teal);margin-bottom:.5rem;}
     .tx-card .tx-desc{font-size:.82rem;color:var(--text2);line-height:1.7;margin-bottom:.75rem;}
@@ -264,7 +407,17 @@
     .disclaimer-box{background:rgba(77,158,255,0.07);border:1px solid rgba(77,158,255,0.2);border-left:4px solid var(--blue);border-radius:var(--radius);padding:.875rem 1.25rem;font-size:.82rem;color:var(--text2);line-height:1.7;margin-bottom:1.5rem;}
     .disclaimer-box strong{color:var(--blue);}
     .slider-hint{font-size:.72rem;color:var(--text3);line-height:1.5;margin-top:-.75rem;margin-bottom:.875rem;padding-left:175px;font-style:italic;}
-    @media(max-width:640px){.slider-hint{padding-left:0;}}
+    /* slider-hint — in consolidated block */
+    .prev-evidence{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.4rem;}
+    .prev-actions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;}
+    .prev-action-item{padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);}
+    .prev-action-wide{grid-column:1/-1;}
+    /* prev-actions-grid breakpoints — in consolidated block */
+    .slider-tooltip-btn{background:none;border:1px solid var(--border2);border-radius:50%;width:16px;height:16px;font-size:.65rem;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle;flex-shrink:0;transition:border-color .2s,color .2s;}
+    .slider-tooltip-btn:hover{border-color:var(--blue);color:var(--blue);}
+    .slider-tooltip-popup{display:none;position:fixed;z-index:9990;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:1rem 1.25rem;font-size:.82rem;color:var(--text2);line-height:1.8;width:360px;max-width:calc(100vw - 2rem);}
+    .slider-tooltip-popup.show{display:block;}
+    .slider-tooltip-wrap{position:relative;display:inline-block;}
     .support-card{background:linear-gradient(135deg,rgba(255,107,107,0.07),rgba(78,205,196,0.07));border:1px solid rgba(255,107,107,0.2);border-radius:var(--radius-lg);padding:2rem;text-align:center;margin:1.5rem 0;}
     .support-card h3{font-size:1.1rem;font-weight:700;color:var(--text);margin-bottom:.5rem;}
     .support-card p{font-size:.875rem;color:var(--text2);max-width:500px;margin:0 auto .75rem;}
@@ -282,7 +435,7 @@
     .about-person-role{font-size:.78rem;color:var(--teal);font-family:var(--mono);margin-bottom:.4rem;}
     .about-person-desc{font-size:.82rem;color:var(--text2);line-height:1.65;}
     .principles-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:.75rem;}
-    @media(max-width:600px){.principles-grid{grid-template-columns:1fr;}}
+    /* principles — in consolidated block */
     .principle-item{background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem 1.25rem;}
     .principle-dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:8px;vertical-align:middle;}
     .principle-title{font-weight:700;font-size:.875rem;color:var(--text);margin-bottom:.4rem;}
@@ -290,12 +443,6 @@
     .about-contact{background:var(--bg2);border-radius:var(--radius-lg);padding:1.5rem;text-align:center;border:1px solid var(--border);}
     .about-contact h3{font-size:1rem;font-weight:700;margin-bottom:.75rem;}
     .about-contact a{color:var(--blue);font-family:var(--mono);font-size:.875rem;}
-    /* Slider tooltip */
-    .slider-tooltip-btn{background:none;border:1px solid var(--border2);border-radius:50%;width:16px;height:16px;font-size:.65rem;color:var(--text3);cursor:pointer;display:inline-flex;align-items:center;justify-content:center;margin-left:4px;vertical-align:middle;flex-shrink:0;transition:border-color .2s,color .2s;}
-    .slider-tooltip-btn:hover{border-color:var(--blue);color:var(--blue);}
-    .slider-tooltip-popup{display:none;position:fixed;z-index:9990;background:#fff;border:1px solid var(--border2);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:1rem 1.25rem;font-size:.82rem;color:var(--text2);line-height:1.8;width:360px;max-width:calc(100vw - 2rem);} .slider-tooltip-popup.show{display:block;}
-    .slider-tooltip-wrap{position:relative;display:inline-block;}
-    .prev-evidence{font-size:.72rem;color:var(--text3);font-style:italic;margin-top:.5rem;line-height:1.6;border-top:1px solid var(--border);padding-top:.4rem;}
     /* Loader */
     #loader{position:fixed;inset:0;background:#FAFAF8;display:flex;align-items:center;justify-content:center;z-index:9999;transition:opacity 0.5s ease,visibility 0.5s ease;}
     #loader.done{opacity:0;visibility:hidden;}
@@ -348,7 +495,7 @@
           </div>
         </div>
         <div class="status-dot"></div>
-        <span class="v-badge">v0.2</span>
+        <span class="v-badge">v0.1</span>
       </div>
     </div>
     <nav id="nav">
@@ -715,7 +862,6 @@
         <p id="ls-profile-p">Adjust the sliders to match your lifestyle. We'll show you how each factor affects drug penetration — and generate your personal profile.</p>
         <div class="grid-2">
           <div>
-            <!-- Replace each slider-name span. Example for smoking: -->
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-smoking-label">Smoking (pack-years)</span>
@@ -728,7 +874,6 @@
               <span class="slider-val" id="ls-smoking-val">0</span>
             </div>
             <div class="slider-hint" id="ls-smoking-hint"></div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-bmi-label">BMI</span>
@@ -741,7 +886,6 @@
               <span class="slider-val" id="ls-bmi-val">22</span>
             </div>
             <div class="slider-hint" id="ls-bmi-hint"></div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-inflam-label">Chronic inflammation</span>
@@ -754,7 +898,6 @@
               <span class="slider-val" id="ls-inflam-val">none</span>
             </div>
             <div class="slider-hint" id="ls-inflam-hint"></div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-exercise-label">Exercise (hrs/week)</span>
@@ -766,7 +909,6 @@
               <input type="range" id="ls-exercise" min="0" max="14" step="1" value="3" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-exercise-val">3h</span>
             </div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-alcohol-label">Alcohol (units/week)</span>
@@ -779,7 +921,6 @@
               <span class="slider-val" id="ls-alcohol-val">0</span>
             </div>
             <div class="slider-hint" id="ls-alcohol-hint"></div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-diet-label">Diet quality</span>
@@ -792,7 +933,6 @@
               <span class="slider-val" id="ls-diet-val">5/10</span>
             </div>
             <div class="slider-hint" id="ls-diet-hint"></div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-sleep-label">Sleep (hrs/night)</span>
@@ -804,7 +944,6 @@
               <input type="range" id="ls-sleep" min="4" max="10" step="0.5" value="7" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-sleep-val">7h</span>
             </div>
-            
             <div class="slider-row">
               <span class="slider-name">
                 <span id="ls-stress-label">Chronic stress</span>
@@ -816,7 +955,7 @@
               <input type="range" id="ls-stress" min="0" max="10" step="1" value="3" oninput="updateLifestyle()">
               <span class="slider-val" id="ls-stress-val">3/10</span>
             </div>
-            <div class="slider-hint" id="ls-stress-hint">0 = very low daily stress · 5 = moderate persistent stress · 10 = severe, prolonged stress with physical symptoms</div>
+            <div class="slider-hint" id="ls-stress-hint"></div>
             <div class="btn-row">
               <button class="btn btn-primary" id="ls-gen-btn" onclick="generateProfile()">Generate my profile →</button>
               <button class="btn btn-ghost" id="ls-reset-btn" onclick="resetLifestyle()">Reset</button>
@@ -836,7 +975,6 @@
         </div>
       </div>
       <div id="ls-profile-result" style="display:none;" class="section">
-        <p id="ls-profile-result-intro" style="font-size:.875rem;color:var(--text2);line-height:1.8;margin-bottom:1.25rem;padding:1rem 1.25rem;background:rgba(77,158,255,0.06);border-left:3px solid var(--blue);border-radius:0 var(--radius) var(--radius) 0;"></p>
         <h2 id="ls-profile-result-title">Your microenvironment profile</h2>
         <div class="grid-2">
           <div id="ls-profile-card" class="profile-card"></div>
@@ -848,51 +986,50 @@
       </div>
       <div class="card section">
         <div class="card-header"><div class="card-icon">✦</div><h2 style="margin:0;" id="ls-prev-title">Evidence-based actions</h2></div>
-        <!-- Replace the existing grid-3 inside the evidence-based actions card -->
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;">
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+        <div class="prev-actions-grid">
+
+          <div class="prev-action-item">
             <div id="ls-prev1-title" style="color:var(--green);font-weight:600;margin-bottom:.5rem;">Don't smoke</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev1-p">Smoking accounts for ~30% of all cancer deaths.</p>
             <div class="prev-evidence" id="ls-prev1-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+
+          <div class="prev-action-item">
             <div id="ls-prev2-title" style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Healthy weight</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev2-p">Obesity increases risk for 13 cancer types.</p>
             <div class="prev-evidence" id="ls-prev2-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+
+          <div class="prev-action-item">
             <div id="ls-prev3-title" style="color:var(--amber);font-weight:600;margin-bottom:.5rem;">Exercise regularly</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev3-p">150 min/week reduces cancer risk by 10–20%.</p>
             <div class="prev-evidence" id="ls-prev3-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+
+          <div class="prev-action-item">
             <div id="ls-prev4-title" style="color:var(--coral);font-weight:600;margin-bottom:.5rem;">Reduce alcohol</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev4-p">Alcohol is a Group 1 IARC carcinogen.</p>
             <div class="prev-evidence" id="ls-prev4-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+
+          <div class="prev-action-item">
             <div id="ls-prev5-title" style="color:var(--teal);font-weight:600;margin-bottom:.5rem;">Improve diet</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev5-p">Mediterranean diet reduces overall cancer risk 10–30%.</p>
             <div class="prev-evidence" id="ls-prev5-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);">
+
+          <div class="prev-action-item">
             <div id="ls-prev6-title" style="color:var(--purple);font-weight:600;margin-bottom:.5rem;">Manage stress</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev6-p">Chronic stress activates the HPA axis, elevating IFP.</p>
             <div class="prev-evidence" id="ls-prev6-evidence"></div>
           </div>
-        
-          <div style="padding:.875rem;background:var(--bg1);border-radius:var(--radius);border:1px solid var(--border);grid-column:1/-1;">
+
+          <div class="prev-action-item prev-action-wide">
             <div id="ls-prev7-title" style="color:var(--blue);font-weight:600;margin-bottom:.5rem;">Prioritise sleep</div>
             <p style="margin:0 0 .4rem;font-size:.82rem;" id="ls-prev7-p">Under 6 hrs/night is linked to elevated cancer mortality.</p>
             <div class="prev-evidence" id="ls-prev7-evidence"></div>
           </div>
-        
+
         </div>
       </div>
       <div class="section">
@@ -1110,42 +1247,12 @@
       <div class="section">
         <h2 id="journal-sources-title">Source journals</h2>
         <div class="grid-3">
-          <a href="https://acsjournals.onlinelibrary.wiley.com/journal/15424863" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">CA: A Cancer Journal for Clinicians</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~254 · Highest in oncology</div>
-            </div>
-          </a>
-          <a href="https://www.nature.com/nrc/" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Nature Reviews Cancer</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~78</div>
-            </div>
-          </a>
-          <a href="https://ascopubs.org/journal/jco" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Journal of Clinical Oncology</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~45</div>
-            </div>
-          </a>
-          <a href="https://www.cell.com/cancer-cell/home" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Cell</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~50</div>
-            </div>
-          </a>
-          <a href="https://www.thelancet.com/journals/lanonc/home" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">The Lancet Oncology</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~51</div>
-            </div>
-          </a>
-          <a href="https://aacrjournals.org/cancerdiscovery" target="_blank" style="text-decoration:none;">
-            <div class="card" style="text-align:center;padding:1rem;cursor:pointer;">
-              <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Discovery</div>
-              <div style="font-size:.72rem;color:var(--text3);">IF ~29</div>
-            </div>
-          </a>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">CA: A Cancer Journal for Clinicians</div><div style="font-size:.72rem;color:var(--text3);">IF ~254 · Highest in oncology</div></div>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Nature Reviews Cancer</div><div style="font-size:.72rem;color:var(--text3);">IF ~78</div></div>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Journal of Clinical Oncology</div><div style="font-size:.72rem;color:var(--text3);">IF ~45</div></div>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Cell</div><div style="font-size:.72rem;color:var(--text3);">IF ~50</div></div>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">The Lancet Oncology</div><div style="font-size:.72rem;color:var(--text3);">IF ~51</div></div>
+          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Discovery</div><div style="font-size:.72rem;color:var(--text3);">IF ~29</div></div>
         </div>
       </div>
     </div>
@@ -1175,7 +1282,7 @@
             <div class="about-person-desc" id="about-yumeng-desc">PDEOutreach 联合创始人。负责中文内容、网站用户体验及国内慈善机构合作。</div>
           </div>
         </div>
-        <p style="font-size:.875rem;color:var(--text2);line-height:1.8;margin-top:1rem;" id="about-age-note">癌症治疗背后的科学，不该只属于买得起期刊的人，或坐在大学课堂里的学生。无论身在何处，患者、家属和任何感到好奇的人，都应当有机会了解肿瘤内部究竟发生了什么，以及为什么治疗有时有效，有时却不奏效。</p>
+        <p style="font-size:.875rem;color:var(--text2);line-height:1.8;margin-top:1rem;" id="about-age-note">我们都是17岁。癌症治疗背后的科学，不该只属于买得起期刊的人，或坐在大学课堂里的学生。无论身在何处，患者、家属和任何感到好奇的人，都应当有机会了解肿瘤内部究竟发生了什么，以及为什么治疗有时有效，有时却不奏效。</p>
       </div>
 
       <div class="about-section">
@@ -1836,404 +1943,122 @@ function applyLang(lang){
   const espEl=document.getElementById('early-story-ph-p');if(espEl)espEl.innerHTML=t('We\'re currently collecting patient stories about how early or late detection changed a treatment journey. Email <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','我们正在收集早期或晚期发现如何改变治疗历程的患者故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>');
 
   // LIFESTYLE
-setText('ls-title-h1', t('Lifestyle & Risk', '生活方式与风险', 'Lebensstil & Risiko'));
-setText('ls-sub', t(
-  'Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.',
-  '生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。',
-  'Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko, sondern auch die Behandlungswirksamkeit.'
-));
-setText('ls-disc-label', t('Educational content only.', '仅供教育用途。', 'Nur zu Bildungszwecken.'));
-setText('ls-disc-text', t(
-  ' This tool uses published research to illustrate lifestyle effects on drug delivery. It is not a medical diagnostic tool.',
-  ' 此工具使用已发表的研究来说明生活方式对药物传递的影响。不是医疗诊断工具。',
-  ' Dieses Tool verwendet veröffentlichte Forschung zur Veranschaulichung von Lebensstileffekten. Kein medizinisches Diagnoseinstrument.'
-));
-setText('ls-disc-link', t(' About us →', ' 关于我们 →', ' Über uns →'));
-setText('ls-profile-title', t('Build your microenvironment profile', '建立你的微环境画像', 'Erstelle dein Mikromilieu-Profil'));
-setText('ls-profile-p', t(
-  'Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.',
-  '调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。',
-  'Passe die Schieberegler an deinen Lebensstil an.'
-));
+  setText('ls-title-h1',t('Lifestyle & Risk','生活方式与风险','Lebensstil & Risiko'));
+  setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko, sondern auch die Behandlungswirksamkeit.'));
+  setText('ls-disc-label',t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));setText('ls-disc-text',t(' This tool uses published research to illustrate lifestyle effects on drug delivery. It is not a medical diagnostic tool.',' 此工具使用已发表的研究来说明生活方式对药物传递的影响。不是医疗诊断工具。',' Dieses Tool verwendet veröffentlichte Forschung zur Veranschaulichung von Lebensstileffekten. Kein medizinisches Diagnoseinstrument.'));
+  setText('ls-disc-link',t(' About us →',' 关于我们 →',' Über uns →'));
+  setText('ls-profile-title',t('Build your microenvironment profile','建立你的微环境画像','Erstelle dein Mikromilieu-Profil'));
+  setText('ls-profile-p',t('Adjust the sliders to match your lifestyle. We\'ll show you how each factor affects drug penetration — and generate your personal profile.','调整滑块以匹配你的生活方式。我们将展示每个因素如何影响药物渗透，并生成你的个人画像。','Passe die Schieberegler an deinen Lebensstil an.'));
+  setText('ls-smoking-label',t('Smoking (pack-years)','吸烟（包年）','Rauchen (Packungsjahre)'));
+  setText('ls-bmi-label',t('BMI','BMI 体重指数','BMI'));
+  setText('ls-inflam-label',t('Chronic inflammation','慢性炎症程度','Chronische Entzündung'));
+  setText('ls-exercise-label',t('Exercise (hrs/week)','运动（小时/周）','Sport (Std./Woche)'));
+  setText('ls-alcohol-label',t('Alcohol (units/week)','饮酒（单位/周）','Alkohol (Einheiten/Woche)'));
+  setText('ls-diet-label',t('Diet quality','饮食质量','Ernährungsqualität'));
+  setText('ls-sleep-label',t('Sleep (hrs/night)','睡眠时长（小时/晚）','Schlaf (Std./Nacht)'));
+  setText('ls-stress-label',t('Chronic stress','慢性压力','Chronischer Stress'));
+  // Slider hints
+  setText('ls-smoking-hint',t('1 pack-year = smoking 20 cigarettes/day for 1 year. Never smoker = 0.','1包年 = 每天抽20支烟持续1年。不吸烟者 = 0。','1 Packungsjahr = 20 Zigaretten/Tag für 1 Jahr. Nichtraucher = 0.'));
+  setText('ls-bmi-hint',t('Healthy: 18.5–24.9 · Overweight: 25–29.9 · Obese: 30+','健康：18.5–24.9 · 超重：25–29.9 · 肥胖：30+','Gesund: 18,5–24,9 · Übergewicht: 25–29,9 · Fettleibig: 30+'));
+  setText('ls-inflam-hint',t('0 = no known inflammatory conditions · 5 = mild IBD or frequent infections · 10 = severe autoimmune/inflammatory disease','0 = 无已知炎症状况 · 5 = 轻度炎症性肠病或频繁感染 · 10 = 严重自身免疫/炎症性疾病','0 = keine entzündlichen Erkrankungen · 5 = mäßige Entzündung · 10 = schwere Autoimmunerkrankung'));
+  setText('ls-alcohol-hint',t('UK unit = 8g alcohol (half a pint of beer, small glass of wine). UK guidelines: ≤14 units/week. 0 = non-drinker.','英国单位 = 8克酒精（半品脱啤酒或小杯葡萄酒）。英国指南：每周≤14单位。0 = 不饮酒者。','1 Einheit UK = 8g Alkohol (halbes Pintglas Bier, kleines Weinglas). Empfehlung: ≤14/Woche. 0 = kein Alkohol.'));
+  setText('ls-diet-hint',t('0 = heavily processed, high sugar/fat · 5 = mixed diet · 10 = Mediterranean-style, high vegetables, low processed food','0 = 高度加工、高糖/脂肪 · 5 = 混合饮食 · 10 = 地中海式、高蔬菜、低加工食品','0 = stark verarbeitet, viel Zucker/Fett · 5 = gemischte Ernährung · 10 = mediterrane Ernährung'));
+  setText('ls-stress-hint',t('0 = very low daily stress · 5 = moderate persistent stress · 10 = severe, prolonged stress with physical symptoms','0 = 日常压力很低 · 5 = 中度持续性压力 · 10 = 严重、长期压力，伴有躯体症状','0 = sehr geringer Stress · 5 = mäßiger anhaltender Stress · 10 = schwerer, langanhaltender Stress'));
+  const lgBtn=document.getElementById('ls-gen-btn');if(lgBtn)lgBtn.textContent=t('Generate my profile →','生成我的画像 →','Mein Profil erstellen →');
+  const lrBtn=document.getElementById('ls-reset-btn');if(lrBtn)lrBtn.textContent=t('Reset','重置','Zurücksetzen');
+  setText('ls-live-title',t('Live microenvironment estimate','实时微环境估计','Echtzeit-Mikromilieu-Schätzung'));setText('ls-D-label',t('D modifier','D 系数','D-Faktor'));setText('ls-risk-title-label',t('Risk level','风险等级','Risikoniveau'));
+  setText('ls-profile-result-title',t('Your microenvironment profile','你的微环境画像','Dein Mikromilieu-Profil'));
+  setText('ls-prev-title',t('Evidence-based actions','循证预防建议','Evidenzbasierte Maßnahmen'));
 
-// ── SLIDER LABELS ──────────────────────────────────────────────────────────────
-setText('ls-smoking-label', t('Smoking (pack-years)', '吸烟（包年）', 'Rauchen (Packungsjahre)'));
-setText('ls-bmi-label',     t('BMI', 'BMI 体重指数', 'BMI'));
-setText('ls-inflam-label',  t('Chronic inflammation', '慢性炎症程度', 'Chronische Entzündung'));
-setText('ls-exercise-label',t('Exercise (hrs/week)', '运动（小时/周）', 'Sport (Std./Woche)'));
-setText('ls-alcohol-label', t('Alcohol (units/week)', '饮酒（单位/周）', 'Alkohol (Einheiten/Woche)'));
-setText('ls-diet-label',    t('Diet quality', '饮食质量', 'Ernährungsqualität'));
-setText('ls-sleep-label',   t('Sleep (hrs/night)', '睡眠时长（小时/晚）', 'Schlaf (Std./Nacht)'));
-setText('ls-stress-label',  t('Chronic stress', '慢性压力', 'Chronischer Stress'));
+  // ── SLIDER LABELS ──
+  setText('ls-smoking-label', t('Smoking (pack-years)', '吸烟（包年）', 'Rauchen (Packungsjahre)'));
+  setText('ls-bmi-label',     t('BMI', 'BMI 体重指数', 'BMI'));
+  setText('ls-inflam-label',  t('Chronic inflammation', '慢性炎症程度', 'Chronische Entzündung'));
+  setText('ls-exercise-label',t('Exercise (hrs/week)', '运动（小时/周）', 'Sport (Std./Woche)'));
+  setText('ls-alcohol-label', t('Alcohol (units/week)', '饮酒（单位/周）', 'Alkohol (Einheiten/Woche)'));
+  setText('ls-diet-label',    t('Diet quality', '饮食质量', 'Ernährungsqualität'));
+  setText('ls-sleep-label',   t('Sleep (hrs/night)', '睡眠时长（小时/晚）', 'Schlaf (Std./Nacht)'));
+  setText('ls-stress-label',  t('Chronic stress', '慢性压力', 'Chronischer Stress'));
 
-// ── SLIDER HINTS (short, shown below slider) ───────────────────────────────────
-setText('ls-smoking-hint', t(
-  '0 = never smoked · 20 = 1 pack/day for 20 yrs · 40 = heavy long-term smoker',
-  '0 = 从未吸烟 · 20 = 每天1包持续20年 · 40 = 重度长期吸烟',
-  '0 = Nichtraucher · 20 = 1 Päckchen/Tag für 20 J. · 40 = starker Langzeitraucher'
-));
-setText('ls-bmi-hint', t(
-  'Healthy: 18.5–24.9 · Overweight: 25–29.9 · Obese: 30+',
-  '健康：18.5–24.9 · 超重：25–29.9 · 肥胖：30+',
-  'Gesund: 18,5–24,9 · Übergewicht: 25–29,9 · Adipös: 30+'
-));
-setText('ls-inflam-hint', t(
-  '0 = no known inflammatory conditions · 5 = mild IBD or frequent infections · 10 = severe autoimmune/inflammatory disease',
-  '0 = 无已知炎症 · 5 = 轻度炎症性肠病或频繁感染 · 10 = 严重自身免疫/炎症性疾病',
-  '0 = keine Entzündungserkrankung · 5 = mäßige Entzündung · 10 = schwere Autoimmunerkrankung'
-));
-setText('ls-alcohol-hint', t(
-  'UK unit = 8 g alcohol. Half a pint of beer or a small (125 ml) glass of wine = 1 unit. UK guideline: ≤14 units/week. 0 = non-drinker.',
-  '中国标准饮酒单位 = 10 g 酒精。一罐啤酒（330ml，5%）≈ 1.6 单位。中国指南：男性 ≤28 g/天，女性 ≤14 g/天。0 = 不饮酒。',
-  '1 Einheit (DE) = 10 g Alkohol. 0,33 l Bier (5%) ≈ 1,3 Einheiten. DGE-Empfehlung: ♂ ≤24 g/Tag, ♀ ≤12 g/Tag. 0 = kein Alkohol.'
-));
-setText('ls-diet-hint', t(
-  '0 = heavily processed, high sugar/fat · 5 = mixed diet · 10 = Mediterranean-style, rich in vegetables, low in processed food',
-  '0 = 高度加工、高糖/脂肪 · 5 = 混合饮食 · 10 = 地中海式或中式传统饮食，多蔬果，少加工',
-  '0 = stark verarbeitet, viel Zucker/Fett · 5 = gemischte Ernährung · 10 = mediterrane Ernährung, viel Gemüse'
-));
-setText('ls-stress-hint', t(
-  '0 = very low daily stress · 5 = moderate persistent stress (work, finances) · 10 = severe prolonged stress with physical symptoms',
-  '0 = 日常压力很低 · 5 = 中度持续性压力（工作、经济） · 10 = 严重、长期压力，伴有躯体症状',
-  '0 = sehr geringer Stress · 5 = mäßiger anhaltender Stress (Arbeit, Finanzen) · 10 = schwerer Dauerstress mit körperl. Symptomen'
-));
+  // ── SLIDER HINTS ──
+  setText('ls-smoking-hint', t('0 = never smoked · 20 = 1 pack/day for 20 yrs · 40 = heavy long-term smoker','0 = 从未吸烟 · 20 = 每天1包持续20年 · 40 = 重度长期吸烟','0 = Nichtraucher · 20 = 1 Päckchen/Tag für 20 J. · 40 = starker Langzeitraucher'));
+  setText('ls-bmi-hint', t('Healthy: 18.5–24.9 · Overweight: 25–29.9 · Obese: 30+','健康：18.5–24.9 · 超重：25–29.9 · 肥胖：30+','Gesund: 18,5–24,9 · Übergewicht: 25–29,9 · Adipös: 30+'));
+  setText('ls-inflam-hint', t('0 = no known inflammatory conditions · 5 = mild IBD/frequent infections · 10 = severe autoimmune disease','0 = 无已知炎症 · 5 = 轻度炎症性肠病或频繁感染 · 10 = 严重自身免疫疾病','0 = keine Entzündung · 5 = mäßige Entzündung · 10 = schwere Autoimmunerkrankung'));
+  setText('ls-alcohol-hint', t('0 = non-drinker. UK unit = 8g alcohol. Half a pint or small wine = 1 unit. Guideline: ≤14/week.','0 = 不饮酒。中国单位 = 10g酒精。一罐啤酒（330ml，5%）≈ 1.6单位。','0 = kein Alkohol. 1 Einheit = 10g. DGE-Empfehlung: ♂ ≤24g/Tag, ♀ ≤12g/Tag.'));
+  setText('ls-diet-hint', t('0 = heavily processed, high sugar/fat · 5 = mixed diet · 10 = Mediterranean-style, rich in vegetables','0 = 高度加工、高糖/脂肪 · 5 = 混合饮食 · 10 = 地中海式，多蔬果，少加工食品','0 = stark verarbeitet · 5 = gemischte Ernährung · 10 = mediterrane Ernährung'));
+  setText('ls-stress-hint', t('0 = very low daily stress · 5 = moderate persistent stress · 10 = severe prolonged stress with physical symptoms','0 = 日常压力很低 · 5 = 中度持续性压力 · 10 = 严重、长期压力，伴有躯体症状','0 = sehr geringer Stress · 5 = mäßiger anhaltender Stress · 10 = schwerer Dauerstress'));
 
-// ── SLIDER TOOLTIPS (shown on ? click — how to calculate / what it means) ──────
-setText('ls-smoking-tooltip', t(
-  `<strong>How to calculate pack-years:</strong><br>
-   Pack-years = (cigarettes per day ÷ 20) × years smoked.<br>
-   <em>Examples:</em> 10 cigs/day for 10 years = <strong>5 pack-years</strong>. 
-   20 cigs/day for 20 years = <strong>20 pack-years</strong>.<br>
-   <strong>Why it matters:</strong> Tobacco carcinogens directly damage DNA and increase extracellular matrix (ECM) stiffness, 
-   which raises interstitial fluid pressure (IFP) and reduces how deeply drugs can penetrate a tumour.`,
+  // ── TOOLTIP CONTENT (injected into hidden spans for popup) ──
+  setText('ls-smoking-tooltip', t(
+    'Pack-years = (cigarettes per day ÷ 20) × years smoked. Tobacco carcinogens increase ECM crosslinking via lysyl oxidase (LOX), raising IFP and reducing drug diffusion. Quitting at 10 years: lung cancer risk falls ~50%. (Islami et al., CA Cancer J Clin 2018)',
+    '包年 = （每天支数 ÷ 20）× 吸烟年数。烟草致癌物通过LOX增加ECM交联，升高IFP并降低药物扩散。戒烟10年：肺癌风险降低约50%。（Islami et al., CA Cancer J Clin 2018）',
+    'Packungsjahre = (Zigaretten/Tag ÷ 20) × Raucherjahre. Erhöht ECM-Vernetzung via LOX, steigert IFP, verringert Diffusion. Nach 10 rauchfreien Jahren: Lungenkrebsrisiko –50%.'
+  ));
+  setText('ls-bmi-tooltip', t(
+    'BMI = weight (kg) ÷ height (m)². UK categories: <18.5 underweight · 18.5–24.9 healthy · 25–29.9 overweight · 30+ obese. Adipose tissue secretes IL-6, TNF-α — driving ECM remodelling and elevated IFP. (Lauby-Secretan et al., NEJM 2016)',
+    'BMI = 体重(kg) ÷ 身高(m)²。中国标准：<18.5偏瘦 · 18.5–23.9正常 · 24–27.9超重 · 28+肥胖。脂肪组织分泌IL-6、TNF-α，驱动ECM重塑，升高IFP。（Lauby-Secretan et al., NEJM 2016）',
+    'BMI = Gewicht (kg) ÷ Körpergröße (m)². Kategorien: <18,5 Untergewicht · 18,5–24,9 Normal · 25–29,9 Übergewicht · 30+ Adipositas. Fettgewebe sezerniert IL-6, TNF-α — ECM-Remodelling und IFP↑.'
+  ));
+  setText('ls-inflam-tooltip', t(
+    'Chronic inflammation promotes desmoplasia — excess fibrous ECM tissue — which physically blocks drug delivery. Conditions: IBD, psoriasis, rheumatoid arthritis scored 3–6; severe autoimmune/lupus scored 7–10.',
+    '慢性炎症促进间质增生，产生过多纤维性ECM，物理性阻断药物递送。炎症性肠病、银屑病、类风湿关节炎评3–6；严重自身免疫疾病、狼疮评7–10。',
+    'Chronische Entzündung fördert Desmoplasie — überschüssiges fibröses ECM — das die Medikamentenzufuhr blockiert. CED, Psoriasis, RA: 3–6; schwere Autoimmunerkrankung: 7–10.'
+  ));
+  setText('ls-exercise-tooltip', t(
+    'Count all moderate-to-vigorous activity: brisk walking, cycling, swimming, gym. UK guideline: ≥150 min/week. Exercise reduces CRP, IL-6, improves tumour vascular perfusion — all increasing drug delivery. (Moore et al., JAMA Int Med 2016)',
+    '计算所有中高强度活动：快步走、骑行、游泳、健身。中国指南：每周≥150分钟中等强度。运动降低CRP、IL-6，改善肿瘤血管灌注。（Moore et al., JAMA Int Med 2016）',
+    'Moderate bis intensive Aktivitäten zählen: zügiges Gehen, Radfahren, Schwimmen. DGE: ≥150 Min./Woche. Senkt CRP, IL-6, verbessert Tumorperfusion.'
+  ));
+  setText('ls-alcohol-tooltip', t(
+    'Alcohol is a Group 1 carcinogen (IARC). It generates acetaldehyde (DNA-damaging), disrupts gut barrier, and promotes systemic inflammation that raises tumour IFP. Even moderate drinking increases breast cancer risk ~7–10% per drink/day. (IARC 2007; Bagnardi et al., Br J Cancer 2015)',
+    '酒精是IARC一类致癌物。产生乙醛（损伤DNA），破坏肠道屏障，促进全身炎症升高肿瘤IFP。即使适量饮酒，每天每杯使乳腺癌风险增加约7–10%。（IARC 2007；Bagnardi et al., Br J Cancer 2015）',
+    'Alkohol ist IARC-Karzinogen Gruppe 1. Erzeugt Acetaldehyd, stört Darmbarriere, erhöht IFP. Moderates Trinken steigert Brustkrebsrisiko um ~7–10% pro Drink/Tag.'
+  ));
+  setText('ls-diet-tooltip', t(
+    'Mediterranean diet associated with 10–30% reduced overall cancer risk. High-quality diets reduce systemic inflammation, maintain healthier ECM architecture. High processed meat (>50g/day) raises colorectal cancer risk ~18% per 50g. (Schwingshackl et al., Int J Cancer 2017)',
+    '地中海式饮食与总体癌症风险降低10–30%相关。高质量饮食减少全身炎症，维持更健康的ECM结构。加工肉>50g/天使结直肠癌风险每50g上升约18%。（Schwingshackl et al., Int J Cancer 2017）',
+    'Mediterrane Diät: 10–30% geringeres Gesamtkrebsrisiko. Reduziert Entzündungen, erhält ECM. Verarbeitetes Fleisch >50g/Tag: +18% Darmkrebsrisiko pro 50g.'
+  ));
+  setText('ls-sleep-tooltip', t(
+    'Sleep <6 hrs/night linked to 40–50% higher cancer-related mortality in cohort studies. Deep sleep enables glymphatic CNS clearance; melatonin suppresses aromatase (hormone-sensitive cancers) and acts as free-radical scavenger. Night-shift work: IARC Group 2A carcinogen. (Kakizaki et al., Br J Cancer 2008)',
+    '每晚<6小时睡眠与癌症相关死亡率增加40–50%相关。深睡眠启动脑淋巴清除；褪黑素抑制芳香化酶并清除自由基。夜班工作：IARC 2A类致癌物。（Kakizaki et al., Br J Cancer 2008）',
+    'Schlaf <6 Std./Nacht: +40–50% krebsbedingtes Sterblichkeitsrisiko. Tiefschlaf: glymphatische Clearance; Melatonin hemmt Aromatase. Nachtschicht: IARC Gruppe 2A.'
+  ));
+  setText('ls-stress-tooltip', t(
+    'Chronic stress activates the HPA axis, elevating cortisol and catecholamines — suppressing NK cell and CD8+ T cell function. β-adrenergic signalling activates cancer-associated fibroblasts (CAFs), which produce excess collagen — stiffening ECM and reducing drug penetration. CBT/mindfulness reduces cortisol by 15–20%. (Cole et al., Science 2010)',
+    '慢性压力激活HPA轴，升高皮质醇和儿茶酚胺——抑制NK细胞和CD8+ T细胞功能。β肾上腺素能信号激活癌症相关成纤维细胞（CAF），产生过多胶原蛋白，使ECM硬化。认知行为疗法/正念可将皮质醇降低15–20%。（Cole et al., Science 2010）',
+    'Chronischer Stress aktiviert die HPA-Achse, erhöht Cortisol — unterdrückt NK- und CD8+-Zellen. β-adrenerge Signalgebung aktiviert CAFs, die überschüssiges Kollagen produzieren — ECM versteift sich. KVT/Achtsamkeit: Cortisol –15–20%.'
+  ));
 
-  `<strong>如何计算包年：</strong><br>
-   包年 = （每天吸烟支数 ÷ 20）× 吸烟年数。<br>
-   <em>例如：</em>每天10支，吸烟10年 = <strong>5包年</strong>。
-   每天20支，吸烟20年 = <strong>20包年</strong>。<br>
-   <strong>为何重要：</strong>烟草致癌物直接损伤DNA，增加细胞外基质（ECM）硬度，升高间质液压（IFP），降低药物在肿瘤中的渗透深度。`,
+  // ── 7-ITEM EVIDENCE TITLES + BODY ──
+  setText('ls-prev1-title', t("Don't smoke", '不要吸烟', 'Nicht rauchen'));
+  setText('ls-prev1-p', t('Smoking accounts for ~30% of all cancer deaths.', '吸烟约占所有癌症死亡的30%。', 'Rauchen verursacht ~30% aller Krebstode.'));
+  setText('ls-prev1-evidence', t('Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000', 'Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000', 'Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000'));
+  setText('ls-prev2-title', t('Maintain a healthy weight', '保持健康体重', 'Gesundes Gewicht halten'));
+  setText('ls-prev2-p', t('Obesity increases risk for 13 cancer types.', '肥胖增加13种癌症的风险。', 'Fettleibigkeit erhöht das Risiko für 13 Krebsarten.'));
+  setText('ls-prev2-evidence', t('Lauby-Secretan et al., NEJM 2016 · Iyengar et al., Cancer Res 2016', 'Lauby-Secretan et al., NEJM 2016 · Iyengar et al., Cancer Res 2016', 'Lauby-Secretan et al., NEJM 2016'));
+  setText('ls-prev3-title', t('Exercise regularly', '规律运动', 'Regelmäßig Sport treiben'));
+  setText('ls-prev3-p', t('150 min/week reduces cancer risk by 10–20%.', '每周150分钟运动可使癌症风险降低10–20%。', '150 Min./Woche reduziert Krebsrisiko um 10–20%.'));
+  setText('ls-prev3-evidence', t('Moore et al., JAMA Int Med 2016 · Betof et al., J Natl Cancer Inst 2013', 'Moore et al., JAMA Int Med 2016 · Betof et al., J Natl Cancer Inst 2013', 'Moore et al., JAMA Int Med 2016'));
+  setText('ls-prev4-title', t('Reduce or eliminate alcohol', '减少或戒除饮酒', 'Alkohol reduzieren oder meiden'));
+  setText('ls-prev4-p', t('Alcohol is a Group 1 IARC carcinogen.', '酒精是IARC一类致癌物。', 'Alkohol ist ein IARC-Karzinogen der Gruppe 1.'));
+  setText('ls-prev4-evidence', t('IARC Working Group, Lancet Oncol 2007 · Bagnardi et al., Br J Cancer 2015', 'IARC Working Group, Lancet Oncol 2007 · Bagnardi et al., Br J Cancer 2015', 'IARC Working Group, Lancet Oncol 2007'));
+  setText('ls-prev5-title', t('Eat a high-quality diet', '提升饮食质量', 'Hochwertige Ernährung'));
+  setText('ls-prev5-p', t('Mediterranean diet reduces overall cancer risk 10–30%.', '地中海式饮食与总体癌症风险降低10–30%相关。', 'Mediterrane Diät: 10–30% geringeres Krebsrisiko.'));
+  setText('ls-prev5-evidence', t('Schwingshackl et al., Int J Cancer 2017 · Bouvard et al., Lancet Oncol 2015', 'Schwingshackl et al., Int J Cancer 2017 · Bouvard et al., Lancet Oncol 2015', 'Schwingshackl et al., Int J Cancer 2017'));
+  setText('ls-prev6-title', t('Manage chronic stress', '管理慢性压力', 'Chronischen Stress bewältigen'));
+  setText('ls-prev6-p', t('Chronic stress activates the HPA axis, elevating IFP.', '慢性压力激活HPA轴，升高间质液压。', 'Chronischer Stress aktiviert die HPA-Achse, erhöht IFP.'));
+  setText('ls-prev6-evidence', t('Cole et al., Science 2010 · Carlson et al., Psychoneuroendocrinology 2013', 'Cole et al., Science 2010 · Carlson et al., Psychoneuroendocrinology 2013', 'Cole et al., Science 2010'));
+  setText('ls-prev7-title', t('Prioritise sleep quality', '重视睡眠质量', 'Schlafqualität verbessern'));
+  setText('ls-prev7-p', t('Under 6 hrs/night is linked to elevated cancer mortality.', '每晚不足6小时与癌症死亡率升高相关。', 'Unter 6 Std./Nacht: erhöhte Krebssterblichkeit.'));
+  setText('ls-prev7-evidence', t('Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98 (shift work)', 'Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98（轮班工作）', 'Kakizaki et al., Br J Cancer 2008 · IARC Monograph Bd. 98'));
 
-  `<strong>Berechnung Packungsjahre:</strong><br>
-   Packungsjahre = (Zigaretten pro Tag ÷ 20) × Raucherjahre.<br>
-   <em>Beispiel:</em> 10 Zigaretten/Tag über 10 Jahre = <strong>5 Packungsjahre</strong>.<br>
-   <strong>Warum wichtig:</strong> Tabakkanzerogene schädigen die DNA direkt und erhöhen die ECM-Steifigkeit, 
-   was den IFP erhöht und die Medikamentenpenetration ins Tumorgewebe verringert.`
-));
+  const lstEl = document.getElementById('ls-story-ph-title');
+  if (lstEl) lstEl.textContent = t('Share your story', '分享你的故事', 'Teile deine Geschichte');
+  const lspEl = document.getElementById('ls-story-ph-p');
+  if (lspEl) lspEl.innerHTML = t("We're currently collecting patient stories about how lifestyle changes affected treatment response. Email <a href=\"mailto:outreach@pdeo.org\">outreach@pdeo.org</a>", '我们正在收集生活方式改变如何影响治疗反应的患者故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>', 'Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>');
 
-setText('ls-bmi-tooltip', t(
-  `<strong>How to calculate BMI:</strong><br>
-   BMI = weight (kg) ÷ height (m)².<br>
-   <em>Example:</em> 80 kg, 1.75 m → 80 ÷ (1.75 × 1.75) = <strong>26.1</strong> (overweight).<br>
-   <strong>UK NHS categories:</strong> Under 18.5 = underweight · 18.5–24.9 = healthy · 
-   25–29.9 = overweight · 30+ = obese.<br>
-   <strong>Why it matters:</strong> Excess adipose tissue secretes pro-inflammatory cytokines (IL-6, TNF-α), 
-   driving ECM remodelling and elevating IFP — reducing drug diffusion coefficient D.`,
-
-  `<strong>如何计算BMI：</strong><br>
-   BMI = 体重（kg）÷ 身高（m）²。<br>
-   <em>例如：</em>体重70kg，身高1.70m → 70 ÷ (1.70²) = <strong>24.2</strong>（正常）。<br>
-   <strong>中国标准：</strong>低于18.5 = 偏瘦 · 18.5–23.9 = 正常 · 24–27.9 = 超重 · 28+ = 肥胖。<br>
-   <strong>为何重要：</strong>脂肪组织分泌促炎细胞因子（IL-6、TNF-α），驱动ECM重塑，升高IFP，降低药物扩散系数D。`,
-
-  `<strong>BMI berechnen:</strong><br>
-   BMI = Gewicht (kg) ÷ Körpergröße (m)².<br>
-   <em>Beispiel:</em> 80 kg, 1,75 m → 80 ÷ (1,75²) = <strong>26,1</strong> (Übergewicht).<br>
-   <strong>WHO-Kategorien:</strong> Unter 18,5 = Untergewicht · 18,5–24,9 = Normalgewicht · 
-   25–29,9 = Übergewicht · 30+ = Adipositas.<br>
-   <strong>Warum wichtig:</strong> Fettgewebe sezerniert entzündungsfördernde Zytokine (IL-6, TNF-α), 
-   fördert ECM-Remodelling und erhöht den IFP — was den Diffusionskoeffizienten D verringert.`
-));
-
-setText('ls-inflam-tooltip', t(
-  `<strong>About chronic inflammation:</strong><br>
-   This score reflects systemic, persistent inflammation — not short-term illness.<br>
-   <strong>Low (0–2):</strong> No known conditions, low CRP, no regular anti-inflammatory medication.<br>
-   <strong>Moderate (3–6):</strong> Conditions such as IBD, psoriasis, rheumatoid arthritis, or frequent infections.<br>
-   <strong>High (7–10):</strong> Severe autoimmune disease, lupus, active IBD flares, or cancer-related inflammation.<br>
-   <strong>Why it matters:</strong> Chronic inflammation promotes desmoplasia — excess fibrous ECM tissue — 
-   which physically blocks drug delivery and activates immunosuppressive pathways.`,
-
-  `<strong>关于慢性炎症：</strong><br>
-   该评分反映持续性系统炎症，而非短期疾病。<br>
-   <strong>低（0–2）：</strong>无已知炎症，CRP正常，无需定期抗炎药物。<br>
-   <strong>中（3–6）：</strong>炎症性肠病、银屑病、类风湿关节炎或频繁感染。<br>
-   <strong>高（7–10）：</strong>严重自身免疫疾病、狼疮、IBD急性发作或肿瘤相关炎症。<br>
-   <strong>为何重要：</strong>慢性炎症促进间质增生，产生过多纤维性ECM，物理性阻断药物递送，并激活免疫抑制通路。`,
-
-  `<strong>Chronische Entzündung:</strong><br>
-   Dieser Wert spiegelt systemische, anhaltende Entzündung wider — nicht kurzfristige Erkrankungen.<br>
-   <strong>Niedrig (0–2):</strong> Keine bekannten Erkrankungen, normales CRP.<br>
-   <strong>Mittel (3–6):</strong> CED, Psoriasis, rheumatoide Arthritis oder häufige Infektionen.<br>
-   <strong>Hoch (7–10):</strong> Schwere Autoimmunerkrankung, Lupus, aktiver CED-Schub.<br>
-   <strong>Warum wichtig:</strong> Chronische Entzündung fördert Desmoplasie — überschüssiges fibröses ECM — 
-   das die Medikamentenzufuhr blockiert und immunsuppressive Signalwege aktiviert.`
-));
-
-setText('ls-exercise-tooltip', t(
-  `<strong>About exercise:</strong><br>
-   Count all moderate-to-vigorous activity: brisk walking, cycling, swimming, gym, sport.<br>
-   <strong>UK NHS guideline:</strong> ≥150 min/week moderate or ≥75 min/week vigorous activity.<br>
-   <strong>0–2 hrs:</strong> Sedentary. <strong>2.5 hrs:</strong> Meets guidelines. <strong>5+ hrs:</strong> Active.<br>
-   <strong>Why it matters:</strong> Exercise reduces circulating inflammatory markers (CRP, IL-6), 
-   lowers BMI, and improves tumour vascular perfusion — all of which increase drug delivery efficiency.`,
-
-  `<strong>关于运动：</strong><br>
-   计算所有中高强度活动：快步走、骑行、游泳、健身、球类运动等。<br>
-   <strong>中国指南：</strong>每周 ≥150 分钟中等强度或 ≥75 分钟高强度运动。<br>
-   <strong>0–2小时：</strong>久坐。<strong>2.5小时：</strong>达标。<strong>5小时以上：</strong>积极活跃。<br>
-   <strong>为何重要：</strong>运动降低循环炎症标志物（CRP、IL-6），减轻体重，改善肿瘤血管灌注，从而提高药物递送效率。`,
-
-  `<strong>Über Sport:</strong><br>
-   Zähle alle moderat-intensiven Aktivitäten: zügiges Gehen, Radfahren, Schwimmen, Fitnessstudio, Sport.<br>
-   <strong>DGE-Empfehlung:</strong> ≥150 Min./Woche moderat oder ≥75 Min./Woche intensiv.<br>
-   <strong>0–2 Std.:</strong> Sitzend. <strong>2,5 Std.:</strong> Empfehlung erfüllt. <strong>5+ Std.:</strong> Aktiv.<br>
-   <strong>Warum wichtig:</strong> Sport reduziert Entzündungsmarker (CRP, IL-6), senkt den BMI 
-   und verbessert die Tumorperfusion — all das erhöht die Medikamentenzufuhr.`
-));
-
-setText('ls-alcohol-tooltip', t(
-  `<strong>UK alcohol units explained:</strong><br>
-   1 unit = 8 g of pure alcohol.<br>
-   <strong>Common drinks:</strong> Single spirit (25 ml, 40%) = 1 unit · Small wine (125 ml, 12%) = 1.5 units · 
-   Pint of lager (568 ml, 4%) = 2.3 units · Bottle of wine (750 ml, 12%) = 9 units.<br>
-   <strong>UK Chief Medical Officers' guideline:</strong> No more than 14 units/week, spread over 3+ days.<br>
-   <strong>Why it matters:</strong> Alcohol is a Group 1 carcinogen (IARC). It disrupts folate metabolism, 
-   generates acetaldehyde (DNA-damaging), and promotes systemic inflammation.`,
-
-  `<strong>中国饮酒单位说明：</strong><br>
-   1单位 = 10 g 纯酒精。<br>
-   <strong>常见饮品：</strong>一罐啤酒（330ml，5%）≈ 1.6单位 · 一小杯白酒（50ml，52%）≈ 2.6单位 · 一杯红酒（150ml，12%）≈ 1.8单位。<br>
-   <strong>中国指南：</strong>男性每天不超过 25 g 酒精，女性不超过 15 g。<br>
-   <strong>为何重要：</strong>酒精是IARC一类致癌物，干扰叶酸代谢，产生乙醛（损伤DNA），促进全身性炎症。`,
-
-  `<strong>Alkoholeinheiten (Deutschland):</strong><br>
-   1 Einheit = 10 g reiner Alkohol.<br>
-   <strong>Typische Getränke:</strong> 0,33 l Bier (5%) ≈ 1,3 Einh. · 0,2 l Wein (12%) ≈ 1,9 Einh. · 
-   2 cl Schnaps (40%) ≈ 0,6 Einh.<br>
-   <strong>DGE-Empfehlung:</strong> ♂ max. 24 g/Tag · ♀ max. 12 g/Tag · mind. 2 alkoholfreie Tage/Woche.<br>
-   <strong>Warum wichtig:</strong> Alkohol ist ein IARC-Karzinogen der Gruppe 1. Er stört den Folatstoffwechsel, 
-   erzeugt Acetaldehyd (DNA-schädigend) und fördert systemische Entzündung.`
-));
-
-setText('ls-diet-tooltip', t(
-  `<strong>How to rate your diet quality:</strong><br>
-   <strong>0–3 (Poor):</strong> Daily ultra-processed food, takeaways, sugary drinks, little fruit/veg.<br>
-   <strong>4–6 (Mixed):</strong> Some home cooking, occasional fruit/veg, moderate processed food.<br>
-   <strong>7–10 (Good):</strong> Mostly whole foods, ≥5 portions fruit/veg daily, limited red/processed meat, 
-   low added sugar — Mediterranean or traditional Asian diet patterns.<br>
-   <strong>Why it matters:</strong> High-quality diets reduce systemic inflammation, lower cancer risk by up to 30%, 
-   and maintain healthier ECM architecture — improving drug access to tumours.`,
-
-  `<strong>如何评估饮食质量：</strong><br>
-   <strong>0–3（差）：</strong>日常以超加工食品、外卖、含糖饮料为主，蔬果摄入少。<br>
-   <strong>4–6（中等）：</strong>偶尔自己做饭，蔬果摄入一般，加工食品适量。<br>
-   <strong>7–10（好）：</strong>以天然食物为主，每天蔬果 ≥5份，少红肉及加工肉，低添加糖——地中海式或中式传统饮食。<br>
-   <strong>为何重要：</strong>高质量饮食减少全身炎症，可将癌症风险降低达30%，并维持更健康的ECM结构，改善药物进入肿瘤的通道。`,
-
-  `<strong>Ernährungsqualität bewerten:</strong><br>
-   <strong>0–3 (Schlecht):</strong> Täglich stark verarbeitete Lebensmittel, Fast Food, zuckerhaltige Getränke, wenig Obst/Gemüse.<br>
-   <strong>4–6 (Gemischt):</strong> Gelegentlich selbst kochen, mäßige Obst-/Gemüsemenge.<br>
-   <strong>7–10 (Gut):</strong> Überwiegend Vollwertkost, ≥5 Portionen Obst/Gemüse täglich, wenig rotes/verarbeitetes Fleisch — 
-   mediterrane oder traditionell asiatische Ernährungsweise.<br>
-   <strong>Warum wichtig:</strong> Hochwertige Ernährung reduziert Entzündungen, senkt das Krebsrisiko um bis zu 30% 
-   und hält die ECM-Architektur gesünder — was den Medikamentenzugang zum Tumor verbessert.`
-));
-
-setText('ls-sleep-tooltip', t(
-  `<strong>About sleep:</strong><br>
-   Measure your average sleep on a typical weeknight.<br>
-   <strong>UK NHS / Sleep Foundation recommendation:</strong> 7–9 hours for adults.<br>
-   <strong>Under 6 hrs:</strong> Linked to elevated cortisol, CRP, and IL-6. 
-   <strong>Over 9 hrs</strong> may also indicate underlying inflammation or chronic disease.<br>
-   <strong>Why it matters:</strong> Poor sleep elevates cortisol and systemic inflammatory markers, 
-   which promote ECM remodelling and immunosuppression — impairing the immune system's ability to assist drug therapy.`,
-
-  `<strong>关于睡眠：</strong><br>
-   衡量工作日的平均睡眠时长。<br>
-   <strong>中国睡眠研究会推荐：</strong>成年人每晚 7–9 小时。<br>
-   <strong>6小时以下：</strong>与皮质醇、CRP和IL-6升高相关。<strong>9小时以上</strong>可能提示潜在炎症或慢性疾病。<br>
-   <strong>为何重要：</strong>睡眠不足升高皮质醇和全身炎症标志物，促进ECM重塑和免疫抑制，削弱免疫系统配合药物治疗的能力。`,
-
-  `<strong>Über Schlaf:</strong><br>
-   Erfasse deinen durchschnittlichen Schlaf an typischen Werktagen.<br>
-   <strong>DGE/NSF-Empfehlung:</strong> 7–9 Stunden für Erwachsene.<br>
-   <strong>Unter 6 Std.:</strong> Verbunden mit erhöhtem Cortisol, CRP und IL-6. 
-   <strong>Über 9 Std.</strong> kann auf zugrundeliegende Entzündung oder Erkrankung hinweisen.<br>
-   <strong>Warum wichtig:</strong> Schlechter Schlaf erhöht Cortisol und Entzündungsmarker, 
-   fördert ECM-Remodelling und Immunsuppression — was die Immununterstützung der Therapie beeinträchtigt.`
-));
-
-setText('ls-stress-tooltip', t(
-  `<strong>About chronic stress:</strong><br>
-   This refers to persistent psychological stress — not temporary or situational stress.<br>
-   <strong>Low (0–2):</strong> Generally feel in control, good work-life balance, few persistent worries.<br>
-   <strong>Moderate (3–6):</strong> Ongoing pressures (work, finances, relationships) that are difficult to switch off.<br>
-   <strong>High (7–10):</strong> Severe and prolonged stress with physical symptoms: disrupted sleep, chest tightness, 
-   fatigue, difficulty concentrating, or anxiety disorder diagnosis.<br>
-   <strong>Why it matters:</strong> Chronic stress activates the HPA axis, elevating cortisol and catecholamines. 
-   These suppress immune surveillance and promote pro-tumour ECM remodelling via β-adrenergic signalling.`,
-
-  `<strong>关于慢性压力：</strong><br>
-   指持续性心理压力，而非临时或情境性压力。<br>
-   <strong>低（0–2）：</strong>总体感到可控，工作生活平衡好，持续性烦恼少。<br>
-   <strong>中（3–6）：</strong>持续性压力（工作、经济、人际关系）难以摆脱。<br>
-   <strong>高（7–10）：</strong>严重且长期的压力，伴有躯体症状：睡眠紊乱、胸闷、疲劳、注意力难以集中或焦虑症诊断。<br>
-   <strong>为何重要：</strong>慢性压力激活HPA轴，升高皮质醇和儿茶酚胺，通过β肾上腺素能信号通路抑制免疫监视并促进促肿瘤ECM重塑。`,
-
-  `<strong>Chronischer Stress:</strong><br>
-   Dies bezieht sich auf anhaltenden psychischen Stress — nicht auf vorübergehenden oder situativen Stress.<br>
-   <strong>Niedrig (0–2):</strong> Gutes Kontrollgefühl, ausgeglichene Work-Life-Balance.<br>
-   <strong>Mittel (3–6):</strong> Anhaltender Druck (Arbeit, Finanzen, Beziehungen), schwer abzuschalten.<br>
-   <strong>Hoch (7–10):</strong> Schwerer, anhaltender Stress mit körperlichen Symptomen: Schlafstörungen, Brustenge, 
-   Erschöpfung, Konzentrationsprobleme oder diagnostizierte Angststörung.<br>
-   <strong>Warum wichtig:</strong> Chronischer Stress aktiviert die HPA-Achse, erhöht Cortisol und Katecholamine, 
-   die die Immunüberwachung unterdrücken und über β-adrenerge Signalwege das ECM pro-tumoral umbauen.`
-));
-
-// ── BUTTONS ────────────────────────────────────────────────────────────────────
-const lgBtn = document.getElementById('ls-gen-btn');
-if (lgBtn) lgBtn.textContent = t('Generate my profile →', '生成我的画像 →', 'Mein Profil erstellen →');
-const lrBtn = document.getElementById('ls-reset-btn');
-if (lrBtn) lrBtn.textContent = t('Reset', '重置', 'Zurücksetzen');
-
-// ── LIVE ESTIMATE LABELS ───────────────────────────────────────────────────────
-setText('ls-live-title',       t('Live microenvironment estimate', '实时微环境估计', 'Echtzeit-Mikromilieu-Schätzung'));
-setText('ls-D-label',          t('D modifier', 'D 系数', 'D-Faktor'));
-setText('ls-risk-title-label', t('Risk level', '风险等级', 'Risikoniveau'));
-
-// ── PROFILE RESULT SECTION ─────────────────────────────────────────────────────
-setText('ls-profile-result-title', t('Your microenvironment profile', '你的微环境画像', 'Dein Mikromilieu-Profil'));
-
-// Detailed post-generation explanation
-setText('ls-profile-result-intro', t(
-  `This profile estimates how your current lifestyle affects your <strong>tumour microenvironment (TME)</strong> — 
-   the tissue conditions that surround a cancer and govern how effectively drugs can reach it.<br><br>
-   <strong>What the D modifier means:</strong> D represents the effective diffusion coefficient of a drug through 
-   tumour tissue. A D of 1.0 is the biological ideal; lifestyle factors that increase ECM density, raise 
-   interstitial fluid pressure (IFP), or drive hypoxia progressively reduce D below 1.0 — meaning 
-   less drug reaches cancer cells even if the correct dose is prescribed.<br><br>
-   <strong>What the risk level means:</strong> This is a composite score reflecting how strongly your current 
-   lifestyle pattern is associated with both cancer incidence and poor treatment response in the published literature. 
-   It is <em>not</em> a clinical diagnosis — it is an educational signal to motivate positive change.`,
-
-  `本画像估计你目前的生活方式如何影响你的<strong>肿瘤微环境（TME）</strong>——包围癌症的组织条件，决定药物到达肿瘤的效率。<br><br>
-   <strong>D系数的含义：</strong>D代表药物通过肿瘤组织的有效扩散系数。D = 1.0 是生物学理想值；增加ECM密度、升高间质液压（IFP）或引发缺氧的生活方式因素会使D逐渐低于1.0——意味着即使处方剂量正确，到达癌细胞的药物也会减少。<br><br>
-   <strong>风险等级的含义：</strong>这是一个综合评分，反映你当前生活方式模式与已发表文献中癌症发病率及不良治疗反应的关联强度。这<em>不是</em>临床诊断——而是一个教育性信号，旨在激励积极改变。`,
-
-  `Dieses Profil schätzt, wie dein aktueller Lebensstil dein <strong>Tumormikromilieu (TME)</strong> beeinflusst — 
-   die Gewebsbedingungen, die einen Tumor umgeben und bestimmen, wie effektiv Medikamente ihn erreichen können.<br><br>
-   <strong>Was der D-Faktor bedeutet:</strong> D steht für den effektiven Diffusionskoeffizienten eines Medikaments 
-   durch Tumorgewebe. Ein D von 1,0 ist das biologische Ideal; Lebensstilfaktoren, die die ECM-Dichte erhöhen, 
-   den interstitiellen Flüssigkeitsdruck (IFP) steigern oder Hypoxie fördern, reduzieren D unter 1,0 — 
-   d.h. weniger Medikament erreicht die Krebszellen, selbst wenn die richtige Dosis verschrieben wurde.<br><br>
-   <strong>Was das Risikoniveau bedeutet:</strong> Dies ist ein zusammengesetzter Score, der widerspiegelt, wie stark 
-   dein Lebensstilmuster mit Krebsinzidenz und schlechtem Therapieansprechen in der Literatur assoziiert ist. 
-   Es ist <em>keine</em> klinische Diagnose — es ist ein pädagogisches Signal zur Motivation positiver Veränderungen.`
-));
-
-// ── EVIDENCE-BASED ACTIONS ─────────────────────────────────────────────────────
-setText('ls-prev-title', t('Evidence-based actions', '循证预防建议', 'Evidenzbasierte Maßnahmen'));
-
-// 1. Don't smoke
-setText('ls-prev1-title', t('Don\'t smoke', '不要吸烟', 'Nicht rauchen'));
-setText('ls-prev1-p', t(
-  'Smoking accounts for ~30% of all cancer deaths in the UK. Tobacco carcinogens increase ECM crosslinking via lysyl oxidase (LOX) upregulation, raising IFP and reducing drug diffusion. Quitting at any age reduces risk — at 10 years post-cessation, lung cancer risk falls by ~50%.',
-  '吸烟约占中国所有癌症死亡的30%。烟草致癌物通过上调赖氨酰氧化酶（LOX）增加ECM交联，升高IFP并降低药物扩散。任何年龄戒烟均有益——戒烟10年后，肺癌风险降低约50%。',
-  'Rauchen verursacht ~30% aller Krebstodesfälle. Tabakkanzerogene erhöhen die ECM-Vernetzung über LOX-Hochregulierung, was IFP erhöht und die Diffusion verringert. Nach 10 rauchfreien Jahren sinkt das Lungenkrebsrisiko um ~50%.'
-));
-setText('ls-prev1-evidence', t(
-  'Evidence: Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000 · Bhattacharya et al., Cancer Res 2012 (LOX–ECM link)',
-  '证据：Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000 · Bhattacharya et al., Cancer Res 2012（LOX–ECM关联）',
-  'Belege: Islami et al., CA Cancer J Clin 2018 · Peto et al., BMJ 2000 · Bhattacharya et al., Cancer Res 2012 (LOX–ECM-Link)'
-));
-
-// 2. Healthy weight
-setText('ls-prev2-title', t('Maintain a healthy weight', '保持健康体重', 'Gesundes Gewicht halten'));
-setText('ls-prev2-p', t(
-  'Obesity increases risk for 13 cancer types, including breast, colorectal, and endometrial cancers. Adipose tissue secretes IL-6, TNF-α, and leptin, driving chronic inflammation that stiffens the ECM and elevates IFP — reducing the diffusion coefficient D by an estimated 15–30% in obese versus healthy-weight individuals.',
-  '肥胖增加13种癌症（包括乳腺癌、结直肠癌和子宫内膜癌）的风险。脂肪组织分泌IL-6、TNF-α和瘦素，驱动慢性炎症，使ECM硬化并升高IFP——据估计与健康体重相比，肥胖者的扩散系数D降低15–30%。',
-  'Fettleibigkeit erhöht das Risiko für 13 Krebsarten, darunter Brust-, Darm- und Gebärmutterkrebs. Fettgewebe sezerniert IL-6, TNF-α und Leptin, was chronische Entzündung antreibt, die ECM versteift und den IFP erhöht — D wird geschätzt um 15–30% reduziert.'
-));
-setText('ls-prev2-evidence', t(
-  'Evidence: Lauby-Secretan et al., NEJM 2016 (IARC review) · Iyengar et al., Cancer Res 2016 (adipose inflammation–ECM) · Steele et al., Br J Cancer 2011',
-  '证据：Lauby-Secretan et al., NEJM 2016（IARC综述）· Iyengar et al., Cancer Res 2016（脂肪炎症–ECM）· Steele et al., Br J Cancer 2011',
-  'Belege: Lauby-Secretan et al., NEJM 2016 (IARC-Review) · Iyengar et al., Cancer Res 2016 (Fettgewebe–ECM) · Steele et al., Br J Cancer 2011'
-));
-
-// 3. Exercise
-setText('ls-prev3-title', t('Exercise regularly', '规律运动', 'Regelmäßig Sport treiben'));
-setText('ls-prev3-p', t(
-  'Meeting the UK guidelines of 150 min/week moderate exercise reduces cancer risk by 10–20% across multiple sites. Exercise lowers circulating CRP and IL-6, improves tumour vascular normalisation (increasing drug perfusion), and may directly reduce ECM stiffness through mechanosignalling pathways.',
-  '达到每周150分钟中等强度运动的指南标准，可使多个部位癌症风险降低10–20%。运动降低循环CRP和IL-6，改善肿瘤血管正常化（增加药物灌注），并可能通过机械信号通路直接降低ECM硬度。',
-  '150 Min./Woche moderate Bewegung reduziert das Krebsrisiko um 10–20%. Sport senkt CRP und IL-6, verbessert die Tumorgefäßnormalisierung (erhöht Medikamentenperfusion) und kann die ECM-Steifigkeit über mechanosignaling direkt reduzieren.'
-));
-setText('ls-prev3-evidence', t(
-  'Evidence: Moore et al., JAMA Int Med 2016 (13-cancer cohort study) · Betof et al., J Natl Cancer Inst 2013 (vascular normalisation) · Pedersen et al., Cell Metab 2016',
-  '证据：Moore et al., JAMA Int Med 2016（13种癌症队列研究）· Betof et al., J Natl Cancer Inst 2013（血管正常化）· Pedersen et al., Cell Metab 2016',
-  'Belege: Moore et al., JAMA Int Med 2016 (13-Krebs-Kohortenstudie) · Betof et al., J Natl Cancer Inst 2013 (Gefäßnormalisierung) · Pedersen et al., Cell Metab 2016'
-));
-
-// 4. Reduce alcohol (NEW)
-setText('ls-prev4-title', t('Reduce or eliminate alcohol', '减少或戒除饮酒', 'Alkohol reduzieren oder meiden'));
-setText('ls-prev4-p', t(
-  'Alcohol is a Group 1 carcinogen (IARC), directly linked to cancers of the mouth, throat, oesophagus, liver, colon, and breast. Even moderate drinking (≤14 units/week) increases breast cancer risk by ~7–10% per drink per day. Alcohol generates acetaldehyde, which forms DNA adducts and impairs DNA repair. It also disrupts tight junctions in the gut, promoting systemic inflammatory cytokine release that elevates tumour IFP.',
-  '酒精是IARC一类致癌物，与口腔癌、咽喉癌、食管癌、肝癌、结肠癌和乳腺癌直接相关。即使适量饮酒（每周≤14单位），每天每杯也会使乳腺癌风险增加约7–10%。酒精产生乙醛，形成DNA加合物并损害DNA修复。它还破坏肠道紧密连接，促进全身炎症细胞因子释放，升高肿瘤IFP。',
-  'Alkohol ist ein IARC-Karzinogen der Gruppe 1, direkt verbunden mit Krebserkrankungen von Mund, Rachen, Speiseröhre, Leber, Dickdarm und Brust. Selbst moderates Trinken (≤14 Einheiten/Woche) erhöht das Brustkrebsrisiko um ~7–10% pro Drink/Tag. Alkohol erzeugt Acetaldehyd, bildet DNA-Addukte und beeinträchtigt die DNA-Reparatur.'
-));
-setText('ls-prev4-evidence', t(
-  'Evidence: IARC Working Group, Lancet Oncol 2007 · Allen et al., J Natl Cancer Inst 2009 (breast cancer dose–response) · Bagnardi et al., Br J Cancer 2015 (meta-analysis, 572,000 people)',
-  '证据：IARC Working Group, Lancet Oncol 2007 · Allen et al., J Natl Cancer Inst 2009（乳腺癌剂量反应）· Bagnardi et al., Br J Cancer 2015（荟萃分析，57.2万人）',
-  'Belege: IARC Working Group, Lancet Oncol 2007 · Allen et al., J Natl Cancer Inst 2009 (Brustkrebs-Dosis-Wirkungs-Beziehung) · Bagnardi et al., Br J Cancer 2015 (Meta-Analyse, 572.000 Personen)'
-));
-
-// 5. Improve diet (NEW)
-setText('ls-prev5-title', t('Eat a high-quality diet', '提升饮食质量', 'Hochwertige Ernährung'));
-setText('ls-prev5-p', t(
-  'A Mediterranean-style diet — rich in vegetables, legumes, whole grains, and olive oil — is associated with a 10–30% reduction in overall cancer risk. Dietary fibre feeds butyrate-producing gut bacteria, which reduce systemic inflammation and strengthen gut barrier function. High processed meat intake (>50 g/day) raises colorectal cancer risk by ~18% per 50 g increment. Poor diet quality increases ECM glycation — stiffening the tumour matrix and reducing drug penetration.',
-  '地中海式饮食——富含蔬菜、豆类、全谷物和橄榄油——与总体癌症风险降低10–30%相关。膳食纤维滋养产丁酸肠道菌群，减少全身炎症并增强肠道屏障功能。高加工肉摄入（>50 g/天）使结直肠癌风险每增加50 g上升约18%。低质量饮食增加ECM糖化，使肿瘤基质硬化并降低药物渗透性。',
-  'Eine mediterrane Ernährung — reich an Gemüse, Hülsenfrüchten, Vollkorn und Olivenöl — ist mit einer Risikoreduktion von 10–30% verbunden. Ballaststoffe fördern Butyrat-produzierende Darmbakterien, reduzieren Entzündungen und stärken die Darmbarriere. Hoher Verarbeitungsfleischkonsum (>50 g/Tag) erhöht das Darmkrebsrisiko pro 50-g-Einheit um ~18%.'
-));
-setText('ls-prev5-evidence', t(
-  'Evidence: Schwingshackl et al., Int J Cancer 2017 (Mediterranean diet meta-analysis) · Bouvard et al., Lancet Oncol 2015 (processed meat – IARC) · Baxter et al., Cancer Res 2019 (ECM glycation)',
-  '证据：Schwingshackl et al., Int J Cancer 2017（地中海饮食荟萃分析）· Bouvard et al., Lancet Oncol 2015（加工肉–IARC）· Baxter et al., Cancer Res 2019（ECM糖化）',
-  'Belege: Schwingshackl et al., Int J Cancer 2017 (Mediterrane Diät Meta-Analyse) · Bouvard et al., Lancet Oncol 2015 (Verarbeitungsfleisch – IARC) · Baxter et al., Cancer Res 2019 (ECM-Glykierung)'
-));
-
-// 6. Manage stress (NEW)
-setText('ls-prev6-title', t('Manage chronic stress', '管理慢性压力', 'Chronischen Stress bewältigen'));
-setText('ls-prev6-p', t(
-  'Chronic stress activates the hypothalamic–pituitary–adrenal (HPA) axis, chronically elevating cortisol and catecholamines (adrenaline, noradrenaline). These hormones suppress NK cell activity and CD8⁺ T cell function — reducing immune surveillance of nascent tumours. β-adrenergic signalling from stress hormones activates cancer-associated fibroblasts (CAFs), which produce excess collagen and fibronectin — directly stiffening the ECM and impeding drug delivery. Mind-body interventions (CBT, mindfulness, MBSR) reduce cortisol by 15–20% and inflammatory markers by a comparable margin in clinical trials.',
-  '慢性压力激活下丘脑-垂体-肾上腺（HPA）轴，长期升高皮质醇和儿茶酚胺（肾上腺素、去甲肾上腺素）。这些激素抑制NK细胞活性和CD8⁺ T细胞功能，降低对初发肿瘤的免疫监视。压力激素的β肾上腺素能信号激活癌症相关成纤维细胞（CAF），产生过多胶原蛋白和纤连蛋白，直接硬化ECM并阻碍药物递送。临床试验中，心身干预（认知行为疗法、正念、MBSR）可将皮质醇降低15–20%，炎症标志物也有类似幅度的改善。',
-  'Chronischer Stress aktiviert die HPA-Achse, erhöht dauerhaft Cortisol und Katecholamine. Diese Hormone unterdrücken NK-Zell-Aktivität und CD8⁺-T-Zellfunktion — die Immunüberwachung von Tumoren wird reduziert. β-adrenerge Signalgebung aktiviert krebsassoziierte Fibroblasten (CAFs), die überschüssiges Kollagen und Fibronektin produzieren — die ECM steift sich auf und hemmt die Medikamentenzufuhr. Geist-Körper-Interventionen (KVT, Achtsamkeit, MBSR) senken Cortisol um 15–20%.'
-));
-setText('ls-prev6-evidence', t(
-  'Evidence: Spiegel et al., Nat Rev Cancer 2003 · Cole et al., Science 2010 (β-adrenergic–CAF) · Carlson et al., Psychoneuroendocrinology 2013 (MBSR cortisol RCT)',
-  '证据：Spiegel et al., Nat Rev Cancer 2003 · Cole et al., Science 2010（β肾上腺素能–CAF）· Carlson et al., Psychoneuroendocrinology 2013（MBSR皮质醇RCT）',
-  'Belege: Spiegel et al., Nat Rev Cancer 2003 · Cole et al., Science 2010 (β-adrenerg–CAF) · Carlson et al., Psychoneuroendocrinology 2013 (MBSR-Cortisol-RCT)'
-));
-
-// 7. Prioritise sleep (NEW)
-setText('ls-prev7-title', t('Prioritise sleep quality', '重视睡眠质量', 'Schlafqualität verbessern'));
-setText('ls-prev7-p', t(
-  'Sleep deprivation (<6 hrs/night) is associated with a 40–50% increase in cancer-related mortality in some large cohort studies, partly via elevated cortisol and IL-6 impairing tumour immune surveillance. During deep sleep, the glymphatic system clears inflammatory metabolites from the CNS, and melatonin acts as a direct anti-tumour agent — suppressing aromatase activity (relevant to hormone-sensitive cancers) and acting as a free-radical scavenger. Night-shift work, a chronic sleep disruptor, is classified as a Group 2A carcinogen by IARC.',
-  '睡眠不足（每晚<6小时）在一些大型队列研究中与癌症相关死亡率增加40–50%相关，部分原因是皮质醇和IL-6升高损害肿瘤免疫监视。深睡眠期间，脑淋巴系统清除中枢神经系统的炎症代谢物，褪黑素作为直接抗肿瘤物质——抑制芳香化酶活性（与激素敏感型癌症相关）并作为自由基清除剂。夜班工作作为一种慢性睡眠干扰因素，被IARC归类为2A类致癌物。',
-  'Schlafentzug (<6 Std./Nacht) ist in einigen großen Kohortenstudien mit einem 40–50% erhöhten krebsbedingten Sterblichkeitsrisiko verbunden. Im Tiefschlaf reinigt das glymphatische System entzündliche Metabolite aus dem ZNS, und Melatonin wirkt als direktes Anti-Tumor-Mittel. Nachtschichtarbeit als chronischer Schlafstörer ist von der IARC als Gruppe-2A-Karzinogen eingestuft.'
-));
-setText('ls-prev7-evidence', t(
-  'Evidence: Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98 (shift work) · Blask et al., Cancer Res 2005 (melatonin–aromatase) · Xie et al., Science 2013 (glymphatic clearance)',
-  '证据：Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98（轮班工作）· Blask et al., Cancer Res 2005（褪黑素–芳香化酶）· Xie et al., Science 2013（脑淋巴系统清除）',
-  'Belege: Kakizaki et al., Br J Cancer 2008 · IARC Monograph Bd. 98 (Schichtarbeit) · Blask et al., Cancer Res 2005 (Melatonin–Aromatase) · Xie et al., Science 2013 (glymphatische Clearance)'
-));
-
-// ── PATIENT STORY SECTION ──────────────────────────────────────────────────────
-const lstEl = document.getElementById('ls-story-ph-title');
-if (lstEl) lstEl.textContent = t('Share your story', '分享你的故事', 'Teile deine Geschichte');
-const lspEl = document.getElementById('ls-story-ph-p');
-if (lspEl) lspEl.innerHTML = t(
-  'We\'re currently collecting patient stories about how lifestyle changes affected treatment response. Email <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>',
-  '我们正在收集生活方式改变如何影响治疗反应的患者故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>',
-  'Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>'
-);
+  // PRECISION MEDICINE
   // PRECISION MEDICINE
   setText('prec-title-h1',t('Precision Medicine','精准医疗','Präzisionsmedizin'));
   setText('prec-sub',t('Two patients. Same cancer. Same drug. One responds — the other doesn\'t. This isn\'t bad luck. It\'s biology. First, a guess.','两个患者，相同的癌症，相同的药物。一个有效，一个无效。这不是运气问题，这是生物学。先来猜一猜。','Zwei Patienten. Gleicher Krebs. Gleiches Medikament. Einer spricht an — der andere nicht.'));
@@ -2379,7 +2204,7 @@ if (lspEl) lspEl.innerHTML = t(
   setText('about-tracey-desc',t('Co-founder of PDEOutreach. Building this site because cancer science shouldn\'t be locked behind paywalls. Working on English/German content, strategy, and global charity.','PDEOutreach 联合创始人。科普知识不该被付费墙拦住。负责英德文内容、项目策略及国际慈善机构合作。','Mitgründerin von PDEOutreach. Krebswissenschaft sollte nicht hinter Paywalls versteckt sein.'));
   setText('about-yumeng-name','Yumeng Shi');setText('about-yumeng-role',t('Grade 11 · NSFZ IB, China · Currently on exchange in the US','高二 · 南师附中 IB · 目前在美国交流','Klasse 12 · NSFZ IB, China · Derzeit auf Austausch in den USA'));
   setText('about-yumeng-desc',t('Co-founder of PDEOutreach. Handles Chinese content, user experience, and Chinese charity.','PDEOutreach 联合创始人。负责中文内容、网站用户体验及国内慈善机构合作。','Mitgründerin von PDEOutreach. Chinesische Übersetzungen, Nutzererfahrung und chinesische Wohltätigkeit.'));
-  setText('about-age-note',t('We built this because we believe that the science behind cancer treatment shouldn\'t be locked behind journal paywalls and university lecture halls. Patients, families, and anyone interested deserve to understand what is actually happening inside a tumour — and why treatment sometimes works, and sometimes doesn\'t.','癌症治疗背后的科学，不该只属于买得起期刊的人，或坐在大学课堂里的学生。无论身在何处，患者、家属和任何感到好奇的人，都应当有机会了解肿瘤内部究竟发生了什么，以及为什么治疗有时有效，有时却不奏效。','Die Wissenschaft hinter der Krebstherapie sollte nicht nur denjenigen vorbehalten sein, die sich Fachzeitschriften leisten können oder in Hörsälen von Universitäten sitzen. Patienten, Angehörige und alle Neugierigen sollten – egal wo sie sich befinden – die Chance haben zu verstehen, was genau im Inneren eines Tumors passiert und warum Behandlungen manchmal wirken und manchmal nicht.'));
+  setText('about-age-note',t('We\'re both 17. We built this because we believe that the science behind cancer treatment shouldn\'t be locked behind journal paywalls and university lecture halls. Patients, families, and curious people everywhere deserve to understand what is actually happening inside a tumour — and why treatment sometimes works, and sometimes doesn\'t.','我们都是17岁。癌症治疗背后的科学，不该只属于买得起期刊的人，或坐在大学课堂里的学生。无论身在何处，患者、家属和任何感到好奇的人，都应当有机会了解肿瘤内部究竟发生了什么，以及为什么治疗有时有效，有时却不奏效。','Wir sind beide 17. Wir haben das gebaut, weil die Wissenschaft hinter der Krebsbehandlung nicht hinter Paywalls gesperrt sein sollte.'));
   setText('about-why-title',t('Why we built this','我们为何建立这个平台','Warum wir das gebaut haben'));
   setText('about-why-p1',t('The gap between what researchers know and what the public understands about cancer is enormous. Most people don\'t know that chemotherapy can fail not because the drug stops working, but because it physically cannot reach the cells it needs to kill. Most people don\'t know that two patients with the same diagnosis and the same drug can have completely different outcomes because of tumour biology.','研究人员掌握的知识与公众对癌症的认知之间，存在巨大的落差。大多数人不知道，化疗失败往往不是因为药物失效，而是它在物理层面根本到不了目标细胞。同样的诊断、同样的药，两个患者却可能因肿瘤生物学的差异走向截然不同的结局——这一点，大多数人同样不了解。','Die Lücke zwischen dem, was Forscher wissen, und dem, was die Öffentlichkeit über Krebs versteht, ist enorm.'));
   setHtml('about-why-p2',t('We wanted to close that gap — at least a little. PDEOutreach is the public-facing companion to <a href="https://pdeoncology.com" target="_blank">PDEOncology.com</a>, a research simulation platform modelling drug penetration in solid tumours using partial differential equations.','我们希望尽一份力，缩小这个落差。PDEOutreach 是 <a href="https://pdeoncology.com" target="_blank">PDEOncology.com</a> 的公众科普平台——PDEOncology 是一个用偏微分方程模拟实体肿瘤药物渗透过程的研究工具。','Wir wollten diese Lücke schließen. PDEOutreach ist das öffentliche Begleitprojekt zu <a href="https://pdeoncology.com" target="_blank">PDEOncology.com</a>.'));
@@ -2387,7 +2212,7 @@ if (lspEl) lspEl.innerHTML = t(
   setText('about-p1-title',t('Always free','永远免费','Immer kostenlos'));setText('about-p1-text',t('Education about cancer will never be paywalled on this site.','本网站的癌症科普内容，永远免费开放。','Krebsbildung wird auf dieser Website niemals kostenpflichtig sein.'));
   setText('about-p2-title',t('Evidence-based','循证','Evidenzbasiert'));setText('about-p2-text',t('Everything we write cites peer-reviewed research. We explain what the evidence says — not what we think you should do.','所有内容均引用同行评审文献。我们只呈现证据本身，不提供个人治疗建议。','Alles zitiert Peer-Review-Forschung. Wir erklären, was die Evidenz sagt.'));
   setText('about-p3-title',t('Not medical advice','不是医疗建议','Kein medizinischer Rat'));setText('about-p3-text',t('We are students, not doctors. This site is for understanding, not for treatment decisions. Always speak to a qualified clinician.','我们是学生，不是医生。本网站旨在帮助理解，不构成治疗建议。如有需要，请咨询专业医生。','Wir sind Studierende, keine Ärzte. Diese Website dient dem Verständnis, nicht Behandlungsentscheidungen.'));
-  setText('about-p4-title',t('Multilingual','多语言','Mehrsprachig'));setText('about-p4-text',t('Cancer doesn\'t care what language you speak. We\'re building towards full EN / CN / Deutsch coverage.','癌症不分语言。我们正逐步实现中文、英文、德文的完整覆盖。','Krebs kennt keine Sprache. Wir streben vollständige EN / CN / Deutsch-Abdeckung an.'));
+  setText('about-p4-title',t('Multilingual','多语言','Mehrsprachig'));setText('about-p4-text',t('Cancer doesn\'t care what language you speak. We\'re building towards full EN / 中文 / Deutsch coverage.','癌症不分语言。我们正逐步实现中文、英文、德文的完整覆盖。','Krebs kennt keine Sprache. Wir streben vollständige EN / 中文 / Deutsch-Abdeckung an.'));
   setText('about-p5-title',t('Charity-first','慈善优先','Wohltätigkeit zuerst'));setText('about-p5-text',t('Any future support raised through this platform goes directly to our charity partners in childhood cancer research.','通过本平台筹集的所有资金，将直接捐给我们在儿童癌症领域的慈善合作机构。','Zukünftige Unterstützung geht direkt an unsere Wohltätigkeitspartner für Kinderkrebsforschung.'));
   setText('about-p6-title',t('Open source','开源','Open Source'));
   setHtml('about-p6-text',t('Our code is on <a href="https://github.com/SYM19/PDEOutreach" target="_blank">GitHub</a>. Content is licensed CC BY-NC 4.0.','代码已在 <a href="https://github.com/SYM19/PDEOutreach" target="_blank">GitHub</a> 开源，内容遵循 CC BY-NC 4.0 协议。','Unser Code ist auf <a href="https://github.com/SYM19/PDEOutreach" target="_blank">GitHub</a>. Inhalt lizenziert unter CC BY-NC 4.0.'));
@@ -2396,7 +2221,7 @@ if (lspEl) lspEl.innerHTML = t(
   setText('about-contact-p',t('If you\'ve spotted an error, want to contribute a translation, or would like to share a patient story — please get in touch.','若您发现内容有误、希望贡献译文，或有意分享患者故事，欢迎与我们联系。','Wenn Sie einen Fehler gefunden haben, eine Übersetzung beitragen oder eine Patientengeschichte teilen möchten — melden Sie sich.'));
 
   // footer
-  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2026 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2026 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
+  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2025 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2025 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2025 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
   setText('footer-tagline',t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
   setText('footer-links-title',t('Links','链接','Links'));setText('footer-contact-title',t('Contact','联系我们','Kontakt'));
   setText('footer-link-about',t('About us','关于我们','Über uns'));
@@ -2408,11 +2233,7 @@ if (lspEl) lspEl.innerHTML = t(
   updateLifestyle();
 }
 
-/* INIT */
-updateSizeDemo(12);
-updateLifestyle();
-try{const params=new URLSearchParams(window.location.search);const urlLang=params.get('lang');if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){applyLang(urlLang);}else{applyLang('en');}}catch(e){applyLang('en');}
-//tooltip JS function 
+/* TOOLTIP JS */
 function toggleTooltip(id, e) {
   e.stopPropagation();
   const tooltipMap = {
@@ -2434,33 +2255,33 @@ function toggleTooltip(id, e) {
   document.querySelectorAll('.slider-tooltip-popup.show').forEach(p => p.classList.remove('show'));
   if (!isOpen) {
     popup.classList.add('show');
-    // Position relative to the ? button
     const btn = e.currentTarget;
     const rect = btn.getBoundingClientRect();
-    const popupWidth = 360;
+    const popupWidth = Math.min(360, window.innerWidth - 32);
     let left = rect.left;
-    // Clamp so it doesn't overflow right edge
-    if (left + popupWidth > window.innerWidth - 16) {
-      left = window.innerWidth - popupWidth - 16;
-    }
+    if (left + popupWidth > window.innerWidth - 16) left = window.innerWidth - popupWidth - 16;
+    if (left < 8) left = 8;
     let top = rect.bottom + 8;
-    // Flip above if not enough space below
-    if (top + 300 > window.innerHeight) {
-      top = rect.top - 8;
-      popup.style.transform = 'translateY(-100%)';
-    } else {
-      popup.style.transform = '';
-    }
+    popup.style.width = popupWidth + 'px';
     popup.style.left = left + 'px';
     popup.style.top = top + 'px';
+    popup.style.transform = '';
+    if (top + 260 > window.innerHeight) {
+      popup.style.top = Math.max(8, rect.top - 8) + 'px';
+      popup.style.transform = 'translateY(-100%)';
+    }
   }
 }
-// Close tooltips when clicking elsewhere
 document.addEventListener('click', () => {
   document.querySelectorAll('.slider-tooltip-popup.show').forEach(p => p.classList.remove('show'));
 });
+
+/* INIT */
+updateSizeDemo(12);
+updateLifestyle();
+try{const params=new URLSearchParams(window.location.search);const urlLang=params.get('lang');if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){applyLang(urlLang);}else{applyLang('en');}}catch(e){applyLang('en');}
 </script>
-  <!-- Hidden tooltip content sources (populated by applyLang JS) -->
+<!-- Hidden tooltip content sources (populated by applyLang JS) -->
 <div style="display:none;">
   <span id="ls-smoking-tooltip"></span>
   <span id="ls-bmi-tooltip"></span>
