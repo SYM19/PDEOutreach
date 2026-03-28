@@ -1174,14 +1174,14 @@
     <div id="tab-child" class="tab-panel">
       <div class="section">
         <h1 id="child-title-h1">Childhood <span class="accent">Cancer</span></h1>
-        <p style="max-width:680px;" id="child-sub">Every year, 300,000 children are diagnosed with cancer worldwide. In high-income countries, around 80% survive. In low-income countries, fewer than 30% do. This gap is not about biology — it's about access. Here's what you need to know.</p>
+        <p style="max-width:680px;" id="child-sub">Every year, around 400,000 children and adolescents aged 0–19 are diagnosed with cancer worldwide.
       </div>
     
       <!-- Impact stat banner -->
       <div style="background:linear-gradient(135deg,rgba(255,107,107,0.08),rgba(78,205,196,0.08));border:1px solid rgba(255,107,107,0.2);border-radius:var(--radius-lg);padding:1.5rem 2rem;margin-bottom:2rem;display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center;" id="child-stats-grid">
         <div>
-          <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--coral);" id="child-stat-1-n">300,000</div>
-          <div style="font-size:.82rem;color:var(--text2);margin-top:.25rem;" id="child-stat-1-l">children diagnosed per year worldwide</div>
+          <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--coral);" id="child-stat-1-n">400,000</div>
+          <div style="font-size:.82rem;color:var(--text2);margin-top:.25rem;" id="child-stat-1-l">children & adolescents (0–19) diagnosed per year</div>
         </div>
         <div>
           <div style="font-family:var(--mono);font-size:2rem;font-weight:700;color:var(--teal);" id="child-stat-2-n">>80%</div>
@@ -1198,7 +1198,81 @@
         <span id="child-disc-text"> This page summarises published scientific research. It is not medical advice. Always consult a qualified healthcare professional for any health concerns.</span>
         <a href="#" onclick="switchTab('about');return false;" id="child-disc-link"> About us →</a>
       </div>
-    
+
+      <!-- AGE DEFINITIONS & ADOLESCENTS -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon">📊</div><h2 style="margin:0;" id="child-age-title">Who counts as a "childhood cancer" patient?</h2></div>
+        <div class="grid-2">
+          <div>
+            <p id="child-age-p1">There is no universally agreed upper age limit. The World Health Organization defines childhood and adolescent cancer as affecting those aged <strong>0–19 years</strong>. Most national cancer registries split this further: <strong>0–14</strong> ("childhood") and <strong>15–19</strong> ("adolescent"). The broader Adolescent and Young Adult (AYA) category — widely used in clinical research — extends to age 39.</p>
+            <p id="child-age-p2">The 400,000 annual WHO figure covers the full 0–19 range. Restricting to 0–14 gives approximately 280,000–300,000 new cases per year. <a href="https://www.who.int/news-room/fact-sheets/detail/cancer-in-children" target="_blank" style="color:var(--blue);font-size:.85em;">[WHO Childhood Cancer Fact Sheet, 2021]</a> <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a></p>
+            <div style="background:var(--bg2);border-radius:var(--radius);padding:1rem;margin-top:.5rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem;" id="child-age-spectrum-label">Cancer spectrum shifts with age</div>
+              <div style="font-size:.82rem;color:var(--text2);line-height:1.9;">
+                <div style="margin-bottom:.4rem;"><span style="font-family:var(--mono);color:var(--coral);font-size:.78rem;">0–4 yrs</span> &nbsp;·&nbsp; <span id="child-age-row1">Neuroblastoma · Wilms · Retinoblastoma · Leukaemia · Hepatoblastoma</span></div>
+                <div style="margin-bottom:.4rem;"><span style="font-family:var(--mono);color:var(--amber);font-size:.78rem;">5–14 yrs</span> &nbsp;·&nbsp; <span id="child-age-row2">ALL · Brain tumours · Lymphoma · Ewing sarcoma</span></div>
+                <div><span style="font-family:var(--mono);color:var(--blue);font-size:.78rem;">15–19 yrs</span> &nbsp;·&nbsp; <span id="child-age-row3">Hodgkin lymphoma · Bone tumours · Germ cell tumours · Thyroid cancer · Melanoma</span></div>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div style="background:rgba(77,158,255,.06);border:1px solid rgba(77,158,255,.2);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem;">
+              <div style="font-family:var(--mono);font-size:.78rem;color:var(--blue);font-weight:700;margin-bottom:.75rem;" id="child-aya-label">Adolescents: the forgotten group</div>
+              <p style="font-size:.82rem;color:var(--text2);line-height:1.75;margin-bottom:.5rem;" id="child-aya-p1">Teenagers with cancer occupy an uncomfortable middle ground between paediatric and adult oncology — and outcomes reflect this. An adolescent with ALL treated on a <em>paediatric</em> protocol has significantly better survival than the same patient treated on an <em>adult</em> protocol, despite identical biology. <a href="https://doi.org/10.1200/JCO.2011.38.6367" target="_blank" style="color:var(--blue);font-size:.85em;">[Barry et al., JCO 2012]</a></p>
+              <p style="font-size:.82rem;color:var(--text2);line-height:1.75;margin-bottom:.5rem;" id="child-aya-p2">In many countries, 15–19 year olds are routinely admitted to adult wards and treated by adult oncologists with less experience of adolescent cancer types. Studies show paediatric oncology units achieve 10–20% better survival for shared cancer types. <a href="https://doi.org/10.1016/S1470-2045(16)30453-7" target="_blank" style="color:var(--blue);font-size:.85em;">[Fidler et al., Lancet Oncol 2016]</a></p>
+              <p style="font-size:.82rem;color:var(--text2);line-height:1.75;margin-bottom:0;" id="child-aya-p3">Additional challenges specific to adolescents: lower clinical trial enrolment rates than younger children or adults; fertility preservation becoming relevant from puberty; treatment adherence difficulties; and distinct psychosocial needs (body image, school, peer isolation) that paediatric teams are better equipped to address.</p>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem;">
+              <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+                <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--teal);">~45%</div>
+                <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="child-aya-stat1">of 0–19 cancer cases are in adolescents (15–19)</div>
+              </div>
+              <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+                <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--amber);">+15%</div>
+                <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="child-aya-stat2">survival advantage on paediatric vs adult ALL protocols</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- PREVENTION & EARLY DETECTION -->
+      <div class="card section">
+        <div class="card-header"><div class="card-icon" style="background:rgba(78,205,196,.12);">🛡</div><h2 style="margin:0;" id="child-prev-title">Prevention & early detection</h2></div>
+        <div class="grid-2">
+          <div>
+            <h3 id="child-prev-honest-h" style="color:var(--text);margin-bottom:.5rem;">The honest answer: most cases are not preventable</h3>
+            <p id="child-prev-honest-p">Because the majority of childhood cancers result from random developmental mutations or inherited genetic conditions — not lifestyle choices — there is no meaningful primary prevention programme comparable to adult cancer prevention (smoking cessation, sunscreen, diet). Parents should not search for a cause they could have changed. <a href="https://www.who.int/news-room/fact-sheets/detail/cancer-in-children" target="_blank" style="color:var(--blue);font-size:.85em;">[WHO, 2021]</a></p>
+            <h3 id="child-prev-can-h" style="color:var(--text);margin-bottom:.5rem;margin-top:1rem;">What CAN reduce risk</h3>
+            <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-prev-hpv-h">HPV vaccination (adolescents)</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-prev-hpv-p">The HPV vaccine prevents cervical cancer, and emerging evidence suggests it also reduces oropharyngeal and anal cancers caused by HPV. Given before sexual debut (recommended age 9–14 in most countries), it is >90% effective against the HPV strains that cause most HPV-related cancers. This is the single most impactful cancer prevention measure available to adolescents. <a href="https://doi.org/10.1016/S0140-6736(20)32001-3" target="_blank" style="color:var(--blue);font-size:.85em;">[Lei et al., Lancet 2020]</a></p></div></div></div>
+            <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-prev-rad-h">Avoid unnecessary ionising radiation</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-prev-rad-p">Medical imaging radiation (CT, X-ray) is a weak but real risk. This does not mean avoiding necessary investigations — clinical benefit always outweighs risk. It does mean: CT scans should not be used when ultrasound or MRI would answer the clinical question equally well; dental X-rays should use the minimum necessary views; and paediatric CT protocols should use child-appropriate dose settings. <a href="https://doi.org/10.1016/S1470-2045(11)70192-5" target="_blank" style="color:var(--blue);font-size:.85em;">[Pearce et al., Lancet Oncol 2012]</a></p></div></div></div>
+            <div class="accordion" style="margin-bottom:.375rem;"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-prev-genetic-h">Genetic counselling for high-risk families</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-prev-genetic-p">Families with Li-Fraumeni syndrome (TP53), hereditary retinoblastoma (RB1), BRCA1/2 carriers, neurofibromatosis (NF1), or Beckwith-Wiedemann syndrome have significantly elevated childhood cancer risk. Genetic counselling + surveillance programmes (regular MRI, ultrasound) can detect tumours at earlier, more treatable stages. If there is a strong family history of cancers across multiple family members at young ages, referral to a clinical geneticist is appropriate. <a href="https://doi.org/10.1056/NEJMra1705351" target="_blank" style="color:var(--blue);font-size:.85em;">[Ripperger et al., NEJM 2017]</a></p></div></div></div>
+            <div class="accordion"><div class="accordion-header" onclick="toggleAccordion(this)" style="padding:.625rem 1rem;"><h3 style="font-size:.85rem;" id="child-prev-lifestyle-h">Lifestyle — relevant from adolescence</h3><div class="accordion-arrow">▼</div></div><div class="accordion-body"><div class="accordion-inner"><p id="child-prev-lifestyle-p">For teenagers: not smoking, limiting alcohol, and maintaining a healthy weight are relevant because these behaviours begun in adolescence compound over decades. Alcohol is a Group 1 carcinogen at any age. Tobacco begun in teenage years is associated with higher lifetime risk than adult-onset smoking. Sunscreen use from childhood meaningfully reduces melanoma risk. These are not causes of most childhood cancers — but they matter for adult cancer risk being set during teenage years. <a href="https://doi.org/10.3322/caac.21660" target="_blank" style="color:var(--blue);font-size:.85em;">[Sung et al., CA Cancer J Clin 2021]</a></p></div></div></div>
+          </div>
+          <div>
+            <h3 id="child-prev-signs-h" style="color:var(--text);margin-bottom:.75rem;">Early detection: know the warning signs</h3>
+            <p id="child-prev-signs-intro" style="font-size:.82rem;color:var(--text2);">Early detection is achievable — and it saves lives. The challenge is that childhood cancer symptoms often mimic common illnesses. The CCLG "HeadSmart" and ICCC campaigns use a mnemonic to help parents and GPs recognise warning signs. <a href="https://www.cclg.org.uk/" target="_blank" style="color:var(--blue);font-size:.85em;">[CCLG UK]</a></p>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1rem;margin-bottom:.75rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--coral);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.75rem;" id="child-prev-mnemonic-label">General warning signs (all ages)</div>
+              <div style="display:flex;flex-direction:column;gap:.5rem;font-size:.82rem;color:var(--text2);line-height:1.6;">
+                <div><span style="font-family:var(--mono);color:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s1">Unexplained, persistent or worsening pain (bone, joint, abdominal, head)</span></div>
+                <div><span style="font-family:var(--mono);color:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s2">Unexplained lump or swelling anywhere on the body</span></div>
+                <div><span style="font-family:var(--mono);color:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s3">Unexplained fatigue, pallor, or weight loss</span></div>
+                <div><span style="font-family:var(--mono);color:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s4">Unexplained bruising or bleeding, recurrent infections</span></div>
+                <div><span style="font-family:var(--mono);color:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s5">Morning headaches with vomiting, balance/vision changes (brain)</span></div>
+                <div><span style="font-family:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s6">White pupil reflex (leukocoria) in photos — see a doctor immediately (retinoblastoma)</span></div>
+                <div><span style="font-family:var(--coral);font-weight:700;min-width:16px;display:inline-block;">●</span> <span id="child-prev-s7">Drenching night sweats + unexplained fever + weight loss (lymphoma)</span></div>
+              </div>
+            </div>
+            <div style="background:rgba(255,107,107,.06);border-left:3px solid var(--coral);border-radius:0 var(--radius) var(--radius) 0;padding:.875rem;font-size:.82rem;color:var(--text2);margin-bottom:.75rem;" id="child-prev-when-note">
+              <strong>When to act:</strong> A single episode of any of these symptoms is unlikely to be cancer. Persistent, progressive, or unexplained symptoms that don't resolve with standard treatment warrant investigation. Trust your instinct as a parent — if something doesn't feel right, return to the doctor. Childhood cancer is rare enough that GPs see it infrequently; the second opinion is always valid. <a href="https://doi.org/10.1136/archdischild-2015-308820" target="_blank" style="color:var(--blue);font-size:.85em;">[Dommett et al., Arch Dis Child 2016]</a>
+            </div>
+            <div style="background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.875rem;font-size:.82rem;color:var(--text2);" id="child-prev-access-note">
+              <strong style="color:var(--teal);">Access matters most:</strong> In low-income countries, the biggest early detection barrier is awareness among primary care providers — many of whom have never seen a childhood cancer case. Programmes training community health workers to recognise warning signs have demonstrably reduced diagnostic delay. <a href="https://doi.org/10.1016/S1470-2045(18)30460-3" target="_blank" style="color:var(--blue);font-size:.85em;">[Ward et al., Lancet Oncol 2019]</a>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- CAUSES -->
       <div class="card section">
         <div class="card-header"><div class="card-icon" style="background:rgba(255,107,107,.12);">🧬</div><h2 style="margin:0;" id="child-causes-title">Why do children get cancer?</h2></div>
@@ -2513,28 +2587,344 @@ function applyLang(lang){
   // story placeholders generic fallback
   document.querySelectorAll('.real-stories-h2').forEach(el=>el.textContent=t('Real stories','真实故事','Echte Geschichten'));
 
-  // CHILDHOOD CANCER TAB
-  setText('child-title-h1',t('Childhood Cancer','儿童癌症','Kinderkrebs'));
-  setText('child-sub',t('Every year, 300,000 children are diagnosed with cancer worldwide. In high-income countries, around 80% survive. In low-income countries, fewer than 30% do. This gap is not about biology — it\'s about access.','每年，全球有30万儿童被诊断出癌症。在高收入国家，约80%能存活。在低收入国家，不足30%。这一差距不是生物学问题——而是医疗资源获取的问题。','Jedes Jahr werden weltweit 300.000 Kinder mit Krebs diagnostiziert. In Hocheinkommensländern überleben ~80%. In Niedrigeinkommensländern weniger als 30%.'));
-  setText('child-disc-label',t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));
-  setText('child-disc-text',t(' This page summarises published scientific research. It is not medical advice.',' 本页内容总结已发表的科学研究，不构成医疗建议。',' Diese Seite fasst veröffentlichte Forschung zusammen. Kein medizinischer Rat.'));
-  setText('child-disc-link',t(' About us →',' 关于我们 →',' Über uns →'));
-  setText('child-stat-1-n','300,000');setText('child-stat-1-l',t('children diagnosed per year worldwide','每年全球儿童新发癌症患者','Kinder werden jährlich weltweit diagnostiziert'));
-  setText('child-stat-2-n','>80%');setText('child-stat-2-l',t('survival rate in high-income countries','高收入国家的生存率','Überlebensrate in Hocheinkommensländern'));
-  setText('child-stat-3-n','<30%');setText('child-stat-3-l',t('survival rate in low-income countries','低收入国家的生存率','Überlebensrate in Niedrigeinkommensländern'));
-  setText('child-causes-title',t('Why do children get cancer?','为什么儿童会得癌症？','Warum erkranken Kinder an Krebs?'));
-  setText('child-causes-p1',t('Unlike most adult cancers, childhood cancers are almost never caused by lifestyle factors like smoking, diet, or alcohol. Parents should never feel that their child\'s cancer was preventable through different choices.','与大多数成人癌症不同，儿童癌症几乎从不是由吸烟、饮食或饮酒等生活方式因素引起的。家长永远不应感到孩子的癌症是可以通过不同选择来预防的。','Im Gegensatz zu den meisten Erwachsenenkrebserkrankungen werden Kinderkrebse fast nie durch Lebensstilfaktoren verursacht.'));
-  setText('child-types-title',t('Common childhood cancers','常见儿童癌症','Häufige Kinderkrebserkrankungen'));
-  setText('child-types-sub',t('Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.','点击任意癌症类型，了解其定义、影响人群、治疗方式，以及为什么药物递送尤为困难。','Klicke auf einen Krebstyp für Details.'));
-  setText('child-diag-title',t('How childhood cancer is diagnosed','儿童癌症如何诊断','Wie wird Kinderkrebs diagnostiziert'));
-  setText('child-treat-title',t('How childhood cancer is treated','儿童癌症如何治疗','Wie wird Kinderkrebs behandelt'));
-  setText('child-gap-title',t('The global survival gap','全球生存率差距','Die globale Überlebenslücke'));
-  setText('child-gap-intro',t('The same childhood cancer has dramatically different outcomes depending on where a child is born. This is not biology — it is access to diagnosis, treatment, and expertise.','同一种儿童癌症，因出生地不同，结果可能天差地别。这不是生物学问题——而是诊断、治疗和专业知识获取的问题。','Dieselbe Kinderkrebserkrankung hat je nach Geburtsort dramatisch unterschiedliche Ergebnisse.'));
-  setText('child-support-title',t('Childhood cancer research is underfunded relative to its burden.','相对于其负担，儿童癌症研究经费严重不足。','Kinderkrebsforschung ist im Verhältnis zu ihrer Belastung unterfinanziert.'));
-  setText('child-support-p',t('Paediatric cancers receive a fraction of the research funding of common adult cancers, despite being the leading cause of disease-related death in children. We are working to partner with childhood cancer charities to direct support where it matters most.','儿科癌症获得的研究资金仅是常见成人癌症的一小部分，尽管它是儿童疾病相关死亡的主要原因。我们正在与儿童癌症慈善机构合作，将支持引导至最需要的地方。','Pädiatrische Krebserkrankungen erhalten einen Bruchteil der Forschungsfinanzierung, obwohl sie die häufigste krankheitsbedingte Todesursache bei Kindern sind.'));
-  setText('child-support-btn',t('❤ Contact us about supporting','❤ 联系我们了解支持方式','❤ Kontakt wegen Unterstützung'));
-  const cstEl=document.getElementById('child-story-ph-title');if(cstEl)cstEl.textContent=t('Share your story','分享你的故事','Teile deine Geschichte');
-  const cspEl=document.getElementById('child-story-ph-p');if(cspEl)cspEl.innerHTML=t('We\'re collecting patient and family stories about childhood cancer experiences. Email <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','我们正在收集儿童癌症患者及家庭的故事。请发邮件至 <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>','Wir sammeln Patientengeschichten. E-Mail an <a href="mailto:outreach@pdeo.org">outreach@pdeo.org</a>');
+  // ══ CHILDHOOD CANCER TAB ══
+  setText('child-title-h1', t('Childhood Cancer','儿童癌症','Kinderkrebs'));
+  setText('child-sub', t(
+    'Every year, around 400,000 children and adolescents aged 0–19 are diagnosed with cancer worldwide. In high-income countries, around 80% survive. In low-income countries, fewer than 30% do. This gap is not about biology — it\'s about access.',
+    '每年，全球约40万名0至19岁的儿童和青少年被诊断出癌症。在高收入国家，约80%能够存活。在低收入国家，不足30%。这一差距与生物学无关——而是医疗资源获取的问题。',
+    'Jedes Jahr werden weltweit rund 400.000 Kinder und Jugendliche im Alter von 0–19 Jahren mit Krebs diagnostiziert. In Hocheinkommensländern überleben ~80%, in Niedrigeinkommensländern weniger als 30%.'
+  ));
+  setText('child-disc-label', t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));
+  setText('child-disc-text', t(
+    ' This page summarises published scientific research. It is not medical advice. Always consult a qualified healthcare professional for any health concerns.',
+    ' 本页内容总结已发表的科学研究，不构成医疗建议。如有任何健康问题，请咨询合格的医疗专业人士。',
+    ' Diese Seite fasst veröffentlichte wissenschaftliche Forschung zusammen. Kein medizinischer Rat. Wenden Sie sich bei gesundheitlichen Bedenken an einen qualifizierten Arzt.'
+  ));
+  setText('child-disc-link', t(' About us →',' 关于我们 →',' Über uns →'));
+  setText('child-stat-1-n','400,000');
+  setText('child-stat-1-l', t('children & adolescents (0–19) diagnosed per year','每年0–19岁儿童及青少年新发癌症人数','Kinder & Jugendliche (0–19) jährlich diagnostiziert'));
+  setText('child-stat-2-n','>80%');
+  setText('child-stat-2-l', t('survival rate in high-income countries','高收入国家的生存率','Überlebensrate in Hocheinkommensländern'));
+  setText('child-stat-3-n','<30%');
+  setText('child-stat-3-l', t('survival rate in low-income countries','低收入国家的生存率','Überlebensrate in Niedrigeinkommensländern'));
+  
+  // Age & definitions
+  setText('child-age-title', t('Who counts as a "childhood cancer" patient?','谁算"儿童癌症"患者？','Wer gilt als Kinderkrebs-Patient?'));
+  setText('child-age-p1', t(
+    'There is no universally agreed upper age limit. The WHO defines childhood and adolescent cancer as affecting those aged 0–19 years. Most national registries split this into 0–14 ("childhood") and 15–19 ("adolescent"). The broader Adolescent and Young Adult (AYA) category extends to age 39.',
+    '目前没有统一认定的年龄上限。世卫组织将儿童及青少年癌症定义为影响0至19岁人群的癌症。大多数国家癌症登记机构将其细分为0–14岁（"儿童"）和15–19岁（"青少年"）。更宽泛的青少年及年轻成人（AYA）分类延伸至39岁。',
+    'Es gibt keine allgemein anerkannte Altersgrenze. Die WHO definiert Kinderkrebs als Altersgruppe 0–19 Jahre. Die meisten nationalen Register unterteilen in 0–14 ("Kinder") und 15–19 ("Jugendliche"). Die AYA-Kategorie reicht bis 39 Jahre.'
+  ));
+  setText('child-age-p2', t(
+    'The 400,000 annual WHO figure covers the full 0–19 range. Restricting to 0–14 gives approximately 280,000–300,000 new cases per year.',
+    '世卫组织每年40万的数据涵盖完整的0–19岁范围。若仅统计0–14岁，每年新发病例约为28万至30万例。',
+    'Die WHO-Zahl von 400.000/Jahr deckt den gesamten 0–19-Bereich ab. Beschränkt auf 0–14 ergibt sich etwa 280.000–300.000 Neuerkrankungen jährlich.'
+  ));
+  setText('child-age-spectrum-label', t('Cancer spectrum shifts with age','癌症类型随年龄变化','Krebsspektrum verändert sich mit dem Alter'));
+  setText('child-age-row1', t('Neuroblastoma · Wilms · Retinoblastoma · Leukaemia · Hepatoblastoma','神经母细胞瘤 · 肾母细胞瘤 · 视网膜母细胞瘤 · 白血病 · 肝母细胞瘤','Neuroblastom · Wilms · Retinoblastom · Leukämie · Hepatoblastom'));
+  setText('child-age-row2', t('ALL · Brain tumours · Lymphoma · Ewing sarcoma','急性淋巴细胞白血病 · 脑肿瘤 · 淋巴瘤 · 尤文肉瘤','ALL · Hirntumoren · Lymphom · Ewing-Sarkom'));
+  setText('child-age-row3', t('Hodgkin lymphoma · Bone tumours · Germ cell tumours · Thyroid cancer · Melanoma','霍奇金淋巴瘤 · 骨肿瘤 · 生殖细胞肿瘤 · 甲状腺癌 · 黑色素瘤','Hodgkin-Lymphom · Knochentumoren · Keimzelltumoren · Schilddrüsenkrebs · Melanom'));
+  setText('child-aya-label', t('Adolescents: the forgotten group','青少年：被忽视的群体','Jugendliche: die vergessene Gruppe'));
+  setText('child-aya-p1', t(
+    'Teenagers with cancer occupy an uncomfortable middle ground between paediatric and adult oncology — and outcomes reflect this. An adolescent with ALL treated on a paediatric protocol has significantly better survival than the same patient on an adult protocol, despite identical biology.',
+    '癌症青少年患者处于儿科与成人肿瘤学之间尴尬的中间地带——结果也印证了这一点。接受儿科方案治疗的青少年ALL患者，其生存率显著优于接受成人方案的同类患者，尽管两者的生物学特征相同。',
+    'Krebskranke Teenager befinden sich in einem unbehaglichen Mittelfeld zwischen pädiatrischer und Erwachsenenonkologie — die Ergebnisse spiegeln dies wider.'
+  ));
+  setText('child-aya-p2', t(
+    'In many countries, 15–19 year olds are routinely admitted to adult wards and treated by adult oncologists with less experience of adolescent cancer types. Studies show paediatric oncology units achieve 10–20% better survival for shared cancer types.',
+    '在许多国家，15至19岁患者通常被收入成人病房，由对青少年癌症类型经验较少的成人肿瘤科医生治疗。研究表明，儿科肿瘤科室在共有癌症类型上的生存率高出10至20%。',
+    'In vielen Ländern werden 15–19-Jährige routinemäßig auf Erwachsenenstationen aufgenommen. Studien zeigen, dass pädiatrische Onkologieeinheiten 10–20% bessere Überlebensraten erzielen.'
+  ));
+  setText('child-aya-p3', t(
+    'Additional challenges for adolescents: lower clinical trial enrolment; fertility preservation becoming relevant from puberty; treatment adherence difficulties; and distinct psychosocial needs (body image, school, peer isolation) that paediatric teams are better equipped to address.',
+    '青少年面临的额外挑战：临床试验入组率较低；从青春期起生育力保存变得相关；治疗依从性困难；以及儿科团队更有能力处理的独特社会心理需求（体形形象、学业、同伴孤立）。',
+    'Weitere Herausforderungen für Jugendliche: geringere Einschreibung in klinische Studien; Fertilitätserhalt ab der Pubertät; Adhärenzprobleme; besondere psychosoziale Bedürfnisse.'
+  ));
+  setText('child-aya-stat1', t('of 0–19 cancer cases occur in adolescents (15–19)','0–19岁癌症病例中发生于青少年（15–19岁）的比例','der 0–19-Krebsfälle betreffen Jugendliche (15–19 J.)'));
+  setText('child-aya-stat2', t('survival advantage on paediatric vs adult ALL protocols','儿科方案对比成人方案的生存优势（以ALL为例）','Überlebensvorteil bei pädiatrischen vs. Erwachsenenprotokollen (ALL)'));
+  
+  // Causes
+  setText('child-causes-title', t('Why do children get cancer?','为什么儿童会得癌症？','Warum erkranken Kinder an Krebs?'));
+  setText('child-causes-p1', t(
+    'Unlike most adult cancers, childhood cancers are almost never caused by lifestyle factors like smoking, diet, or alcohol. This is a critical distinction — parents should never feel that their child\'s cancer was preventable through different choices.',
+    '与大多数成人癌症不同，儿童癌症几乎从不由吸烟、饮食或饮酒等生活方式因素引起。这一区别至关重要——家长永远不应认为孩子的癌症本可通过不同的选择来预防。',
+    'Im Gegensatz zu den meisten Erwachsenenkrebsen werden Kinderkrebse fast nie durch Lebensstilfaktoren verursacht. Eltern sollten niemals das Gefühl haben, die Krebserkrankung ihres Kindes hätte verhindert werden können.'
+  ));
+  setText('child-causes-p2', t(
+    'The causes are mostly related to genetic changes occurring during rapid cell division in childhood development. In most cases, no specific cause can be identified.',
+    '原因大多与儿童发育期快速细胞分裂过程中发生的基因变化有关。在大多数情况下，无法确定具体原因。',
+    'Die Ursachen hängen meist mit genetischen Veränderungen zusammen, die während der schnellen Zellteilung in der Kindheitsentwicklung auftreten. In den meisten Fällen kann keine spezifische Ursache identifiziert werden.'
+  ));
+  setText('child-causes-factors-label', t('Known contributing factors','已知诱发因素','Bekannte beitragende Faktoren'));
+  setText('child-cause-1-title', t('Genetic predispositions','遗传易感性','Genetische Prädispositionen'));
+  setHtml('child-cause-1-p', t(
+    'Certain inherited gene mutations significantly increase risk. Examples: <strong>RB1</strong> (retinoblastoma), <strong>TP53</strong> (Li-Fraumeni syndrome — sarcomas, brain tumours, leukaemia), <strong>NF1</strong> (neurofibromatosis), <strong>APC</strong> (FAP, colorectal), <strong>BRCA1/2</strong> (breast/ovarian, also relevant in adolescents). These account for roughly 5–10% of childhood cancers. <a href="https://doi.org/10.1056/NEJMra1705351" target="_blank" style="color:var(--blue);font-size:.85em;">[Ripperger et al., NEJM 2017]</a>',
+    '某些遗传性基因突变会显著增加患癌风险。例如：<strong>RB1</strong>（视网膜母细胞瘤）、<strong>TP53</strong>（Li-Fraumeni综合征——肉瘤、脑肿瘤、白血病）、<strong>NF1</strong>（神经纤维瘤病）、<strong>APC</strong>（FAP，结直肠癌）、<strong>BRCA1/2</strong>（乳腺癌/卵巢癌，在青少年中也相关）。这些约占儿童癌症的5–10%。<a href="https://doi.org/10.1056/NEJMra1705351" target="_blank" style="color:var(--blue);font-size:.85em;">[Ripperger et al., NEJM 2017]</a>',
+    'Bestimmte vererbte Genmutationen erhöhen das Risiko erheblich: <strong>RB1</strong> (Retinoblastom), <strong>TP53</strong> (Li-Fraumeni-Syndrom), <strong>NF1</strong> (Neurofibromatose), <strong>BRCA1/2</strong>. Diese machen ~5–10% der Kinderkrebse aus. <a href="https://doi.org/10.1056/NEJMra1705351" target="_blank" style="color:var(--blue);font-size:.85em;">[Ripperger et al., NEJM 2017]</a>'
+  ));
+  setText('child-cause-2-title', t('Random DNA copy errors','随机DNA复制错误','Zufällige DNA-Kopierfehler'));
+  setText('child-cause-2-p', t(
+    'The majority of childhood cancers result from random mutations during DNA replication — unavoidable errors that accumulate during the extraordinarily rapid cell division of early development. These are not heritable and not preventable.',
+    '大多数儿童癌症源于DNA复制过程中的随机突变——这是在早期发育期极为迅速的细胞分裂过程中不可避免积累的错误。这些突变不可遗传，也无法预防。',
+    'Die meisten Kinderkrebse entstehen durch zufällige Mutationen bei der DNA-Replikation — unvermeidliche Fehler während der raschen Zellteilung der frühen Entwicklung. Nicht erblich und nicht vermeidbar.'
+  ));
+  setText('child-cause-3-title', t('Chromosomal abnormalities','染色体异常','Chromosomale Anomalien'));
+  setText('child-cause-3-p', t(
+    'Down syndrome (trisomy 21) increases leukaemia risk by 10–20×. Turner syndrome and Klinefelter syndrome are also associated with elevated cancer risk in specific types.',
+    '唐氏综合征（21三体综合征）使白血病风险增加10至20倍。特纳综合征和克兰费尔特综合征也与特定类型癌症风险升高相关。',
+    'Down-Syndrom (Trisomie 21) erhöht das Leukämierisiko um das 10–20-fache. Turner- und Klinefelter-Syndrom sind ebenfalls mit erhöhtem Krebsrisiko assoziiert.'
+  ));
+  setText('child-cause-4-title', t('Environmental exposures (rare)','环境暴露（罕见）','Umweltexposition (selten)'));
+  setText('child-cause-4-p', t(
+    'High-dose ionising radiation (including previous radiotherapy) increases risk. Unlike adult cancers, environmental exposure plays a minor role overall. Claims about electromagnetic fields, mobile phones, and power lines have not been supported by high-quality evidence.',
+    '高剂量电离辐射（包括既往放疗）会增加患癌风险。与成人癌症不同，环境暴露在整体上仅起次要作用。关于电磁场、手机和高压线路的说法尚未获得高质量证据支持。',
+    'Hochdosierte Ionisierungsstrahlung (einschließlich früherer Strahlentherapie) erhöht das Risiko. Im Gegensatz zu Erwachsenenkrebs spielt Umweltexposition insgesamt eine geringe Rolle.'
+  ));
+  
+  // Cancer types
+  setText('child-types-title', t('Common childhood cancers','常见儿童癌症','Häufige Kinderkrebserkrankungen'));
+  setText('child-types-sub', t(
+    'Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.',
+    '点击任意癌症类型，了解其定义、影响人群、治疗方式，以及为何药物递送尤为困难。',
+    'Klicke auf einen Krebstyp, um mehr über Definition, Betroffene, Behandlung und Herausforderungen zu erfahren.'
+  ));
+  setHtml('child-type-all-h', t('Acute Lymphoblastic Leukaemia (ALL) — Most common, ~25% of cases','急性淋巴细胞白血病（ALL）——最常见，约占25%的病例','Akute lymphoblastische Leukämie (ALL) — häufigste, ~25% der Fälle'));
+  setHtml('child-type-all-what', t(
+    '<strong>What it is:</strong> A cancer of the blood and bone marrow where immature white blood cells (lymphoblasts) multiply uncontrollably, crowding out normal blood cells. It progresses rapidly and requires urgent treatment. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
+    '<strong>是什么：</strong>一种血液和骨髓的癌症，不成熟白细胞（淋巴母细胞）失控增殖，排挤正常血细胞。病情进展迅速，需要紧急治疗。<a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
+    '<strong>Was es ist:</strong> Krebs des Blutes und Knochenmarks, bei dem unreife weiße Blutzellen (Lymphoblasten) unkontrolliert wachsen. Rasch fortschreitend, erfordert dringende Behandlung. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
+  ));
+  setHtml('child-type-all-who', t(
+    '<strong>Who gets it:</strong> Peak incidence ages 2–5. ALL accounts for ~75% of all childhood leukaemia. Boys slightly more affected. Children with Down syndrome have a 20× higher risk. <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>',
+    '<strong>谁会患病：</strong>发病高峰在2至5岁。ALL约占全部儿童白血病的75%。男孩发病率略高于女孩。唐氏综合征患儿风险高出20倍。<a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>',
+    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 2–5 Jahren. ALL macht ~75% aller Kinderleukämien aus. Jungen etwas häufiger betroffen. Down-Syndrom: 20× höheres Risiko. <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>'
+  ));
+  setHtml('child-type-all-signs', t(
+    '<strong>Warning signs:</strong> Persistent fever · unexplained bruising or bleeding · pallor · extreme fatigue · bone or joint pain · swollen lymph nodes · recurrent infections. These can appear gradually and are often initially mistaken for common viral illnesses.',
+    '<strong>预警信号：</strong>持续发烧 · 不明原因瘀伤或出血 · 面色苍白 · 极度疲乏 · 骨骼或关节疼痛 · 淋巴结肿大 · 反复感染。这些症状可能逐渐出现，最初常被误认为普通病毒性疾病。',
+    '<strong>Warnsignale:</strong> Anhaltendes Fieber · unerklärliche Blutergüsse oder Blutungen · Blässe · extreme Erschöpfung · Knochen- oder Gelenkschmerzen · geschwollene Lymphknoten. Werden zunächst oft mit viralen Erkrankungen verwechselt.'
+  ));
+  setHtml('child-type-all-treat', t(
+    '<strong>Treatment:</strong> Chemotherapy in three phases — induction (achieve remission, ~4–6 weeks), consolidation (eliminate residual disease, months), maintenance (2–3 years). CNS prophylaxis prevents brain spread. Imatinib added for BCR-ABL+ subtype. CAR-T (tisagenlecleucel) for relapsed/refractory disease. Bone marrow transplant in high-risk or relapsed cases. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
+    '<strong>治疗方式：</strong>化疗分三个阶段——诱导（达到缓解，约4–6周）、巩固（消除残留病灶，数月）、维持（2–3年）。中枢神经系统预防治疗可防止癌细胞扩散至大脑。BCR-ABL阳性亚型加用伊马替尼。复发/难治性病例使用CAR-T（tisagenlecleucel）。高危或复发病例行骨髓移植。<a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
+    '<strong>Behandlung:</strong> Chemotherapie in drei Phasen — Induktion (Remission, ~4–6 Wochen), Konsolidierung (Monate), Erhaltung (2–3 Jahre). ZNS-Prophylaxe verhindert Hirnbefall. Imatinib bei BCR-ABL+ Subtyp. CAR-T bei Rückfall. Knochenmarktransplantation bei Hochrisiko. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
+  ));
+  setHtml('child-type-all-pde', t(
+    '<strong>Drug delivery challenge:</strong> ALL is a blood cancer — chemotherapy reaches leukaemic cells directly via the bloodstream. The main challenge is CNS penetration: the blood-brain barrier prevents many drugs reaching the CSF, where leukaemic cells can hide and cause relapse. Intrathecal methotrexate is injected directly into the spinal fluid to bypass this barrier.',
+    '<strong>药物递送挑战：</strong>ALL是血液癌症——化疗药物可通过血液直接到达白血病细胞。主要挑战在于中枢神经系统渗透：血脑屏障阻止许多药物进入脑脊液，而白血病细胞可藏匿于此并引发复发。鞘内注射甲氨蝶呤可直接注入脊髓液以绕过这一屏障。',
+    '<strong>Wirkstofflieferungsherausforderung:</strong> ALL ist ein Blutkrebs — Chemo erreicht Leukämiezellen direkt über den Blutkreislauf. Hauptproblem: ZNS-Penetration. Die Blut-Hirn-Schranke verhindert, dass viele Medikamente den Liquor erreichen. Intrathekales Methotrexat wird direkt in den Spinalkanal injiziert.'
+  ));
+  
+  setHtml('child-type-brain-h', t('Brain & CNS tumours — 2nd most common, ~20% of cases','脑及中枢神经系统肿瘤——第二常见，约占20%','Hirn- & ZNS-Tumoren — zweithäufigste, ~20% der Fälle'));
+  setHtml('child-type-brain-what', t(
+    '<strong>What it is:</strong> A broad category including medulloblastoma (most common malignant brain tumour in children, arising in the cerebellum), gliomas (astrocytoma, glioblastoma), ependymoma, and DIPG (diffuse intrinsic pontine glioma — one of the most treatment-resistant cancers known, almost exclusively affecting children). <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
+    '<strong>是什么：</strong>这是一个广泛的类别，包括髓母细胞瘤（儿童最常见的恶性脑肿瘤，起源于小脑）、胶质瘤（星形细胞瘤、胶质母细胞瘤）、室管膜瘤，以及弥漫性内生性脑桥胶质瘤（DIPG）——已知治疗抵抗性最强的癌症之一，几乎仅发生于儿童。<a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
+    '<strong>Was es ist:</strong> Breite Kategorie: Medulloblastom (häufigstes bösartiges Hirntumor bei Kindern), Gliome, Ependymom, DIPG (diffuses intrinsisches Ponsgliom — einer der therapieresistentesten Krebse überhaupt). <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>'
+  ));
+  setHtml('child-type-brain-who', t(
+    '<strong>Who gets it:</strong> Brain tumours can occur at any childhood age. Medulloblastoma peaks at 3–8 years. DIPG almost exclusively affects children aged 5–10. Together, brain tumours are the <strong>leading cause of cancer-related death</strong> in children (surpassing leukaemia). <a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>',
+    '<strong>谁会患病：</strong>脑肿瘤可在儿童期任何年龄发生。髓母细胞瘤高峰在3至8岁。DIPG几乎仅发生于5至10岁儿童。脑肿瘤合计是儿童<strong>癌症相关死亡的首要原因</strong>（超过白血病）。<a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>',
+    '<strong>Wer erkrankt:</strong> Kann in jedem Kindesalter auftreten. Medulloblastom-Gipfel bei 3–8 Jahren. DIPG fast ausschließlich bei 5–10-Jährigen. Hirntumoren sind die <strong>häufigste krebsbedingte Todesursache</strong> bei Kindern. <a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>'
+  ));
+  setHtml('child-type-brain-signs', t(
+    '<strong>Warning signs:</strong> Morning headaches (worse on waking, easing through the day) · vomiting without nausea on waking · balance or gait changes · vision changes (squint, blurred, double vision) · personality or behaviour change · new seizures. Symptoms are often subtle and initially misdiagnosed as migraine or anxiety.',
+    '<strong>预警信号：</strong>晨起头痛（醒时加重，日间缓解）·醒来时无恶心感的呕吐·平衡或步态改变·视力变化（斜视、模糊、复视）·性格或行为改变·新发癫痫发作。症状初期往往不明显，常被误诊为偏头痛或焦虑。',
+    '<strong>Warnsignale:</strong> Morgendliche Kopfschmerzen (beim Aufwachen schlimmer, tagsüber besser) · Erbrechen ohne Übelkeit · Gang- und Gleichgewichtsstörungen · Sehveränderungen · Persönlichkeits- oder Verhaltensänderungen · neue Krampfanfälle.'
+  ));
+  setHtml('child-type-brain-treat', t(
+    '<strong>Treatment:</strong> Surgery (if accessible and safe) + radiation + chemotherapy. Medulloblastoma: molecular subgrouping (WNT, SHH, Group 3, Group 4) now guides treatment intensity. DIPG: radiation buys time, but median survival remains ~11 months despite decades of research. Convection-enhanced delivery (CED) and ONC201 (H3K27M+ DIPG) are promising current trials. <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
+    '<strong>治疗方式：</strong>手术（若可行且安全）+放疗+化疗。髓母细胞瘤：分子亚型分组（WNT、SHH、第3组、第4组）现已指导治疗强度。DIPG：放疗可延长生存时间，但中位生存期仍约为11个月，尽管已研究数十年。对流增强递送（CED）和ONC201（针对H3K27M+ DIPG）是目前有前景的临床试验。<a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
+    '<strong>Behandlung:</strong> Operation + Strahlentherapie + Chemotherapie. Medulloblastom: Molekulare Subgruppenklassifikation (WNT, SHH, Gruppe 3, Gruppe 4) leitet die Behandlung. DIPG: Bestrahlung verlängert die Überlebenszeit, aber Medianüberleben ~11 Monate. <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>'
+  ));
+  setHtml('child-type-brain-pde', t(
+    '<strong>Drug delivery challenge:</strong> The blood-brain barrier (BBB) excludes ~98% of drugs from the brain. Large molecules are blocked entirely; small molecules must be lipid-soluble and evade efflux pumps. DIPG sits in the brainstem — surgically unreachable — with an intact BBB, making drug delivery exceptionally difficult. This is the primary reason DIPG remains almost uniformly fatal despite a biologically understood target (H3K27M mutation).',
+    '<strong>药物递送挑战：</strong>血脑屏障（BBB）使约98%的药物无法进入大脑。大分子完全被阻断；小分子必须具有脂溶性并能逃避外排泵。DIPG位于脑干——手术无法到达——且血脑屏障完整，使药物递送极为困难。这正是DIPG尽管有明确的生物学靶点（H3K27M突变），却仍几乎无一例外地致命的主要原因。',
+    '<strong>Wirkstofflieferungsherausforderung:</strong> Die Blut-Hirn-Schranke (BBB) schließt ~98% der Medikamente aus dem Gehirn aus. DIPG liegt im Hirnstamm — operativ nicht erreichbar — mit intakter BBB. Dies macht den Wirkstofftransport außerordentlich schwierig.'
+  ));
+  
+  setHtml('child-type-neuro-h', t('Neuroblastoma — ~8% of cases, most common solid tumour in infants','神经母细胞瘤——约占8%，婴幼儿最常见实体肿瘤','Neuroblastom — ~8% der Fälle, häufigstes solides Tumor bei Säuglingen'));
+  setHtml('child-type-neuro-what', t(
+    '<strong>What it is:</strong> A cancer of immature nerve cells (neuroblasts), most commonly in the adrenal glands. Biologically unique: some tumours spontaneously regress without treatment; others are among the most aggressive childhood cancers. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
+    '<strong>是什么：</strong>不成熟神经细胞（神经母细胞）的癌症，最常见于肾上腺。生物学上独特：部分肿瘤可自发消退无需治疗；其他则是最具侵袭性的儿童癌症之一。<a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
+    '<strong>Was es ist:</strong> Krebs unreifer Nervenzellen (Neuroblasten), meist in den Nebennieren. Biologisch einzigartig: Manche Tumoren bilden sich spontan zurück, andere sind äußerst aggressiv. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>'
+  ));
+  setHtml('child-type-neuro-who', t(
+    '<strong>Who gets it:</strong> Almost exclusively children under 5 (median diagnosis age: 17 months). ~40% have metastasised at diagnosis. MYCN gene amplification identifies high-risk cases with poorer prognosis.',
+    '<strong>谁会患病：</strong>几乎仅发生于5岁以下儿童（中位诊断年龄：17个月）。约40%在诊断时已发生转移。MYCN基因扩增是高风险、预后较差病例的标志。',
+    '<strong>Wer erkrankt:</strong> Fast ausschließlich Kinder unter 5 Jahren (Medianalter bei Diagnose: 17 Monate). ~40% haben bei Diagnose bereits metastasiert. MYCN-Amplifikation markiert Hochrisikofälle.'
+  ));
+  setHtml('child-type-neuro-signs', t(
+    '<strong>Warning signs:</strong> Abdominal mass or swelling · dark circles around eyes ("raccoon eyes" / periorbital bruising — NOT from injury) · bone pain · lump in neck or chest · high blood pressure · unusual eye movements (opsoclonus-myoclonus). Many cases are found incidentally on imaging done for other reasons.',
+    '<strong>预警信号：</strong>腹部肿块或肿胀·眼周黑眼圈（"熊猫眼"/眶周瘀血——非外伤所致）·骨痛·颈部或胸部肿块·高血压·异常眼球运动（眼阵挛-肌阵挛）。许多病例是在因其他原因进行影像学检查时偶然发现的。',
+    '<strong>Warnsignale:</strong> Abdominale Masse · dunkle Ringe um die Augen ("Waschbäraugen" — nicht durch Verletzung) · Knochenschmerzen · Halsmasse · Bluthochdruck · Opsoklonus-Myoklonus.'
+  ));
+  setHtml('child-type-neuro-treat', t(
+    '<strong>Treatment:</strong> Low-risk: surgery alone or observation. High-risk: intensive chemotherapy + surgery + radiation + high-dose chemo with stem cell rescue + anti-GD2 immunotherapy (dinutuximab) + isotretinoin. Despite aggressive treatment, high-risk neuroblastoma achieves only ~50% long-term survival. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
+    '<strong>治疗方式：</strong>低风险：单独手术或观察。高风险：强化化疗+手术+放疗+高剂量化疗联合干细胞挽救+抗GD2免疫治疗（dinutuximab）+异维A酸。尽管采取积极治疗，高风险神经母细胞瘤的长期生存率仅约50%。<a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
+    '<strong>Behandlung:</strong> Niedriges Risiko: Operation oder Beobachtung. Hohes Risiko: intensive Chemo + OP + Bestrahlung + Hochdosisc-Chemo mit Stammzellenrettung + Dinutuximab + Isotretinoin. Trotz aggressiver Behandlung nur ~50% Langzeitüberleben. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>'
+  ));
+  setHtml('child-type-neuro-pde', t(
+    '<strong>Drug delivery challenge:</strong> High-risk neuroblastoma often involves dense stromal ECM that reduces diffusion coefficient D. Bone marrow metastases create complex microenvironments with elevated IFP. The anti-GD2 antibody dinutuximab faces size-related penetration barriers — it works primarily via immune recruitment (ADCC) rather than direct cell killing.',
+    '<strong>药物递送挑战：</strong>高风险神经母细胞瘤通常涉及致密的基质细胞外基质，降低了扩散系数D。骨髓转移形成具有高间质液压的复杂微环境。抗GD2抗体dinutuximab面临与大小相关的渗透障碍——它主要通过免疫募集（ADCC）而非直接杀伤细胞发挥作用。',
+    '<strong>Wirkstofflieferungsherausforderung:</strong> Hochrisiko-Neuroblastom hat oft dichtes ECM, das D reduziert. Knochenmarkmetastasen schaffen komplexe Mikroumgebungen mit erhöhtem IFP. Dinutuximab wirkt hauptsächlich über Immunrekrutierung (ADCC), nicht direkte Zelllyse.'
+  ));
+  
+  setHtml('child-type-wilms-h', t('Wilms Tumour (Nephroblastoma) — most common kidney cancer in children','肾母细胞瘤（Wilms瘤）——儿童最常见肾癌','Wilms-Tumor (Nephroblastom) — häufigster Nierenkrebs bei Kindern'));
+  setHtml('child-type-wilms-what', t(
+    '<strong>What it is:</strong> A kidney tumour arising from embryonic kidney cells that failed to differentiate normally. One of oncology\'s great success stories — survival has risen from under 30% in the 1960s to over 90% today through multimodal treatment protocols. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>是什么：</strong>起源于未能正常分化的胚胎性肾细胞的肾脏肿瘤。肿瘤学的一大成功典范——通过多模式治疗方案，生存率已从20世纪60年代的不足30%提升至如今的90%以上。<a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>Was es ist:</strong> Nierentumor aus embryonalen Nierenzellen, die sich nicht normal differenziert haben. Einer der größten Erfolge der Kinderonkologie — Überleben stieg von unter 30% (1960er) auf über 90% heute. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>'
+  ));
+  setHtml('child-type-wilms-who', t(
+    '<strong>Who gets it:</strong> Peak age 3–4 years. Usually presents as a painless abdominal mass. Associated with WAGR syndrome, Beckwith-Wiedemann syndrome, and Denys-Drash syndrome. Bilateral (both kidneys) in ~5–10% of cases.',
+    '<strong>谁会患病：</strong>发病高峰在3至4岁。通常表现为无痛性腹部肿块。与WAGR综合征、Beckwith-Wiedemann综合征和Denys-Drash综合征相关。约5至10%的病例为双侧（双肾）受累。',
+    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 3–4 Jahren. Meist als schmerzlose Bauchmasse. Assoziation mit WAGR-Syndrom, Beckwith-Wiedemann-Syndrom. ~5–10% bilateral.'
+  ));
+  setHtml('child-type-wilms-signs', t(
+    '<strong>Warning signs:</strong> Painless abdominal swelling or mass (often discovered by a parent during bathing) · abdominal pain · blood in urine (haematuria) · high blood pressure · fever. Most commonly discovered incidentally by a parent or at a routine check-up.',
+    '<strong>预警信号：</strong>无痛性腹部肿胀或肿块（常由家长在给孩子洗澡时发现）·腹痛·尿血（血尿）·高血压·发热。最常在家长或常规检查中偶然发现。',
+    '<strong>Warnsignale:</strong> Schmerzlose Bauchschwellung oder -masse (oft beim Baden entdeckt) · Bauchschmerzen · Blut im Urin · Bluthochdruck · Fieber.'
+  ));
+  setHtml('child-type-wilms-treat', t(
+    '<strong>Treatment:</strong> Surgery (nephrectomy) + chemotherapy (vincristine, actinomycin D, doxorubicin depending on stage) ± radiation for advanced stages. The SIOP European protocol uses pre-operative chemotherapy to shrink the tumour before surgery. Overall survival exceeds 90%. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>治疗方式：</strong>手术（肾切除）+化疗（长春新碱、放线菌素D、多柔比星，根据分期选用）±晚期放疗。欧洲SIOP方案在手术前使用化疗缩小肿瘤。总生存率超过90%。<a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>Behandlung:</strong> Operation (Nephrektomie) + Chemotherapie ± Bestrahlung. SIOP-Protokoll: präoperative Chemo zum Schrumpfen des Tumors. Gesamtüberleben >90%. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>'
+  ));
+  setHtml('child-type-wilms-pde', t(
+    '<strong>Drug delivery:</strong> Kidney tumours have relatively good vascular access. Pre-operative chemotherapy is effective partly because Wilms tumour ECM is less dense than pancreatic cancer or neuroblastoma stromal matrix, allowing better drug diffusion. This helps explain why outcomes are so much better than most other paediatric solid tumours.',
+    '<strong>药物递送：</strong>肾脏肿瘤具有相对较好的血管通路。术前化疗有效，部分原因在于Wilms瘤的细胞外基质密度远低于胰腺癌或神经母细胞瘤的基质，使药物扩散更为顺畅。这有助于解释为何其预后远优于大多数其他儿科实体肿瘤。',
+    '<strong>Wirkstofflieferung:</strong> Nierentumoren haben relativ guten vaskulären Zugang. Präoperative Chemo ist wirksam, da das ECM des Wilms-Tumors weniger dicht ist als bei Bauchspeicheldrüsenkrebs, was bessere Diffusion ermöglicht.'
+  ));
+  
+  setHtml('child-type-retino-h', t('Retinoblastoma — most common eye tumour in children','视网膜母细胞瘤——儿童最常见眼部肿瘤','Retinoblastom — häufigster Augentumor bei Kindern'));
+  setHtml('child-type-retino-what', t(
+    '<strong>What it is:</strong> A malignant tumour of the retina caused by mutation or deletion of both copies of the RB1 tumour suppressor gene. ~40% of cases are hereditary (germline RB1 mutation) — these children have bilateral disease and lifelong risk of other cancers. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
+    '<strong>是什么：</strong>由RB1肿瘤抑制基因两个拷贝突变或缺失引起的视网膜恶性肿瘤。约40%的病例为遗传性（生殖系RB1突变）——这些患儿有双侧病变和终身其他癌症风险。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
+    '<strong>Was es ist:</strong> Bösartiger Netzhautumor durch Mutation beider RB1-Kopien. ~40% erblich (Keimbahn-RB1-Mutation) — beidseitige Erkrankung und lebenslang erhöhtes Risiko für andere Krebsarten. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>'
+  ));
+  setHtml('child-type-retino-who', t(
+    '<strong>Who gets it:</strong> Almost exclusively infants and young children — median diagnosis age 18 months. Bilateral in ~40% of hereditary cases. One of the most treatable childhood cancers when caught early — and one of the most striking examples of how awareness directly saves vision and lives.',
+    '<strong>谁会患病：</strong>几乎仅发生于婴幼儿——中位诊断年龄18个月。遗传性病例中约40%为双侧受累。这是早期发现时治疗效果最好的儿童癌症之一，也是最能说明提高认识直接挽救视力和生命的典例之一。',
+    '<strong>Wer erkrankt:</strong> Fast ausschließlich Säuglinge und Kleinkinder (Medianalter 18 Monate). ~40% bilateral bei erblichen Fällen. Bei früher Diagnose eines der am besten behandelbaren Kinderkrebserkrankungen.'
+  ));
+  setHtml('child-type-retino-signs', t(
+    '<strong>Warning signs:</strong> White pupil reflex in photographs (leukocoria — one eye glows white instead of red in flash photos). <strong>This is the single most important sign — see a doctor immediately if observed.</strong> Also: squinting (strabismus) · red or swollen eye · vision loss. Leukocoria is the presenting sign in ~60% of cases. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
+    '<strong>预警信号：</strong>照片中的白瞳反射（白瞳症——闪光照片中一只眼睛发白而非红色）。<strong>这是最重要的单一信号——一旦发现应立即就医。</strong>还包括：斜视·眼红或眼肿·视力丧失。白瞳症是约60%病例的首发体征。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
+    '<strong>Warnsignale:</strong> Weißer Pupillenreflex in Fotos (Leukokorie — ein Auge leuchtet weiß statt rot). <strong>Sofort zum Arzt, wenn beobachtet.</strong> Auch: Schielen · rotes/geschwollenes Auge · Sehverlust.'
+  ));
+  setHtml('child-type-retino-treat', t(
+    '<strong>Treatment:</strong> Depends on stage. Small tumours: laser photocoagulation or cryotherapy. Moderate: intra-arterial chemotherapy (IAC — direct injection into the ophthalmic artery), intra-vitreal chemotherapy. Advanced: systemic chemotherapy + enucleation (eye removal) as last resort. Survival >95% in high-income countries; eye salvage rates now >80% with modern techniques. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
+    '<strong>治疗方式：</strong>取决于分期。小肿瘤：激光光凝或冷冻疗法。中度：动脉内化疗（IAC——直接注入眼动脉），玻璃体内化疗。晚期：全身化疗+眼球摘除（最后手段）。高收入国家生存率>95%；现代技术保眼率>80%。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
+    '<strong>Behandlung:</strong> Kleine Tumoren: Laserkoagulation oder Kryotherapie. Mittelstufe: intraarteriöse Chemo (IAC), intravitreale Chemo. Fortgeschritten: systemische Chemo + Enukleation. Überleben >95%; Augensalvage >80%. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>'
+  ));
+  setHtml('child-type-retino-pde', t(
+    '<strong>Drug delivery innovation:</strong> Intra-arterial chemotherapy (IAC) directly addresses the drug delivery problem — it bypasses systemic circulation, delivering high drug concentrations to the ophthalmic artery feeding the tumour. This maximises local concentration while minimising systemic toxicity. A direct clinical application of the PDE principle: reduce diffusion distance, increase local C.',
+    '<strong>药物递送创新：</strong>动脉内化疗（IAC）直接解决了药物递送问题——它绕过全身循环，将高浓度药物直接输送到供应肿瘤的眼动脉。这最大化了局部浓度，同时将全身毒性降至最低。这是PDE原理的直接临床应用：缩短扩散距离，提高局部浓度C。',
+    '<strong>Wirkstofflieferungsinnovation:</strong> Intraarteriöse Chemotherapie (IAC) umgeht den Systemkreislauf und liefert hohe Wirkstoffkonzentrationen direkt in die Augenarterie. Maximiert lokale Konzentration bei minimaler Systemtoxizität — direkte klinische Anwendung des PDE-Prinzips.'
+  ));
+  
+  setHtml('child-type-bone-h', t('Bone tumours: Osteosarcoma & Ewing sarcoma — ~5% of cases','骨肿瘤：骨肉瘤与尤文肉瘤——约占5%的病例','Knochentumoren: Osteosarkom & Ewing-Sarkom — ~5% der Fälle'));
+  setHtml('child-type-bone-what', t(
+    '<strong>What they are:</strong> <strong>Osteosarcoma</strong> arises from bone-forming cells (osteoblasts), most commonly near the knee or shoulder. <strong>Ewing sarcoma</strong> arises from primitive neuroectodermal cells, can occur in any bone, and is defined by the EWS-FLI1 chromosomal translocation (t(11;22)). <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
+    '<strong>是什么：</strong><strong>骨肉瘤</strong>起源于成骨细胞，最常见于膝关节或肩关节附近。<strong>尤文肉瘤</strong>起源于原始神经外胚层细胞，可发生于任何骨骼，以EWS-FLI1染色体易位（t(11;22)）为特征。<a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
+    '<strong>Was sie sind:</strong> <strong>Osteosarkom</strong> entsteht aus knochenbildenden Zellen, meist nahe Knie oder Schulter. <strong>Ewing-Sarkom</strong> aus primitiven neuroektodermalen Zellen, definiert durch EWS-FLI1-Translokation. <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>'
+  ));
+  setHtml('child-type-bone-who', t(
+    '<strong>Who gets it:</strong> Both peak during adolescence (10–20 years) — coinciding with puberty-driven bone growth spurts. Osteosarcoma is more common in males and taller children. Ewing sarcoma disproportionately affects white children and is rare in East Asian populations.',
+    '<strong>谁会患病：</strong>两者均在青少年期（10至20岁）达到发病高峰——与青春期骨骼生长加速吻合。骨肉瘤在男孩和身材较高的儿童中更为常见。尤文肉瘤在白人儿童中比例更高，在东亚人群中罕见。',
+    '<strong>Wer erkrankt:</strong> Beide mit Gipfel in der Adoleszenz (10–20 Jahre) — zusammenfallend mit pubertätsbedingtem Knochenwachstum. Osteosarkom häufiger bei Jungen und größeren Kindern. Ewing-Sarkom überwiegend bei weißen Kindern.'
+  ));
+  setHtml('child-type-bone-signs', t(
+    '<strong>Warning signs:</strong> Persistent localised bone pain (especially at night or at rest, not just with activity) · swelling near a bone · unexplained limb pain · fracture from minor injury (pathological fracture). Crucially: pain that doesn\'t resolve after 2–3 weeks should always be investigated. Often initially misdiagnosed as growing pains or sports injury.',
+    '<strong>预警信号：</strong>持续性局部骨痛（尤其在夜间或休息时，而非仅在活动时）·骨骼附近肿胀·不明原因肢体疼痛·轻微受伤后骨折（病理性骨折）。关键提示：疼痛持续超过2至3周未缓解时，应始终进行检查。常被误诊为生长痛或运动损伤。',
+    '<strong>Warnsignale:</strong> Anhaltende lokale Knochenschmerzen (besonders nachts oder in Ruhe) · Schwellung nahe einem Knochen · Fraktur nach geringem Trauma (pathologische Fraktur). Schmerzen, die nach 2–3 Wochen nicht nachlassen, müssen abgeklärt werden.'
+  ));
+  setHtml('child-type-bone-treat', t(
+    '<strong>Treatment:</strong> Both: neoadjuvant chemotherapy (before surgery) + surgical resection (limb-sparing where possible) + adjuvant chemotherapy. Ewing: often radiation as well. Key drugs: osteosarcoma uses MAP (methotrexate, doxorubicin/Adriamycin, cisplatin); Ewing uses VIDE/VAI. Histological response to neoadjuvant chemo (>90% necrosis) is the strongest prognostic factor for osteosarcoma. <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>',
+    '<strong>治疗方式：</strong>两者均采用：新辅助化疗（术前）+手术切除（尽可能保肢）+辅助化疗。尤文肉瘤通常还需放疗。关键药物：骨肉瘤使用MAP方案（甲氨蝶呤、多柔比星/阿霉素、顺铂）；尤文肉瘤使用VIDE/VAI方案。新辅助化疗后的组织学反应（>90%坏死）是骨肉瘤最强的预后因素。<a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>',
+    '<strong>Behandlung:</strong> Beide: Neoadjuvante Chemo + Resektion (gliederhaltend wenn möglich) + adjuvante Chemo. Ewing: oft auch Bestrahlung. Schlüsselmedikamente: MAP (Osteosarkom), VIDE/VAI (Ewing). <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>'
+  ));
+  setHtml('child-type-bone-pde', t(
+    '<strong>Drug delivery challenge:</strong> Bone is one of the most physically impenetrable tumour environments — naturally dense mineralised ECM and high IFP. Neoadjuvant chemotherapy response is poor in ~40% of patients, likely partly due to physical delivery barriers. This is why survival has plateaued — the biology is not the limiting factor; drug delivery is.',
+    '<strong>药物递送挑战：</strong>骨骼是物理上最难渗透的肿瘤环境之一——天然致密的矿化细胞外基质和高间质液压。约40%的患者对新辅助化疗反应不佳，这可能部分归因于物理递送障碍。这正是生存率停滞不前的原因——生物学不是限制因素；药物递送才是。',
+    '<strong>Wirkstofflieferungsherausforderung:</strong> Knochen ist eine der am schwersten penetrierbaren Tumorumgebungen — dichtes mineralisiertes ECM und hoher IFP. ~40% sprechen schlecht auf neoadjuvante Chemo an, teils wegen physischer Lieferungsbarrieren.'
+  ));
+  
+  setHtml('child-type-lymph-h', t('Hodgkin Lymphoma — highly treatable, >95% survival','霍奇金淋巴瘤——高度可治，>95%生存率','Hodgkin-Lymphom — gut behandelbar, >95% Überleben'));
+  setHtml('child-type-lymph-what', t(
+    '<strong>What it is:</strong> A cancer of the lymphatic system defined by Reed-Sternberg cells. One of the earliest cancers to be cured by chemotherapy. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology, treatment, and generally worse prognosis.',
+    '<strong>是什么：</strong>以Reed-Sternberg细胞为特征的淋巴系统癌症。最早被化疗治愈的癌症之一。儿童非霍奇金淋巴瘤（NHL）是生物学、治疗方式和总体预后均不同的独立类别，预后通常较差。',
+    '<strong>Was es ist:</strong> Lymphsystemkrebs mit Reed-Sternberg-Zellen. Eines der ersten Krebsarten, die durch Chemotherapie heilbar wurden. NHL bei Kindern ist eine eigene Gruppe mit anderer Biologie und Behandlung.'
+  ));
+  setHtml('child-type-lymph-who', t(
+    '<strong>Who gets it:</strong> Two age peaks — adolescence/young adulthood and >55 years. EBV infection is associated with some subtypes. More common in males. Immunosuppressed children (HIV, organ transplant) have significantly higher risk.',
+    '<strong>谁会患病：</strong>两个年龄高峰——青少年/年轻成人期和55岁以上。EBV（EB病毒）感染与某些亚型相关。男性更为常见。免疫抑制儿童（HIV感染者、器官移植受者）风险显著升高。',
+    '<strong>Wer erkrankt:</strong> Zwei Altershäufungen — Adoleszenz/junges Erwachsenenalter und >55 Jahre. EBV-Assoziation bei manchen Subtypen. Häufiger bei Männern. Immunsupprimierte Kinder haben erhöhtes Risiko.'
+  ));
+  setHtml('child-type-lymph-signs', t(
+    '<strong>Warning signs:</strong> Painless enlarged lymph nodes (neck, armpit, groin) · "B symptoms" — drenching night sweats, unexplained fever, unintentional weight loss >10% · itching without rash · shortness of breath (mediastinal mass compressing airways). B symptoms indicate more advanced disease and should prompt urgent investigation.',
+    '<strong>预警信号：</strong>无痛性淋巴结肿大（颈部、腋下、腹股沟）·"B症状"——盗汗、不明原因发烧、非自愿体重下降>10%·无皮疹的瘙痒·气短（纵隔肿块压迫气道）。B症状提示疾病更为进展，应立即进行检查。',
+    '<strong>Warnsignale:</strong> Schmerzlose Lymphknotenschwellung · "B-Symptome" — Nachtschweiß, unerklärtes Fieber, Gewichtsverlust >10% · Juckreiz ohne Ausschlag · Kurzatmigkeit (Mediastinalmasse).'
+  ));
+  setHtml('child-type-lymph-treat', t(
+    '<strong>Treatment:</strong> ABVD chemotherapy ± radiation. Modern response-adapted protocols use PET scan after 2 cycles to guide whether radiation is added. 5-year survival >95% (early stage), ~85% (advanced). Current research focuses on reducing long-term treatment side effects — cardiac toxicity, pulmonary fibrosis, secondary cancers from radiation — without sacrificing cure rates.',
+    '<strong>治疗方式：</strong>ABVD化疗±放疗。现代反应适应方案在2个疗程后使用PET扫描指导是否需要添加放疗。5年生存率>95%（早期），~85%（晚期）。目前研究重点在于在不牺牲治愈率的前提下降低长期治疗副作用——心脏毒性、肺纤维化、放疗引起的继发性癌症。',
+    '<strong>Behandlung:</strong> ABVD-Chemo ± Bestrahlung. Moderne PET-adaptierte Protokolle nach 2 Zyklen. 5-Jahres-Überleben >95% (früh), ~85% (fortgeschritten). Forschung: Langzeittoxizität reduzieren ohne Heilungsrate zu opfern.'
+  ));
+  
+  // Diagnosis
+  setText('child-diag-title', t('How childhood cancer is diagnosed','儿童癌症如何诊断','Wie wird Kinderkrebs diagnostiziert'));
+  setText('child-diag-intro', t(
+    'Early and accurate diagnosis is the single most important factor in childhood cancer outcomes. The diagnostic pathway typically involves several steps, usually completed within 2–4 weeks in well-resourced settings.',
+    '早期准确诊断是影响儿童癌症预后的最重要单一因素。诊断流程通常包括几个步骤，在资源充足的情况下通常在2至4周内完成。',
+    'Frühe und präzise Diagnose ist der wichtigste Einzelfaktor für Kinderkrebsverläufe. Der Diagnosepfad umfasst mehrere Schritte, meist innerhalb von 2–4 Wochen in ressourcenreichen Umgebungen.'
+  ));
+  setText('child-diag-1-h', t('Blood tests & bone marrow biopsy','血液检查与骨髓活检','Bluttests & Knochenmarkbiopsie'));
+  setText('child-diag-1-p', t(
+    'Full blood count (FBC) is usually the first test — leukaemias typically show abnormal white cell counts, anaemia, or thrombocytopenia. A bone marrow biopsy (aspirate + trephine) is required to confirm leukaemia, assess blast percentage, and collect material for genetic testing. Results: FBC within hours, full genetic panel 1–2 weeks.',
+    '全血细胞计数（FBC）通常是第一项检查——白血病通常表现为白细胞计数异常、贫血或血小板减少。骨髓活检（抽吸+环钻）是确诊白血病、评估母细胞百分比和采集基因检测材料所必需的。结果时间：FBC数小时内出结果，完整基因检测组套需1至2周。',
+    'Großes Blutbild (BB) meist erster Test — Leukämien zeigen abnorme Leukozytenzahlen, Anämie oder Thrombozytopenie. Knochenmarkbiopsie für Diagnose, Blastenanteil und Gentests nötig. Ergebnisse: BB in Stunden, vollständiges Genpanel 1–2 Wochen.'
+  ));
+  setText('child-diag-2-h', t('Imaging (CT, MRI, PET, ultrasound)','影像学检查（CT、MRI、PET、超声）','Bildgebung (CT, MRT, PET, Ultraschall)'));
+  setText('child-diag-2-p', t(
+    'CT scans show tumour location, size, and spread to lymph nodes or organs. MRI gives better soft tissue detail — essential for brain tumours. PET scans show metabolically active cancer tissue — standard in lymphoma staging. Ultrasound is first-line for abdominal masses: quick, no radiation, widely available.',
+    'CT扫描显示肿瘤位置、大小及向淋巴结或器官的扩散情况。MRI提供更好的软组织细节——对脑肿瘤至关重要。PET扫描显示代谢活跃的癌组织——是淋巴瘤分期的标准检查。超声是腹部肿块的一线检查：快速、无辐射、广泛可用。',
+    'CT zeigt Tumorlage, -größe und Ausbreitung. MRT bietet bessere Weichteildarstellung — essenziell bei Hirntumoren. PET zeigt metabolisch aktives Tumorgewebe — Standard beim Lymphomstaging. Ultraschall: erste Wahl bei Bauchmassen, schnell, strahlenfrei.'
+  ));
+  setText('child-diag-3-h', t('Biopsy & histopathology','活检与组织病理学','Biopsie & Histopathologie'));
+  setText('child-diag-3-p', t(
+    'Tissue biopsy is required for most solid tumours — a sample is removed (needle or surgical) and examined under a microscope. This confirms cancer type, grade, and growth rate. Results typically 1–2 weeks. In DIPG, biopsy was historically avoided due to surgical risk but is now performed at specialist centres to obtain H3K27M mutation status.',
+    '大多数实体肿瘤需要组织活检——取出样本（穿刺或手术切除）在显微镜下检查。这可确认癌症类型、级别和生长速度。结果通常需1至2周。由于手术风险，DIPG的活检历史上常被避免，但现在在专业中心进行以获取H3K27M突变状态。',
+    'Gewebebiopsie für die meisten soliden Tumoren nötig — Probe wird entnommen und mikroskopisch untersucht. Bestätigt Krebstyp, Grad und Wachstumsrate. Ergebnisse in 1–2 Wochen. DIPG-Biopsie früher gemieden, jetzt für H3K27M-Status in Spezialzentren durchgeführt.'
+  ));
+  setText('child-diag-4-h', t('Genetic & molecular testing','基因与分子检测','Genetische & molekulare Tests'));
+  setText('child-diag-4-p', t(
+    'FISH, PCR, and next-generation sequencing (NGS) identify chromosomal translocations, gene fusions (BCR-ABL, EWS-FLI1), copy number variations (MYCN amplification), and point mutations. These determine risk group, treatment intensity, and eligibility for targeted therapies. Takes 2–4 weeks but is now standard of care in high-income countries.',
+    'FISH、PCR和下一代测序（NGS）识别染色体易位、基因融合（BCR-ABL、EWS-FLI1）、拷贝数变异（MYCN扩增）和点突变。这些结果确定风险分组、治疗强度和靶向治疗资格。需2至4周，但现已是高收入国家的标准诊疗规范。',
+    'FISH, PCR und NGS identifizieren chromosomale Translokationen, Genfusionen (BCR-ABL, EWS-FLI1), Kopienzahlvariationen (MYCN-Amplifikation) und Punktmutationen. Bestimmen Risikogruppe und Therapieintensität. Dauert 2–4 Wochen, jetzt Standard in Hocheinkommensländern.'
+  ));
+  setText('child-diag-5-h', t('Lumbar puncture (spinal tap)','腰椎穿刺（脊髓穿刺）','Lumbalpunktion (Spinalpunktion)'));
+  setText('child-diag-5-p', t(
+    'Used in leukaemia and brain tumours to check whether cancer cells have entered the cerebrospinal fluid (CSF). A needle is inserted into the lower spine under local anaesthetic. If CNS disease is confirmed, intrathecal chemotherapy (injected directly into the CSF) is added to treatment.',
+    '用于白血病和脑肿瘤，以检查癌细胞是否已进入脑脊液（CSF）。在局部麻醉下将针头插入腰椎下部。若确认中枢神经系统疾病，则在治疗中加入鞘内化疗（直接注入脑脊液）。',
+    'Bei Leukämie und Hirntumoren: Prüfung ob Krebszellen in den Liquor eingedrungen sind. Nadel wird unter Lokalanästhesie in den unteren Wirbelsäulenbereich eingeführt. Bei ZNS-Befall: intrathekale Chemotherapie hinzufügen.'
+  ));
+  setHtml('child-diag-gap-note', t(
+    '<strong>The diagnosis gap:</strong> In high-income countries, average time from first symptom to diagnosis is 2–3 months. In low-income countries, this can exceed 6–12 months, by which point many tumours have metastasised. Diagnostic delay is a major driver of the global survival gap. <a href="https://doi.org/10.1016/S1470-2045(18)30460-3" target="_blank" style="color:var(--blue);font-size:.85em;">[Ward et al., Lancet Oncol 2019]</a>',
+    '<strong>诊断差距：</strong>在高收入国家，从首次出现症状到诊断的平均时间为2至3个月。在低收入国家，这可能超过6至12个月，届时许多肿瘤已发生转移。诊断延迟是全球生存率差距的主要驱动因素。<a href="https://doi.org/10.1016/S1470-2045(18)30460-3" target="_blank" style="color:var(--blue);font-size:.85em;">[Ward et al., Lancet Oncol 2019]</a>',
+    '<strong>Diagnoselücke:</strong> In Hocheinkommensländern: Ø 2–3 Monate von erstem Symptom bis Diagnose. In Niedrigeinkommensländern: oft 6–12+ Monate — viele Tumoren haben dann bereits metastasiert. <a href="https://doi.org/10.1016/S1470-2045(18)30460-3" target="_blank" style="color:var(--blue);font-size:.85em;">[Ward et al., Lancet Oncol 2019]</a>'
+  ));
+  
+  // Treatment
+  setText('child-treat-title', t('How childhood cancer is treated','儿童癌症如何治疗','Wie wird Kinderkrebs behandelt'));
+  setText('child-treat-intro', t(
+    'Most children receive a combination of treatments. The specific regimen depends on cancer type, genetic subtype, stage, and the child\'s age and health. All treatment decisions are made by a multidisciplinary team (oncologist, surgeon, radiologist, pathologist, specialist nurse).',
+    '大多数儿童接受多种治疗的联合方案。具体方案取决于癌症类型、基因亚型、分期以及患儿年龄和健康状况。所有治疗决策均由多学科团队（肿瘤科医生、外科医生、放射科医生、病理科医生、专科护士）共同制定。',
+    'Die meisten Kinder erhalten eine Kombination von Behandlungen. Das spezifische Regime hängt von Krebstyp, genetischem Subtyp, Stadium und Alter/Gesundheit des Kindes ab. Alle Entscheidungen werden von einem multidisziplinären Team getroffen.'
+  ));
+  setText('child-treat-chemo-title', t('Chemotherapy','化疗','Chemotherapie'));
+  setText('child-treat-chemo-p', t(
+    'The backbone of most childhood cancer treatment. Drugs are given in cycles. Children generally tolerate chemotherapy better than adults due to greater bone marrow reserve and organ
     
   // ABOUT US tab
   setText('about-title',t('About PDEOutreach','关于 PDEOutreach','Über PDEOutreach'));
