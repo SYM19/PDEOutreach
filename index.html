@@ -1564,6 +1564,19 @@
           <div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div>
           <h2 style="margin:0;" id="wcc-detail-title">We are proud to support: World Child Cancer</h2>
         </div>
+        <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
+          <img src="https://worldchildcancer.org/wp-content/uploads/2021/03/WCC-logo-red.png" 
+               alt="World Child Cancer logo" 
+               style="height:48px;object-fit:contain;"
+               onerror="this.style.display='none'">
+          <div style="font-size:.8rem;color:var(--text3);font-style:italic;" id="wcc-tagline-txt">Improving survival for children with cancer in low-income countries</div>
+        </div>
+        <div style="border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;background:var(--bg2);border:1px solid var(--border);aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;">
+          <img src="https://worldchildcancer.org/wp-content/uploads/2023/06/WCC-2023-1.jpg"
+               alt="World Child Cancer — children receiving treatment"
+               style="width:100%;height:100%;object-fit:cover;"
+               onerror="this.parentElement.innerHTML='<div style=\'padding:2rem;text-align:center;color:var(--text3);font-size:.82rem;\'>Image from worldchildcancer.org</div>'">
+        </div>
         <div class="grid-2">
           <div>
             <p id="wcc-detail-p1">World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They do this through three programmes: strengthening hospital capacity and training oncologists locally; improving access to medicines and diagnostics; and funding sustainable twinning partnerships between hospitals in high- and low-income countries.</p>
@@ -1659,7 +1672,7 @@
       </div>
       <div class="support-card section">
         <h3 id="journal-support-title">This content is free. The fight isn't.</h3>
-        <p id="journal-support-p">We support World Child Cancer — a UK charity working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.</p>
+        <p id="journal-support-p">We support World Child Cancer — a UK charity working to close the survival gap for children with cancer in low- and middle-income countries. If reading this has been valuable, please consider donating.</p>
         <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="journal-support-btn">
           ❤ Donate to World Child Cancer
         </a>
@@ -1735,7 +1748,7 @@
       <div class="about-section">
       <h2 id="about-charity-title">Charity partner</h2>
       <div class="card" style="border-left:3px solid var(--coral);">
-        <p id="about-charity-p1">PDE Outreach supports <strong>World Child Cancer</strong> (registered charity no. 1107353) as our nominated charity partner. World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.</p>
+        <p id="about-charity-p1">PDE Outreach supports <strong>World Child Cancer</strong> (registered charity no. 1107353). World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.</p>
         <p id="about-charity-p2" style="margin-bottom:1rem;">All content on this site is free. If it's been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer's programmes.</p>
         <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="about-charity-btn">❤ Donate via JustGiving</a>
       </div>
@@ -2428,7 +2441,7 @@ function applyLang(lang){
   setText('drug-faq-title',t('Frequently asked questions','常见问题解答','Häufige Fragen'));
   setText('drug-takeaway-title',t('Key takeaway','核心结论','Haupterkenntnis'));
   setText('drug-takeaway-p',t('For pancreatic cancer, even the best-penetrating drugs cover less than 10% of the tumor volume at therapeutic concentrations. This is why pancreatic cancer has a 5-year survival rate of only ~12% — the biology makes it nearly impossible for current drugs to work. This is not a failure of chemistry. It\'s a failure of physics.','对于胰腺癌，即使渗透性最强的药物，在治疗浓度下覆盖的肿瘤体积也不足 10%。这就是胰腺癌 5 年生存率仅约 12% 的原因——物理屏障使现有药物几乎无法发挥作用。这不是化学上的失败，而是物理上的失败。','Selbst die am besten penetrierenden Medikamente bedecken weniger als 10% des Tumorvolumens. Das ist kein Versagen der Chemie — sondern der Physik.'));
-  setText('drug-story-ph-title',t('Share your story','分享你的故事','Teile deine Geschichte'));
+  setText('drug-story-ph-title',t('Real stories','真实故事','Echte Geschichten'));
   setText('drug-story-ph-p',t('We\'re currently collecting patient stories. If you\'d like to share your experience, email ','我们正在收集患者故事。如果您愿意分享您的经历，请发邮件至 ','Wir sammeln Patientengeschichten. Wenn Sie Ihre Erfahrung teilen möchten, E-Mail an '));
   const dpEl = document.getElementById('drug-story-ph-p');
   if (dpEl) dpEl.innerHTML = t(
@@ -2468,13 +2481,13 @@ function applyLang(lang){
   setText('screen-5-cancer',t('Pancreatic','胰腺癌','Bauchspeicheldrüsenkrebs'));setText('screen-5-method',t('No standard screening','暂无标准筛查方案','Kein Standardscreening'));setText('screen-5-why',t('Prevention is the only current strategy','预防是目前唯一的策略','Prävention ist die einzige Strategie'));
   setText('early-typeguide-title',t('Cancer-by-cancer screening guide','分癌种筛查指南','Krebsspezifischer Screening-Leitfaden'));setText('early-typeguide-sub',t('Select a cancer type to see detailed screening recommendations and survival data.','选择癌症类型，查看详细筛查建议和生存数据。','Wähle eine Krebsart für detaillierte Empfehlungen.'));
   setText('ct-breast-name',t('Breast cancer','乳腺癌','Brustkrebs'));setText('ct-breast-if',t('Mammogram from 40','40岁起乳腺X光','Mammographie ab 40'));setText('ct-colorectal-name',t('Colorectal cancer','结直肠癌','Darmkrebs'));setText('ct-colorectal-if',t('Colonoscopy from 45','45岁起结肠镜','Koloskopie ab 45'));setText('ct-lung-name',t('Lung cancer','肺癌','Lungenkrebs'));setText('ct-lung-if',t('Low-dose CT, high risk','低剂量CT，高风险人群','Niedrigdosis-CT, Hochrisiko'));setText('ct-cervical-name',t('Cervical cancer','宫颈癌','Gebärmutterhalskrebs'));setText('ct-cervical-if',t('Pap smear from 21','21岁起宫颈涂片','Pap-Abstrich ab 21'));setText('ct-prostate-name',t('Prostate cancer','前列腺癌','Prostatakrebs'));setText('ct-prostate-if',t('PSA test from 50','50岁起PSA检测','PSA-Test ab 50'));setText('ct-pancreatic-name',t('Pancreatic cancer','胰腺癌','Bauchspeicheldrüsenkrebs'));setText('ct-pancreatic-if',t('No standard screening','暂无标准筛查','Kein Standardscreening'));
-  const estEl=document.getElementById('early-story-ph-title');if(estEl)estEl.textContent=t('Share your story','分享你的故事','Teile deine Geschichte');
+  const estEl=document.getElementById('early-story-ph-title');if(estEl)estEl.textContent=t('Real stories','真实故事','Echte Geschichten');
   const espEl = document.getElementById('early-story-ph-p');
-if (espEl) espEl.innerHTML = t(
-  'Tiwo developed cancer at 8 months old. Two CT scans showed nothing. His parents kept pushing. By the time he was correctly diagnosed at nearly 4 years old, the tumour had grown for over three years. He survived — but only because his parents refused to give up. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Read Tiwo\'s story →</a>',
-  'Tiwo，8个月大时就已经患上了癌症。但两次CT扫描什么都没发现。父母坚持不懈，四处奔走。直到他快4岁，肿瘤已经悄悄生长了三年多，才终于确诊。他活了下来——但只是因为他的父母没有放弃。<br><br>早期发现，是能改变命运的。而在低收入国家，诊断延误往往意味着死亡，不是因为医学上无能为力，而是因为检测设备、医生培训和基础设施的缺失。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">阅读 Tiwo 的故事 →</a>',
-  'Tiwo entwickelte im Alter von 8 Monaten Krebs. Zwei CT-Scans zeigten nichts. Seine Eltern hörten nicht auf zu kämpfen. Mit fast 4 Jahren wurde er endlich korrekt diagnostiziert. Er überlebte — weil seine Eltern nicht aufgaben. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Tiwos Geschichte lesen →</a>'
-);
+  if (espEl) espEl.innerHTML = t(
+    'Tiwo developed cancer at 8 months old. Two CT scans showed nothing. His parents kept pushing. By the time he was correctly diagnosed at nearly 4 years old, the tumour had grown for over three years. He survived — but only because his parents refused to give up. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Read Tiwo\'s story →</a>',
+    'Tiwo，8个月大时就已经患上了癌症。但两次CT扫描什么都没发现。父母坚持不懈，四处奔走。直到他快4岁，肿瘤已经悄悄生长了三年多，才终于确诊。他活了下来——但只是因为他的父母没有放弃。<br><br>早期发现，是能改变命运的。而在低收入国家，诊断延误往往意味着死亡，不是因为医学上无能为力，而是因为检测设备、医生培训和基础设施的缺失。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">阅读 Tiwo 的故事 →</a>',
+    'Tiwo entwickelte im Alter von 8 Monaten Krebs. Zwei CT-Scans zeigten nichts. Seine Eltern hörten nicht auf zu kämpfen. Mit fast 4 Jahren wurde er endlich korrekt diagnostiziert. Er überlebte — weil seine Eltern nicht aufgaben. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Tiwos Geschichte lesen →</a>'
+  );
 // LIFESTYLE`
   setText('ls-title-h1',t('Lifestyle & Risk','生活方式与风险','Lebensstil & Risiko'));
   setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko, sondern auch die Behandlungswirksamkeit.'));
@@ -2587,7 +2600,7 @@ if (espEl) espEl.innerHTML = t(
   setText('ls-prev7-evidence', t('Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98 (shift work)', 'Kakizaki et al., Br J Cancer 2008 · IARC Monograph Vol 98（轮班工作）', 'Kakizaki et al., Br J Cancer 2008 · IARC Monograph Bd. 98'));
 
   const lstEl = document.getElementById('ls-story-ph-title');
-  if (lstEl) lstEl.textContent = t('Share your story', '分享你的故事', 'Teile deine Geschichte');
+  if (lstEl) lstEl.textContent = t('Real stories','真实故事','Echte Geschichten');
   const lspEl = document.getElementById('ls-story-ph-p');
   if (lspEl) lspEl.innerHTML = t('When 5-year-old Kobi fell off his bicycle in Ghana, his grandmother applied home remedies to his swollen knee. It didn\'t heal — it was osteosarcoma. With support from World Child Cancer, Kobi recovered and dreams of becoming a doctor. <a href="https://worldchildcancer.org/news_and_blog/kobis-story/" target="_blank">Read more stories →</a>','Kobi 5岁时在加纳从自行车上摔下来，奶奶用民间偏方处理他肿胀的膝盖。但膝盖没有愈合——那是骨肉瘤。在 World Child Cancer 的支持下，Kobi 康复了，梦想成为一名医生。<a href="https://worldchildcancer.org/news_and_blog/kobis-story/" target="_blank">阅读更多故事 →</a>','Als der 5-jährige Kobi in Ghana vom Fahrrad fiel, behandelte seine Großmutter sein geschwollenes Knie mit Hausmitteln. Es heilte nicht — es war Osteosarkom. <a href="https://worldchildcancer.org/news_and_blog/kobis-story/" target="_blank">Mehr Geschichten →</a>');
 
@@ -2607,9 +2620,14 @@ if (espEl) espEl.innerHTML = t(
   setText('prec-ask-2',t('Is there a targeted therapy available for my specific mutation?','针对我的特定突变，是否有靶向治疗方案？','Gibt es eine Zieltherapie für meine spezifische Mutation?'));
   setText('prec-ask-3',t('Would genetic testing change my treatment plan?','基因检测会改变我的治疗计划吗？','Würde ein Gentest meinen Behandlungsplan ändern?'));
   setText('prec-tx-title',t('Treatment approaches compared','治疗方法对比','Behandlungsansätze verglichen'));
-  const pstEl=document.getElementById('prec-story-ph-title');if(pstEl)pstEl.textContent=t('Share your story','分享你的故事','Teile deine Geschichte');
-  const pspEl=document.getElementById('prec-story-ph-p');if(pspEl)pspEl.innerHTML=t('When Cynthia was diagnosed with Wilms tumour at age 6 in Ghana, a doctor told her mother not to waste time or resources. Her father lost hope. But she received treatment at Korle-Bu Hospital — and survived. The right diagnosis, at the right place, changes everything. <a href="https://worldchildcancer.org/news_and_blog/kobis-story/" target="_blank">Read more stories →</a>','Cynthia 6岁时在加纳被诊断出肾母细胞瘤，一位医生告诉她的母亲不要浪费时间和资源。父亲也失去了希望。但她在 Korle-Bu 医院接受了治疗——并存活下来。正确的诊断，在正确的地方，改变一切。<a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank">阅读更多故事 →</a>','Als Cynthia mit 6 Jahren in Ghana mit einem Wilms-Tumor diagnostiziert wurde, sagte ein Arzt ihrer Mutter, sie solle keine Zeit verschwenden. Aber sie erhielt Behandlung und überlebte. <a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank">Mehr Geschichten →</a>');
-
+  const pstEl=document.getElementById('prec-story-ph-title');if(pstEl)pstEl.textContent=t('Real stories','真实故事','Echte Geschichten');
+  const lspEl = document.getElementById('ls-story-ph-p');
+  const pspEl = document.getElementById('prec-story-ph-p');
+  if (pspEl) pspEl.innerHTML = t(
+    'Cynthia was diagnosed with Wilms tumour at age 6 in Ghana. A doctor told her mother not to waste time or resources. Her father lost all hope. But she received treatment at Korle-Bu Hospital — and survived. The right diagnosis, in the right place, changes everything. <a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank" style="color:var(--blue);">Read Cynthia\'s story →</a>',
+    'Cynthia，6岁，加纳，被确诊为肾母细胞瘤。一位医生告诉她的母亲：不要再浪费时间和资源了。父亲几乎放弃了希望。但Cynthia最终在Korle-Bu医院获得了治疗，并存活下来。<br><br>精准医疗让我们知道该用什么药、怎么用；但在没有检测条件、没有药物、没有专科医生的地方，这些知识毫无意义。知识存在，但孩子们用不到——这是我们这个时代最不应该存在的悲剧。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank" style="color:var(--blue);">阅读 Cynthia 的故事 →</a>',
+    'Cynthia, 6, Ghana, mit Wilms-Tumor diagnostiziert. Ein Arzt sagte ihrer Mutter, sie solle keine Zeit mehr verschwenden. Aber sie überlebte. <a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank" style="color:var(--blue);">Cynthias Geschichte →</a>'
+  );
   // JOURNAL
   setText('journal-h1', t('Further Reading','延伸阅读','Weiterlesen'));
   setText('journal-sub', t(
@@ -3146,10 +3164,13 @@ if (espEl) espEl.innerHTML = t(
   setText('child-support-p', t('Paediatric cancers receive a fraction of the research funding of common adult cancers, despite being the leading cause of disease-related death in children. We are working to partner with childhood cancer charities to direct support where it matters most.','尽管儿童癌症是儿童疾病相关死亡的主要原因，但儿科癌症获得的研究资金仅为常见成人癌症的一小部分。我们正在与儿童癌症慈善机构合作，将支持引导到最需要的地方。','Pädiatrische Krebserkrankungen erhalten trotz ihrer Bedeutung als führende krankheitsbedingte Todesursache bei Kindern nur einen Bruchteil der Forschungsfinanzierung. Wir arbeiten an Partnerschaften mit Kinderkrebsstiftungen.'));
   setText('child-support-btn', t('❤ Contact us about supporting','❤ 联系我们了解支持方式','❤ Kontakt wegen Unterstützung'));
   const chstEl = document.getElementById('child-story-ph-title');
-  if (chstEl) chstEl.textContent = t('Share your story','分享你的故事','Teile deine Geschichte');
+  if (chstEl) chstEl.textContent = t('Real stories','真实故事','Echte Geschichten');
   const chspEl = document.getElementById('child-story-ph-p');
-  if (chspEl) chspEl.innerHTML = t('Hassan was 14 when diagnosed with ALL in Malawi. Tiwo went undiagnosed for nearly 4 years in Ghana. Kobi beat bone cancer at age 5. These are real children — their survival depended on access to care and the people who funded it. <a href="https://worldchildcancer.org/news_and_blog/" target="_blank">Read all stories on World Child Cancer →</a>','Hassan 14岁时在马拉维确诊ALL。Tiwo 在加纳近4年未被确诊。Kobi 5岁时战胜了骨癌。这些都是真实的孩子——他们的生存取决于医疗资源的获取和资助者的支持。<a href="https://worldchildcancer.org/news_and_blog/" target="_blank">在 World Child Cancer 阅读所有故事 →</a>','Hassan wurde mit 14 in Malawi mit ALL diagnostiziert. Tiwo blieb fast 4 Jahre lang undiagnostiziert. Kobi besiegte Knochenkrebs mit 5 Jahren. <a href="https://worldchildcancer.org/news_and_blog/" target="_blank">Alle Geschichten bei World Child Cancer →</a>');
-    
+  if (chspEl) chspEl.innerHTML = t(
+    'Hassan. Tiwo. Kobi. Cynthia. Four children, three countries, four families who almost lost everything. They survived because someone — somewhere — decided that where you are born shouldn\'t determine whether you live. <a href="https://worldchildcancer.org/news_and_blog/" target="_blank" style="color:var(--blue);">Read all stories →</a> <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ Donate to World Child Cancer →</a>',
+    'Hassan。Tiwo。Kobi。Cynthia。四个孩子，三个国家，四个几乎失去一切的家庭。他们活下来了——因为有人决定：一个孩子出生在哪里，不应该决定他能不能活下去。<br><br>每一年，全球有数十万像他们一样的孩子，只因为生在了医疗资源匮乏的地方，而没有得到本可以救他们的治疗。这不是命运，这是不公平。<br><br>我们做不到把所有知识变成行动。但你可以。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:700;font-size:.95rem;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/" target="_blank" style="color:var(--blue);">阅读更多真实故事 →</a>',
+    'Hassan. Tiwo. Kobi. Cynthia. Vier Kinder, drei Länder, vier Familien, die fast alles verloren hätten. Sie überlebten — weil jemand entschied, dass der Geburtsort nicht darüber entscheiden sollte, ob man lebt. <a href="https://worldchildcancer.org/news_and_blog/" target="_blank" style="color:var(--blue);">Alle Geschichten →</a> <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ Spenden →</a>'
+  );
   // ABOUT US tab
   setText('about-title',t('About PDEOutreach','关于 PDEOutreach','Über PDEOutreach'));
   setHtml('about-tagline',t('PDEOutreach is a free cancer science education platform built by students, for everyone. We turn the research behind PDEOncology — which models how drugs move through tumours using PDE equations — into interactive experiences that anyone can understand. No medical degree required.','PDEOutreach 是一个由学生打造、面向所有人的免费癌症科学教育平台。我们将 PDEOncology 背后的研究——用偏微分方程模拟药物在肿瘤中的运动——转化为任何人都能理解的交互体验。无需医学学位。','PDEOutreach ist eine kostenlose Krebswissenschafts-Bildungsplattform, gebaut von Studierenden für alle.'));
@@ -3179,18 +3200,23 @@ if (espEl) espEl.innerHTML = t(
   setText('wcc-detail-title', t('We are proud to support: World Child Cancer', '我们支持的慈善机构：World Child Cancer', 'Wir unterstützen: World Child Cancer'));
   setText('wcc-detail-p1', t(
     'World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They work through hospital twinning partnerships, improving medicine access, and training oncologists and community health workers.',
-    'World Child Cancer 是一个在英国注册的慈善机构（注册号：1107353），致力于改善中低收入国家儿童癌症患者的治疗结果——正是上方数据中显示生存率低于30%的那些国家。他们通过医院配对项目、改善药物可及性以及培训肿瘤科医生和社区卫生工作者开展工作。',
+    '世界儿童癌症基金会（World Child Cancer）是一个在英国注册的慈善机构（注册号：1107353），致力于改善中低收入国家儿童癌症患者的治疗结果——正是上方数据中显示生存率低于30%的那些国家。他们通过医院配对项目、改善药物可及性以及培训肿瘤科医生和社区卫生工作者开展工作。',
     'World Child Cancer ist eine in Großbritannien registrierte Wohltätigkeitsorganisation (Nr. 1107353), die sich für bessere Ergebnisse für krebskranke Kinder in einkommensschwachen Ländern einsetzt — genau jene Länder, in denen die Überlebensraten unter 30% liegen.'
   ));
   setText('wcc-detail-p2', t(
     'The science throughout this site explains why the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.',
-    '本网站的科学内容解释了生存率差距为何存在——药物递送失败、诊断延迟和治疗障碍。World Child Cancer 致力于解决科学本身无法解决的问题：确保正确的治疗能够到达每一个需要的孩子，无论他们出生在哪里。',
+    '本网站的科学内容解释了生存率差距为何存在——药物递送失败、诊断延迟和治疗障碍。世界儿童癌症基金会致力于解决科学本身无法解决的问题：确保正确的治疗能够到达每一个需要的孩子，无论他们出生在哪里。',
     'Die Wissenschaft auf dieser Website erklärt, warum die Überlebenslücke besteht. World Child Cancer arbeitet an dem Teil, den Wissenschaft allein nicht lösen kann: sicherstellen, dass die richtige Behandlung das richtige Kind erreicht.'
   ));
   setText('wcc-detail-p3', t(
-    'PDE Outreach supports World Child Cancer and directs all donations raised through this site to their programmes.',
-    'PDE Outreach 支持 World Child Cancer，并将通过本站筹集的所有捐款转至其项目。',
-    'PDE Outreach unterstützt World Child Cancer und leitet alle über diese Website gesammelten Spenden an ihre Programme weiter.'
+    'PDEOutreach supports World Child Cancer and directs all donations raised through this site to their programmes.',
+    'PDEOutreach 支持世界儿童癌症基金会，并将通过本站筹集的所有捐款转至其项目。',
+    'PDEOutreach unterstützt World Child Cancer und leitet alle über diese Website gesammelten Spenden an ihre Programme weiter.'
+  ));
+  setText('wcc-tagline-txt', t(
+    'Improving survival for children with cancer in low-income countries',
+    '致力于改善低收入国家儿童癌症生存率',
+    'Verbesserung des Überlebens krebskranker Kinder in einkommensschwachen Ländern'
   ));
   setText('wcc-detail-btn', t('❤ Donate via our JustGiving page', '❤ 通过我们的 JustGiving 页面捐款', '❤ Spenden über unsere JustGiving-Seite'));
   setText('wcc-impact-label', t('What your donation funds', '您的捐款用于何处', 'Wofür Ihre Spende verwendet wird'));
@@ -3208,9 +3234,9 @@ if (espEl) espEl.innerHTML = t(
   // About charity
   setText('about-charity-title', t('Charity partner', '慈善合作伙伴', 'Wohltätigkeitspartner'));
   setText('about-charity-p1', t(
-    'PDE Outreach supports World Child Cancer (registered charity no. 1107353). World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
-    'PDE Outreach 支持 World Child Cancer（注册慈善机构，编号：1107353）。世界儿童癌症组织在中低收入国家开展工作，致力于改善儿童获得癌症诊断、治疗和护理的机会，精准解决我们“儿童癌症”栏目所记录的生存差距问题。',
-    'PDE Outreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353).World Child Cancer arbeitet in Ländern mit niedrigem und mittlerem Einkommen daran, den Zugang von Kindern zu Krebsdiagnose, -behandlung und -versorgung zu verbessern – und bekämpft damit genau die Überlebenslücke, die in unserer Rubrik „Kinderkrebs“ dokumentiert ist.'
+    'PDEOutreach supports World Child Cancer (registered charity no. 1107353). World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
+    'PDEOutreach 支持世界儿童癌症基金会（注册慈善机构，编号：1107353）。世界儿童癌症基金会在中低收入国家开展工作，致力于改善儿童获得癌症诊断、治疗和护理的机会，精准解决我们“儿童癌症”栏目所记录的生存差距问题。',
+    'PDEOutreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353).World Child Cancer arbeitet in Ländern mit niedrigem und mittlerem Einkommen daran, den Zugang von Kindern zu Krebsdiagnose, -behandlung und -versorgung zu verbessern – und bekämpft damit genau die Überlebenslücke, die in unserer Rubrik „Kinderkrebs“ dokumentiert ist.'
   ));
   setText('about-charity-p2', t(
     'All content on this site is free. If it has been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer\'s programmes.',
@@ -3221,9 +3247,9 @@ if (espEl) espEl.innerHTML = t(
   // Journal support update
   setText('journal-support-title', t('This content is free. The fight isn\'t.', '内容免费。抗癌之战不是。', 'Die Inhalte sind kostenlos. Der Kampf nicht.'));
   setText('journal-support-p', t(
-    'PDE Outreach supports World Child Cancer — working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.',
-    'PDE Outreach 支持世界儿童癌症组织——致力于缩小低收入国家儿童癌症的生存率差距。如果阅读本文对您有价值，请考虑捐款。',
-    'PDE Outreach unterstützt World Child Cancer — um die Überlebenslücke für krebskranke Kinder in einkommensschwachen Ländern zu schließen.'
+    'PDEOutreach supports World Child Cancer — working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.',
+    'PDEOutreach 支持世界儿童癌症基金会——致力于缩小低收入国家儿童癌症的生存率差距。如果阅读本文对您有价值，请考虑捐款。',
+    'PDEOutreach unterstützt World Child Cancer — um die Überlebenslücke für krebskranke Kinder in einkommensschwachen Ländern zu schließen.'
   ));
   setText('journal-support-btn', t('❤ Donate to World Child Cancer', '❤ 为 World Child Cancer 捐款', '❤ World Child Cancer unterstützen'));
   setText('child-support-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
