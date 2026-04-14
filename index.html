@@ -469,6 +469,14 @@
     .loader-bar{height:100%;width:0%;background:linear-gradient(90deg,#FF6B6B,#4ECDC4);border-radius:2px;animation:bar-fill 1.5s ease forwards;}
     @keyframes bar-fill{0%{width:0%;}100%{width:100%;}}
     .loader-text{font-family:'Inter',sans-serif;font-size:0.75rem;color:#9090A0;letter-spacing:0.05em;}
+    /* CSS fallback — loader auto-dismisses after 5s regardless of JS */
+    @keyframes loader-force-hide {
+      0%, 75% { opacity: 1; visibility: visible; }
+      100%     { opacity: 0; visibility: hidden; pointer-events: none; }
+    }
+    #loader:not(.done) {
+      animation: loader-force-hide 5s ease forwards;
+    }
   </style>
 </head>
 <body>
@@ -1564,47 +1572,258 @@
           <div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div>
           <h2 style="margin:0;" id="wcc-detail-title">We are proud to support: World Child Cancer</h2>
         </div>
+      
+        <!-- Logo + tagline -->
         <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-          <img src="https://worldchildcancer.org/wp-content/uploads/2021/03/WCC-logo-red.png" 
-               alt="World Child Cancer logo" 
-               style="height:48px;object-fit:contain;"
+          <img src="https://worldchildcancer.org/wp-content/uploads/2021/03/WCC-logo-red.png"
+               alt="World Child Cancer"
+               style="height:44px;object-fit:contain;"
                onerror="this.style.display='none'">
-          <div style="font-size:.8rem;color:var(--text3);font-style:italic;" id="wcc-tagline-txt">Improving survival for children with cancer in low-income countries</div>
+          <div style="font-size:.82rem;color:var(--text3);font-style:italic;line-height:1.5;" id="wcc-tagline-txt">
+            "No child should suffer." — Working since 2004 to ensure every child with cancer has access to diagnosis, treatment, and care.
+          </div>
         </div>
-        <div style="border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;background:var(--bg2);border:1px solid var(--border);aspect-ratio:16/7;display:flex;align-items:center;justify-content:center;">
-          <img src="https://worldchildcancer.org/wp-content/uploads/2023/06/WCC-2023-1.jpg"
-               alt="World Child Cancer — children receiving treatment"
+      
+        <!-- Photo banner -->
+        <div style="border-radius:var(--radius);overflow:hidden;margin-bottom:1.25rem;background:var(--bg2);border:1px solid var(--border);aspect-ratio:16/6;position:relative;">
+          <img src="https://worldchildcancer.org/wp-content/uploads/2023/06/WCC-Homepage-Hero-2023.jpg"
+               alt="World Child Cancer programmes"
                style="width:100%;height:100%;object-fit:cover;"
-               onerror="this.parentElement.innerHTML='<div style=\'padding:2rem;text-align:center;color:var(--text3);font-size:.82rem;\'>Image from worldchildcancer.org</div>'">
+               onerror="this.style.display='none'">
+          <div style="position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,0.45),transparent);display:flex;align-items:flex-end;padding:1rem 1.5rem;">
+            <div style="font-family:var(--mono);font-size:.8rem;color:rgba(255,255,255,.85);" id="wcc-photo-caption">
+              Working across 13 countries · 20+ hospital partnerships · 400,000+ children reached
+            </div>
+          </div>
         </div>
+      
+        <!-- Impact stats -->
+        <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:.75rem;margin-bottom:1.5rem;" id="wcc-stats-grid">
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+            <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--coral);">13</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="wcc-stat-1-l">countries</div>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+            <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--teal);">20+</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="wcc-stat-2-l">hospital partnerships</div>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+            <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--amber);">2004</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="wcc-stat-3-l">founded</div>
+          </div>
+          <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;text-align:center;">
+            <div style="font-family:var(--mono);font-size:1.4rem;font-weight:700;color:var(--purple);">1107353</div>
+            <div style="font-size:.72rem;color:var(--text3);margin-top:.25rem;" id="wcc-stat-4-l">UK charity no.</div>
+          </div>
+        </div>
+      
+        <!-- WHERE THEY WORK - SVG MAP -->
+        <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.25rem;">
+          <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;" id="wcc-map-label">Where WCC works</div>
+          <div style="position:relative;background:linear-gradient(135deg,#EEF6FF,#EAF4FB);border-radius:var(--radius);overflow:hidden;">
+            <svg viewBox="0 0 800 390" style="width:100%;height:auto;display:block;" xmlns="http://www.w3.org/2000/svg">
+              <!-- Graticule -->
+              <line x1="0" y1="195" x2="800" y2="195" stroke="#C8DEF0" stroke-width="0.5" stroke-dasharray="4,4"/>
+              <line x1="400" y1="0" x2="400" y2="390" stroke="#C8DEF0" stroke-width="0.5" stroke-dasharray="4,4"/>
+      
+              <!-- NORTH AMERICA -->
+              <path d="M62,52 L175,45 L225,62 L248,84 L258,118 L248,158 L232,198 L214,218 L196,228 L192,248 L172,253 L161,240 L150,218 L144,192 L150,162 L140,132 L120,102 L90,76 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- Greenland -->
+              <path d="M252,22 L305,15 L325,32 L314,52 L282,57 L256,46 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- Central America -->
+              <path d="M196,228 L218,233 L222,250 L208,255 L196,247 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- South America -->
+              <path d="M172,253 L222,247 L242,268 L250,305 L244,348 L227,378 L202,388 L180,378 L163,352 L156,312 L159,277 L166,262 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- EUROPE -->
+              <path d="M348,58 L384,50 L433,52 L472,60 L498,75 L508,91 L500,108 L480,118 L451,124 L422,120 L396,112 L370,97 L353,80 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- Scandinavia -->
+              <path d="M408,32 L432,24 L452,30 L457,47 L441,54 L416,52 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- UK -->
+              <path d="M352,68 L362,62 L370,68 L365,80 L354,78 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- AFRICA -->
+              <path d="M348,118 L388,110 L435,114 L470,130 L495,158 L500,198 L497,240 L482,280 L457,308 L427,321 L397,315 L370,288 L352,252 L344,212 L346,172 L350,142 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- Madagascar -->
+              <path d="M494,260 L502,254 L510,270 L505,290 L496,284 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- RUSSIA / NORTH ASIA -->
+              <path d="M493,40 L604,30 L724,37 L778,57 L793,82 L773,102 L724,110 L662,114 L602,112 L552,117 L516,110 L502,94 L494,74 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- MIDDLE EAST / CAUCASUS -->
+              <path d="M480,112 L522,108 L547,117 L550,140 L532,152 L510,157 L491,150 L478,134 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- SOUTH / SE ASIA + INDIAN SUBCONTINENT -->
+              <path d="M548,117 L614,117 L662,127 L702,140 L720,160 L712,180 L680,190 L650,187 L620,197 L600,207 L583,197 L564,180 L550,160 L542,140 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <path d="M564,148 L597,144 L608,158 L602,178 L582,190 L564,180 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- EAST ASIA -->
+              <path d="M652,82 L733,72 L772,87 L777,112 L757,127 L720,130 L680,120 L657,107 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+              <!-- Japan -->
+              <path d="M748,105 L758,100 L765,110 L758,120 L748,115 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- AUSTRALIA -->
+              <path d="M660,270 L725,257 L763,272 L770,308 L750,332 L708,337 L670,320 L654,292 Z"
+                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
+      
+              <!-- ═══ WCC COUNTRY HIGHLIGHTS ═══ -->
+              <!-- Pulse ring + dot for each country -->
+      
+              <!-- AFRICA: Ghana lon=-1 lat=8 → ~398,200 -->
+              <circle cx="382" cy="198" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="382" cy="198" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Sierra Leone lon=-12 lat=8 → ~358,198 -->
+              <circle cx="360" cy="195" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="360" cy="195" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Malawi lon=34 lat=-13 → ~475,257 -->
+              <circle cx="473" cy="256" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="473" cy="256" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Tanzania lon=35 lat=-6 → ~477,240 -->
+              <circle cx="475" cy="240" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="475" cy="240" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+      
+              <!-- ASIA: Nepal lon=84 lat=28 → ~587,151 -->
+              <circle cx="578" cy="150" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="578" cy="150" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Myanmar lon=96 lat=17 → ~613,170 -->
+              <circle cx="600" cy="170" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="600" cy="170" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Vietnam lon=108 lat=16 → ~640,173 -->
+              <circle cx="625" cy="173" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="625" cy="173" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+              <!-- Indonesia lon=118 lat=-5 → ~662,205 -->
+              <circle cx="648" cy="205" r="11" fill="#FF8C00" opacity="0.15"/>
+              <circle cx="648" cy="205" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
+      
+              <!-- AMERICAS: Mexico lon=-102 lat=24 → ~173,160 -->
+              <circle cx="178" cy="162" r="11" fill="#E84444" opacity="0.15"/>
+              <circle cx="178" cy="162" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
+              <!-- El Salvador/Guatemala/Honduras cluster lon=-89/90/87 lat=14/15 -->
+              <circle cx="206" cy="192" r="11" fill="#E84444" opacity="0.15"/>
+              <circle cx="206" cy="192" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
+      
+              <!-- CAUCASUS: Armenia lon=45 lat=40 → ~500,113 -->
+              <circle cx="498" cy="113" r="11" fill="#E84444" opacity="0.15"/>
+              <circle cx="498" cy="113" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
+      
+              <!-- ═══ LABELS ═══ -->
+              <!-- Africa labels -->
+              <text x="391" y="195" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Ghana</text>
+              <text x="332" y="191" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Sierra Leone</text>
+              <text x="481" y="253" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Malawi</text>
+              <text x="481" y="237" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Tanzania</text>
+      
+              <!-- Asia labels -->
+              <text x="558" y="145" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Nepal</text>
+              <text x="604" y="165" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Myanmar</text>
+              <text x="629" y="168" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Vietnam</text>
+              <text x="652" y="200" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Indonesia</text>
+      
+              <!-- Americas labels -->
+              <text x="155" y="157" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Mexico</text>
+              <text x="213" y="188" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">El Sal /</text>
+              <text x="213" y="198" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Guat / Hon.</text>
+      
+              <!-- Caucasus label -->
+              <text x="503" y="109" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Armenia</text>
+            </svg>
+          </div>
+      
+          <!-- Map legend -->
+          <div style="display:flex;gap:1.5rem;margin-top:.75rem;font-size:.75rem;color:var(--text2);flex-wrap:wrap;">
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#FF8C00;flex-shrink:0;"></span>
+              <span id="wcc-legend-direct">Direct WCC programme</span>
+            </span>
+            <span style="display:flex;align-items:center;gap:6px;">
+              <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#E84444;flex-shrink:0;"></span>
+              <span id="wcc-legend-act">Via ACT for Children partnership (US-funded)</span>
+            </span>
+          </div>
+        </div>
+      
+        <!-- MAIN CONTENT GRID -->
         <div class="grid-2">
           <div>
-            <p id="wcc-detail-p1">World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They do this through three programmes: strengthening hospital capacity and training oncologists locally; improving access to medicines and diagnostics; and funding sustainable twinning partnerships between hospitals in high- and low-income countries.</p>
+            <p id="wcc-detail-p1">World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They work through three programmes: strengthening hospital capacity, improving access to medicines and diagnostics, and funding sustainable twinning partnerships between hospitals in high- and low-income countries.</p>
             <p id="wcc-detail-p2">The science throughout this site explains <em>why</em> the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.</p>
-            <p id="wcc-detail-p3">PDE Outreach is proud to support World Child Cancer. Our science education is free — but if what you've read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer's programmes.</p>
-            <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="wcc-detail-btn">❤ Donate via our JustGiving page</a>
-            <p style="font-size:.78rem;color:var(--text3);margin-top:.75rem;">Learn more at <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a> · <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--blue);">Our JustGiving page</a></p>
+            <p id="wcc-detail-p3">PDE Outreach supports World Child Cancer and directs all donations raised through this site to their programmes. Our science education is free — but if what you've read here has moved you, please consider donating.</p>
+            <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="wcc-detail-btn" style="display:inline-flex;margin-top:.25rem;">❤ Donate via our JustGiving page</a>
+            <p style="font-size:.78rem;color:var(--text3);margin-top:.75rem;">
+              <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a> ·
+              <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--blue);">Our JustGiving page</a>
+            </p>
           </div>
+      
           <div>
+            <!-- What your donation funds -->
             <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem;">
               <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem;" id="wcc-impact-label">What your donation funds</div>
               <div style="display:flex;flex-direction:column;gap:.75rem;">
                 <div style="display:flex;gap:.875rem;align-items:flex-start;">
                   <div style="font-size:1.1rem;flex-shrink:0;">🏥</div>
-                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-1-title">Hospital twinning</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-1-desc">Pairs specialist hospitals in the UK with centres in Ghana, Malawi, Ethiopia, and elsewhere — transferring expertise, protocols, and equipment.</div></div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-1-title">Hospital twinning</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-1-desc">Partners UK specialist hospitals with centres in Ghana, Malawi, Ethiopia, and elsewhere — transferring expertise, protocols, and equipment that would otherwise take decades to develop locally.</div></div>
                 </div>
                 <div style="display:flex;gap:.875rem;align-items:flex-start;">
                   <div style="font-size:1.1rem;flex-shrink:0;">💊</div>
-                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-2-title">Medicine access</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-2-desc">Ensures essential chemotherapy drugs are available in countries where supply chains are unreliable. Drug availability is one of the three main drivers of the survival gap.</div></div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-2-title">Medicine access</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-2-desc">Ensures essential chemotherapy drugs are reliably available in countries where supply chains fail. A child who has a treatment plan but no drug is no better off than a child with no plan at all.</div></div>
                 </div>
                 <div style="display:flex;gap:.875rem;align-items:flex-start;">
                   <div style="font-size:1.1rem;flex-shrink:0;">👩‍⚕️</div>
-                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-3-title">Training & awareness</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-3-desc">Trains community health workers to recognise warning signs earlier, and oncologists to apply paediatric-specific protocols — reducing diagnostic delay.</div></div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-3-title">Training & awareness</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-3-desc">Trains community health workers to recognise warning signs earlier — reducing the diagnostic delay that costs lives. And trains oncologists in paediatric-specific protocols that dramatically improve survival.</div></div>
                 </div>
               </div>
             </div>
+      
+            <!-- Registration -->
             <div style="background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.875rem;font-size:.8rem;color:var(--text2);line-height:1.65;" id="wcc-reg-note">
               World Child Cancer · Registered charity no. 1107353 (England & Wales) · <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a>
+            </div>
+          </div>
+        </div>
+      
+        <!-- GLOBAL COLLABORATORS -->
+        <div style="margin-top:1.5rem;padding-top:1.25rem;border-top:1px solid var(--border);">
+          <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;" id="wcc-collab-label">Key global collaborators</div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;">
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-1-name">SIOP</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-1-desc">International Society of Paediatric Oncology — the global body setting childhood cancer treatment standards. WCC implements SIOP protocols in partner hospitals.</div>
+            </div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-2-name">WHO / COGS</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-2-desc">The WHO Childhood Cancer Initiative (Global Initiative for Childhood Cancer) aims to achieve 60% survival globally by 2030. WCC is a key implementation partner.</div>
+            </div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-3-name">ACT for Children</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-3-desc">A US-based fund that partners with WCC to extend programmes to Armenia, El Salvador, Guatemala, Honduras, Mexico, and Tanzania through USAID-supported initiatives.</div>
+            </div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-4-name">St. Jude Global</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-4-desc">St. Jude Children's Research Hospital's global arm shares treatment protocols and expertise globally — complementary work to WCC's direct hospital partnerships.</div>
+            </div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-5-name">Cancer Research UK</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-5-desc">Provides research funding and scientific expertise that informs WCC's approach to childhood cancer treatment in low-resource settings.</div>
+            </div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:.875rem;">
+              <div style="font-size:.8rem;font-weight:700;color:var(--text);margin-bottom:.3rem;" id="wcc-collab-6-name">Paediatric oncology units</div>
+              <div style="font-size:.75rem;color:var(--text3);line-height:1.55;" id="wcc-collab-6-desc">UK NHS trusts including Great Ormond Street, Birmingham Children's Hospital, and others provide clinical twinning partnerships with hospitals in WCC programme countries.</div>
             </div>
           </div>
         </div>
@@ -3197,53 +3416,61 @@ function applyLang(lang){
 
 
   // WCC sections
-  setText('wcc-detail-title', t('We are proud to support: World Child Cancer', '我们支持的慈善机构：World Child Cancer', 'Wir unterstützen: World Child Cancer'));
-  setText('wcc-detail-p1', t(
-    'World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They work through hospital twinning partnerships, improving medicine access, and training oncologists and community health workers.',
-    '世界儿童癌症基金会（World Child Cancer）是一个在英国注册的慈善机构（注册号：1107353），致力于改善中低收入国家儿童癌症患者的治疗结果——正是上方数据中显示生存率低于30%的那些国家。他们通过医院配对项目、改善药物可及性以及培训肿瘤科医生和社区卫生工作者开展工作。',
-    'World Child Cancer ist eine in Großbritannien registrierte Wohltätigkeitsorganisation (Nr. 1107353), die sich für bessere Ergebnisse für krebskranke Kinder in einkommensschwachen Ländern einsetzt — genau jene Länder, in denen die Überlebensraten unter 30% liegen.'
-  ));
-  setText('wcc-detail-p2', t(
-    'The science throughout this site explains why the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.',
-    '本网站的科学内容解释了生存率差距为何存在——药物递送失败、诊断延迟和治疗障碍。世界儿童癌症基金会致力于解决科学本身无法解决的问题：确保正确的治疗能够到达每一个需要的孩子，无论他们出生在哪里。',
-    'Die Wissenschaft auf dieser Website erklärt, warum die Überlebenslücke besteht. World Child Cancer arbeitet an dem Teil, den Wissenschaft allein nicht lösen kann: sicherstellen, dass die richtige Behandlung das richtige Kind erreicht.'
-  ));
-  setText('wcc-detail-p3', t(
-    'PDEOutreach supports World Child Cancer and directs all donations raised through this site to their programmes.',
-    'PDEOutreach 支持世界儿童癌症基金会，并将通过本站筹集的所有捐款转至其项目。',
-    'PDEOutreach unterstützt World Child Cancer und leitet alle über diese Website gesammelten Spenden an ihre Programme weiter.'
-  ));
+  // WCC expanded content
   setText('wcc-tagline-txt', t(
-    'Improving survival for children with cancer in low-income countries',
-    '致力于改善低收入国家儿童癌症生存率',
-    'Verbesserung des Überlebens krebskranker Kinder in einkommensschwachen Ländern'
+    '"No child should suffer." — Working since 2004 to ensure every child with cancer has access to diagnosis, treatment, and care.',
+    '"没有孩子应该承受这些。" ——自2004年起，致力于确保每一位患癌儿童都能获得诊断、治疗与关怀。',
+    '"Kein Kind sollte leiden." — Seit 2004 im Einsatz, damit jedes krebskranke Kind Zugang zu Diagnose, Behandlung und Fürsorge hat.'
   ));
-  setText('wcc-detail-btn', t('❤ Donate via our JustGiving page', '❤ 通过我们的 JustGiving 页面捐款', '❤ Spenden über unsere JustGiving-Seite'));
-  setText('wcc-impact-label', t('What your donation funds', '您的捐款用于何处', 'Wofür Ihre Spende verwendet wird'));
-  setText('wcc-fund-1-title', t('Hospital twinning', '医院配对项目', 'Krankenhauspartnerschaften'));
-  setText('wcc-fund-1-desc', t('Pairs specialist hospitals in the UK with centres in Ghana, Malawi, Ethiopia, and elsewhere — transferring expertise, protocols, and equipment.', '将英国的专科医院与加纳、马拉维、埃塞俄比亚等国的医疗中心配对——传授专业知识、治疗方案和设备。', 'Koppelt britische Fachkliniken mit Zentren in Ghana, Malawi, Äthiopien — überträgt Fachwissen, Protokolle und Ausrüstung.'));
-  setText('wcc-fund-2-title', t('Medicine access', '药物可及性', 'Medikamentenzugang'));
-  setText('wcc-fund-2-desc', t('Ensures essential chemotherapy drugs are available in countries where supply chains are unreliable — one of the three main drivers of the survival gap.', '确保关键化疗药物在供应链不稳定的国家可以获得——这是造成生存率差距的三大主要原因之一。', 'Stellt sicher, dass wesentliche Chemotherapeutika in Ländern mit unzuverlässigen Lieferketten verfügbar sind.'));
-  setText('wcc-fund-3-title', t('Training & awareness', '培训与意识提升', 'Ausbildung & Bewusstsein'));
-  setText('wcc-fund-3-desc', t('Trains community health workers to recognise warning signs earlier, and oncologists to apply paediatric-specific protocols — reducing diagnostic delay.', '培训社区卫生工作者更早识别预警信号，培训肿瘤科医生应用儿科专用方案——减少诊断延迟。', 'Schult Gemeindegesundheitshelfer zur Früherkennung und Onkologen für pädiatrische Protokolle.'));
-  setText('wcc-reg-note', t(
-    'World Child Cancer · Registered charity no. 1107353 (England & Wales)',
-    'World Child Cancer · 英格兰及威尔士注册慈善机构，注册号：1107353',
-    'World Child Cancer · Eingetragene Wohltätigkeitsorganisation Nr. 1107353 (England & Wales)'
+  setText('wcc-photo-caption', t(
+    'Working across 13 countries · 20+ hospital partnerships · 400,000+ children reached',
+    '覆盖13个国家 · 20余所医院合作伙伴 · 惠及40万余名儿童',
+    'In 13 Ländern tätig · 20+ Krankenhauspartnerschaften · 400.000+ Kinder erreicht'
   ));
-  // About charity
-  setText('about-charity-title', t('Charity partner', '慈善合作伙伴', 'Wohltätigkeitspartner'));
-  setText('about-charity-p1', t(
-    'PDEOutreach supports World Child Cancer (registered charity no. 1107353). World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
-    'PDEOutreach 支持世界儿童癌症基金会（注册慈善机构，编号：1107353）。世界儿童癌症基金会在中低收入国家开展工作，致力于改善儿童获得癌症诊断、治疗和护理的机会，精准解决我们“儿童癌症”栏目所记录的生存差距问题。',
-    'PDEOutreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353).World Child Cancer arbeitet in Ländern mit niedrigem und mittlerem Einkommen daran, den Zugang von Kindern zu Krebsdiagnose, -behandlung und -versorgung zu verbessern – und bekämpft damit genau die Überlebenslücke, die in unserer Rubrik „Kinderkrebs“ dokumentiert ist.'
+  setText('wcc-stat-1-l', t('countries','国家','Länder'));
+  setText('wcc-stat-2-l', t('hospital partnerships','医院合作伙伴','Krankenhauspartnerschaften'));
+  setText('wcc-stat-3-l', t('founded','成立年份','gegründet'));
+  setText('wcc-stat-4-l', t('UK charity no.','英国慈善注册号','UK-Wohltätigkeitsnr.'));
+  setText('wcc-map-label', t('Where WCC works','WCC的工作覆盖地区','Wo WCC tätig ist'));
+  setText('wcc-legend-direct', t('Direct WCC programme','WCC直接项目','Direktes WCC-Programm'));
+  setText('wcc-legend-act', t('Via ACT for Children partnership (US-funded)','通过ACT for Children合作伙伴关系（美国资助）','Über ACT for Children (US-finanziert)'));
+  setText('wcc-collab-label', t('Key global collaborators','主要全球合作伙伴','Wichtige globale Kooperationspartner'));
+  setText('wcc-collab-1-name','SIOP');
+  setText('wcc-collab-1-desc', t(
+    'International Society of Paediatric Oncology — the global body setting childhood cancer treatment standards. WCC implements SIOP protocols in partner hospitals.',
+    '国际儿科肿瘤学会——制定全球儿童癌症治疗标准的权威机构。WCC在合作医院中推行SIOP治疗方案。',
+    'Internationale Gesellschaft für Pädiatrische Onkologie — WCC implementiert SIOP-Protokolle in Partnerkrankenhäusern.'
   ));
-  setText('about-charity-p2', t(
-    'All content on this site is free. If it has been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer\'s programmes.',
-    '本网站所有内容均免费。如果对您有帮助，请考虑通过我们的活动页面捐款。每一笔捐款将直接用于世界儿童癌症组织的项目。',
-    'Alle Inhalte sind kostenlos. Wenn sie hilfreich waren, erwägen Sie eine Spende über unsere Kampagnenseite. Jede Spende geht direkt an die Programme von World Child Cancer.'
+  setText('wcc-collab-2-name', t('WHO / COGS','世卫组织 / COGS','WHO / COGS'));
+  setText('wcc-collab-2-desc', t(
+    'The WHO Childhood Cancer Initiative aims to achieve 60% survival globally by 2030. WCC is a key implementation partner.',
+    '世卫组织儿童癌症倡议旨在到2030年将全球儿童癌症生存率提升至60%。WCC是其重要的执行合作伙伴。',
+    'Die WHO-Kinderkrebsinitiative strebt bis 2030 eine globale Überlebensrate von 60% an. WCC ist wichtiger Umsetzungspartner.'
   ));
-  setText('about-charity-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
+  setText('wcc-collab-3-name', t('ACT for Children','ACT for Children'));
+  setText('wcc-collab-3-desc', t(
+    'A US-based fund that extends WCC programmes to Armenia, El Salvador, Guatemala, Honduras, Mexico, and Tanzania through USAID-supported initiatives.',
+    '一个美国基金，通过美国国际开发署支持的项目，将WCC计划延伸至亚美尼亚、萨尔瓦多、危地马拉、洪都拉斯、墨西哥和坦桑尼亚。',
+    'Ein US-Fonds, der WCC-Programme über USAID-Initiativen auf Armenien, El Salvador, Guatemala, Honduras, Mexiko und Tansania ausweitet.'
+  ));
+  setText('wcc-collab-4-name', t('St. Jude Global','圣裘德全球项目','St. Jude Global'));
+  setText('wcc-collab-4-desc', t(
+    'St. Jude Children\'s Research Hospital\'s global arm shares treatment protocols and expertise globally — complementary to WCC\'s direct hospital partnerships.',
+    '圣裘德儿童研究医院的全球部门在全球范围内分享治疗方案和专业知识，与WCC的直接医院合作关系相互补充。',
+    'Der globale Arm des St. Jude Kinderkrankenhauses teilt Behandlungsprotokolle weltweit — ergänzend zu WCCs direkten Krankenhauspartnerschaften.'
+  ));
+  setText('wcc-collab-5-name', t('Cancer Research UK','英国癌症研究所','Cancer Research UK'));
+  setText('wcc-collab-5-desc', t(
+    'Provides research funding and scientific expertise that informs WCC\'s approach to childhood cancer treatment in low-resource settings.',
+    '提供研究资金和科学专业知识，为WCC在资源匮乏环境中的儿童癌症治疗方法提供依据。',
+    'Stellt Forschungsförderung bereit, die WCCs Ansatz zur Kinderkrebsbehandlung in ressourcenarmen Umgebungen informiert.'
+  ));
+  setText('wcc-collab-6-name', t('Paediatric oncology units','儿科肿瘤科室','Pädiatrische Onkologieeinheiten'));
+  setText('wcc-collab-6-desc', t(
+    'UK NHS trusts including Great Ormond Street and Birmingham Children\'s Hospital provide clinical twinning partnerships with hospitals in WCC programme countries.',
+    '英国NHS机构（包括大奥蒙德街医院和伯明翰儿童医院）与WCC项目国家的医院建立了临床配对合作伙伴关系。',
+    'UK NHS-Trusts wie Great Ormond Street und das Birmingham Children\'s Hospital bieten klinische Partnerschaften mit Krankenhäusern in WCC-Programmländern.'
+  ));
   // Journal support update
   setText('journal-support-title', t('This content is free. The fight isn\'t.', '内容免费。抗癌之战不是。', 'Die Inhalte sind kostenlos. Der Kampf nicht.'));
   setText('journal-support-p', t(
@@ -3316,19 +3543,25 @@ document.addEventListener('click', () => {
 updateSizeDemo(12);
 updateLifestyle();
 
-  try{
-    const params=new URLSearchParams(window.location.search);
-    const urlLang=params.get('lang');
-    if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){
+  // Replace the existing init block at the bottom:
+  try {
+    const params = new URLSearchParams(window.location.search);
+    const urlLang = params.get('lang');
+    if (urlLang === 'zh' || urlLang === 'en' || urlLang === 'de') {
       applyLang(urlLang);
     } else {
-      try{
-        const stored=localStorage.getItem('pde-lang');
-        if(stored==='zh'||stored==='en'||stored==='de'){applyLang(stored);}
-        else{applyLang('en');}
-      }catch(e){applyLang('en');}
+      try {
+        const stored = localStorage.getItem('pde-lang');
+        if (stored === 'zh' || stored === 'en' || stored === 'de') { applyLang(stored); }
+        else { applyLang('en'); }
+      } catch(e) { applyLang('en'); }
     }
-  }catch(e){applyLang('en');}
+  } catch(e) {
+    console.error('applyLang failed:', e);
+    // Still dismiss loader even if applyLang crashes
+    const l = document.getElementById('loader');
+    if (l) l.classList.add('done');
+  }
 </script>
 <!-- Hidden tooltip content sources (populated by applyLang JS) -->
 <div style="display:none;">
