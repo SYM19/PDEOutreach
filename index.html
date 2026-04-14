@@ -2430,7 +2430,12 @@ function applyLang(lang){
   setText('drug-takeaway-p',t('For pancreatic cancer, even the best-penetrating drugs cover less than 10% of the tumor volume at therapeutic concentrations. This is why pancreatic cancer has a 5-year survival rate of only ~12% — the biology makes it nearly impossible for current drugs to work. This is not a failure of chemistry. It\'s a failure of physics.','对于胰腺癌，即使渗透性最强的药物，在治疗浓度下覆盖的肿瘤体积也不足 10%。这就是胰腺癌 5 年生存率仅约 12% 的原因——物理屏障使现有药物几乎无法发挥作用。这不是化学上的失败，而是物理上的失败。','Selbst die am besten penetrierenden Medikamente bedecken weniger als 10% des Tumorvolumens. Das ist kein Versagen der Chemie — sondern der Physik.'));
   setText('drug-story-ph-title',t('Share your story','分享你的故事','Teile deine Geschichte'));
   setText('drug-story-ph-p',t('We\'re currently collecting patient stories. If you\'d like to share your experience, email ','我们正在收集患者故事。如果您愿意分享您的经历，请发邮件至 ','Wir sammeln Patientengeschichten. Wenn Sie Ihre Erfahrung teilen möchten, E-Mail an '));
-  const dpEl=document.getElementById('drug-story-ph-p');if(dpEl){dpEl.innerHTML=t('Hassan, 14, was diagnosed with Acute Lymphoblastic Leukaemia in Malawi — where without support from World Child Cancer, treatment would not have been an option. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Read more stories →</a>','Hassan 14岁时在马拉维被诊断出急性淋巴细胞白血病——若没有 World Child Cancer 的支持，他的家庭根本无力负担治疗费用。<a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">阅读更多故事 →</a>','Hassan, 14, wurde in Malawi mit ALL diagnostiziert — ohne World Child Cancer wäre eine Behandlung nicht möglich gewesen. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Mehr Geschichten →</a>');}
+  const dpEl = document.getElementById('drug-story-ph-p');
+  if (dpEl) dpEl.innerHTML = t(
+    'Hassan was 14 when he was diagnosed with Acute Lymphoblastic Leukaemia in Malawi. His family couldn\'t afford the drugs. Without support from World Child Cancer, he would have been sent home to die. He survived. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank" style="color:var(--blue);">Read Hassan\'s story →</a>',
+    'Hassan，14岁，马拉维，被确诊为白血病。他的家人买不起药。如果没有世界儿童癌症基金会的支持，医生本打算让他回家等死。他活下来了。<br><br>在低收入国家，像Hassan这样的孩子每天都在发生——不是因为医学无能为力，而是因为根本没有机会获得治疗。我们了解这背后的科学；而改变这些孩子命运的，是你我的选择。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank" style="color:var(--blue);">阅读 Hassan 的故事 →</a>',
+    'Hassan, 14, wurde in Malawi mit Leukämie diagnostiziert. Seine Familie konnte die Medikamente nicht bezahlen. Ohne World Child Cancer wäre er nach Hause geschickt worden, um zu sterben. Er überlebte. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank" style="color:var(--blue);">Hassans Geschichte lesen →</a>'
+  );
   const drugMap={'cisplatin':{en:'Cisplatin (small molecule — high penetration)',zh:'顺铂（小分子——高渗透）',de:'Cisplatin (kleines Molekül — hohe Penetration)'},'doxorubicin':{en:'Doxorubicin (medium molecule)',zh:'多柔比星（中等分子）',de:'Doxorubicin (mittleres Molekül)'},'trastuzumab':{en:'Trastuzumab (large antibody — low penetration)',zh:'曲妥珠单抗（大分子抗体——低渗透）',de:'Trastuzumab (großer Antikörper — niedrige Penetration)'}};
   const tumorMap={
     'breast':{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},
@@ -2464,7 +2469,12 @@ function applyLang(lang){
   setText('early-typeguide-title',t('Cancer-by-cancer screening guide','分癌种筛查指南','Krebsspezifischer Screening-Leitfaden'));setText('early-typeguide-sub',t('Select a cancer type to see detailed screening recommendations and survival data.','选择癌症类型，查看详细筛查建议和生存数据。','Wähle eine Krebsart für detaillierte Empfehlungen.'));
   setText('ct-breast-name',t('Breast cancer','乳腺癌','Brustkrebs'));setText('ct-breast-if',t('Mammogram from 40','40岁起乳腺X光','Mammographie ab 40'));setText('ct-colorectal-name',t('Colorectal cancer','结直肠癌','Darmkrebs'));setText('ct-colorectal-if',t('Colonoscopy from 45','45岁起结肠镜','Koloskopie ab 45'));setText('ct-lung-name',t('Lung cancer','肺癌','Lungenkrebs'));setText('ct-lung-if',t('Low-dose CT, high risk','低剂量CT，高风险人群','Niedrigdosis-CT, Hochrisiko'));setText('ct-cervical-name',t('Cervical cancer','宫颈癌','Gebärmutterhalskrebs'));setText('ct-cervical-if',t('Pap smear from 21','21岁起宫颈涂片','Pap-Abstrich ab 21'));setText('ct-prostate-name',t('Prostate cancer','前列腺癌','Prostatakrebs'));setText('ct-prostate-if',t('PSA test from 50','50岁起PSA检测','PSA-Test ab 50'));setText('ct-pancreatic-name',t('Pancreatic cancer','胰腺癌','Bauchspeicheldrüsenkrebs'));setText('ct-pancreatic-if',t('No standard screening','暂无标准筛查','Kein Standardscreening'));
   const estEl=document.getElementById('early-story-ph-title');if(estEl)estEl.textContent=t('Share your story','分享你的故事','Teile deine Geschichte');
-  const espEl=document.getElementById('early-story-ph-p');if(espEl)espEl.innerHTML=t('Tiwo first developed cancer at 8 months old — but wasn\'t accurately diagnosed until nearly age 4. Two CT scans showed nothing. His parents kept pushing. Early detection changes everything. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank">Read more stories →</a>','Tiwo 在8个月大时就患上了癌症——但直到近4岁才被确诊。两次CT扫描均显示正常。他的父母坚持不懈。早期发现改变一切。<a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank">阅读更多故事 →</a>','Tiwo entwickelte Krebs im Alter von 8 Monaten — wurde aber erst mit fast 4 Jahren korrekt diagnostiziert. Früherkennung verändert alles. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank">Mehr Geschichten →</a>');
+  const espEl = document.getElementById('early-story-ph-p');
+if (espEl) espEl.innerHTML = t(
+  'Tiwo developed cancer at 8 months old. Two CT scans showed nothing. His parents kept pushing. By the time he was correctly diagnosed at nearly 4 years old, the tumour had grown for over three years. He survived — but only because his parents refused to give up. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Read Tiwo\'s story →</a>',
+  'Tiwo，8个月大时就已经患上了癌症。但两次CT扫描什么都没发现。父母坚持不懈，四处奔走。直到他快4岁，肿瘤已经悄悄生长了三年多，才终于确诊。他活了下来——但只是因为他的父母没有放弃。<br><br>早期发现，是能改变命运的。而在低收入国家，诊断延误往往意味着死亡，不是因为医学上无能为力，而是因为检测设备、医生培训和基础设施的缺失。<br><br><a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--coral);font-weight:600;">❤ 为 World Child Cancer 捐款 →</a>　<a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">阅读 Tiwo 的故事 →</a>',
+  'Tiwo entwickelte im Alter von 8 Monaten Krebs. Zwei CT-Scans zeigten nichts. Seine Eltern hörten nicht auf zu kämpfen. Mit fast 4 Jahren wurde er endlich korrekt diagnostiziert. Er überlebte — weil seine Eltern nicht aufgaben. <a href="https://worldchildcancer.org/news_and_blog/tiwos-story/" target="_blank" style="color:var(--blue);">Tiwos Geschichte lesen →</a>'
+);
 // LIFESTYLE`
   setText('ls-title-h1',t('Lifestyle & Risk','生活方式与风险','Lebensstil & Risiko'));
   setText('ls-sub',t('Your lifestyle doesn\'t just affect your cancer risk — it affects how well treatment works if you do get cancer. Fill in the profile below to see your personalised result.','生活方式不只决定你的患癌风险，也会影响一旦患癌后的治疗效果。填写下方信息，看看你的专属画像。','Dein Lebensstil beeinflusst nicht nur dein Krebsrisiko, sondern auch die Behandlungswirksamkeit.'));
@@ -2806,194 +2816,215 @@ function applyLang(lang){
   ));
   
   // Cancer types
-  setText('child-types-title', t('Common childhood cancers','常见儿童癌症','Häufige Kinderkrebserkrankungen'));
-  setText('child-types-sub', t(
-    'Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.',
-    '点击任意癌症类型，了解其定义、影响人群、治疗方式，以及为何药物递送尤为困难。',
-    'Klicke auf einen Krebstyp, um mehr über Definition, Betroffene, Behandlung und Herausforderungen zu erfahren.'
-  ));
-  setHtml('child-type-all-h', t('Acute Lymphoblastic Leukaemia (ALL) — Most common, ~25% of cases','急性淋巴细胞白血病（ALL）——最常见，约占25%的病例','Akute lymphoblastische Leukämie (ALL) — häufigste, ~25% der Fälle'));
+  // ── ALL ──
   setHtml('child-type-all-what', t(
     '<strong>What it is:</strong> A cancer of the blood and bone marrow where immature white blood cells (lymphoblasts) multiply uncontrollably, crowding out normal blood cells. It progresses rapidly and requires urgent treatment. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
-    '<strong>是什么：</strong>一种血液和骨髓的癌症，不成熟白细胞（淋巴母细胞）失控增殖，排挤正常血细胞。病情进展迅速，需要紧急治疗。<a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
-    '<strong>Was es ist:</strong> Krebs des Blutes und Knochenmarks, bei dem unreife weiße Blutzellen (Lymphoblasten) unkontrolliert wachsen. Rasch fortschreitend, erfordert dringende Behandlung. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
+    '<strong>是什么：</strong>急性淋巴细胞白血病（ALL）是儿童最常见的血液癌症。骨髓里本该正常发育的白细胞发生异常，不受控制地大量增殖，挤占了正常血细胞的生存空间。病情进展很快，需要立即治疗。',
+    '<strong>Was es ist:</strong> Krebs des Blutes und Knochenmarks, bei dem unreife weiße Blutzellen (Lymphoblasten) unkontrolliert wachsen. Rasch fortschreitend. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
   ));
+  
   setHtml('child-type-all-who', t(
     '<strong>Who gets it:</strong> Peak incidence ages 2–5. ALL accounts for ~75% of all childhood leukaemia. Boys slightly more affected. Children with Down syndrome have a 20× higher risk. <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>',
-    '<strong>谁会患病：</strong>发病高峰在2至5岁。ALL约占全部儿童白血病的75%。男孩发病率略高于女孩。唐氏综合征患儿风险高出20倍。<a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>',
-    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 2–5 Jahren. ALL macht ~75% aller Kinderleukämien aus. Jungen etwas häufiger betroffen. Down-Syndrom: 20× höheres Risiko. <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>'
-  ));
-  setHtml('child-type-all-signs', t(
-    '<strong>Warning signs:</strong> Persistent fever · unexplained bruising or bleeding · pallor · extreme fatigue · bone or joint pain · swollen lymph nodes · recurrent infections. These can appear gradually and are often initially mistaken for common viral illnesses.',
-    '<strong>预警信号：</strong>持续发烧 · 不明原因瘀伤或出血 · 面色苍白 · 极度疲乏 · 骨骼或关节疼痛 · 淋巴结肿大 · 反复感染。这些症状可能逐渐出现，最初常被误认为普通病毒性疾病。',
-    '<strong>Warnsignale:</strong> Anhaltendes Fieber · unerklärliche Blutergüsse oder Blutungen · Blässe · extreme Erschöpfung · Knochen- oder Gelenkschmerzen · geschwollene Lymphknoten. Werden zunächst oft mit viralen Erkrankungen verwechselt.'
-  ));
-  setHtml('child-type-all-treat', t(
-    '<strong>Treatment:</strong> Chemotherapy in three phases — induction (achieve remission, ~4–6 weeks), consolidation (eliminate residual disease, months), maintenance (2–3 years). CNS prophylaxis prevents brain spread. Imatinib added for BCR-ABL+ subtype. CAR-T (tisagenlecleucel) for relapsed/refractory disease. Bone marrow transplant in high-risk or relapsed cases. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
-    '<strong>治疗方式：</strong>化疗分三个阶段——诱导（达到缓解，约4–6周）、巩固（消除残留病灶，数月）、维持（2–3年）。中枢神经系统预防治疗可防止癌细胞扩散至大脑。BCR-ABL阳性亚型加用伊马替尼。复发/难治性病例使用CAR-T（tisagenlecleucel）。高危或复发病例行骨髓移植。<a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
-    '<strong>Behandlung:</strong> Chemotherapie in drei Phasen — Induktion (Remission, ~4–6 Wochen), Konsolidierung (Monate), Erhaltung (2–3 Jahre). ZNS-Prophylaxe verhindert Hirnbefall. Imatinib bei BCR-ABL+ Subtyp. CAR-T bei Rückfall. Knochenmarktransplantation bei Hochrisiko. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
-  ));
-  setHtml('child-type-all-pde', t(
-    '<strong>Drug delivery challenge:</strong> ALL is a blood cancer — chemotherapy reaches leukaemic cells directly via the bloodstream. The main challenge is CNS penetration: the blood-brain barrier prevents many drugs reaching the CSF, where leukaemic cells can hide and cause relapse. Intrathecal methotrexate is injected directly into the spinal fluid to bypass this barrier.',
-    '<strong>药物递送挑战：</strong>ALL是血液癌症——化疗药物可通过血液直接到达白血病细胞。主要挑战在于中枢神经系统渗透：血脑屏障阻止许多药物进入脑脊液，而白血病细胞可藏匿于此并引发复发。鞘内注射甲氨蝶呤可直接注入脊髓液以绕过这一屏障。',
-    '<strong>Wirkstofflieferungsherausforderung:</strong> ALL ist ein Blutkrebs — Chemo erreicht Leukämiezellen direkt über den Blutkreislauf. Hauptproblem: ZNS-Penetration. Die Blut-Hirn-Schranke verhindert, dass viele Medikamente den Liquor erreichen. Intrathekales Methotrexat wird direkt in den Spinalkanal injiziert.'
+    '<strong>谁会患病：</strong>发病高峰在2至5岁。白血病是儿童患癌最常见的类型，其中ALL占儿童白血病的约75%。男孩比女孩略多见。唐氏综合征（21三体）患儿的患病风险是普通儿童的20倍。',
+    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 2–5 Jahren. ALL macht ~75% aller Kinderleukämien aus. Down-Syndrom: 20× höheres Risiko. <a href="https://doi.org/10.1016/S1470-2045(17)30186-9" target="_blank" style="color:var(--blue);font-size:.85em;">[Steliarova-Foucher et al., Lancet Oncol 2017]</a>'
   ));
   
-  setHtml('child-type-brain-h', t('Brain & CNS tumours — 2nd most common, ~20% of cases','脑及中枢神经系统肿瘤——第二常见，约占20%','Hirn- & ZNS-Tumoren — zweithäufigste, ~20% der Fälle'));
+  setHtml('child-type-all-signs', t(
+    '<strong>Warning signs:</strong> Persistent fever · unexplained bruising or bleeding · pallor · extreme fatigue · bone or joint pain · swollen lymph nodes · recurrent infections.',
+    '<strong>需要注意的症状：</strong>持续发烧、不明原因瘀青或出血、脸色苍白、极度疲倦、骨头或关节疼痛、淋巴结肿大、反复感染。这些症状单独出现时很常见，但如果持续存在或同时出现多种，应该及时就医。',
+    '<strong>Warnsignale:</strong> Anhaltendes Fieber · unerklärliche Blutergüsse · Blässe · extreme Erschöpfung · Knochen- oder Gelenkschmerzen · geschwollene Lymphknoten.'
+  ));
+  
+  setHtml('child-type-all-treat', t(
+    '<strong>Treatment:</strong> Chemotherapy in three phases — induction (achieve remission, ~4–6 weeks), consolidation (eliminate residual disease, months), maintenance (2–3 years). CNS prophylaxis prevents brain spread. Imatinib added for BCR-ABL+ subtype. CAR-T (tisagenlecleucel) for relapsed/refractory disease. Bone marrow transplant in high-risk or relapsed cases.',
+    '<strong>治疗方式：</strong>化疗分三个阶段：第一阶段（诱导，约4–6周）让癌细胞暂时消退；第二阶段（巩固，数月）消灭残留的癌细胞；第三阶段（维持治疗，约2–3年）防止复发。同时会进行脊髓液检查，防止癌细胞进入脑部。如果出现特定基因变异（BCR-ABL阳性），会加用靶向药物伊马替尼。复发难治的患者可考虑CAR-T细胞治疗或骨髓移植。',
+    '<strong>Behandlung:</strong> Chemotherapie in drei Phasen — Induktion (~4–6 Wochen), Konsolidierung (Monate), Erhaltung (2–3 Jahre). Imatinib bei BCR-ABL+. CAR-T bei Rückfall.'
+  ));
+  
+  setHtml('child-type-all-pde', t(
+    '<strong>Drug delivery challenge:</strong> ALL is a blood cancer — chemotherapy reaches leukaemic cells directly via the bloodstream. The main challenge is CNS penetration: the blood-brain barrier prevents many drugs reaching the cerebrospinal fluid, where leukaemic cells can hide and cause relapse. Intrathecal methotrexate is injected directly into the spinal fluid to bypass this barrier.',
+    '<strong>药物递送的挑战：</strong>ALL是血液癌症，化疗药物可以通过血液直接到达癌细胞——这一点比实体肿瘤容易得多。但有一个难题：大脑周围有一道"血脑屏障"，很多药物穿不过去，而癌细胞可能躲进脑脊液里，导致复发。解决方法是将甲氨蝶呤直接注射进脊髓液，绕过屏障。',
+    '<strong>Wirkstofflieferung:</strong> Blutkrebs — Chemo erreicht Leukämiezellen direkt. Hauptproblem: Blut-Hirn-Schranke. Intrathekales Methotrexat injiziert direkt in den Liquor.'
+  ));
+  
+  // ── BRAIN ──
   setHtml('child-type-brain-what', t(
     '<strong>What it is:</strong> A broad category including medulloblastoma (most common malignant brain tumour in children, arising in the cerebellum), gliomas (astrocytoma, glioblastoma), ependymoma, and DIPG (diffuse intrinsic pontine glioma — one of the most treatment-resistant cancers known, almost exclusively affecting children). <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
-    '<strong>是什么：</strong>这是一个广泛的类别，包括髓母细胞瘤（儿童最常见的恶性脑肿瘤，起源于小脑）、胶质瘤（星形细胞瘤、胶质母细胞瘤）、室管膜瘤，以及弥漫性内生性脑桥胶质瘤（DIPG）——已知治疗抵抗性最强的癌症之一，几乎仅发生于儿童。<a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
-    '<strong>Was es ist:</strong> Breite Kategorie: Medulloblastom (häufigstes bösartiges Hirntumor bei Kindern), Gliome, Ependymom, DIPG (diffuses intrinsisches Ponsgliom — einer der therapieresistentesten Krebse überhaupt). <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>'
-  ));
-  setHtml('child-type-brain-who', t(
-    '<strong>Who gets it:</strong> Brain tumours can occur at any childhood age. Medulloblastoma peaks at 3–8 years. DIPG almost exclusively affects children aged 5–10. Together, brain tumours are the <strong>leading cause of cancer-related death</strong> in children (surpassing leukaemia). <a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>',
-    '<strong>谁会患病：</strong>脑肿瘤可在儿童期任何年龄发生。髓母细胞瘤高峰在3至8岁。DIPG几乎仅发生于5至10岁儿童。脑肿瘤合计是儿童<strong>癌症相关死亡的首要原因</strong>（超过白血病）。<a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>',
-    '<strong>Wer erkrankt:</strong> Kann in jedem Kindesalter auftreten. Medulloblastom-Gipfel bei 3–8 Jahren. DIPG fast ausschließlich bei 5–10-Jährigen. Hirntumoren sind die <strong>häufigste krebsbedingte Todesursache</strong> bei Kindern. <a href="https://doi.org/10.1093/neuonc/nox101" target="_blank" style="color:var(--blue);font-size:.85em;">[Ostrom et al., Neuro Oncol 2017]</a>'
-  ));
-  setHtml('child-type-brain-signs', t(
-    '<strong>Warning signs:</strong> Morning headaches (worse on waking, easing through the day) · vomiting without nausea on waking · balance or gait changes · vision changes (squint, blurred, double vision) · personality or behaviour change · new seizures. Symptoms are often subtle and initially misdiagnosed as migraine or anxiety.',
-    '<strong>预警信号：</strong>晨起头痛（醒时加重，日间缓解）·醒来时无恶心感的呕吐·平衡或步态改变·视力变化（斜视、模糊、复视）·性格或行为改变·新发癫痫发作。症状初期往往不明显，常被误诊为偏头痛或焦虑。',
-    '<strong>Warnsignale:</strong> Morgendliche Kopfschmerzen (beim Aufwachen schlimmer, tagsüber besser) · Erbrechen ohne Übelkeit · Gang- und Gleichgewichtsstörungen · Sehveränderungen · Persönlichkeits- oder Verhaltensänderungen · neue Krampfanfälle.'
-  ));
-  setHtml('child-type-brain-treat', t(
-    '<strong>Treatment:</strong> Surgery (if accessible and safe) + radiation + chemotherapy. Medulloblastoma: molecular subgrouping (WNT, SHH, Group 3, Group 4) now guides treatment intensity. DIPG: radiation buys time, but median survival remains ~11 months despite decades of research. Convection-enhanced delivery (CED) and ONC201 (H3K27M+ DIPG) are promising current trials. <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
-    '<strong>治疗方式：</strong>手术（若可行且安全）+放疗+化疗。髓母细胞瘤：分子亚型分组（WNT、SHH、第3组、第4组）现已指导治疗强度。DIPG：放疗可延长生存时间，但中位生存期仍约为11个月，尽管已研究数十年。对流增强递送（CED）和ONC201（针对H3K27M+ DIPG）是目前有前景的临床试验。<a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
-    '<strong>Behandlung:</strong> Operation + Strahlentherapie + Chemotherapie. Medulloblastom: Molekulare Subgruppenklassifikation (WNT, SHH, Gruppe 3, Gruppe 4) leitet die Behandlung. DIPG: Bestrahlung verlängert die Überlebenszeit, aber Medianüberleben ~11 Monate. <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>'
-  ));
-  setHtml('child-type-brain-pde', t(
-    '<strong>Drug delivery challenge:</strong> The blood-brain barrier (BBB) excludes ~98% of drugs from the brain. Large molecules are blocked entirely; small molecules must be lipid-soluble and evade efflux pumps. DIPG sits in the brainstem — surgically unreachable — with an intact BBB, making drug delivery exceptionally difficult. This is the primary reason DIPG remains almost uniformly fatal despite a biologically understood target (H3K27M mutation).',
-    '<strong>药物递送挑战：</strong>血脑屏障（BBB）使约98%的药物无法进入大脑。大分子完全被阻断；小分子必须具有脂溶性并能逃避外排泵。DIPG位于脑干——手术无法到达——且血脑屏障完整，使药物递送极为困难。这正是DIPG尽管有明确的生物学靶点（H3K27M突变），却仍几乎无一例外地致命的主要原因。',
-    '<strong>Wirkstofflieferungsherausforderung:</strong> Die Blut-Hirn-Schranke (BBB) schließt ~98% der Medikamente aus dem Gehirn aus. DIPG liegt im Hirnstamm — operativ nicht erreichbar — mit intakter BBB. Dies macht den Wirkstofftransport außerordentlich schwierig.'
+    '<strong>是什么：</strong>儿童脑肿瘤是一大类疾病的总称，包括多种不同类型：<br>• <strong>髓母细胞瘤</strong>——最常见的儿童恶性脑肿瘤，长在小脑（控制平衡的区域），可以治疗<br>• <strong>胶质瘤</strong>——可以是低级别（生长缓慢）或高级别（侵袭性强）<br>• <strong>DIPG（脑干弥漫性胶质瘤）</strong>——长在脑干深处，无法手术，是目前最难治疗的儿童癌症之一<br><a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>',
+    '<strong>Was es ist:</strong> Breite Kategorie: Medulloblastom, Gliome, DIPG (diffuses intrinsisches Ponsgliom — äußerst therapieresistent). <a href="https://doi.org/10.1038/nrclinonc.2019.150" target="_blank" style="color:var(--blue);font-size:.85em;">[Pollack et al., Nat Rev Clin Oncol 2019]</a>'
   ));
   
-  setHtml('child-type-neuro-h', t('Neuroblastoma — ~8% of cases, most common solid tumour in infants','神经母细胞瘤——约占8%，婴幼儿最常见实体肿瘤','Neuroblastom — ~8% der Fälle, häufigstes solides Tumor bei Säuglingen'));
+  setHtml('child-type-brain-who', t(
+    '<strong>Who gets it:</strong> Brain tumours can occur at any childhood age. Medulloblastoma peaks at 3–8 years. DIPG almost exclusively affects children aged 5–10. Together, brain tumours are the <strong>leading cause of cancer-related death</strong> in children.',
+    '<strong>谁会患病：</strong>脑肿瘤可以发生在任何年龄的儿童身上。髓母细胞瘤最多见于3至8岁；DIPG几乎只发生在5至10岁儿童，且极难治疗。整体来看，脑肿瘤是儿童因癌症死亡的<strong>首要原因</strong>，比白血病更致命。',
+    '<strong>Wer erkrankt:</strong> Jedes Kindesalter. Medulloblastom-Gipfel 3–8 Jahre. DIPG fast nur bei 5–10-Jährigen. Führende krebsbedingte Todesursache bei Kindern.'
+  ));
+  
+  setHtml('child-type-brain-signs', t(
+    '<strong>Warning signs:</strong> Morning headaches (worse on waking, easing through the day) · vomiting without nausea on waking · balance or gait changes · vision changes · personality or behaviour change · new seizures.',
+    '<strong>需要注意的症状：</strong>早晨头痛（起床后最严重，白天慢慢减轻）、早晨起来无缘无故呕吐、走路不稳或平衡变差、视力改变（看东西模糊或重影）、性格或行为突然改变、新发癫痫。这些症状起初往往很轻微，容易被当作偏头痛或焦虑，延误诊断。',
+    '<strong>Warnsignale:</strong> Morgendliche Kopfschmerzen (beim Aufwachen schlimmer) · Erbrechen ohne Übelkeit · Gang- und Gleichgewichtsstörungen · Sehveränderungen · Persönlichkeitsänderungen · Krampfanfälle.'
+  ));
+  
+  setHtml('child-type-brain-treat', t(
+    '<strong>Treatment:</strong> Surgery (if accessible and safe) + radiation + chemotherapy. Medulloblastoma: molecular subgrouping now guides treatment intensity. DIPG: radiation buys time, but median survival remains ~11 months despite decades of research.',
+    '<strong>治疗方式：</strong>能手术的先手术切除，再结合放疗和化疗。髓母细胞瘤现在会做基因检测，根据具体亚型来决定治疗强度——这让很多孩子既保住了生命，也减少了不必要的副作用。DIPG目前无法手术，放疗可以暂时控制病情、争取时间，但平均生存期仍约为11个月。尽管全球研究者已经努力了数十年，DIPG至今仍无有效疗法，是儿科肿瘤学最令人痛心的难题之一。',
+    '<strong>Behandlung:</strong> Operation + Strahlentherapie + Chemotherapie. Medulloblastom: molekulare Subgruppenklassifikation leitet Behandlung. DIPG: Bestrahlung, Medianüberleben ~11 Monate.'
+  ));
+  
+  setHtml('child-type-brain-pde', t(
+    '<strong>Drug delivery challenge:</strong> The blood-brain barrier (BBB) excludes ~98% of drugs from the brain. DIPG sits in the brainstem — surgically unreachable — with an intact BBB, making drug delivery exceptionally difficult.',
+    '<strong>药物递送的挑战：</strong>大脑有一道天然的"防护屏障"——血脑屏障，它的作用是阻止有害物质进入大脑，但也让约98%的药物进不去。DIPG长在脑干最深处，既不能手术，又被这道屏障保护着，这就是为什么迄今为止几乎所有针对DIPG的药物在临床试验中都失败了——不是药物无效，而是根本送不到肿瘤那里。',
+    '<strong>Wirkstofflieferung:</strong> Blut-Hirn-Schranke schließt ~98% der Medikamente aus. DIPG im Hirnstamm — operativ nicht erreichbar, BBB intakt.'
+  ));
+  
+  // ── NEUROBLASTOMA ──
   setHtml('child-type-neuro-what', t(
     '<strong>What it is:</strong> A cancer of immature nerve cells (neuroblasts), most commonly in the adrenal glands. Biologically unique: some tumours spontaneously regress without treatment; others are among the most aggressive childhood cancers. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
-    '<strong>是什么：</strong>不成熟神经细胞（神经母细胞）的癌症，最常见于肾上腺。生物学上独特：部分肿瘤可自发消退无需治疗；其他则是最具侵袭性的儿童癌症之一。<a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
-    '<strong>Was es ist:</strong> Krebs unreifer Nervenzellen (Neuroblasten), meist in den Nebennieren. Biologisch einzigartig: Manche Tumoren bilden sich spontan zurück, andere sind äußerst aggressiv. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>'
+    '<strong>是什么：</strong>神经母细胞瘤起源于尚未发育成熟的神经细胞，最常见于肾脏上方的肾上腺。这种肿瘤生物学上非常特殊：有些病例（尤其是婴儿期）肿瘤会自行消退，不需要任何治疗；但另一些病例，特别是高风险类型，侵袭性极强，即使积极治疗也很难控制。<a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
+    '<strong>Was es ist:</strong> Krebs unreifer Nervenzellen, meist in den Nebennieren. Manche Tumoren bilden sich spontan zurück, andere sind äußerst aggressiv. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>'
   ));
+  
   setHtml('child-type-neuro-who', t(
-    '<strong>Who gets it:</strong> Almost exclusively children under 5 (median diagnosis age: 17 months). ~40% have metastasised at diagnosis. MYCN gene amplification identifies high-risk cases with poorer prognosis.',
-    '<strong>谁会患病：</strong>几乎仅发生于5岁以下儿童（中位诊断年龄：17个月）。约40%在诊断时已发生转移。MYCN基因扩增是高风险、预后较差病例的标志。',
-    '<strong>Wer erkrankt:</strong> Fast ausschließlich Kinder unter 5 Jahren (Medianalter bei Diagnose: 17 Monate). ~40% haben bei Diagnose bereits metastasiert. MYCN-Amplifikation markiert Hochrisikofälle.'
+    '<strong>Who gets it:</strong> Almost exclusively children under 5 (median diagnosis age: 17 months). ~40% have metastasised at diagnosis. MYCN gene amplification identifies high-risk cases.',
+    '<strong>谁会患病：</strong>几乎只发生在5岁以下的幼儿，确诊时的平均年龄仅17个月。大约40%的患儿在确诊时癌细胞已经扩散到其他部位。通过基因检测（MYCN基因是否扩增）可以判断是否属于高风险病例。',
+    '<strong>Wer erkrankt:</strong> Fast ausschließlich Kinder unter 5 Jahren (Ø 17 Monate). ~40% bei Diagnose metastasiert. MYCN-Amplifikation = Hochrisiko.'
   ));
+  
   setHtml('child-type-neuro-signs', t(
-    '<strong>Warning signs:</strong> Abdominal mass or swelling · dark circles around eyes ("raccoon eyes" / periorbital bruising — NOT from injury) · bone pain · lump in neck or chest · high blood pressure · unusual eye movements (opsoclonus-myoclonus). Many cases are found incidentally on imaging done for other reasons.',
-    '<strong>预警信号：</strong>腹部肿块或肿胀·眼周黑眼圈（"熊猫眼"/眶周瘀血——非外伤所致）·骨痛·颈部或胸部肿块·高血压·异常眼球运动（眼阵挛-肌阵挛）。许多病例是在因其他原因进行影像学检查时偶然发现的。',
-    '<strong>Warnsignale:</strong> Abdominale Masse · dunkle Ringe um die Augen ("Waschbäraugen" — nicht durch Verletzung) · Knochenschmerzen · Halsmasse · Bluthochdruck · Opsoklonus-Myoklonus.'
+    '<strong>Warning signs:</strong> Abdominal mass or swelling · dark circles around eyes ("raccoon eyes" — NOT from injury) · bone pain · lump in neck or chest · high blood pressure · unusual eye movements.',
+    '<strong>需要注意的症状：</strong>腹部出现肿块或腹胀、眼眶周围出现黑眼圈（不是外伤造成的，像"熊猫眼"）、骨头疼痛、颈部或胸部出现肿块、血压升高、眼球异常颤动。许多病例是在为其他原因做检查时意外发现的。',
+    '<strong>Warnsignale:</strong> Abdominale Masse · dunkle Ringe um die Augen (nicht durch Verletzung) · Knochenschmerzen · Bluthochdruck · Opsoklonus.'
   ));
+  
   setHtml('child-type-neuro-treat', t(
-    '<strong>Treatment:</strong> Low-risk: surgery alone or observation. High-risk: intensive chemotherapy + surgery + radiation + high-dose chemo with stem cell rescue + anti-GD2 immunotherapy (dinutuximab) + isotretinoin. Despite aggressive treatment, high-risk neuroblastoma achieves only ~50% long-term survival. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
-    '<strong>治疗方式：</strong>低风险：单独手术或观察。高风险：强化化疗+手术+放疗+高剂量化疗联合干细胞挽救+抗GD2免疫治疗（dinutuximab）+异维A酸。尽管采取积极治疗，高风险神经母细胞瘤的长期生存率仅约50%。<a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>',
-    '<strong>Behandlung:</strong> Niedriges Risiko: Operation oder Beobachtung. Hohes Risiko: intensive Chemo + OP + Bestrahlung + Hochdosisc-Chemo mit Stammzellenrettung + Dinutuximab + Isotretinoin. Trotz aggressiver Behandlung nur ~50% Langzeitüberleben. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., Nat Rev Clin Oncol 2016]</a>'
+    '<strong>Treatment:</strong> Low-risk: surgery alone or observation. High-risk: intensive chemotherapy + surgery + radiation + high-dose chemo with stem cell rescue + anti-GD2 immunotherapy (dinutuximab) + isotretinoin. Despite aggressive treatment, high-risk neuroblastoma achieves only ~50% long-term survival.',
+    '<strong>治疗方式：</strong>低风险：手术切除，有时只需观察等待肿瘤自行消退。高风险：治疗非常复杂——先用强化化疗缩小肿瘤，再手术切除，加上放疗；之后进行超大剂量化疗并用干细胞移植来恢复骨髓功能（干细胞移植）；最后用免疫治疗药物（靶向GD2抗原的单抗）和维A酸维持治疗。尽管如此，高风险神经母细胞瘤的长期存活率仍只有约50%。',
+    '<strong>Behandlung:</strong> Niedriges Risiko: OP oder Beobachtung. Hohes Risiko: intensive Chemo + OP + Bestrahlung + Hochdosis-Chemo + Stammzelltransplantation + Dinutuximab + Isotretinoin. ~50% Langzeitüberleben. <a href="https://doi.org/10.1038/nrclinonc.2016.144" target="_blank" style="color:var(--blue);font-size:.85em;">[Matthay et al., 2016]</a>'
   ));
+  
   setHtml('child-type-neuro-pde', t(
-    '<strong>Drug delivery challenge:</strong> High-risk neuroblastoma often involves dense stromal ECM that reduces diffusion coefficient D. Bone marrow metastases create complex microenvironments with elevated IFP. The anti-GD2 antibody dinutuximab faces size-related penetration barriers — it works primarily via immune recruitment (ADCC) rather than direct cell killing.',
-    '<strong>药物递送挑战：</strong>高风险神经母细胞瘤通常涉及致密的基质细胞外基质，降低了扩散系数D。骨髓转移形成具有高间质液压的复杂微环境。抗GD2抗体dinutuximab面临与大小相关的渗透障碍——它主要通过免疫募集（ADCC）而非直接杀伤细胞发挥作用。',
-    '<strong>Wirkstofflieferungsherausforderung:</strong> Hochrisiko-Neuroblastom hat oft dichtes ECM, das D reduziert. Knochenmarkmetastasen schaffen komplexe Mikroumgebungen mit erhöhtem IFP. Dinutuximab wirkt hauptsächlich über Immunrekrutierung (ADCC), nicht direkte Zelllyse.'
+    '<strong>Drug delivery challenge:</strong> High-risk neuroblastoma often involves dense stromal ECM that reduces diffusion coefficient D. The anti-GD2 antibody dinutuximab faces size-related penetration barriers — it works primarily via immune recruitment rather than direct cell killing.',
+    '<strong>药物递送的挑战：</strong>高风险神经母细胞瘤的肿瘤组织往往非常致密，药物很难渗透进去（相当于D值大幅下降）。骨髓转移造成的肿瘤微环境更是错综复杂，间质液压（IFP）偏高，进一步阻碍药物到达癌细胞。用于免疫治疗的dinutuximab是一种大分子抗体，很难物理性地穿透进肿瘤内部，它主要是通过"召唤"免疫细胞来杀死癌细胞，而不是直接发挥作用。',
+    '<strong>Wirkstofflieferung:</strong> Dichtes ECM reduziert D. Dinutuximab wirkt hauptsächlich über Immunrekrutierung (ADCC), nicht direkte Zelllyse.'
   ));
   
-  setHtml('child-type-wilms-h', t('Wilms Tumour (Nephroblastoma) — most common kidney cancer in children','肾母细胞瘤（Wilms瘤）——儿童最常见肾癌','Wilms-Tumor (Nephroblastom) — häufigster Nierenkrebs bei Kindern'));
+  // ── WILMS ──
   setHtml('child-type-wilms-what', t(
-    '<strong>What it is:</strong> A kidney tumour arising from embryonic kidney cells that failed to differentiate normally. One of oncology\'s great success stories — survival has risen from under 30% in the 1960s to over 90% today through multimodal treatment protocols. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
-    '<strong>是什么：</strong>起源于未能正常分化的胚胎性肾细胞的肾脏肿瘤。肿瘤学的一大成功典范——通过多模式治疗方案，生存率已从20世纪60年代的不足30%提升至如今的90%以上。<a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
-    '<strong>Was es ist:</strong> Nierentumor aus embryonalen Nierenzellen, die sich nicht normal differenziert haben. Einer der größten Erfolge der Kinderonkologie — Überleben stieg von unter 30% (1960er) auf über 90% heute. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>'
+    '<strong>What it is:</strong> A kidney tumour arising from embryonic kidney cells that failed to differentiate normally. One of oncology\'s great success stories — survival has risen from under 30% in the 1960s to over 90% today through multimodal treatment. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>是什么：</strong>肾母细胞瘤（Wilms瘤）是儿童最常见的肾脏肿瘤，由未能正常发育的胚胎期肾细胞形成。这是儿科肿瘤学里最鼓舞人心的成功案例之一——上世纪60年代，这种病的存活率不到30%；如今通过综合治疗，超过90%的患儿可以长期存活。<a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
+    '<strong>Was es ist:</strong> Nierentumor aus embryonalen Nierenzellen. Überlebensrate von <30% (1960er) auf >90% heute gestiegen. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>'
   ));
+  
   setHtml('child-type-wilms-who', t(
-    '<strong>Who gets it:</strong> Peak age 3–4 years. Usually presents as a painless abdominal mass. Associated with WAGR syndrome, Beckwith-Wiedemann syndrome, and Denys-Drash syndrome. Bilateral (both kidneys) in ~5–10% of cases.',
-    '<strong>谁会患病：</strong>发病高峰在3至4岁。通常表现为无痛性腹部肿块。与WAGR综合征、Beckwith-Wiedemann综合征和Denys-Drash综合征相关。约5至10%的病例为双侧（双肾）受累。',
-    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 3–4 Jahren. Meist als schmerzlose Bauchmasse. Assoziation mit WAGR-Syndrom, Beckwith-Wiedemann-Syndrom. ~5–10% bilateral.'
+    '<strong>Who gets it:</strong> Peak age 3–4 years. Usually presents as a painless abdominal mass. Bilateral (both kidneys) in ~5–10% of cases.',
+    '<strong>谁会患病：</strong>高峰发病年龄为3至4岁。通常表现为腹部无痛性肿块。约5至10%的患儿双侧肾脏同时受累。',
+    '<strong>Wer erkrankt:</strong> Häufigkeitsgipfel bei 3–4 Jahren. Meist schmerzlose Bauchmasse. ~5–10% bilateral.'
   ));
+  
   setHtml('child-type-wilms-signs', t(
-    '<strong>Warning signs:</strong> Painless abdominal swelling or mass (often discovered by a parent during bathing) · abdominal pain · blood in urine (haematuria) · high blood pressure · fever. Most commonly discovered incidentally by a parent or at a routine check-up.',
-    '<strong>预警信号：</strong>无痛性腹部肿胀或肿块（常由家长在给孩子洗澡时发现）·腹痛·尿血（血尿）·高血压·发热。最常在家长或常规检查中偶然发现。',
-    '<strong>Warnsignale:</strong> Schmerzlose Bauchschwellung oder -masse (oft beim Baden entdeckt) · Bauchschmerzen · Blut im Urin · Bluthochdruck · Fieber.'
+    '<strong>Warning signs:</strong> Painless abdominal swelling or mass (often discovered by a parent during bathing) · abdominal pain · blood in urine · high blood pressure · fever.',
+    '<strong>需要注意的症状：</strong>腹部无痛性肿胀或肿块（很多情况下是家长在给孩子洗澡时摸到的）、腹部疼痛、尿液带血、血压升高、发烧。如果发现孩子腹部有不明原因的肿块，应立即就医。',
+    '<strong>Warnsignale:</strong> Schmerzlose Bauchschwellung (oft beim Baden entdeckt) · Bauchschmerzen · Blut im Urin · Bluthochdruck · Fieber.'
   ));
+  
   setHtml('child-type-wilms-treat', t(
-    '<strong>Treatment:</strong> Surgery (nephrectomy) + chemotherapy (vincristine, actinomycin D, doxorubicin depending on stage) ± radiation for advanced stages. The SIOP European protocol uses pre-operative chemotherapy to shrink the tumour before surgery. Overall survival exceeds 90%. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
-    '<strong>治疗方式：</strong>手术（肾切除）+化疗（长春新碱、放线菌素D、多柔比星，根据分期选用）±晚期放疗。欧洲SIOP方案在手术前使用化疗缩小肿瘤。总生存率超过90%。<a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>',
-    '<strong>Behandlung:</strong> Operation (Nephrektomie) + Chemotherapie ± Bestrahlung. SIOP-Protokoll: präoperative Chemo zum Schrumpfen des Tumors. Gesamtüberleben >90%. <a href="https://doi.org/10.1200/EDBK_237635" target="_blank" style="color:var(--blue);font-size:.85em;">[Dome et al., ASCO 2019]</a>'
+    '<strong>Treatment:</strong> Surgery (nephrectomy) + chemotherapy (vincristine, actinomycin D, doxorubicin depending on stage) ± radiation for advanced stages. The SIOP European protocol uses pre-operative chemotherapy to shrink the tumour before surgery. Overall survival exceeds 90%.',
+    '<strong>治疗方式：</strong>手术切除患侧肾脏，加上化疗（根据分期选用不同药物）。晚期患者还需要放疗。欧洲的SIOP方案会先用化疗把肿瘤缩小，再手术，这样既能完整切除、又能尽可能保护健康肾脏组织。总体生存率超过90%。',
+    '<strong>Behandlung:</strong> OP (Nephrektomie) + Chemo ± Bestrahlung. SIOP-Protokoll: präoperative Chemo. Gesamtüberleben >90%.'
   ));
+  
   setHtml('child-type-wilms-pde', t(
-    '<strong>Drug delivery:</strong> Kidney tumours have relatively good vascular access. Pre-operative chemotherapy is effective partly because Wilms tumour ECM is less dense than pancreatic cancer or neuroblastoma stromal matrix, allowing better drug diffusion. This helps explain why outcomes are so much better than most other paediatric solid tumours.',
-    '<strong>药物递送：</strong>肾脏肿瘤具有相对较好的血管通路。术前化疗有效，部分原因在于Wilms瘤的细胞外基质密度远低于胰腺癌或神经母细胞瘤的基质，使药物扩散更为顺畅。这有助于解释为何其预后远优于大多数其他儿科实体肿瘤。',
-    '<strong>Wirkstofflieferung:</strong> Nierentumoren haben relativ guten vaskulären Zugang. Präoperative Chemo ist wirksam, da das ECM des Wilms-Tumors weniger dicht ist als bei Bauchspeicheldrüsenkrebs, was bessere Diffusion ermöglicht.'
+    '<strong>Drug delivery:</strong> Kidney tumours have relatively good vascular access. Pre-operative chemotherapy is effective partly because Wilms tumour ECM is less dense than pancreatic cancer or neuroblastoma stromal matrix, allowing better drug diffusion.',
+    '<strong>药物递送：</strong>与胰腺癌或神经母细胞瘤相比，肾母细胞瘤的肿瘤组织相对疏松，血管供应也比较充分，药物更容易渗透进去。这正是术前化疗效果很好的原因之一——药物能实实在在地到达肿瘤深处，而不是只停留在外缘。这也帮助解释了为什么肾母细胞瘤的治疗效果远优于大多数其他儿科实体肿瘤。',
+    '<strong>Wirkstofflieferung:</strong> Guter vaskulärer Zugang. ECM weniger dicht als bei Bauchspeicheldrüsenkrebs — bessere Diffusion.'
   ));
   
-  setHtml('child-type-retino-h', t('Retinoblastoma — most common eye tumour in children','视网膜母细胞瘤——儿童最常见眼部肿瘤','Retinoblastom — häufigster Augentumor bei Kindern'));
+  // ── RETINOBLASTOMA ──
   setHtml('child-type-retino-what', t(
-    '<strong>What it is:</strong> A malignant tumour of the retina caused by mutation or deletion of both copies of the RB1 tumour suppressor gene. ~40% of cases are hereditary (germline RB1 mutation) — these children have bilateral disease and lifelong risk of other cancers. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
-    '<strong>是什么：</strong>由RB1肿瘤抑制基因两个拷贝突变或缺失引起的视网膜恶性肿瘤。约40%的病例为遗传性（生殖系RB1突变）——这些患儿有双侧病变和终身其他癌症风险。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
-    '<strong>Was es ist:</strong> Bösartiger Netzhautumor durch Mutation beider RB1-Kopien. ~40% erblich (Keimbahn-RB1-Mutation) — beidseitige Erkrankung und lebenslang erhöhtes Risiko für andere Krebsarten. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>'
+    '<strong>What it is:</strong> A malignant tumour of the retina caused by mutation or deletion of both copies of the RB1 tumour suppressor gene. ~40% of cases are hereditary — these children have bilateral disease and lifelong risk of other cancers. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
+    '<strong>是什么：</strong>视网膜母细胞瘤是发生在眼睛视网膜上的恶性肿瘤，由一个叫做RB1的基因发生突变引起。约40%的病例是遗传性的——这些孩子两只眼睛都可能发病，而且终身患其他癌症的风险也有所升高。早期发现、早期治疗的效果非常好；但如果发现太晚，可能需要摘除眼球。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., Nat Rev Dis Primers 2015]</a>',
+    '<strong>Was es ist:</strong> Bösartiger Netzhautumor durch RB1-Genmutation. ~40% erblich — beidseitig, lebenslang erhöhtes Krebsrisiko. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>'
   ));
+  
   setHtml('child-type-retino-who', t(
-    '<strong>Who gets it:</strong> Almost exclusively infants and young children — median diagnosis age 18 months. Bilateral in ~40% of hereditary cases. One of the most treatable childhood cancers when caught early — and one of the most striking examples of how awareness directly saves vision and lives.',
-    '<strong>谁会患病：</strong>几乎仅发生于婴幼儿——中位诊断年龄18个月。遗传性病例中约40%为双侧受累。这是早期发现时治疗效果最好的儿童癌症之一，也是最能说明提高认识直接挽救视力和生命的典例之一。',
-    '<strong>Wer erkrankt:</strong> Fast ausschließlich Säuglinge und Kleinkinder (Medianalter 18 Monate). ~40% bilateral bei erblichen Fällen. Bei früher Diagnose eines der am besten behandelbaren Kinderkrebserkrankungen.'
+    '<strong>Who gets it:</strong> Almost exclusively infants and young children — median diagnosis age 18 months. Bilateral in ~40% of hereditary cases.',
+    '<strong>谁会患病：</strong>几乎只发生在婴幼儿身上，确诊平均年龄仅18个月。遗传性病例中约40%是双眼同时发病的。',
+    '<strong>Wer erkrankt:</strong> Fast ausschließlich Säuglinge (Ø 18 Monate). ~40% bilateral.'
   ));
+  
   setHtml('child-type-retino-signs', t(
-    '<strong>Warning signs:</strong> White pupil reflex in photographs (leukocoria — one eye glows white instead of red in flash photos). <strong>This is the single most important sign — see a doctor immediately if observed.</strong> Also: squinting (strabismus) · red or swollen eye · vision loss. Leukocoria is the presenting sign in ~60% of cases. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
-    '<strong>预警信号：</strong>照片中的白瞳反射（白瞳症——闪光照片中一只眼睛发白而非红色）。<strong>这是最重要的单一信号——一旦发现应立即就医。</strong>还包括：斜视·眼红或眼肿·视力丧失。白瞳症是约60%病例的首发体征。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
-    '<strong>Warnsignale:</strong> Weißer Pupillenreflex in Fotos (Leukokorie — ein Auge leuchtet weiß statt rot). <strong>Sofort zum Arzt, wenn beobachtet.</strong> Auch: Schielen · rotes/geschwollenes Auge · Sehverlust.'
+    '<strong>Warning signs:</strong> White pupil reflex in photographs (leukocoria). <strong>If a flash photo shows one pupil glowing white instead of red, see a doctor immediately.</strong> Also: squinting · red or swollen eye · vision loss.',
+    '<strong>最重要的早期信号：</strong>拍照时发现孩子一只眼睛的瞳孔在闪光灯下呈白色（而不是正常的红色反光），医学上叫"白瞳症"（leukocoria）。<strong>如果发现这个现象，请立即就医，不要等待观察。</strong> 其他症状还包括：斜视（眼睛向不同方向看）、眼睛发红或肿胀、视力减退。',
+    '<strong>Warnsignale:</strong> Weißer Pupillenreflex in Fotos (Leukokorie). <strong>Sofort zum Arzt.</strong> Schielen · rotes Auge · Sehverlust.'
   ));
+  
   setHtml('child-type-retino-treat', t(
-    '<strong>Treatment:</strong> Depends on stage. Small tumours: laser photocoagulation or cryotherapy. Moderate: intra-arterial chemotherapy (IAC — direct injection into the ophthalmic artery), intra-vitreal chemotherapy. Advanced: systemic chemotherapy + enucleation (eye removal) as last resort. Survival >95% in high-income countries; eye salvage rates now >80% with modern techniques. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
-    '<strong>治疗方式：</strong>取决于分期。小肿瘤：激光光凝或冷冻疗法。中度：动脉内化疗（IAC——直接注入眼动脉），玻璃体内化疗。晚期：全身化疗+眼球摘除（最后手段）。高收入国家生存率>95%；现代技术保眼率>80%。<a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>',
-    '<strong>Behandlung:</strong> Kleine Tumoren: Laserkoagulation oder Kryotherapie. Mittelstufe: intraarteriöse Chemo (IAC), intravitreale Chemo. Fortgeschritten: systemische Chemo + Enukleation. Überleben >95%; Augensalvage >80%. <a href="https://doi.org/10.1038/nrdp.2015.11" target="_blank" style="color:var(--blue);font-size:.85em;">[Dimaras et al., 2015]</a>'
+    '<strong>Treatment:</strong> Small tumours: laser photocoagulation or cryotherapy. Moderate: intra-arterial chemotherapy (IAC). Advanced: systemic chemotherapy + enucleation (eye removal) as last resort. Survival >95% in high-income countries; eye salvage rates now >80%.',
+    '<strong>治疗方式：</strong>小肿瘤：激光治疗或冷冻疗法，创伤小，效果好。中等大小：将化疗药物直接注射进供应眼球的血管（眼动脉内化疗），浓度高、副作用少。晚期：全身化疗，必要时摘除眼球（最后手段）。在高收入国家，超过95%的患儿可以长期存活，80%以上的患儿可以保留眼球。',
+    '<strong>Behandlung:</strong> Klein: Laser oder Kryotherapie. Mittel: intraarteriöse Chemo (IAC). Fortgeschritten: systemische Chemo + Enukleation. Überleben >95%; Augensalvage >80%.'
   ));
+  
   setHtml('child-type-retino-pde', t(
-    '<strong>Drug delivery innovation:</strong> Intra-arterial chemotherapy (IAC) directly addresses the drug delivery problem — it bypasses systemic circulation, delivering high drug concentrations to the ophthalmic artery feeding the tumour. This maximises local concentration while minimising systemic toxicity. A direct clinical application of the PDE principle: reduce diffusion distance, increase local C.',
-    '<strong>药物递送创新：</strong>动脉内化疗（IAC）直接解决了药物递送问题——它绕过全身循环，将高浓度药物直接输送到供应肿瘤的眼动脉。这最大化了局部浓度，同时将全身毒性降至最低。这是PDE原理的直接临床应用：缩短扩散距离，提高局部浓度C。',
-    '<strong>Wirkstofflieferungsinnovation:</strong> Intraarteriöse Chemotherapie (IAC) umgeht den Systemkreislauf und liefert hohe Wirkstoffkonzentrationen direkt in die Augenarterie. Maximiert lokale Konzentration bei minimaler Systemtoxizität — direkte klinische Anwendung des PDE-Prinzips.'
+    '<strong>Drug delivery innovation:</strong> Intra-arterial chemotherapy (IAC) directly addresses the drug delivery problem — it bypasses systemic circulation, delivering high drug concentrations directly to the ophthalmic artery feeding the tumour.',
+    '<strong>药物递送的创新：</strong>眼动脉内化疗（IAC）是一个很好的例子，说明了如何通过精准"送药"来提高疗效、减少副作用。药物不经过全身循环，而是直接注射进供应眼球的小血管，让药物在肿瘤局部达到极高的浓度。这正是PDE原理在临床中的直接应用：缩短药物到达目标的距离，最大化局部浓度，最小化对其他器官的损害。',
+    '<strong>Wirkstofflieferungsinnovation:</strong> IAC umgeht den Systemkreislauf — hohe lokale Konzentration, minimale Systemtoxizität. Direkte klinische Anwendung des PDE-Prinzips.'
   ));
   
-  setHtml('child-type-bone-h', t('Bone tumours: Osteosarcoma & Ewing sarcoma — ~5% of cases','骨肿瘤：骨肉瘤与尤文肉瘤——约占5%的病例','Knochentumoren: Osteosarkom & Ewing-Sarkom — ~5% der Fälle'));
+  // ── BONE ──
   setHtml('child-type-bone-what', t(
-    '<strong>What they are:</strong> <strong>Osteosarcoma</strong> arises from bone-forming cells (osteoblasts), most commonly near the knee or shoulder. <strong>Ewing sarcoma</strong> arises from primitive neuroectodermal cells, can occur in any bone, and is defined by the EWS-FLI1 chromosomal translocation (t(11;22)). <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
-    '<strong>是什么：</strong><strong>骨肉瘤</strong>起源于成骨细胞，最常见于膝关节或肩关节附近。<strong>尤文肉瘤</strong>起源于原始神经外胚层细胞，可发生于任何骨骼，以EWS-FLI1染色体易位（t(11;22)）为特征。<a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
-    '<strong>Was sie sind:</strong> <strong>Osteosarkom</strong> entsteht aus knochenbildenden Zellen, meist nahe Knie oder Schulter. <strong>Ewing-Sarkom</strong> aus primitiven neuroektodermalen Zellen, definiert durch EWS-FLI1-Translokation. <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>'
-  ));
-  setHtml('child-type-bone-who', t(
-    '<strong>Who gets it:</strong> Both peak during adolescence (10–20 years) — coinciding with puberty-driven bone growth spurts. Osteosarcoma is more common in males and taller children. Ewing sarcoma disproportionately affects white children and is rare in East Asian populations.',
-    '<strong>谁会患病：</strong>两者均在青少年期（10至20岁）达到发病高峰——与青春期骨骼生长加速吻合。骨肉瘤在男孩和身材较高的儿童中更为常见。尤文肉瘤在白人儿童中比例更高，在东亚人群中罕见。',
-    '<strong>Wer erkrankt:</strong> Beide mit Gipfel in der Adoleszenz (10–20 Jahre) — zusammenfallend mit pubertätsbedingtem Knochenwachstum. Osteosarkom häufiger bei Jungen und größeren Kindern. Ewing-Sarkom überwiegend bei weißen Kindern.'
-  ));
-  setHtml('child-type-bone-signs', t(
-    '<strong>Warning signs:</strong> Persistent localised bone pain (especially at night or at rest, not just with activity) · swelling near a bone · unexplained limb pain · fracture from minor injury (pathological fracture). Crucially: pain that doesn\'t resolve after 2–3 weeks should always be investigated. Often initially misdiagnosed as growing pains or sports injury.',
-    '<strong>预警信号：</strong>持续性局部骨痛（尤其在夜间或休息时，而非仅在活动时）·骨骼附近肿胀·不明原因肢体疼痛·轻微受伤后骨折（病理性骨折）。关键提示：疼痛持续超过2至3周未缓解时，应始终进行检查。常被误诊为生长痛或运动损伤。',
-    '<strong>Warnsignale:</strong> Anhaltende lokale Knochenschmerzen (besonders nachts oder in Ruhe) · Schwellung nahe einem Knochen · Fraktur nach geringem Trauma (pathologische Fraktur). Schmerzen, die nach 2–3 Wochen nicht nachlassen, müssen abgeklärt werden.'
-  ));
-  setHtml('child-type-bone-treat', t(
-    '<strong>Treatment:</strong> Both: neoadjuvant chemotherapy (before surgery) + surgical resection (limb-sparing where possible) + adjuvant chemotherapy. Ewing: often radiation as well. Key drugs: osteosarcoma uses MAP (methotrexate, doxorubicin/Adriamycin, cisplatin); Ewing uses VIDE/VAI. Histological response to neoadjuvant chemo (>90% necrosis) is the strongest prognostic factor for osteosarcoma. <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>',
-    '<strong>治疗方式：</strong>两者均采用：新辅助化疗（术前）+手术切除（尽可能保肢）+辅助化疗。尤文肉瘤通常还需放疗。关键药物：骨肉瘤使用MAP方案（甲氨蝶呤、多柔比星/阿霉素、顺铂）；尤文肉瘤使用VIDE/VAI方案。新辅助化疗后的组织学反应（>90%坏死）是骨肉瘤最强的预后因素。<a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>',
-    '<strong>Behandlung:</strong> Beide: Neoadjuvante Chemo + Resektion (gliederhaltend wenn möglich) + adjuvante Chemo. Ewing: oft auch Bestrahlung. Schlüsselmedikamente: MAP (Osteosarkom), VIDE/VAI (Ewing). <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>'
-  ));
-  setHtml('child-type-bone-pde', t(
-    '<strong>Drug delivery challenge:</strong> Bone is one of the most physically impenetrable tumour environments — naturally dense mineralised ECM and high IFP. Neoadjuvant chemotherapy response is poor in ~40% of patients, likely partly due to physical delivery barriers. This is why survival has plateaued — the biology is not the limiting factor; drug delivery is.',
-    '<strong>药物递送挑战：</strong>骨骼是物理上最难渗透的肿瘤环境之一——天然致密的矿化细胞外基质和高间质液压。约40%的患者对新辅助化疗反应不佳，这可能部分归因于物理递送障碍。这正是生存率停滞不前的原因——生物学不是限制因素；药物递送才是。',
-    '<strong>Wirkstofflieferungsherausforderung:</strong> Knochen ist eine der am schwersten penetrierbaren Tumorumgebungen — dichtes mineralisiertes ECM und hoher IFP. ~40% sprechen schlecht auf neoadjuvante Chemo an, teils wegen physischer Lieferungsbarrieren.'
+    '<strong>What they are:</strong> <strong>Osteosarcoma</strong> arises from bone-forming cells, most commonly near the knee or shoulder. <strong>Ewing sarcoma</strong> arises from primitive cells in bone tissue, can occur in any bone, and is defined by a specific gene rearrangement (EWS-FLI1 translocation). <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
+    '<strong>是什么：</strong><strong>骨肉瘤</strong>起源于负责生成骨骼的细胞，最常发生在膝关节或肩关节附近的长骨。<strong>尤文肉瘤</strong>起源于骨骼中一种原始细胞，可以在任何骨骼中发生，有一个特定的基因改变（EWS-FLI1基因重排）是其标志性特征。<a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., Skeletal Radiol 2014]</a>',
+    '<strong>Was sie sind:</strong> Osteosarkom aus Knochenbildungszellen, meist nahe Knie/Schulter. Ewing-Sarkom mit EWS-FLI1-Translokation. <a href="https://doi.org/10.1007/s00256-012-1471-8" target="_blank" style="color:var(--blue);font-size:.85em;">[Luetke et al., 2014]</a>'
   ));
   
-  setHtml('child-type-lymph-h', t('Hodgkin Lymphoma — highly treatable, >95% survival','霍奇金淋巴瘤——高度可治，>95%生存率','Hodgkin-Lymphom — gut behandelbar, >95% Überleben'));
+  setHtml('child-type-bone-who', t(
+    '<strong>Who gets it:</strong> Both peak during adolescence (10–20 years) — coinciding with puberty-driven bone growth spurts. Osteosarcoma is more common in males.',
+    '<strong>谁会患病：</strong>两种骨肿瘤都在青春期（10至20岁）高发，与这一时期骨骼快速生长有关。骨肉瘤在男孩中更为常见，身材较高的青少年风险略高。尤文肉瘤在白人中比例偏高，在东亚人群中相对少见。',
+    '<strong>Wer erkrankt:</strong> Adoleszenz (10–20 J.) — pubertätsbedingtes Knochenwachstum. Osteosarkom häufiger bei Jungen.'
+  ));
+  
+  setHtml('child-type-bone-signs', t(
+    '<strong>Warning signs:</strong> Persistent localised bone pain (especially at night) · swelling near a bone · unexplained limb pain · fracture from minor injury. Often initially misdiagnosed as growing pains.',
+    '<strong>需要注意的症状：</strong>某处骨骼持续性疼痛（尤其是夜间或休息时也痛，而不只是运动时痛）、骨骼附近出现肿胀、不明原因的肢体疼痛、轻微外力就骨折（病理性骨折）。骨肿瘤的疼痛经常被误认为是青少年的"生长痛"或运动损伤，请注意区分——如果疼痛持续超过2至3周、程度加重或出现肿胀，应及时就医。',
+    '<strong>Warnsignale:</strong> Anhaltende Knochenschmerzen (besonders nachts) · Schwellung · Fraktur nach geringem Trauma. Oft mit Wachstumsschmerzen verwechselt.'
+  ));
+  
+  setHtml('child-type-bone-treat', t(
+    '<strong>Treatment:</strong> Both: neoadjuvant chemotherapy (before surgery) + surgical resection (limb-sparing where possible) + adjuvant chemotherapy. Key drugs: osteosarcoma uses MAP regimen; Ewing uses VIDE/VAI.',
+    '<strong>治疗方式：</strong>两种骨肿瘤都采用"先化疗、再手术、后化疗"的模式：手术前先用化疗缩小肿瘤，然后手术切除（尽量保留肢体，避免截肢），手术后再继续化疗巩固效果。尤文肉瘤通常还需要放疗。化疗后肿瘤坏死的程度是最重要的预后指标——坏死越彻底，效果越好。',
+    '<strong>Behandlung:</strong> Neoadjuvante Chemo + Resektion (gliederhaltend) + adjuvante Chemo. Ewing: oft auch Bestrahlung.'
+  ));
+  
+  setHtml('child-type-bone-pde', t(
+    '<strong>Drug delivery challenge:</strong> Bone is one of the most physically impenetrable tumour environments — naturally dense mineralised ECM and high IFP. Neoadjuvant chemotherapy response is poor in ~40% of patients, partly due to physical delivery barriers.',
+    '<strong>药物递送的挑战：</strong>骨骼是药物最难渗透的肿瘤环境之一。骨骼天然致密，矿化程度高，药物很难扩散进去；同时肿瘤内部的间质液压（IFP）也很高，会把药物往外推。大约40%的患者对术前化疗反应不佳，很可能部分原因就在于药物根本送不到肿瘤深处。这也是骨肉瘤生存率数十年来停滞不前的原因之一——生物学上不是没有靶点，而是药物递送始终是瓶颈。',
+    '<strong>Wirkstofflieferung:</strong> Knochen = dichtes mineralisiertes ECM + hoher IFP. ~40% sprechen schlecht auf neoadjuvante Chemo an — Penetrationsbarrieren als Mitursache.'
+  ));
+  
+  // ── HODGKIN ──
   setHtml('child-type-lymph-what', t(
-    '<strong>What it is:</strong> A cancer of the lymphatic system defined by Reed-Sternberg cells. One of the earliest cancers to be cured by chemotherapy. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology, treatment, and generally worse prognosis.',
-    '<strong>是什么：</strong>以Reed-Sternberg细胞为特征的淋巴系统癌症。最早被化疗治愈的癌症之一。儿童非霍奇金淋巴瘤（NHL）是生物学、治疗方式和总体预后均不同的独立类别，预后通常较差。',
-    '<strong>Was es ist:</strong> Lymphsystemkrebs mit Reed-Sternberg-Zellen. Eines der ersten Krebsarten, die durch Chemotherapie heilbar wurden. NHL bei Kindern ist eine eigene Gruppe mit anderer Biologie und Behandlung.'
+    '<strong>What it is:</strong> A cancer of the lymphatic system defined by Reed-Sternberg cells. One of the earliest cancers to be cured by chemotherapy. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology and treatment.',
+    '<strong>是什么：</strong>霍奇金淋巴瘤是淋巴系统的癌症，病理上可以在显微镜下看到一种特殊的大细胞（Reed-Sternberg细胞）。它是最早被化疗治愈的癌症之一，也是儿童和青少年癌症中预后最好的类型之一。非霍奇金淋巴瘤（NHL）是另一类淋巴瘤，生物学特征和治疗方式都不同，预后也更复杂。',
+    '<strong>Was es ist:</strong> Lymphsystemkrebs mit Reed-Sternberg-Zellen. Eines der ersten durch Chemo heilbaren Krebsarten. NHL bei Kindern ist eine eigene Gruppe.'
   ));
+  
   setHtml('child-type-lymph-who', t(
-    '<strong>Who gets it:</strong> Two age peaks — adolescence/young adulthood and >55 years. EBV infection is associated with some subtypes. More common in males. Immunosuppressed children (HIV, organ transplant) have significantly higher risk.',
-    '<strong>谁会患病：</strong>两个年龄高峰——青少年/年轻成人期和55岁以上。EBV（EB病毒）感染与某些亚型相关。男性更为常见。免疫抑制儿童（HIV感染者、器官移植受者）风险显著升高。',
-    '<strong>Wer erkrankt:</strong> Zwei Altershäufungen — Adoleszenz/junges Erwachsenenalter und >55 Jahre. EBV-Assoziation bei manchen Subtypen. Häufiger bei Männern. Immunsupprimierte Kinder haben erhöhtes Risiko.'
+    '<strong>Who gets it:</strong> Two age peaks — adolescence/young adulthood and >55 years. EBV infection is associated with some subtypes. More common in males.',
+    '<strong>谁会患病：</strong>有两个发病高峰：青少年/青年期，以及55岁以上的成年人。某些亚型与EB病毒（EBV）感染有关。男性比女性更多见。免疫功能低下的儿童（如HIV感染者或器官移植后服用免疫抑制剂者）风险更高。',
+    '<strong>Wer erkrankt:</strong> Zwei Altershäufungen: Adoleszenz/junges Erwachsenenalter und >55 Jahre. EBV-Assoziation. Häufiger bei Männern.'
   ));
+  
   setHtml('child-type-lymph-signs', t(
-    '<strong>Warning signs:</strong> Painless enlarged lymph nodes (neck, armpit, groin) · "B symptoms" — drenching night sweats, unexplained fever, unintentional weight loss >10% · itching without rash · shortness of breath (mediastinal mass compressing airways). B symptoms indicate more advanced disease and should prompt urgent investigation.',
-    '<strong>预警信号：</strong>无痛性淋巴结肿大（颈部、腋下、腹股沟）·"B症状"——盗汗、不明原因发烧、非自愿体重下降>10%·无皮疹的瘙痒·气短（纵隔肿块压迫气道）。B症状提示疾病更为进展，应立即进行检查。',
-    '<strong>Warnsignale:</strong> Schmerzlose Lymphknotenschwellung · "B-Symptome" — Nachtschweiß, unerklärtes Fieber, Gewichtsverlust >10% · Juckreiz ohne Ausschlag · Kurzatmigkeit (Mediastinalmasse).'
+    '<strong>Warning signs:</strong> Painless enlarged lymph nodes (neck, armpit, groin) · "B symptoms" — drenching night sweats, unexplained fever, unintentional weight loss >10% · itching without rash · shortness of breath.',
+    '<strong>需要注意的症状：</strong>无痛性淋巴结肿大（颈部、腋下、腹股沟）。同时出现以下"B症状"应高度重视：夜间大量出汗（湿透衬衫）、不明原因发烧、在没有刻意减肥的情况下体重减轻超过10%。其他症状还包括：没有皮疹却感觉全身发痒、胸闷气短（胸腔内淋巴结肿大压迫气道）。',
+    '<strong>Warnsignale:</strong> Schmerzlose Lymphknotenschwellung · B-Symptome (Nachtschweiß, Fieber, Gewichtsverlust >10%) · Juckreiz · Kurzatmigkeit.'
   ));
+  
   setHtml('child-type-lymph-treat', t(
-    '<strong>Treatment:</strong> ABVD chemotherapy ± radiation. Modern response-adapted protocols use PET scan after 2 cycles to guide whether radiation is added. 5-year survival >95% (early stage), ~85% (advanced). Current research focuses on reducing long-term treatment side effects — cardiac toxicity, pulmonary fibrosis, secondary cancers from radiation — without sacrificing cure rates.',
-    '<strong>治疗方式：</strong>ABVD化疗±放疗。现代反应适应方案在2个疗程后使用PET扫描指导是否需要添加放疗。5年生存率>95%（早期），~85%（晚期）。目前研究重点在于在不牺牲治愈率的前提下降低长期治疗副作用——心脏毒性、肺纤维化、放疗引起的继发性癌症。',
-    '<strong>Behandlung:</strong> ABVD-Chemo ± Bestrahlung. Moderne PET-adaptierte Protokolle nach 2 Zyklen. 5-Jahres-Überleben >95% (früh), ~85% (fortgeschritten). Forschung: Langzeittoxizität reduzieren ohne Heilungsrate zu opfern.'
+    '<strong>Treatment:</strong> ABVD chemotherapy ± radiation. Modern response-adapted protocols use PET scan after 2 cycles to guide whether radiation is added. 5-year survival >95% (early stage), ~85% (advanced).',
+    '<strong>治疗方式：</strong>化疗（ABVD方案：阿霉素、博来霉素、长春碱、达卡巴嗪）加或不加放疗。现代方案更精细：治疗2个疗程后做PET扫描，看肿瘤反应情况，再决定是否需要加放疗——反应好的患者可以免去放疗，减少长期副作用（如心脏损伤、肺纤维化、继发第二肿瘤等）。早期霍奇金淋巴瘤的5年生存率超过95%，晚期约85%。',
+    '<strong>Behandlung:</strong> ABVD ± Bestrahlung. PET-adaptierte Protokolle nach 2 Zyklen. 5-Jahres-Überleben: >95% (früh), ~85% (fortgeschritten).'
   ));
   
   // Diagnosis
