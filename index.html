@@ -514,7 +514,7 @@
       <button onclick="switchTab('early')">Early Detection</button>
       <button onclick="switchTab('lifestyle')">Lifestyle &amp; Risk</button>
       <button onclick="switchTab('precision')">Precision Medicine</button>
-      <button onclick="switchTab('journal')">📖 Journal</button>
+      <button onclick="switchTab('journal')">📖 Reading</button>
       <button onclick="switchTab('child')">❤ Childhood Cancer</button>
       <button onclick="switchTab('about')">About Us</button>
     </nav>
@@ -1562,14 +1562,15 @@
       <div class="card section" style="border-left:3px solid var(--coral);background:linear-gradient(135deg,rgba(255,107,107,0.04),rgba(78,205,196,0.04));">
         <div class="card-header">
           <div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div>
-          <h2 style="margin:0;" id="wcc-detail-title">Our charity partner: World Child Cancer</h2>
+          <h2 style="margin:0;" id="wcc-detail-title">We are proud to support: World Child Cancer</h2>
         </div>
         <div class="grid-2">
           <div>
             <p id="wcc-detail-p1">World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They do this through three programmes: strengthening hospital capacity and training oncologists locally; improving access to medicines and diagnostics; and funding sustainable twinning partnerships between hospitals in high- and low-income countries.</p>
             <p id="wcc-detail-p2">The science throughout this site explains <em>why</em> the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.</p>
-            <p id="wcc-detail-p3">PDE Outreach is proud to support World Child Cancer as our nominated charity partner. Our science education is free — but if what you've read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer's programmes.</p>
+            <p id="wcc-detail-p3">PDE Outreach is proud to support World Child Cancer. Our science education is free — but if what you've read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer's programmes.</p>
             <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="wcc-detail-btn">❤ Donate via our JustGiving page</a>
+            <p style="font-size:.78rem;color:var(--text3);margin-top:.75rem;">Learn more at <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a> · <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" style="color:var(--blue);">Our JustGiving page</a></p>
           </div>
           <div>
             <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem;">
@@ -1609,98 +1610,59 @@
     <!-- JOURNAL TAB -->
     <div id="tab-journal" class="tab-panel">
       <div class="section">
-        <h1 id="journal-h1">Cancer Science <span class="accent">Journal</span></h1>
-        <p style="max-width:680px;" id="journal-sub">World-class cancer research, made readable. We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, and Cancer Discovery into plain language. <strong>Always free. No subscription.</strong></p>
-        <div class="hero-chips" style="margin-top:1rem;">
-          <span class="hero-chip" id="journal-chip-1">High-IF journals</span>
-          <span class="hero-chip" id="journal-chip-2">Plain language</span>
-          <span class="hero-chip" id="journal-chip-3">EN / 中文 / DE</span>
-          <span class="hero-chip" id="journal-chip-4">Free forever</span>
-        </div>
+        <h1 id="journal-h1">Further <span class="accent">Reading</span></h1>
+        <p style="max-width:680px;" id="journal-sub">Want to go deeper? Here are the journals where the science on this site comes from. All are freely accessible in some form — either open access, or via your local library.</p>
       </div>
       <div class="disclaimer-box section" id="journal-disclaimer">
-        📋 <strong id="journal-disc-label">Educational content only.</strong>
-        <span id="journal-disc-text"> All articles summarise published peer-reviewed research in our own words. They are not medical advice. Always consult a qualified clinician.</span>
-        <a href="#" onclick="switchTab('about');return false;" id="journal-disc-link"> About us →</a>
+        📋 <strong id="journal-disc-label">A note on reading research.</strong>
+        <span id="journal-disc-text"> Journal articles are written for specialists and can be dense. If a paper is behind a paywall, try searching the title on <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed</a> — many studies have free preprint versions. You can also email the corresponding author directly; researchers almost always share their papers when asked.</span>
       </div>
-      <!-- How we write these -->
-      <div class="card section" style="background:rgba(78,205,196,0.04);border-color:rgba(78,205,196,0.2);">
-        <div class="card-header"><div class="card-icon">✍</div><h2 style="margin:0;" id="journal-how-title">How we write these</h2></div>
-        <p id="journal-how-p">Each article starts from a peer-reviewed paper in an open-access or CC BY journal. We cite the paper (author, journal, year, DOI) at the top, summarise the findings in our own words, and add lifestyle context using "associated with" language — never prescriptive. We do not reproduce text from paywalled sources.</p>
-      </div>
-      <!-- Sample articles -->
       <div class="section">
-        <h2 id="journal-sample-title">Articles</h2>
+        <h2 id="journal-sources-title">The journals we use</h2>
         <div class="grid-2">
-          <div class="card" style="cursor:pointer;" onclick="openArticlePreview('art1')">
-            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
-              <span class="tag blue">CA: Cancer J Clin</span><span class="tag">Jan 2025</span>
-            </div>
-            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art1-title">Global Cancer Statistics 2024: How has the landscape shifted?</h3>
-            <p style="font-size:.8rem;margin:0;" id="art1-desc">GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what's risen, what's fallen, and what it means for prevention.</p>
-            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art1-read">5 min read</span>
-              <span style="flex:1;"></span>
-              <span class="tag green" id="art1-free-tag">Free</span>
-            </div>
-          </div>
-          <div class="card" style="cursor:pointer;opacity:.8;" onclick="openArticlePreview('art2')">
-            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
-              <span class="tag purple">Nature Rev Cancer</span><span class="tag">Feb 2025</span>
-            </div>
-            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art2-title">Tumour microenvironment remodelling: new targets for drug delivery</h3>
-            <p style="font-size:.8rem;margin:0;" id="art2-desc">How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.</p>
-            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art2-read">7 min read</span>
-              <span style="flex:1;"></span>
-              <span class="tag green" id="art2-lock-tag">Free</span>
-            </div>
-          </div>
-          <div class="card" style="cursor:pointer;opacity:.8;" onclick="openArticlePreview('art3')">
-            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
-              <span class="tag red">Lancet Oncology</span><span class="tag">Feb 2025</span>
-            </div>
-            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art3-title">Liquid biopsies in early detection: 2025 clinical update</h3>
-            <p style="font-size:.8rem;margin:0;" id="art3-desc">ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.</p>
-            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art3-read">6 min read</span>
-              <span style="flex:1;"></span>
-              <span class="tag green" id="art3-lock-tag">Free</span>
-            </div>
-          </div>
-          <div class="card" style="cursor:pointer;opacity:.8;" onclick="openArticlePreview('art4')">
-            <div style="display:flex;gap:10px;align-items:flex-start;margin-bottom:.875rem;">
-              <span class="tag amber">Cancer Discovery</span><span class="tag">Mar 2025</span>
-            </div>
-            <h3 style="font-size:.95rem;margin-bottom:.5rem;" id="art4-title">CAR-T in solid tumours: breaking through the stromal barrier</h3>
-            <p style="font-size:.8rem;margin:0;" id="art4-desc">Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.</p>
-            <div style="margin-top:.875rem;display:flex;align-items:center;gap:8px;">
-              <span style="font-size:.72rem;color:var(--text3);font-family:var(--mono);" id="art4-read">8 min read</span>
-              <span style="flex:1;"></span>
-              <span class="tag green" id="art4-lock-tag">Free</span>
-            </div>
-          </div>
+          <a href="https://acsjournals.onlinelibrary.wiley.com/journal/15424863" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">CA: A Cancer Journal for Clinicians</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~254 · Highest in oncology · Open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">The gold standard for cancer statistics and clinical summaries. GLOBOCAN data (the 400,000 childhood cancer figure) comes from here.</div>
+          </a>
+          <a href="https://www.nature.com/nrc/" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">Nature Reviews Cancer</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~78 · Review articles · Some open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">Deep review articles explaining the biology of how tumours develop, resist treatment, and spread. Good for understanding the "why" behind clinical failures.</div>
+          </a>
+          <a href="https://ascopubs.org/journal/jco" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">Journal of Clinical Oncology</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~45 · Clinical trials · Some open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">Where major clinical trial results are published. If a new treatment is approved, the pivotal trial data is usually here first.</div>
+          </a>
+          <a href="https://www.cell.com/cancer-cell/home" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">Cancer Cell</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~50 · Molecular biology · Some open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">The molecular mechanisms behind cancer — how genes mutate, how tumours evade the immune system, how resistance develops at a cellular level.</div>
+          </a>
+          <a href="https://www.thelancet.com/journals/lanonc/home" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">The Lancet Oncology</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~51 · Global health focus · Some open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">Strong on global cancer disparities, low-income country data, and health systems. Much of the survival gap data on this site cites Lancet Oncology papers.</div>
+          </a>
+          <a href="https://aacrjournals.org/cancerdiscovery" target="_blank" class="card" style="text-decoration:none;display:block;">
+            <div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.375rem;">Cancer Discovery</div>
+            <div style="font-size:.78rem;color:var(--text3);margin-bottom:.5rem;">Impact factor ~29 · Translational research · Some open access</div>
+            <div style="font-size:.82rem;color:var(--text2);">Bridges laboratory findings and clinical application — how a new biological insight becomes a treatment approach. Good for understanding CAR-T and targeted therapy development.</div>
+          </a>
         </div>
       </div>
-      <!-- Support card — replaces pricing -->
+      <div class="card section" style="background:rgba(78,205,196,0.04);border-color:rgba(78,205,196,0.2);">
+        <div class="card-header"><div class="card-icon">💡</div><h2 style="margin:0;" id="journal-how-title">How to read a scientific paper if you're not a scientist</h2></div>
+        <p id="journal-how-p1">Start with the <strong>Abstract</strong> (one paragraph summary at the top) and the <strong>Discussion</strong> section at the end — skip the Methods entirely on first read. In the Results section, look at the figures rather than the text. If a number seems important, check the confidence interval or p-value nearby; if either looks uncertain, the finding is probably preliminary.</p>
+        <p id="journal-how-p2" style="margin-bottom:0;">Be sceptical of single studies, especially in cancer biology where replication is often difficult. The highest-quality evidence comes from systematic reviews and meta-analyses, which pool data from many studies. If something is described as "shown in a mouse model" or "in vitro" (in a dish), it hasn't yet been tested in humans — which matters a lot in oncology.</p>
+      </div>
       <div class="support-card section">
-        <h3 id="journal-support-title">This content is free — but childhood cancer research needs funding.</h3>
-        <p id="journal-support-p">We're confirming partnerships with childhood cancer charities. When donation links are live, every article will have a "Support Us" button. For now — share this page with someone who'd find it valuable.</p>
-        <a href="mailto:outreach@pdeo.org" class="support-btn" id="journal-support-btn">
-          ❤ Get in touch about supporting
+        <h3 id="journal-support-title">This content is free. The fight isn't.</h3>
+        <p id="journal-support-p">We support World Child Cancer — a UK charity working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.</p>
+        <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="journal-support-btn">
+          ❤ Donate to World Child Cancer
         </a>
-      </div>
-      <!-- Source journals -->
-      <div class="section">
-        <h2 id="journal-sources-title">Source journals</h2>
-        <div class="grid-3">
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">CA: A Cancer Journal for Clinicians</div><div style="font-size:.72rem;color:var(--text3);">IF ~254 · Highest in oncology</div></div>
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Nature Reviews Cancer</div><div style="font-size:.72rem;color:var(--text3);">IF ~78</div></div>
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Journal of Clinical Oncology</div><div style="font-size:.72rem;color:var(--text3);">IF ~45</div></div>
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Cell</div><div style="font-size:.72rem;color:var(--text3);">IF ~50</div></div>
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">The Lancet Oncology</div><div style="font-size:.72rem;color:var(--text3);">IF ~51</div></div>
-          <div class="card" style="text-align:center;padding:1rem;"><div style="font-family:var(--mono);font-weight:700;color:var(--blue);margin-bottom:.25rem;">Cancer Discovery</div><div style="font-size:.72rem;color:var(--text3);">IF ~29</div></div>
-        </div>
       </div>
     </div>
 
@@ -1907,8 +1869,14 @@ async function simRunGuarded(fn, onError) {
   try { await fn(); } catch(e) { if (!timedOut) onError('error'); } finally { clearTimeout(timer); }
 }
 function simErrorMsg(lang, type) {
-  if (type === 'timeout') return lang === 'zh' ? '⚠ 运算超时——请刷新页面后重试。' : '⚠ Simulation timed out — please refresh and try again.';
-  return lang === 'zh' ? '⚠ 运算出错——请刷新页面后重试。' : '⚠ Something went wrong — please refresh and try again.';
+  if (type === 'timeout') {
+    if (lang === 'zh') return '⚠ 运算超时——请刷新页面后重试。';
+    if (lang === 'de') return '⚠ Simulation abgelaufen — bitte Seite neu laden.';
+    return '⚠ Simulation timed out — please refresh and try again.';
+  }
+  if (lang === 'zh') return '⚠ 运算出错——请刷新页面后重试。';
+  if (lang === 'de') return '⚠ Ein Fehler ist aufgetreten — bitte Seite neu laden.';
+  return '⚠ Something went wrong — please refresh and try again.';
 }
 
 /* PDE ENGINE */
@@ -2374,7 +2342,7 @@ function applyLang(lang){
   function t(en,zh,de){return lang==='zh'?zh:lang==='de'?(de||en):en;}
 
   // nav 
-  const navMap={home:{en:'Home',zh:'首页',de:'Start'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效',de:'Warum Medikamente versagen'},early:{en:'Early Detection',zh:'早期发现',de:'Früherkennung'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险',de:'Lebensstil & Risiko'},precision:{en:'Precision Medicine',zh:'精准医疗',de:'Präzisionsmedizin'},journal:{en:'📖 Journal',zh:'📖 期刊',de:'📖 Journal'},child:{en:'❤ Childhood Cancer',zh:'❤ 儿童癌症',de:'❤ Kinderkrebs'},about:{en:'About Us',zh:'关于我们',de:'Über uns'}};
+  const navMap={home:{en:'Home',zh:'首页',de:'Start'},drug:{en:'Why Drugs Fail',zh:'为什么药物失效',de:'Warum Medikamente versagen'},early:{en:'Early Detection',zh:'早期发现',de:'Früherkennung'},lifestyle:{en:'Lifestyle & Risk',zh:'生活方式与风险',de:'Lebensstil & Risiko'},precision:{en:'Precision Medicine',zh:'精准医疗',de:'Präzisionsmedizin'},journal:{en:'📖 Reading',zh:'📖 延伸阅读',de:'📖 Lektüre'},child:{en:'❤ Childhood Cancer',zh:'❤ 儿童癌症',de:'❤ Kinderkrebs'},about:{en:'About Us',zh:'关于我们',de:'Über uns'}};
   document.querySelectorAll('#nav button').forEach(btn=>{const m=btn.getAttribute('onclick').match(/switchTab\('(\w+)'\)/);if(m&&navMap[m[1]])btn.textContent=navMap[m[1]][lang]||navMap[m[1]].en;});
 
   document.title=t('PDEOutreach — Cancer Science for Everyone','PDEOutreach — 癌症科学，人人可懂','PDEOutreach — Krebswissenschaft für alle');
@@ -2463,7 +2431,12 @@ function applyLang(lang){
   setText('drug-story-ph-p',t('We\'re currently collecting patient stories. If you\'d like to share your experience, email ','我们正在收集患者故事。如果您愿意分享您的经历，请发邮件至 ','Wir sammeln Patientengeschichten. Wenn Sie Ihre Erfahrung teilen möchten, E-Mail an '));
   const dpEl=document.getElementById('drug-story-ph-p');if(dpEl){dpEl.innerHTML=t('Hassan, 14, was diagnosed with Acute Lymphoblastic Leukaemia in Malawi — where without support from World Child Cancer, treatment would not have been an option. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Read more stories →</a>','Hassan 14岁时在马拉维被诊断出急性淋巴细胞白血病——若没有 World Child Cancer 的支持，他的家庭根本无力负担治疗费用。<a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">阅读更多故事 →</a>','Hassan, 14, wurde in Malawi mit ALL diagnostiziert — ohne World Child Cancer wäre eine Behandlung nicht möglich gewesen. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Mehr Geschichten →</a>');}
   const drugMap={'cisplatin':{en:'Cisplatin (small molecule — high penetration)',zh:'顺铂（小分子——高渗透）',de:'Cisplatin (kleines Molekül — hohe Penetration)'},'doxorubicin':{en:'Doxorubicin (medium molecule)',zh:'多柔比星（中等分子）',de:'Doxorubicin (mittleres Molekül)'},'trastuzumab':{en:'Trastuzumab (large antibody — low penetration)',zh:'曲妥珠单抗（大分子抗体——低渗透）',de:'Trastuzumab (großer Antikörper — niedrige Penetration)'}};
-  const tumorMap={'breast':{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},'pancreatic':{en:'Pancreatic cancer (hardest to treat)',zh:'胰腺癌（最难治疗）',de:'Bauchspeicheldrüsenkrebs (am schwierigsten)'},'glioma':{en:'Glioma (brain tumor)',zh:'胶质瘤（脑肿瘤）',de:'Gliom (Gehirntumor)'}'glioma':{en:'Medullobloastoma (childhood brain tumor)',zh:'髓母细胞瘤（儿童脑肿瘤）',de:'Medulloblastom (kindlicher Hirntumor)'}};
+  const tumorMap={
+    'breast':{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},
+    'pancreatic':{en:'Pancreatic cancer (hardest to treat)',zh:'胰腺癌（最难治疗）',de:'Bauchspeicheldrüsenkrebs (am schwierigsten)'},
+    'glioma':{en:'Glioma (brain tumor)',zh:'胶质瘤（脑肿瘤）',de:'Gliom (Gehirntumor)'},
+    'medulloblastoma':{en:'Medulloblastoma (childhood brain tumor)',zh:'髓母细胞瘤（儿童脑肿瘤）',de:'Medulloblastom (kindlicher Hirntumor)'}
+  };
   const d1s=document.getElementById('drug1-select');if(d1s)Array.from(d1s.options).forEach(o=>{if(drugMap[o.value])o.textContent=drugMap[o.value][lang]||drugMap[o.value].en;});
   const t1s=document.getElementById('tumor1-select');if(t1s)Array.from(t1s.options).forEach(o=>{if(tumorMap[o.value])o.textContent=tumorMap[o.value][lang]||tumorMap[o.value].en;});
 
@@ -2627,38 +2600,29 @@ function applyLang(lang){
   const pspEl=document.getElementById('prec-story-ph-p');if(pspEl)pspEl.innerHTML=t('When Cynthia was diagnosed with Wilms tumour at age 6 in Ghana, a doctor told her mother not to waste time or resources. Her father lost hope. But she received treatment at Korle-Bu Hospital — and survived. The right diagnosis, at the right place, changes everything. <a href="https://worldchildcancer.org/news_and_blog/kobis-story/" target="_blank">Read more stories →</a>','Cynthia 6岁时在加纳被诊断出肾母细胞瘤，一位医生告诉她的母亲不要浪费时间和资源。父亲也失去了希望。但她在 Korle-Bu 医院接受了治疗——并存活下来。正确的诊断，在正确的地方，改变一切。<a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank">阅读更多故事 →</a>','Als Cynthia mit 6 Jahren in Ghana mit einem Wilms-Tumor diagnostiziert wurde, sagte ein Arzt ihrer Mutter, sie solle keine Zeit verschwenden. Aber sie erhielt Behandlung und überlebte. <a href="https://worldchildcancer.org/news_and_blog/cynthia-story/" target="_blank">Mehr Geschichten →</a>');
 
   // JOURNAL
-  setText('journal-h1',t('Cancer Science Journal','癌症科学期刊','Krebsmedizin Journal'));
-  setText('journal-sub',t('World-class cancer research, made readable. We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell, Lancet Oncology, and Cancer Discovery into plain language. Always free. No subscription.','顶级癌症研究，通俗易懂。我们将顶级期刊的最新研究整理成通俗语言。永久免费，无需订阅。','Erstklassige Krebsforschung, verständlich erklärt. Immer kostenlos. Kein Abonnement.'));
-  setText('journal-disc-label',t('Educational content only.','仅供教育用途。','Nur zu Bildungszwecken.'));
-  setText('journal-how-title',t('How we write these','我们如何撰写这些文章','Wie wir diese schreiben'));
-  setText('journal-how-p',t('Each article starts from a peer-reviewed paper in an open-access or CC BY journal. We cite the paper (author, journal, year, DOI) at the top, summarise the findings in our own words, and add lifestyle context using "associated with" language — never prescriptive. We do not reproduce text from paywalled sources.','每篇文章都从开放获取或CC BY期刊的同行评审论文开始。我们在顶部引用论文（作者、期刊、年份、DOI），用自己的话总结研究发现，并使用"与……相关"的语言添加生活方式背景——从不使用规定性语言。我们不复制付费来源的文本。','Jeder Artikel basiert auf einer Fachzeitschrift mit Open Access oder CC BY. Wir zitieren das Paper, fassen Ergebnisse in eigenen Worten zusammen, fügen Lifestyle-Kontext mit "assoziiert mit"-Sprache hinzu.'));
-  setText('journal-chip-1',t('High-IF journals','高影响因子期刊','Top-Fachzeitschriften'));setText('journal-chip-2',t('Plain language','通俗语言','Verständliche Sprache'));setText('journal-chip-4',t('Free forever','永久免费','Kostenlos für immer'));
-  setText('journal-sample-title',t('Articles','文章','Artikel'));
-  setText('journal-support-title',t('This content is free — but childhood cancer research needs funding.','内容免费——但儿童癌症研究需要资金支持。','Dieser Inhalt ist kostenlos — aber Kinderkrebsforschung braucht Finanzierung.'));
-  setText('journal-support-p',t('We\'re confirming partnerships with childhood cancer charities. When donation links are live, every article will have a "Support Us" button. For now — share this page.','我们正在确认与儿童癌症慈善机构的合作关系。捐款链接上线后，每篇文章将有"支持我们"按钮。现在请分享本页。','Wir bestätigen Partnerschaften mit Kinderkrebsstiftungen. Wenn Spendenlinks live sind, wird jeder Artikel einen Spenden-Button haben.'));
-  setText('journal-support-btn',t('❤ Get in touch about supporting','❤ 联系我们了解支持方式','❤ Kontakt wegen Unterstützung'));
-  setText('journal-sources-title',t('Source journals','来源期刊','Quelljournale'));
-
-  // Journal disclaimer and how-we-write
-  setText('journal-disc-text',t(' All articles summarise published peer-reviewed research in our own words. They are not medical advice. Always consult a qualified clinician.',' 所有文章均用我们自己的话总结已发表的同行评审研究。不构成医疗建议。请始终咨询合格的临床医生。',' Alle Artikel fassen veröffentlichte Forschung in eigenen Worten zusammen. Kein medizinischer Rat.'));
-  
-  // Journal articles
-  setText('art1-title',t('Global Cancer Statistics 2024: How has the landscape shifted?','全球癌症统计 2024：格局如何变化？','Globale Krebsstatistiken 2024: Wie hat sich die Lage verändert?'));
-  setText('art1-desc',t('GLOBOCAN 2024 estimates for 36 cancers across 185 countries — what\'s risen, what\'s fallen, and what it means for prevention.','GLOBOCAN 2024 对 185 个国家 36 种癌症的估计——哪些上升了，哪些下降了，以及对预防意味着什么。','GLOBOCAN 2024-Schätzungen für 36 Krebsarten in 185 Ländern.'));
-  setText('art1-read',t('5 min read','5 分钟阅读','5 Min. Lesen'));
-  setText('art1-free-tag',t('Free','免费','Kostenlos'));
-  setText('art2-title',t('Tumour microenvironment remodelling: new targets for drug delivery','肿瘤微环境重塑：药物递送的新靶点','Tumorumgebung-Remodellierung: neue Ziele für die Wirkstoffabgabe'));
-  setText('art2-desc',t('How stroma density and IFP gradients physically block chemotherapy — and the emerging strategies to overcome them.','基质密度和 IFP 梯度如何在物理上阻断化疗——以及克服它们的新兴策略。','Wie Stromaansammlungen und IFP-Gradienten Chemotherapie blockieren.'));
-  setText('art2-read',t('7 min read','7 分钟阅读','7 Min. Lesen'));
-  setText('art2-lock-tag',t('Free','免费','Kostenlos'));
-  setText('art3-title',t('Liquid biopsies in early detection: 2025 clinical update','液体活检在早期检测中的应用：2025 临床进展','Liquid Biopsies zur Früherkennung: Klinisches Update 2025'));
-  setText('art3-desc',t('ctDNA and CancerSEEK — where they stand in clinical trials and what the latest sensitivity/specificity data actually means.','ctDNA 和 CancerSEEK——临床试验现状及最新灵敏度/特异性数据的实际意义。','ctDNA und CancerSEEK — aktueller Stand in klinischen Studien.'));
-  setText('art3-read',t('6 min read','6 分钟阅读','6 Min. Lesen'));
-  setText('art3-lock-tag',t('Free','免费','Kostenlos'));
-  setText('art4-title',t('CAR-T in solid tumours: breaking through the stromal barrier','CAR-T 在实体瘤中的应用：突破基质屏障','CAR-T bei soliden Tumoren: Durchbruch durch die Stromabarriere'));
-  setText('art4-desc',t('Why CAR-T therapy works brilliantly in blood cancers but struggles in solid tumours — and three engineering approaches changing that.','为什么 CAR-T 疗法在血液癌症中效果出色，却在实体瘤中举步维艰——以及正在改变这一局面的三种工程方法。','Warum CAR-T bei Blutkrebs funktioniert, aber bei soliden Tumoren versagt.'));
-  setText('art4-read',t('8 min read','8 分钟阅读','8 Min. Lesen'));
-  setText('art4-lock-tag',t('Free','免费','Kostenlos'));
+  setText('journal-h1', t('Further Reading','延伸阅读','Weiterlesen'));
+  setText('journal-sub', t(
+    'Want to go deeper? Here are the journals where the science on this site comes from. All are accessible in some form — open access, or via your local library.',
+    '想深入了解？这里是本站科学内容的来源期刊。所有期刊均可通过某种方式获取——开放获取，或通过当地图书馆。',
+    'Möchtest du tiefer eintauchen? Hier sind die Zeitschriften, aus denen die Wissenschaft auf dieser Website stammt.'
+  ));
+  setHtml('journal-disc-text', t(
+    ' Journal articles are written for specialists and can be dense. If a paper is behind a paywall, try searching the title on <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed</a> — many have free preprint versions. You can also email the corresponding author; researchers almost always share their papers when asked.',
+    ' 期刊论文是为专业人士撰写的，可能较为专业。如果论文在付费墙后，可以在 <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed</a> 搜索标题——许多论文有免费预印本。也可以直接发邮件给通讯作者；研究人员几乎总是乐于分享论文。',
+    ' Fachartikel sind für Experten geschrieben. Suche den Titel bei <a href="https://pubmed.ncbi.nlm.nih.gov" target="_blank">PubMed</a> — oft gibt es freie Preprint-Versionen. Du kannst auch den korrespondierenden Autor per E-Mail anfragen.'
+  ));
+  setText('journal-sources-title', t('The journals we use','我们使用的期刊','Die Zeitschriften, die wir verwenden'));
+  setText('journal-how-title', t('How to read a scientific paper if you\'re not a scientist','如果你不是科学家，怎么读科学论文','Wie man eine Facharbeit liest, wenn man kein Wissenschaftler ist'));
+  setText('journal-how-p1', t(
+    'Start with the Abstract (one paragraph summary at the top) and the Discussion at the end — skip the Methods on first read. In Results, look at figures rather than text. If a number seems important, check the confidence interval nearby; if it looks wide, the finding is probably preliminary.',
+    '从摘要（顶部的一段总结）和末尾的讨论部分开始——第一次阅读时跳过方法部分。在结果部分，看图表而不是文字。如果某个数字看起来很重要，查看附近的置信区间；如果范围很宽，这个发现可能还是初步的。',
+    'Beginne mit dem Abstract (Zusammenfassung) und der Diskussion am Ende — überspringe die Methoden beim ersten Lesen. Schaue auf Abbildungen statt Text. Weite Konfidenzintervalle deuten auf vorläufige Ergebnisse hin.'
+  ));
+  setText('journal-how-p2', t(
+    'Be sceptical of single studies. The highest-quality evidence comes from systematic reviews and meta-analyses, which pool data from many studies. If something is described as "shown in a mouse model" or "in vitro" (in a dish), it hasn\'t been tested in humans yet — which matters a lot in oncology.',
+    '对单一研究保持怀疑。最高质量的证据来自系统综述和荟萃分析，它们汇集了多项研究的数据。如果某项内容被描述为"在小鼠模型中显示"或"体外"（在培养皿中），则尚未在人类身上测试——这在肿瘤学中非常重要。',
+    'Sei skeptisch gegenüber Einzelstudien. Die hochwertigste Evidenz kommt aus systematischen Übersichten und Meta-Analysen. "Im Mausmodell gezeigt" oder "in vitro" bedeutet: noch nicht am Menschen getestet.'
+  ));
 
   // tx-badges
   const txb={
@@ -3136,10 +3100,10 @@ function applyLang(lang){
   setText('child-gap-title', t('The global survival gap','全球生存率差距','Die globale Überlebenslücke'));
   setText('child-gap-intro', t('The same childhood cancer has dramatically different outcomes depending on where a child is born. This is not biology — it is access to diagnosis, treatment, and expertise.','同一种儿童癌症，根据孩子出生地的不同，结果会有显著差异。这不是生物学问题——而是诊断、治疗和专业知识获取的问题。','Dieselbe Kinderkrebserkrankung hat dramatisch unterschiedliche Ergebnisse, je nachdem wo ein Kind geboren wird. Das ist keine Biologie — es ist Zugang zu Diagnose, Behandlung und Expertise.'));
   setText('child-gap-chart-label', t('ALL 5-year survival by region','各地区ALL五年生存率','ALL 5-Jahres-Überleben nach Region'));
-  setText('region-ukus',t('UK/US','英国/美国','UK/USA'));
-  setText('region-china',t('China','中国','China'));
-  setText('region-india',t('India','印度','Indien'));
-  setText('region-ssa',t('Sub-Saharan','撒哈拉以南非洲','Subsahara-Afrika'));
+  setText('region-ukus-label',t('UK/US','英国/美国','UK/USA'));
+  setText('region-china-label',t('China','中国','China'));
+  setText('region-india-label',t('India','印度','Indien'));
+  setText('region-ssa-label',t('Sub-Saharan','撒哈拉以南非洲','Subsahara-Afrika'));
   setText('child-gap-p1', t('The gap exists because of three interconnected problems. First, late diagnosis — in low-income settings, children present at far more advanced stages. Second, treatment abandonment — families cannot afford prolonged hospital stays, drug costs, or travel. Around 30–60% of children in some LMICs abandon treatment before completion. Third, drug availability — supply chain failures mean critical chemotherapy agents are frequently unavailable.','这一差距源于三个相互关联的问题。第一，诊断延迟——在低收入环境中，儿童就诊时病情往往更为晚期。第二，治疗中断——家庭无法负担长期住院、药物费用或交通费用。在某些低中收入国家，约30–60%的儿童在完成治疗前就放弃了。第三，药物可及性——供应链故障意味着关键化疗药物经常无法获得。','Die Lücke besteht wegen drei miteinander verbundener Probleme. Erstens: späte Diagnose — in einkommensschwachen Ländern präsentieren sich Kinder in viel fortgeschritteneren Stadien. Zweitens: Behandlungsabbruch — Familien können Krankenhausaufenthalte, Medikamente oder Reisen nicht leisten. Drittens: Medikamentenverfügbarkeit — Lieferkettenprobleme machen kritische Chemotherapeutika oft unverfügbar.'));
   setText('child-gap-p2', t('Organisations working to close this gap focus on improving diagnostic capacity, training local oncologists, subsidising treatment costs, and ensuring drug supply reliability. The science is largely solved — the challenge is delivery.','致力于缩小这一差距的组织专注于提高诊断能力、培训当地肿瘤科医生、补贴治疗费用和确保药物供应可靠性。科学问题在很大程度上已经解决——挑战在于落实。','Organisationen, die diese Lücke schließen wollen, konzentrieren sich auf Diagnostikkapazität, Ausbildung lokaler Onkologen, Subventionierung von Behandlungskosten und Medikamentenversorgung. Die Wissenschaft ist weitgehend gelöst — die Herausforderung ist die Umsetzung.'));
 
@@ -3178,7 +3142,7 @@ function applyLang(lang){
 
 
   // WCC sections
-  setText('wcc-detail-title', t('Our charity partner: World Child Cancer', '我们的慈善合作伙伴：World Child Cancer', 'Unser Wohltätigkeitspartner: World Child Cancer'));
+  setText('wcc-detail-title', t('We are proud to support: World Child Cancer', '我们支持的慈善机构：World Child Cancer', 'Wir unterstützen: World Child Cancer'));
   setText('wcc-detail-p1', t(
     'World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They work through hospital twinning partnerships, improving medicine access, and training oncologists and community health workers.',
     'World Child Cancer 是一个在英国注册的慈善机构（注册号：1107353），致力于改善中低收入国家儿童癌症患者的治疗结果——正是上方数据中显示生存率低于30%的那些国家。他们通过医院配对项目、改善药物可及性以及培训肿瘤科医生和社区卫生工作者开展工作。',
@@ -3190,9 +3154,9 @@ function applyLang(lang){
     'Die Wissenschaft auf dieser Website erklärt, warum die Überlebenslücke besteht. World Child Cancer arbeitet an dem Teil, den Wissenschaft allein nicht lösen kann: sicherstellen, dass die richtige Behandlung das richtige Kind erreicht.'
   ));
   setText('wcc-detail-p3', t(
-    'PDE Outreach is proud to support World Child Cancer as our nominated charity partner. Our science education is free — but if what you\'ve read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer\'s programmes.',
-    'PDE Outreach 很荣幸支持 World Child Cancer 作为我们指定的慈善合作伙伴。我们的科普教育永久免费——但如果您在这里读到的内容触动了您，请考虑捐款。所有捐款将100%直接用于 World Child Cancer 的项目。',
-    'PDE Outreach unterstützt stolz World Child Cancer als unseren nominierten Wohltätigkeitspartner. Unsere Bildung ist kostenlos — aber wenn das, was Sie hier gelesen haben, Sie bewegt hat, erwägen Sie bitte eine Spende.'
+    'PDE Outreach supports World Child Cancer and directs all donations raised through this site to their programmes.'
+    'PDE Outreach 支持 World Child Cancer，并将通过本站筹集的所有捐款转至其项目。'
+    'PDE Outreach unterstützt World Child Cancer und leitet alle über diese Website gesammelten Spenden an ihre Programme weiter.'
   ));
   setText('wcc-detail-btn', t('❤ Donate via our JustGiving page', '❤ 通过我们的 JustGiving 页面捐款', '❤ Spenden über unsere JustGiving-Seite'));
   setText('wcc-impact-label', t('What your donation funds', '您的捐款用于何处', 'Wofür Ihre Spende verwendet wird'));
@@ -3210,13 +3174,13 @@ function applyLang(lang){
   // About charity
   setText('about-charity-title', t('Charity partner', '慈善合作伙伴', 'Wohltätigkeitspartner'));
   setText('about-charity-p1', t(
-    'PDE Outreach supports World Child Cancer (registered charity no. 1107353) as our nominated charity partner. World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
-    'PDE Outreach 支持 World Child Cancer（注册慈善机构，编号：1107353）作为我们指定的慈善合作伙伴。World Child Cancer 致力于改善中低收入国家儿童癌症诊断、治疗和护理的可及性——正是我们"儿童癌症"标签页所记录的生存率差距的解决方向。',
-    'PDE Outreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353) als nominierten Partner. Sie verbessern den Zugang zu Diagnose, Behandlung und Pflege für krebskranke Kinder in einkommensschwachen Ländern.'
+    'PDE Outreach supports World Child Cancer (registered charity no. 1107353). World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
+    'PDE Outreach 支持 World Child Cancer（注册慈善机构，编号：1107353）。世界儿童癌症组织在中低收入国家开展工作，致力于改善儿童获得癌症诊断、治疗和护理的机会，精准解决我们“儿童癌症”栏目所记录的生存差距问题。',
+    'PDE Outreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353).World Child Cancer arbeitet in Ländern mit niedrigem und mittlerem Einkommen daran, den Zugang von Kindern zu Krebsdiagnose, -behandlung und -versorgung zu verbessern – und bekämpft damit genau die Überlebenslücke, die in unserer Rubrik „Kinderkrebs“ dokumentiert ist.'
   ));
   setText('about-charity-p2', t(
     'All content on this site is free. If it has been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer\'s programmes.',
-    '本网站所有内容均免费。如果对您有帮助，请考虑通过我们的活动页面捐款。每一笔捐款将直接用于 World Child Cancer 的项目。',
+    '本网站所有内容均免费。如果对您有帮助，请考虑通过我们的活动页面捐款。每一笔捐款将直接用于世界儿童癌症组织的项目。',
     'Alle Inhalte sind kostenlos. Wenn sie hilfreich waren, erwägen Sie eine Spende über unsere Kampagnenseite. Jede Spende geht direkt an die Programme von World Child Cancer.'
   ));
   setText('about-charity-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
@@ -3224,11 +3188,12 @@ function applyLang(lang){
   setText('journal-support-title', t('This content is free. The fight isn\'t.', '内容免费。抗癌之战不是。', 'Die Inhalte sind kostenlos. Der Kampf nicht.'));
   setText('journal-support-p', t(
     'PDE Outreach supports World Child Cancer — working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.',
-    'PDE Outreach 支持 World Child Cancer——致力于缩小低收入国家儿童癌症的生存率差距。如果阅读本文对您有价值，请考虑捐款。',
+    'PDE Outreach 支持世界儿童癌症组织——致力于缩小低收入国家儿童癌症的生存率差距。如果阅读本文对您有价值，请考虑捐款。',
     'PDE Outreach unterstützt World Child Cancer — um die Überlebenslücke für krebskranke Kinder in einkommensschwachen Ländern zu schließen.'
   ));
   setText('journal-support-btn', t('❤ Donate to World Child Cancer', '❤ 为 World Child Cancer 捐款', '❤ World Child Cancer unterstützen'));
   setText('child-support-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
+  
   
   // footer
   const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2026 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2026 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
