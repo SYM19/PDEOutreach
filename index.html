@@ -544,7 +544,6 @@
               <span class="hero-chip" id="home-chips-i">中英双语</span>
               <span class="hero-chip" id="home-chips-ii">interactive</span>
               <span class="hero-chip" id="home-chips-iii">evidence-based</span>
-              <span class="hero-chip" id="home-chips-iv">free forever</span>
               <span class="hero-chip" id="home-chips-v">❤ childhood cancer focus</span>
             </div>
             <button class="hero-cta" id="hero-cta" onclick="switchTab('drug')">Start Exploring →</button>
@@ -1516,10 +1515,42 @@
       </div>
     
       <!-- SUPPORT -->
-      <div class="support-card section">
-        <h3 id="child-support-title">Childhood cancer research is underfunded relative to its burden.</h3>
-        <p id="child-support-p">Paediatric cancers receive a fraction of the research funding of common adult cancers, despite being the leading cause of disease-related death in children. We are working to partner with childhood cancer charities to direct support where it matters most. If you'd like to get involved, contact us.</p>
-        <a href="mailto:outreach@pdeo.org" class="support-btn" id="child-support-btn">❤ Contact us about supporting</a>
+      <!-- WCC PARTNERSHIP SECTION -->
+      <div class="card section" style="border-left:3px solid var(--coral);background:linear-gradient(135deg,rgba(255,107,107,0.04),rgba(78,205,196,0.04));">
+        <div class="card-header">
+          <div class="card-icon" style="background:rgba(255,107,107,.12);">❤</div>
+          <h2 style="margin:0;" id="wcc-detail-title">Our charity partner: World Child Cancer</h2>
+        </div>
+        <div class="grid-2">
+          <div>
+            <p id="wcc-detail-p1">World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They do this through three programmes: strengthening hospital capacity and training oncologists locally; improving access to medicines and diagnostics; and funding sustainable twinning partnerships between hospitals in high- and low-income countries.</p>
+            <p id="wcc-detail-p2">The science throughout this site explains <em>why</em> the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.</p>
+            <p id="wcc-detail-p3">PDE Outreach is proud to support World Child Cancer as our nominated charity partner. Our science education is free — but if what you've read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer's programmes.</p>
+            <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="wcc-detail-btn">❤ Donate via our JustGiving page</a>
+          </div>
+          <div>
+            <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:.75rem;">
+              <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem;" id="wcc-impact-label">What your donation funds</div>
+              <div style="display:flex;flex-direction:column;gap:.75rem;">
+                <div style="display:flex;gap:.875rem;align-items:flex-start;">
+                  <div style="font-size:1.1rem;flex-shrink:0;">🏥</div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-1-title">Hospital twinning</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-1-desc">Pairs specialist hospitals in the UK with centres in Ghana, Malawi, Ethiopia, and elsewhere — transferring expertise, protocols, and equipment.</div></div>
+                </div>
+                <div style="display:flex;gap:.875rem;align-items:flex-start;">
+                  <div style="font-size:1.1rem;flex-shrink:0;">💊</div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-2-title">Medicine access</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-2-desc">Ensures essential chemotherapy drugs are available in countries where supply chains are unreliable. Drug availability is one of the three main drivers of the survival gap.</div></div>
+                </div>
+                <div style="display:flex;gap:.875rem;align-items:flex-start;">
+                  <div style="font-size:1.1rem;flex-shrink:0;">👩‍⚕️</div>
+                  <div><div style="font-size:.82rem;font-weight:600;color:var(--text);margin-bottom:.2rem;" id="wcc-fund-3-title">Training & awareness</div><div style="font-size:.8rem;color:var(--text2);line-height:1.6;" id="wcc-fund-3-desc">Trains community health workers to recognise warning signs earlier, and oncologists to apply paediatric-specific protocols — reducing diagnostic delay.</div></div>
+                </div>
+              </div>
+            </div>
+            <div style="background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.875rem;font-size:.8rem;color:var(--text2);line-height:1.65;" id="wcc-reg-note">
+              World Child Cancer · Registered charity no. 1107353 (England & Wales) · <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a>
+            </div>
+          </div>
+        </div>
       </div>
     
       <div class="section">
@@ -1634,7 +1665,7 @@
     <div id="tab-about" class="tab-panel">
       <div class="about-hero section">
         <h1 id="about-title">About <span class="accent">PDEOutreach</span></h1>
-        <p id="about-tagline">PDEOutreach 是一个由学生打造、面向所有人的免费癌症科学教育平台。我们将 PDEOncology 背后的研究——用偏微分方程模拟药物在肿瘤中的运动——转化为任何人都能理解的交互体验。无需医学背景。</p>
+        <p id="about-tagline">PDEOutreach is a free cancer science education platform built by students, for everyone. We turn the research behind PDEOncology — using partial differential equations to simulate how drugs move through tumours — into interactive experiences that anyone can understand. No medical degree required.</p>
       </div>
 
       <div class="about-section">
@@ -1695,6 +1726,15 @@
           </div>
         </div>
       </div>
+
+      <div class="about-section">
+      <h2 id="about-charity-title">Charity partner</h2>
+      <div class="card" style="border-left:3px solid var(--coral);">
+        <p id="about-charity-p1">PDE Outreach supports <strong>World Child Cancer</strong> (registered charity no. 1107353) as our nominated charity partner. World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.</p>
+        <p id="about-charity-p2" style="margin-bottom:1rem;">All content on this site is free. If it's been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer's programmes.</p>
+        <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="about-charity-btn">❤ Donate via JustGiving</a>
+      </div>
+    </div>
 
       <div class="about-section">
         <h2 id="about-contact-title">联系我们</h2>
@@ -1844,16 +1884,26 @@ function getCovInterpretation(covPct, drugName, tumorType, lang) {
   const cov = parseFloat(covPct);
   const unreached = (100 - cov).toFixed(0);
   const ratio = cov > 0 ? Math.round(100/cov) : 999;
+  
   if (lang === 'zh') {
     if (cov >= 60) return `覆盖率 ${cov}% 意味着大约每 ${Math.round(100/cov)} 个癌细胞中有一个无法被药物触及。在临床上，这仍然是较好的结果——联合化疗可以处理剩余的未覆盖区域。`;
-    if (cov >= 30) return `覆盖率 ${cov}% 意味着 ${unreached}% 的肿瘤区域未被触及。在临床上，这意味着仍有大量存活的癌细胞，它们可能是复发的根源，通常需要联合方案来弥补这一缺口。`;
-    if (cov >= 10) return `覆盖率 ${cov}% 意味着大约每 ${ratio} 个癌细胞中只有 1 个能被药物触及。在临床上，这会留下大量未经治疗的细胞储库，这正是胰腺癌等肿瘤复发率极高的物理原因。`;
-    return `覆盖率仅 ${cov}% ——药物几乎无法渗透至肿瘤内部。超过 ${unreached}% 的癌细胞从未接触过药物。这不是耐药性失败，而是物理传递失败——这正是 PDE 建模试图解决的核心问题。`;
+    if (cov >= 30) return `覆盖率 ${cov}% 意味着 ${unreached}% 的肿瘤区域未被触及。在临床上，这意味着仍有大量存活的癌细胞，它们可能是复发的根源。`;
+    if (cov >= 10) return `覆盖率 ${cov}% 意味着大约每 ${ratio} 个癌细胞中只有 1 个能被药物触及。这会留下大量未经治疗的细胞储库。`;
+    return `覆盖率仅 ${cov}%——药物几乎无法渗透至肿瘤内部。超过 ${unreached}% 的癌细胞从未接触过药物。这是物理递送失败，而非耐药性失败。`;
   }
+  
+  if (lang === 'de') {
+    if (cov >= 60) return `${cov}% Abdeckung bedeutet, dass etwa 1 von ${Math.round(100/cov)} Krebszellen nicht erreicht wird. Klinisch ist das ein relativ gutes Ergebnis — Kombinationstherapien können den Rest abdecken.`;
+    if (cov >= 30) return `${cov}% Abdeckung bedeutet, dass ${unreached}% des Tumors physisch unerreicht bleibt. Dies hinterlässt ein erhebliches Reservoir überlebender Krebszellen, die Rückfälle verursachen können.`;
+    if (cov >= 10) return `${cov}% Abdeckung: nur 1 von ${ratio} Krebszellen wird erreicht. Dies hinterlässt ein großes unbehandeltes Reservoir — der physische Grund für hohe Rückfallraten.`;
+    return `Nur ${cov}% Abdeckung — das Medikament dringt kaum in das Tumorinnere vor. Über ${unreached}% der Krebszellen kommen nie mit dem Wirkstoff in Kontakt. Dies ist kein Resistenzversagen — es ist ein physisches Lieferungsversagen.`;
+  }
+  
+  // English
   if (cov >= 60) return `${cov}% coverage means roughly 1 in ${Math.round(100/cov)} cancer cells is unreached. Clinically, this is a relatively good result — combination regimens can address the remaining uncovered fraction.`;
-  if (cov >= 30) return `${cov}% coverage means ${unreached}% of the tumour is physically unreached. Clinically, this leaves a substantial reservoir of surviving cancer cells that can seed recurrence — combination regimens are typically needed to bridge this gap.`;
-  if (cov >= 10) return `${cov}% coverage means roughly 1 in ${ratio} cancer cells is reached. Clinically, this leaves a large untreated reservoir — which is the physical reason cancers like this have high recurrence rates despite initial treatment response.`;
-  return `Only ${cov}% coverage — the drug barely penetrates the tumour interior. Over ${unreached}% of cancer cells never contact the drug. This is not a resistance failure; it is a physical delivery failure — precisely what PDE modelling aims to solve.`;
+  if (cov >= 30) return `${cov}% coverage means ${unreached}% of the tumour is physically unreached. Clinically, this leaves a substantial reservoir of surviving cancer cells that can seed recurrence.`;
+  if (cov >= 10) return `${cov}% coverage means roughly 1 in ${ratio} cancer cells is reached. This leaves a large untreated reservoir — the physical reason cancers like this have high recurrence rates.`;
+  return `Only ${cov}% coverage — the drug barely penetrates the tumour interior. Over ${unreached}% of cancer cells never contact the drug. This is not a resistance failure; it is a physical delivery failure.`;
 }
 
 function toggleAccordion(el){const acc=el.closest('.accordion');acc.classList.toggle('open');}
@@ -1913,28 +1963,92 @@ function openArticlePreview(id){
 /* QUIZ ENGINE */
 const QUIZ_DATA={
   home:{correct:'C',reveal:{
-    C:{en:`<strong>That's right.</strong> In most tumors, only the outer 2–3 cell layers receive therapeutic drug concentrations. The core is often completely unreached — not because the drug doesn't work, but because it physically cannot get there.<div class="quiz-badge correct-badge">✓ Nice instinct</div>`,zh:`<strong>答对了！</strong>在大多数肿瘤中，只有外层 2–3 个细胞层能达到治疗药物浓度。核心区域通常完全无法到达——不是因为药物失效，而是因为它在物理上无法到达那里。<div class="quiz-badge correct-badge">✓ 直觉很好</div>`},
-    A:{en:`<strong>Actually — no.</strong> Even highly effective drugs typically only reach the outer rim of a solid tumor. Physical barriers prevent penetration to the core where many cancer cells live.<div class="quiz-badge wrong-badge">The answer is C</div>`,zh:`<strong>不对。</strong>即使是高效化疗药物，通常也只能到达实体肿瘤的外缘。物理屏障阻止了药物渗透到核心区域。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    B:{en:`<strong>Not quite.</strong> Drug penetration collapses much more dramatically. In pancreatic cancer, the core is essentially unreachable by most drugs.<div class="quiz-badge wrong-badge">The answer is C</div>`,zh:`<strong>不太对。</strong>药物渗透的下降远比"大约一半"更剧烈。在胰腺癌中，核心区域对大多数药物来说基本上无法到达。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    D:{en:`<strong>Not quite.</strong> Many drugs do kill cancer cells they can reach — the problem is reaching the inner core.<div class="quiz-badge wrong-badge">The answer is C</div>`,zh:`<strong>不太对。</strong>许多药物确实会杀死它们能到达的癌细胞。问题在于无法到达内部核心。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    C:{
+      en:`<strong>That's right.</strong> In most tumors, only the outer 2–3 cell layers receive therapeutic drug concentrations. The core is often completely unreached — not because the drug doesn't work, but because it physically cannot get there.<div class="quiz-badge correct-badge">✓ Nice instinct</div>`,
+      zh:`<strong>答对了！</strong>在大多数肿瘤中，只有外层 2–3 个细胞层能达到治疗药物浓度。核心区域通常完全无法到达——不是因为药物失效，而是因为它在物理上无法到达那里。<div class="quiz-badge correct-badge">✓ 直觉很好</div>`,
+      de:`<strong>Richtig.</strong> In den meisten Tumoren erreichen nur die äußeren 2–3 Zellschichten therapeutische Wirkstoffkonzentrationen. Das Innere bleibt oft vollständig unerreicht — nicht weil das Medikament nicht wirkt, sondern weil es physisch nicht dorthin gelangen kann.<div class="quiz-badge correct-badge">✓ Gute Intuition</div>`
+    },
+    A:{
+      en:`<strong>Actually — no.</strong> Even highly effective drugs typically only reach the outer rim of a solid tumor. Physical barriers prevent penetration to the core where many cancer cells live.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+      zh:`<strong>不对。</strong>即使是高效化疗药物，通常也只能到达实体肿瘤的外缘。物理屏障阻止了药物渗透到核心区域。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Leider nein.</strong> Selbst hochwirksame Medikamente erreichen meist nur den äußeren Rand eines soliden Tumors. Physische Barrieren verhindern das Eindringen ins Zentrum.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    B:{
+      en:`<strong>Not quite.</strong> Drug penetration collapses much more dramatically. In pancreatic cancer, the core is essentially unreachable by most drugs.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+      zh:`<strong>不太对。</strong>药物渗透的下降远比"大约一半"更剧烈。在胰腺癌中，核心区域对大多数药物来说基本上无法到达。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Nicht ganz.</strong> Der Einbruch der Wirkstoffpenetration ist viel drastischer. Beim Bauchspeicheldrüsenkrebs ist das Tumorzentrum für die meisten Medikamente praktisch unerreichbar.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    D:{
+      en:`<strong>Not quite.</strong> Many drugs do kill cancer cells they can reach — the problem is reaching the inner core.<div class="quiz-badge wrong-badge">The answer is C</div>`,
+      zh:`<strong>不太对。</strong>许多药物确实会杀死它们能到达的癌细胞。问题在于无法到达内部核心。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Nicht ganz.</strong> Viele Medikamente töten die Krebszellen, die sie erreichen — das Problem ist, das Innere des Tumors zu erreichen.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
   }},
   drug:{correct:'C',reveal:{
-    C:{en:`<strong>Exactly right.</strong> The main barrier in pancreatic cancer is physical. The tumor is surrounded by dense stroma that blocks drug diffusion. Combined with high interstitial fluid pressure, the result is a tumor that is almost physically impenetrable — the "stromal barrier problem."<div class="quiz-badge correct-badge">✓ Well done</div>`,zh:`<strong>完全正确！</strong>胰腺癌的主要屏障是物理性的。肿瘤被致密的基质所包围，阻断药物扩散。加上高间质液压，结果就是一个几乎在物理上无法渗透的肿瘤——"基质屏障问题"。<div class="quiz-badge correct-badge">✓ 答得好</div>`},
-    A:{en:`<strong>Resistance plays a role, but isn't the main reason.</strong> The primary barrier is physical — dense stroma and high fluid pressure prevent drugs from reaching cancer cells in the first place.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,zh:`<strong>耐药性有一定作用，但不是主要原因。</strong>主要屏障是物理性的——致密基质和高液压阻止药物到达癌细胞。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    B:{en:`<strong>Toxicity is a concern, but not the main reason.</strong> Dense stromal tissue surrounds the pancreatic tumor and prevents drug penetration, even at full therapeutic doses.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,zh:`<strong>毒性是一个问题，但不是主要原因。</strong>致密的基质组织包围肿瘤，即使在足量治疗剂量下也会阻止药物渗透。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    D:{en:`<strong>This is a common misconception.</strong> The pancreas doesn't selectively break down drugs. The real barrier is the tumor microenvironment — dense fibrous stroma and high fluid pressure that physically repel drugs.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,zh:`<strong>这是一个常见误解。</strong>胰腺不会特异性地降解药物。真正的屏障是肿瘤微环境——致密的纤维基质和高液压。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    C:{
+      en:`<strong>Exactly right.</strong> The main barrier in pancreatic cancer is physical. The tumor is surrounded by dense stroma that blocks drug diffusion. Combined with high interstitial fluid pressure, the result is a tumor that is almost physically impenetrable — the "stromal barrier problem."<div class="quiz-badge correct-badge">✓ Well done</div>`,
+      zh:`<strong>完全正确！</strong>胰腺癌的主要屏障是物理性的。肿瘤被致密的基质所包围，阻断药物扩散。加上高间质液压，结果就是一个几乎在物理上无法渗透的肿瘤——"基质屏障问题"。<div class="quiz-badge correct-badge">✓ 答得好</div>`,
+      de:`<strong>Genau richtig.</strong> Die Hauptbarriere beim Bauchspeicheldrüsenkrebs ist physikalisch. Der Tumor ist von dichtem Stroma umgeben, das die Diffusion von Medikamenten blockiert. Zusammen mit hohem interstitiellem Druck entsteht ein nahezu undurchdringlicher Tumor — das sogenannte „Stroma-Barriere-Problem“.<div class="quiz-badge correct-badge">✓ Gut gemacht</div>`
+    },
+    A:{
+      en:`<strong>Resistance plays a role, but isn't the main reason.</strong> The primary barrier is physical — dense stroma and high fluid pressure prevent drugs from reaching cancer cells in the first place.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,
+      zh:`<strong>耐药性有一定作用，但不是主要原因。</strong>主要屏障是物理性的——致密基质和高液压阻止药物到达癌细胞。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Resistenz spielt eine Rolle, ist aber nicht der Hauptgrund.</strong> Die primäre Barriere ist physikalisch — dichtes Stroma und hoher Flüssigkeitsdruck verhindern, dass Medikamente die Krebszellen überhaupt erreichen.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    B:{
+      en:`<strong>Toxicity is a concern, but not the main reason.</strong> Dense stromal tissue surrounds the pancreatic tumor and prevents drug penetration, even at full therapeutic doses.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,
+      zh:`<strong>毒性是一个问题，但不是主要原因。</strong>致密的基质组织包围肿瘤，即使在足量治疗剂量下也会阻止药物渗透。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Toxizität ist ein Problem, aber nicht der Hauptgrund.</strong> Dichtes stromales Gewebe umgibt den Tumor und verhindert das Eindringen von Medikamenten, selbst bei voller therapeutischer Dosis.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    D:{
+      en:`<strong>This is a common misconception.</strong> The pancreas doesn't selectively break down drugs. The real barrier is the tumor microenvironment — dense fibrous stroma and high fluid pressure that physically repel drugs.<div class="quiz-badge wrong-badge">The answer is C — physical barriers</div>`,
+      zh:`<strong>这是一个常见误解。</strong>胰腺不会特异性地降解药物。真正的屏障是肿瘤微环境——致密的纤维基质和高液压。<div class="quiz-badge wrong-badge">正确答案是 C</div>`,
+      de:`<strong>Das ist ein verbreiteter Irrtum.</strong> Die Bauchspeicheldrüse baut Medikamente nicht selektiv ab. Die eigentliche Barriere ist die Tumormikroumgebung — dichtes fibröses Stroma und hoher Flüssigkeitsdruck stoßen Medikamente physisch ab.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
   }},
   early:{correct:'C',reveal:{
-    C:{en:`<strong>Correct — and the numbers are shocking.</strong> Drug coverage can drop from over 70% to under 10% as a tumor grows. The outer shell gets proportionally thicker, fluid pressure increases, and the unreachable core grows faster than the whole tumor. This is exactly why catching it at Stage I vs Stage III is not just "a bit better" — it's the difference between curative and palliative.<div class="quiz-badge correct-badge">✓ Great intuition</div>`,zh:`<strong>正确——而且数字令人震惊。</strong>随着肿瘤生长，药物覆盖率可能从 70% 以上跌至 10% 以下。外壳比例越来越厚，液压升高，无法触及的核心比整个肿瘤增长得更快。这正是为什么第一期 vs 第三期发现，不只是"稍微好一点"——而是治愈与姑息的分水岭。<div class="quiz-badge correct-badge">✓ 直觉很准</div>`},
-    A:{en:`<strong>It's much worse than that.</strong> The relationship is highly non-linear — coverage doesn't drop proportionally, it collapses. A tumor twice the size doesn't have half the coverage; it may have a tenth. Try the slider below.<div class="quiz-badge wrong-badge">The answer is C — coverage collapses</div>`,zh:`<strong>实际情况比这糟糕得多。</strong>这种关系是高度非线性的——覆盖率不是按比例下降，而是崩溃。体积翻倍的肿瘤覆盖率不是减半，可能只剩十分之一。试试下面的滑块。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    B:{en:`<strong>Far worse than 20–30%.</strong> The collapse in drug coverage as tumors grow is one of the most dramatic and underappreciated effects in oncology physics. An 80%+ drop is common.<div class="quiz-badge wrong-badge">The answer is C — coverage collapses</div>`,zh:`<strong>比 20-30% 糟糕得多。</strong>随着肿瘤生长，药物覆盖率的崩溃是肿瘤物理学中最戏剧性但最被低估的效应之一。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
-    D:{en:`<strong>Drugs cannot adapt to tumor size.</strong> Physical barriers get worse — not better — as tumors grow, and no drug formulation currently compensates for this.<div class="quiz-badge wrong-badge">The answer is C — coverage collapses</div>`,zh:`<strong>药物无法适应肿瘤大小。</strong>随着肿瘤生长，物理屏障只会变得更糟，目前没有任何药物制剂能弥补这一点。<div class="quiz-badge wrong-badge">正确答案是 C</div>`},
+    C:{
+      en:`<strong>Correct — and the numbers are shocking.</strong> Drug coverage can drop from over 70% to under 10% as a tumor grows...`,
+      zh:`<strong>正确——而且数字令人震惊。</strong>随着肿瘤生长，药物覆盖率可能从 70% 以上跌至 10% 以下...`,
+      de:`<strong>Richtig — und die Zahlen sind erschreckend.</strong> Die Wirkstoffabdeckung kann mit dem Tumorwachstum von über 70% auf unter 10% fallen. Die äußere Schicht wird dicker, der Druck steigt, und der unerreichbare Kern wächst schneller als der gesamte Tumor.<div class="quiz-badge correct-badge">✓ Sehr gute Intuition</div>`
+    },
+    A:{
+      en:`<strong>It's much worse than that.</strong>...`,
+      zh:`<strong>实际情况比这糟糕得多。</strong>...`,
+      de:`<strong>Es ist viel schlimmer.</strong> Der Zusammenhang ist stark nichtlinear — die Abdeckung bricht ein, statt proportional zu sinken.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    B:{
+      en:`<strong>Far worse than 20–30%.</strong>...`,
+      zh:`<strong>比 20-30% 糟糕得多。</strong>...`,
+      de:`<strong>Weit schlimmer als 20–30%.</strong> Der Einbruch der Wirkstoffabdeckung ist einer der dramatischsten Effekte in der Tumorphysik.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
+    D:{
+      en:`<strong>Drugs cannot adapt to tumor size.</strong>...`,
+      zh:`<strong>药物无法适应肿瘤大小。</strong>...`,
+      de:`<strong>Medikamente können sich nicht an die Tumorgröße anpassen.</strong> Die physikalischen Barrieren werden mit zunehmender Größe stärker, nicht schwächer.<div class="quiz-badge wrong-badge">Antwort ist C</div>`
+    },
   }},
   prec:{correct:'B',reveal:{
-    B:{en:`<strong>Exactly right.</strong> Trastuzumab works by binding to the HER2 receptor. Only tumors that overexpress HER2 (~20% of breast cancers) have enough receptors for the drug to bind — without HER2, the antibody has nothing to attach to. This is why HER2 testing before treatment is now standard of care worldwide.<div class="quiz-badge correct-badge">✓ Correct</div>`,zh:`<strong>完全正确！</strong>曲妥珠单抗通过与 HER2 受体结合发挥作用。只有 HER2 过表达的肿瘤（约 20% 的乳腺癌）才有足够的受体供药物结合——没有 HER2，抗体就没有地方附着。这就是为什么治疗前的 HER2 检测现在已成为全球标准诊疗流程。<div class="quiz-badge correct-badge">✓ 答对了</div>`},
-    A:{en:`<strong>Not quite — this is a common misconception.</strong> Trastuzumab only works for the ~20% of breast cancer patients whose tumors overexpress HER2. Giving it to HER2-negative patients provides no benefit and exposes them to side effects unnecessarily.<div class="quiz-badge wrong-badge">The answer is B — HER2+ patients only</div>`,zh:`<strong>不对——这是一个常见误解。</strong>曲妥珠单抗只对约 20% 的 HER2 过表达乳腺癌患者有效。给 HER2 阴性患者使用不仅无效，还会带来不必要的副作用。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
-    C:{en:`<strong>Age isn't the determining factor.</strong> The key variable is HER2 receptor expression — a biological property of the tumor cells themselves, not of the patient. A 70-year-old with HER2+ cancer responds; a 25-year-old with HER2− cancer does not.<div class="quiz-badge wrong-badge">The answer is B — HER2+ patients only</div>`,zh:`<strong>年龄不是决定性因素。</strong>关键变量是 HER2 受体表达——这是肿瘤细胞本身的生物学特性，与患者年龄无关。70岁的 HER2+ 患者有效；25岁的 HER2− 患者无效。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
-    D:{en:`<strong>Prior chemotherapy isn't the requirement.</strong> Trastuzumab is often given alongside chemotherapy, or even as a first-line treatment. The only requirement is HER2 overexpression, confirmed by genetic testing at diagnosis.<div class="quiz-badge wrong-badge">The answer is B — HER2+ patients only</div>`,zh:`<strong>之前是否化疗不是前提条件。</strong>曲妥珠单抗通常与化疗同时使用，甚至作为一线治疗。唯一的前提条件是 HER2 过表达，在诊断时通过基因检测确认。<div class="quiz-badge wrong-badge">正确答案是 B</div>`},
+    B:{
+      en:`<strong>Exactly right.</strong> Trastuzumab works by binding to the HER2 receptor...`,
+      zh:`<strong>完全正确！</strong>曲妥珠单抗通过与 HER2 受体结合发挥作用...`,
+      de:`<strong>Genau richtig.</strong> Trastuzumab bindet an den HER2-Rezeptor. Nur Tumoren mit HER2-Überexpression (~20%) besitzen genügend Zielstrukturen für die Bindung.<div class="quiz-badge correct-badge">✓ Richtig</div>`
+    },
+    A:{
+      en:`<strong>Not quite — this is a common misconception.</strong>...`,
+      zh:`<strong>不对——这是一个常见误解。</strong>...`,
+      de:`<strong>Nicht ganz — ein häufiger Irrtum.</strong> Trastuzumab wirkt nur bei etwa 20% der Patientinnen mit HER2-positivem Brustkrebs.<div class="quiz-badge wrong-badge">Antwort ist B</div>`
+    },
+    C:{
+      en:`<strong>Age isn't the determining factor.</strong>...`,
+      zh:`<strong>年龄不是决定性因素。</strong>...`,
+      de:`<strong>Das Alter ist nicht entscheidend.</strong> Ausschlaggebend ist die HER2-Expression der Tumorzellen.<div class="quiz-badge wrong-badge">Antwort ist B</div>`
+    },
+    D:{
+      en:`<strong>Prior chemotherapy isn't the requirement.</strong>...`,
+      zh:`<strong>之前是否化疗不是前提条件。</strong>...`,
+      de:`<strong>Vorherige Chemotherapie ist keine Voraussetzung.</strong> Entscheidend ist allein die HER2-Überexpression.<div class="quiz-badge wrong-badge">Antwort ist B</div>`
+    },
   }},
 };
 
@@ -1994,7 +2108,7 @@ function answerHomeQuiz(el,choice){
   const isCorrect=choice===quiz.correct;
   if(isCorrect){el.classList.add('correct');}else{el.classList.add('wrong');opts.forEach(o=>{if(o.textContent.trim().startsWith(quiz.correct))o.classList.add('reveal-correct');});}
   const rev=document.getElementById('home-quiz-reveal'),r=quiz.reveal[choice];
-  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):r.en;rev.classList.add('show');
+  rev.innerHTML=currentLang==='zh'?(r.zh||r.en):currentLang==='de'?(r.de||r.en):r.en;rev.classList.add('show');
   if(!isCorrect){rev.classList.add('wrong-reveal');setTimeout(()=>{rev.style.transition='opacity .5s';rev.style.opacity='0';setTimeout(()=>{rev.style.transition='';rev.style.opacity='';resetQuiz('home','#home-quiz-opts .quiz-option','home-quiz-reveal');},500);},3000);}
 }
 function answerQuiz(section,el,choice){
@@ -3015,6 +3129,60 @@ function applyLang(lang){
   setText('about-contact-h3',t('We welcome corrections, collaborations, and patient stories.','欢迎勘误、合作，以及患者故事投稿。','Wir freuen uns über Korrekturen, Kooperationen und Patientengeschichten.'));
   setText('about-contact-p',t('If you\'ve spotted an error, want to contribute a translation, or would like to share a patient story — please get in touch.','若您发现内容有误、希望贡献译文，或有意分享患者故事，欢迎与我们联系。','Wenn Sie einen Fehler gefunden haben, eine Übersetzung beitragen oder eine Patientengeschichte teilen möchten — melden Sie sich.'));
 
+
+  // WCC sections
+  setText('wcc-detail-title', t('Our charity partner: World Child Cancer', '我们的慈善合作伙伴：World Child Cancer', 'Unser Wohltätigkeitspartner: World Child Cancer'));
+  setText('wcc-detail-p1', t(
+    'World Child Cancer is a UK-registered charity (no. 1107353) working to improve outcomes for children with cancer in low- and middle-income countries — the same countries where survival rates are below 30%, as shown in the data above. They work through hospital twinning partnerships, improving medicine access, and training oncologists and community health workers.',
+    'World Child Cancer 是一个在英国注册的慈善机构（注册号：1107353），致力于改善中低收入国家儿童癌症患者的治疗结果——正是上方数据中显示生存率低于30%的那些国家。他们通过医院配对项目、改善药物可及性以及培训肿瘤科医生和社区卫生工作者开展工作。',
+    'World Child Cancer ist eine in Großbritannien registrierte Wohltätigkeitsorganisation (Nr. 1107353), die sich für bessere Ergebnisse für krebskranke Kinder in einkommensschwachen Ländern einsetzt — genau jene Länder, in denen die Überlebensraten unter 30% liegen.'
+  ));
+  setText('wcc-detail-p2', t(
+    'The science throughout this site explains why the survival gap exists — drug delivery failures, late diagnosis, and treatment barriers. World Child Cancer works on the side that science alone cannot fix: ensuring the right treatment reaches the right child, wherever they are born.',
+    '本网站的科学内容解释了生存率差距为何存在——药物递送失败、诊断延迟和治疗障碍。World Child Cancer 致力于解决科学本身无法解决的问题：确保正确的治疗能够到达每一个需要的孩子，无论他们出生在哪里。',
+    'Die Wissenschaft auf dieser Website erklärt, warum die Überlebenslücke besteht. World Child Cancer arbeitet an dem Teil, den Wissenschaft allein nicht lösen kann: sicherstellen, dass die richtige Behandlung das richtige Kind erreicht.'
+  ));
+  setText('wcc-detail-p3', t(
+    'PDE Outreach is proud to support World Child Cancer as our nominated charity partner. Our science education is free — but if what you\'ve read here has moved you, please consider donating. 100% of donations go directly to World Child Cancer\'s programmes.',
+    'PDE Outreach 很荣幸支持 World Child Cancer 作为我们指定的慈善合作伙伴。我们的科普教育永久免费——但如果您在这里读到的内容触动了您，请考虑捐款。所有捐款将100%直接用于 World Child Cancer 的项目。',
+    'PDE Outreach unterstützt stolz World Child Cancer als unseren nominierten Wohltätigkeitspartner. Unsere Bildung ist kostenlos — aber wenn das, was Sie hier gelesen haben, Sie bewegt hat, erwägen Sie bitte eine Spende.'
+  ));
+  setText('wcc-detail-btn', t('❤ Donate via our JustGiving page', '❤ 通过我们的 JustGiving 页面捐款', '❤ Spenden über unsere JustGiving-Seite'));
+  setText('wcc-impact-label', t('What your donation funds', '您的捐款用于何处', 'Wofür Ihre Spende verwendet wird'));
+  setText('wcc-fund-1-title', t('Hospital twinning', '医院配对项目', 'Krankenhauspartnerschaften'));
+  setText('wcc-fund-1-desc', t('Pairs specialist hospitals in the UK with centres in Ghana, Malawi, Ethiopia, and elsewhere — transferring expertise, protocols, and equipment.', '将英国的专科医院与加纳、马拉维、埃塞俄比亚等国的医疗中心配对——传授专业知识、治疗方案和设备。', 'Koppelt britische Fachkliniken mit Zentren in Ghana, Malawi, Äthiopien — überträgt Fachwissen, Protokolle und Ausrüstung.'));
+  setText('wcc-fund-2-title', t('Medicine access', '药物可及性', 'Medikamentenzugang'));
+  setText('wcc-fund-2-desc', t('Ensures essential chemotherapy drugs are available in countries where supply chains are unreliable — one of the three main drivers of the survival gap.', '确保关键化疗药物在供应链不稳定的国家可以获得——这是造成生存率差距的三大主要原因之一。', 'Stellt sicher, dass wesentliche Chemotherapeutika in Ländern mit unzuverlässigen Lieferketten verfügbar sind.'));
+  setText('wcc-fund-3-title', t('Training & awareness', '培训与意识提升', 'Ausbildung & Bewusstsein'));
+  setText('wcc-fund-3-desc', t('Trains community health workers to recognise warning signs earlier, and oncologists to apply paediatric-specific protocols — reducing diagnostic delay.', '培训社区卫生工作者更早识别预警信号，培训肿瘤科医生应用儿科专用方案——减少诊断延迟。', 'Schult Gemeindegesundheitshelfer zur Früherkennung und Onkologen für pädiatrische Protokolle.'));
+  setText('wcc-reg-note', t(
+    'World Child Cancer · Registered charity no. 1107353 (England & Wales)',
+    'World Child Cancer · 英格兰及威尔士注册慈善机构，注册号：1107353',
+    'World Child Cancer · Eingetragene Wohltätigkeitsorganisation Nr. 1107353 (England & Wales)'
+  ));
+  // About charity
+  setText('about-charity-title', t('Charity partner', '慈善合作伙伴', 'Wohltätigkeitspartner'));
+  setText('about-charity-p1', t(
+    'PDE Outreach supports World Child Cancer (registered charity no. 1107353) as our nominated charity partner. World Child Cancer works in low- and middle-income countries to improve access to cancer diagnosis, treatment, and care for children — addressing exactly the survival gap our Childhood Cancer tab documents.',
+    'PDE Outreach 支持 World Child Cancer（注册慈善机构，编号：1107353）作为我们指定的慈善合作伙伴。World Child Cancer 致力于改善中低收入国家儿童癌症诊断、治疗和护理的可及性——正是我们"儿童癌症"标签页所记录的生存率差距的解决方向。',
+    'PDE Outreach unterstützt World Child Cancer (eingetragene Wohltätigkeitsorganisation Nr. 1107353) als nominierten Partner. Sie verbessern den Zugang zu Diagnose, Behandlung und Pflege für krebskranke Kinder in einkommensschwachen Ländern.'
+  ));
+  setText('about-charity-p2', t(
+    'All content on this site is free. If it has been useful to you, please consider donating through our campaign page. Every donation goes directly to World Child Cancer\'s programmes.',
+    '本网站所有内容均免费。如果对您有帮助，请考虑通过我们的活动页面捐款。每一笔捐款将直接用于 World Child Cancer 的项目。',
+    'Alle Inhalte sind kostenlos. Wenn sie hilfreich waren, erwägen Sie eine Spende über unsere Kampagnenseite. Jede Spende geht direkt an die Programme von World Child Cancer.'
+  ));
+  setText('about-charity-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
+  // Journal support update
+  setText('journal-support-title', t('This content is free. The fight isn\'t.', '内容免费。抗癌之战不是。', 'Die Inhalte sind kostenlos. Der Kampf nicht.'));
+  setText('journal-support-p', t(
+    'PDE Outreach supports World Child Cancer — working to close the survival gap for children with cancer in low-income countries. If reading this has been valuable, please consider donating.',
+    'PDE Outreach 支持 World Child Cancer——致力于缩小低收入国家儿童癌症的生存率差距。如果阅读本文对您有价值，请考虑捐款。',
+    'PDE Outreach unterstützt World Child Cancer — um die Überlebenslücke für krebskranke Kinder in einkommensschwachen Ländern zu schließen.'
+  ));
+  setText('journal-support-btn', t('❤ Donate to World Child Cancer', '❤ 为 World Child Cancer 捐款', '❤ World Child Cancer unterstützen'));
+  setText('child-support-btn', t('❤ Donate via JustGiving', '❤ 通过 JustGiving 捐款', '❤ Spenden via JustGiving'));
+  
   // footer
   const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2026 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2026 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
   setText('footer-tagline',t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
@@ -3024,6 +3192,7 @@ function applyLang(lang){
 
   const d1Lbl=document.getElementById('drug1-lbl');if(d1Lbl&&(d1Lbl.textContent==='press Run to simulate'||d1Lbl.textContent==='按运行开始'))d1Lbl.textContent=t('press Run to simulate','按运行开始','Simulation starten');
 
+  
   updateSizeDemo(document.getElementById('size-slider').value);
   updateLifestyle();
 }
