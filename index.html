@@ -1500,10 +1500,53 @@
             <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius);padding:1.25rem;">
               <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:.875rem;" id="child-gap-chart-label">ALL 5-year survival by region</div>
               <div style="display:flex;flex-direction:column;gap:.5rem;">
-                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">UK/US</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:92%;height:100%;background:var(--teal);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">>90%</span></div></div>
-                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">China</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:80%;height:100%;background:var(--blue);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~75–80%</span></div></div>
-                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">India</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:55%;height:100%;background:var(--amber);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~50–60%</span></div></div>
-                <div style="display:flex;align-items:center;gap:.75rem;"><span style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">Sub-Saharan</span><div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;"><div style="width:30%;height:100%;background:var(--coral);border-radius:4px;"></div><span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">~25–35%</span></div></div>
+                <div style="display:flex;align-items:center;gap:.75rem;">
+                <span id="region-ukus-label" style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">
+                  UK/US
+                </span>
+                <div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;">
+                  <div style="width:92%;height:100%;background:var(--teal);border-radius:4px;"></div>
+                  <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">
+                    >90%
+                  </span>
+                </div>
+              </div>
+              
+              <div style="display:flex;align-items:center;gap:.75rem;">
+                <span id="region-china-label" style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">
+                  China
+                </span>
+                <div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;">
+                  <div style="width:80%;height:100%;background:var(--blue);border-radius:4px;"></div>
+                  <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">
+                    ~75–80%
+                  </span>
+                </div>
+              </div>
+              
+              <div style="display:flex;align-items:center;gap:.75rem;">
+                <span id="region-india-label" style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">
+                  India
+                </span>
+                <div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;">
+                  <div style="width:55%;height:100%;background:var(--amber);border-radius:4px;"></div>
+                  <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">
+                    ~50–60%
+                  </span>
+                </div>
+              </div>
+              
+              <div style="display:flex;align-items:center;gap:.75rem;">
+                <span id="region-ssa-label" style="font-family:var(--mono);font-size:.7rem;color:var(--text3);width:80px;">
+                  Sub-Saharan
+                </span>
+                <div style="flex:1;background:var(--border);border-radius:4px;height:24px;position:relative;">
+                  <div style="width:30%;height:100%;background:var(--coral);border-radius:4px;"></div>
+                  <span style="position:absolute;left:8px;top:50%;transform:translateY(-50%);font-family:var(--mono);font-size:.7rem;color:#fff;font-weight:700;">
+                    ~25–35%
+                  </span>
+                </div>
+              </div>
               </div>
             </div>
           </div>
@@ -2420,7 +2463,7 @@ function applyLang(lang){
   setText('drug-story-ph-p',t('We\'re currently collecting patient stories. If you\'d like to share your experience, email ','我们正在收集患者故事。如果您愿意分享您的经历，请发邮件至 ','Wir sammeln Patientengeschichten. Wenn Sie Ihre Erfahrung teilen möchten, E-Mail an '));
   const dpEl=document.getElementById('drug-story-ph-p');if(dpEl){dpEl.innerHTML=t('Hassan, 14, was diagnosed with Acute Lymphoblastic Leukaemia in Malawi — where without support from World Child Cancer, treatment would not have been an option. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Read more stories →</a>','Hassan 14岁时在马拉维被诊断出急性淋巴细胞白血病——若没有 World Child Cancer 的支持，他的家庭根本无力负担治疗费用。<a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">阅读更多故事 →</a>','Hassan, 14, wurde in Malawi mit ALL diagnostiziert — ohne World Child Cancer wäre eine Behandlung nicht möglich gewesen. <a href="https://worldchildcancer.org/news_and_blog/hassans-story/" target="_blank">Mehr Geschichten →</a>');}
   const drugMap={'cisplatin':{en:'Cisplatin (small molecule — high penetration)',zh:'顺铂（小分子——高渗透）',de:'Cisplatin (kleines Molekül — hohe Penetration)'},'doxorubicin':{en:'Doxorubicin (medium molecule)',zh:'多柔比星（中等分子）',de:'Doxorubicin (mittleres Molekül)'},'trastuzumab':{en:'Trastuzumab (large antibody — low penetration)',zh:'曲妥珠单抗（大分子抗体——低渗透）',de:'Trastuzumab (großer Antikörper — niedrige Penetration)'}};
-  const tumorMap={'breast':{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},'pancreatic':{en:'Pancreatic cancer (hardest to treat)',zh:'胰腺癌（最难治疗）',de:'Bauchspeicheldrüsenkrebs (am schwierigsten)'},'glioma':{en:'Glioma (brain tumor)',zh:'胶质瘤（脑肿瘤）',de:'Gliom (Gehirntumor)'}};
+  const tumorMap={'breast':{en:'Breast cancer',zh:'乳腺癌',de:'Brustkrebs'},'pancreatic':{en:'Pancreatic cancer (hardest to treat)',zh:'胰腺癌（最难治疗）',de:'Bauchspeicheldrüsenkrebs (am schwierigsten)'},'glioma':{en:'Glioma (brain tumor)',zh:'胶质瘤（脑肿瘤）',de:'Gliom (Gehirntumor)'}'glioma':{en:'Medullobloastoma (childhood brain tumor)',zh:'髓母细胞瘤（儿童脑肿瘤）',de:'Medulloblastom (kindlicher Hirntumor)'}};
   const d1s=document.getElementById('drug1-select');if(d1s)Array.from(d1s.options).forEach(o=>{if(drugMap[o.value])o.textContent=drugMap[o.value][lang]||drugMap[o.value].en;});
   const t1s=document.getElementById('tumor1-select');if(t1s)Array.from(t1s.options).forEach(o=>{if(tumorMap[o.value])o.textContent=tumorMap[o.value][lang]||tumorMap[o.value].en;});
 
@@ -3093,6 +3136,10 @@ function applyLang(lang){
   setText('child-gap-title', t('The global survival gap','全球生存率差距','Die globale Überlebenslücke'));
   setText('child-gap-intro', t('The same childhood cancer has dramatically different outcomes depending on where a child is born. This is not biology — it is access to diagnosis, treatment, and expertise.','同一种儿童癌症，根据孩子出生地的不同，结果会有显著差异。这不是生物学问题——而是诊断、治疗和专业知识获取的问题。','Dieselbe Kinderkrebserkrankung hat dramatisch unterschiedliche Ergebnisse, je nachdem wo ein Kind geboren wird. Das ist keine Biologie — es ist Zugang zu Diagnose, Behandlung und Expertise.'));
   setText('child-gap-chart-label', t('ALL 5-year survival by region','各地区ALL五年生存率','ALL 5-Jahres-Überleben nach Region'));
+  setText('region-ukus',t('UK/US','英国/美国','UK/USA'));
+  setText('region-china',t('China','中国','China'));
+  setText('region-india',t('India','印度','Indien'));
+  setText('region-ssa',t('Sub-Saharan','撒哈拉以南非洲','Subsahara-Afrika'));
   setText('child-gap-p1', t('The gap exists because of three interconnected problems. First, late diagnosis — in low-income settings, children present at far more advanced stages. Second, treatment abandonment — families cannot afford prolonged hospital stays, drug costs, or travel. Around 30–60% of children in some LMICs abandon treatment before completion. Third, drug availability — supply chain failures mean critical chemotherapy agents are frequently unavailable.','这一差距源于三个相互关联的问题。第一，诊断延迟——在低收入环境中，儿童就诊时病情往往更为晚期。第二，治疗中断——家庭无法负担长期住院、药物费用或交通费用。在某些低中收入国家，约30–60%的儿童在完成治疗前就放弃了。第三，药物可及性——供应链故障意味着关键化疗药物经常无法获得。','Die Lücke besteht wegen drei miteinander verbundener Probleme. Erstens: späte Diagnose — in einkommensschwachen Ländern präsentieren sich Kinder in viel fortgeschritteneren Stadien. Zweitens: Behandlungsabbruch — Familien können Krankenhausaufenthalte, Medikamente oder Reisen nicht leisten. Drittens: Medikamentenverfügbarkeit — Lieferkettenprobleme machen kritische Chemotherapeutika oft unverfügbar.'));
   setText('child-gap-p2', t('Organisations working to close this gap focus on improving diagnostic capacity, training local oncologists, subsidising treatment costs, and ensuring drug supply reliability. The science is largely solved — the challenge is delivery.','致力于缩小这一差距的组织专注于提高诊断能力、培训当地肿瘤科医生、补贴治疗费用和确保药物供应可靠性。科学问题在很大程度上已经解决——挑战在于落实。','Organisationen, die diese Lücke schließen wollen, konzentrieren sich auf Diagnostikkapazität, Ausbildung lokaler Onkologen, Subventionierung von Behandlungskosten und Medikamentenversorgung. Die Wissenschaft ist weitgehend gelöst — die Herausforderung ist die Umsetzung.'));
 
