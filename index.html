@@ -587,13 +587,13 @@
           <div class="card-header"><div class="card-icon">💊</div><h2 style="margin:0;color:var(--blue);" id="card-hdr-drug">Why drugs fail</h2></div>
           <h3 id="card-h3-drug">Good drugs can't always reach the tumor</h3>
           <p id="card-p-drug">Even the most effective chemotherapy drugs sometimes fail — not because they stop working, but because they physically cannot penetrate deep enough. We simulate this with real mathematics.</p>
-          <span class="tag blue" id="tag-drug-1">interactive sim</span><span class="tag" id="tag-drug-2">quiz inside</span>
+          <span class="tag blue" id="tag-drug-1">interactive sim</span><span class="tag" id="tag-drug-2">Quiz</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--green);" onclick="switchTab('early')">
           <div class="card-header"><div class="card-icon">🔍</div><h2 style="margin:0;color:var(--green);" id="card-hdr-early">Early detection</h2></div>
           <h3 id="card-h3-early">Tumor size changes everything</h3>
           <p id="card-p-early">A tumor found at 1 cm and at 5 cm are completely different problems. Drag a slider — and see exactly how much harder treatment becomes as tumors grow.</p>
-          <span class="tag green" id="tag-early-1">drag &amp; explore</span><span class="tag" id="tag-early-2">quiz inside</span>
+          <span class="tag green" id="tag-early-1">drag &amp; explore</span><span class="tag" id="tag-early-2">Quiz</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--amber);" onclick="switchTab('lifestyle')">
           <div class="card-header"><div class="card-icon">🧬</div><h2 style="margin:0;color:var(--amber);" id="card-hdr-ls">Lifestyle &amp; risk</h2></div>
@@ -605,13 +605,13 @@
           <div class="card-header"><div class="card-icon">🎯</div><h2 style="margin:0;color:var(--purple);" id="card-hdr-prec">Precision medicine</h2></div>
           <h3 id="card-h3-prec">Why the same drug works differently for everyone</h3>
           <p id="card-p-prec">Two patients, same diagnosis, same drug — completely different outcomes. Genetics and tumor biology all play a role. See the difference with your own eyes.</p>
-          <span class="tag purple" id="tag-prec-1">compare</span><span class="tag" id="tag-prec-2">quiz inside</span>
+          <span class="tag purple" id="tag-prec-1">compare</span><span class="tag" id="tag-prec-2">Quiz</span>
         </div>
         <div class="card home-card" style="cursor:pointer;border-top:2px solid var(--coral);grid-column:1/-1;" onclick="switchTab('journal')">
-          <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;color:var(--coral);" id="card-h2-journal">Journal</h2></div>
-          <h3 id="card-h3-journal">Top cancer research, made readable — free, with a donate option</h3>
-          <p id="card-p-journal">We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Always free. If it helps you, consider donating to our charity partners.</p>
-          <span class="tag" style="border-color:rgba(255,107,107,.4);color:var(--coral);background:rgba(255,107,107,.08);">EN / 中文 / DE</span><span class="tag">free forever</span>
+          <div class="card-header"><div class="card-icon">📖</div><h2 style="margin:0;color:var(--coral);" id="card-h2-journal">Reading</h2></div>
+          <h3 id="card-h3-journal">Further reading: the journals behind the science on this site</h3>
+          <p id="card-p-journal">The research on this site draws from the top peer-reviewed oncology journals. This tab links you directly to them — with a plain guide on how to read a scientific paper.</p>
+          <span class="tag coral" id="tag-journal-1" style="border-color:rgba(255,107,107,.4);color:var(--coral);background:rgba(255,107,107,.08);">Journals</span><span class="tag" id="tag-journal-2">Reading Guide</span>
         </div>
       </div>
     </div>
@@ -2079,9 +2079,9 @@ const QUIZ_CHAIN={
 };
 
 function getLang(){return currentLang==='zh'?'zh':currentLang==='de'?'de':'en';}
-function showChainQuiz(tabId,stepIndex){
+function showChainQuiz(tabId,stepIndex,forceLang){
   const chain=QUIZ_CHAIN[tabId];if(!chain||stepIndex>=chain.length)return;
-  const q=chain[stepIndex],lang=getLang(),container=document.getElementById(q.id);
+  const q=chain[stepIndex],lang=forceLang||getLang(),container=document.getElementById(q.id);
   if(!container)return;
   container.style.display='block';container.style.animation='fadein .3s ease';
   const qEl=container.querySelector('.quiz-question');if(qEl)qEl.textContent=q.q[lang]||q.q.en;
@@ -2107,7 +2107,7 @@ function answerChainQuiz(tabId,stepIndex,el,choice){
   const rev=container.querySelector('.quiz-reveal'),r=q.reveal[choice];
   rev.innerHTML=r[lang]||r.en;rev.classList.add('show');
   if(!isCorrect){rev.classList.add('wrong-reveal');setTimeout(()=>{rev.style.transition='opacity .5s';rev.style.opacity='0';setTimeout(()=>{rev.style.transition='';rev.style.opacity='';rev.innerHTML='';rev.classList.remove('show','wrong-reveal');opts.forEach(o=>{o.classList.remove('correct','wrong','reveal-correct');o.style.pointerEvents='';});},500);},3000);}
-  else{setTimeout(()=>showChainQuiz(tabId,stepIndex+1),1200);}
+  else{const _lang=getLang();setTimeout(()=>showChainQuiz(tabId,stepIndex+1,_lang),1200);}
 }
 function resetQuiz(section,optsSelector,revealId){
   document.querySelectorAll(optsSelector).forEach(o=>{o.classList.remove('correct','wrong','reveal-correct','selected');o.style.pointerEvents='';});
@@ -2130,7 +2130,7 @@ function answerQuiz(section,el,choice){
   const rev=document.getElementById(`${section}-quiz-reveal`),r=quiz.reveal[choice],lang=getLang();
   rev.innerHTML=r[lang]||r.en;rev.classList.add('show');
   if(!isCorrect){rev.classList.add('wrong-reveal');setTimeout(()=>{rev.style.transition='opacity .5s';rev.style.opacity='0';setTimeout(()=>{rev.style.transition='';rev.style.opacity='';resetQuiz(section,`#${section}-quiz-opts .quiz-option`,`${section}-quiz-reveal`);},500);},3000);}
-  else{if(QUIZ_CHAIN[section])setTimeout(()=>showChainQuiz(section,0),1200);}
+  else{const _lang=getLang();if(QUIZ_CHAIN[section])setTimeout(()=>showChainQuiz(section,0,_lang),1200);}
 }
 
 /* DRUG SIM */
@@ -2329,6 +2329,7 @@ function setLang(lang){
   if(flagEl)flagEl.textContent=flags[lang]||'🇬🇧';if(labelEl)labelEl.textContent=labels[lang]||'EN';
   ['en','zh','de'].forEach(l=>{const item=document.getElementById('lang-item-'+l);if(item)item.classList.toggle('active',l===lang);});
   applyLang(lang);
+  try{localStorage.setItem('pde-lang',lang);}catch(e){}
   try{const url=new URL(window.location.href);url.searchParams.set('lang',lang);window.history.replaceState({},'' ,url);}catch(e){}
 }
 
@@ -2347,22 +2348,22 @@ function applyLang(lang){
 
   document.title=t('PDEOutreach — Cancer Science for Everyone','PDEOutreach — 癌症科学，人人可懂','PDEOutreach — Krebswissenschaft für alle');
 
-  // Donate banner (simplified — no TBC links)
+  // Donate banner
   setText('donate-banner-text', t('Support children with cancer. Our science education is free — but the fight isn\'t.','支持癌症儿童。我们的科普内容永久免费——但抗癌之战需要资金。','Kinder mit Krebs unterstützen. Unsere Bildung ist kostenlos — der Kampf nicht.'));
   setText('donate-coming-text',t('❤ Donate via JustGiving','❤ 通过 JustGiving 捐款','❤ Spenden via JustGiving'));
 
   // HOME
   setHtml('home-sub',t('Cancer science, made for everyone. We turn the research behind <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> into interactive experiences you can actually feel — no equations, no textbooks.','癌症科学，不该只属于医生。我们把 <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> 背后的研究做成了交互体验——不需要公式，不需要教科书，真正看得懂。','Krebswissenschaft für alle. Wir verwandeln die Forschung hinter <a href="https://pdeoncology.com" target="_blank">PDEOncology</a> in interaktive Erlebnisse.'));
-  setText('home-chips-i',t('bilingual','中英双语','mehrsprachig'));setText('home-chips-ii',t('interactive','互动体验','interaktiv'));setText('home-chips-iii',t('evidence-based','循证内容','evidenzbasiert'));setText('home-chips-iv',t('free forever','永久免费','kostenlos'));
+  setText('home-chips-i',t('trilingual','中英德三语','mehrsprachig'));setText('home-chips-ii',t('interactive','互动体验','interaktiv'));setText('home-chips-iii',t('evidence-based','循证内容','evidenzbasiert'));
   const heroCta=document.getElementById('hero-cta');if(heroCta)heroCta.textContent=t('Start Exploring →','开始探索 →','Erkunden →');
   setText('home-cards-title',t('Five things about cancer nobody told you','关于癌症，没人告诉你的五件事','Fünf Dinge über Krebs, die niemand erklärt'));
   setText('home-quiz-title',t('Quick — what do you think?','先来猜一猜——','Schnell — was denkst du?'));
   setHtml('home-quiz-q',t('A powerful chemotherapy drug enters the bloodstream and reaches the tumor. What percentage of cancer cells does it typically kill?<div class="quiz-sub">No googling. Go with your gut.</div>','一种效果很好的化疗药物进入血液，到达肿瘤。通常能杀死多少比例的癌细胞？<div class="quiz-sub">别查资料，凭直觉回答。</div>','Ein starkes Chemotherapeutikum gelangt in den Blutkreislauf und erreicht den Tumor. Wie viele Krebszellen tötet es ab?<div class="quiz-sub">Nicht googeln. Bauchgefühl.</div>'));
   const homeOptsTxt=lang==='zh'?['大部分——这不就是化疗的目的吗','大约一半——化疗不太精准','只有外层——药物无法到达核心','几乎没有——肿瘤完全耐药']:lang==='de'?['Die meisten — das ist der Sinn der Chemo','Etwa die Hälfte — Chemo ist ungenau','Nur die äußere Schicht — der Kern wird nicht erreicht','Fast keine — Tumore sind völlig resistent']:['Most of them — that\'s the whole point of chemo','About half — chemo is not very precise','Only the outer layer — drug can\'t reach the core','Almost none — tumors are completely drug-resistant'];
   document.querySelectorAll('#home-quiz-opts .quiz-option').forEach((o,i)=>{o.childNodes[o.childNodes.length-1].textContent=' '+homeOptsTxt[i];});
-  setText('card-h2-journal',t('Journal','期刊','Journal'));
-  setText('card-h3-journal',t('Top cancer research, made readable — free, with a donate option','顶级癌症研究，通俗易懂——永久免费，可选择捐款','Aktuelle Krebsforschung, verständlich — kostenlos, mit Spendenoption'));
-  setText('card-p-journal',t('We summarise the latest studies from CA, Nature Reviews Cancer, JCO, Cancer Cell and more into plain language. Always free. If it helps you, consider donating to our charity partners.','我们将顶级期刊的最新研究整理成通俗语言。永久免费。如果对你有帮助，可以考虑向我们的慈善伙伴捐款。','Wir fassen die neuesten Studien in verständlicher Sprache zusammen. Immer kostenlos. Wenn es hilft, erwägen Sie eine Spende.'));
+  setText('card-h2-journal',t('Reading','延伸阅读','Lektüre'));
+  setText('card-h3-journal',t('Further reading: the journals behind the science on this site','延伸阅读：本站科学内容的来源期刊','Weiterlesen: die Zeitschriften hinter der Wissenschaft'));
+  setText('card-p-journal',t('The research on this site draws from the top peer-reviewed oncology journals. This tab links directly to them — with a plain guide on how to read a scientific paper.','本站内容来源于顶级同行评审肿瘤学期刊。本栏目提供直接链接，并附上如何阅读科学论文的简明指南。','Die Forschung auf dieser Website stammt aus führenden Fachzeitschriften. Dieser Tab verlinkt direkt zu ihnen — mit einem einfachen Leitfaden zum Lesen wissenschaftlicher Artikel.'));
   setText('card-h3-drug',t('Good drugs can\'t always reach the tumor','好药并不总能到达肿瘤','Gute Medikamente erreichen den Tumor nicht immer'));
   setText('card-h3-early',t('Tumor size changes everything','肿瘤大小改变一切','Tumorgröße ändert alles'));
   setText('card-h3-ls',t('Your habits change how drugs work','你的习惯影响药物效果','Deine Gewohnheiten beeinflussen Medikamente'));
@@ -2689,6 +2690,8 @@ function applyLang(lang){
   setText('tag-ls-2',t('personalised','个性化','Personalisiert'));
   setText('tag-prec-1',t('compare','对比','Vergleichen'));
   setText('tag-prec-2',t('quiz inside','含测验','Quiz enthalten'));
+  setText('tag-journal-1',t('Journals','期刊','Fachzeitschriften'));
+  setText('tag-journal-2',t('Reading Guide','阅读指南','Leseleitfaden'));
   setText('drug-sim-title',t('See it for yourself','亲眼看看','Selbst nachsehen'));
   setText('drug-explainer-title',t('What\'s really happening inside','肿瘤内部到底发生了什么','Was wirklich im Inneren passiert'));
   setText('prec-quiz-title',t('What do you think?','先来猜一猜——','Was denkst du?'));
@@ -3196,8 +3199,8 @@ function applyLang(lang){
   
   
   // footer
-  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Cancer science for everyone · Educational use only, not medical advice','© 2026 PDEOutreach · 癌症科学，人人可懂 · 仅供教育使用，非医疗建议','© 2026 PDEOutreach · Krebswissenschaft für alle · Nur zur Bildung, kein medizinischer Rat');
-  setText('footer-tagline',t('Cancer science for everyone.\nMade by students, for the world.','癌症科学，不该只属于专家。\n由学生打造，为世界而生。','Krebswissenschaft für alle.\nVon Studierenden, für die Welt.'));
+  const fc=document.getElementById('footer-copy');if(fc)fc.textContent=t('© 2026 PDEOutreach · Educational content only — not medical advice. Always consult a qualified clinician.','© 2026 PDEOutreach · 仅供教育参考，不构成医疗建议。如有需要，请咨询专业医生。','© 2026 PDEOutreach · Nur zu Bildungszwecken — kein medizinischer Rat. Bitte konsultieren Sie einen Arzt.');
+  setText('footer-tagline',t('Evidence-based cancer education.\nFree, for everyone.','循证癌症科普。\n永久免费，面向所有人。','Evidenzbasierte Krebsbildung.\nKostenlos für alle.'));
   setText('footer-links-title',t('Links','链接','Links'));setText('footer-contact-title',t('Contact','联系我们','Kontakt'));
   setText('footer-link-about',t('About us','关于我们','Über uns'));
   setText('footer-license-link','CC BY-NC 4.0');
@@ -3255,7 +3258,20 @@ document.addEventListener('click', () => {
 /* INIT */
 updateSizeDemo(12);
 updateLifestyle();
-try{const params=new URLSearchParams(window.location.search);const urlLang=params.get('lang');if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){applyLang(urlLang);}else{applyLang('en');}}catch(e){applyLang('en');}
+
+  try{
+    const params=new URLSearchParams(window.location.search);
+    const urlLang=params.get('lang');
+    if(urlLang==='zh'||urlLang==='en'||urlLang==='de'){
+      applyLang(urlLang);
+    } else {
+      try{
+        const stored=localStorage.getItem('pde-lang');
+        if(stored==='zh'||stored==='en'||stored==='de'){applyLang(stored);}
+        else{applyLang('en');}
+      }catch(e){applyLang('en');}
+    }
+  }catch(e){applyLang('en');}
 </script>
 <!-- Hidden tooltip content sources (populated by applyLang JS) -->
 <div style="display:none;">
