@@ -1621,8 +1621,8 @@
         <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.25rem;">
           <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;" id="wcc-map-label">Where WCC works</div>
           <div id="wcc-leaflet-map" style="height:340px;border-radius:var(--radius);overflow:hidden;"></div>
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
 window._initWccMap = function(){
   if(window._wccMapInit) return;
@@ -1631,7 +1631,7 @@ window._initWccMap = function(){
     center: [10, 20], zoom: 2,
     zoomControl: true, scrollWheelZoom: false
   });
-  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
     subdomains: 'abcd', maxZoom: 5, minZoom: 2
   }).addTo(map);
