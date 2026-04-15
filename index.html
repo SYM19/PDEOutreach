@@ -1623,18 +1623,19 @@
           <div id="wcc-leaflet-map" style="height:340px;border-radius:var(--radius);overflow:hidden;"></div>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js"></script>
-<script>
+          <script>
 window._initWccMap = function(){
+  if(!window.L) { setTimeout(window._initWccMap, 200); return; }
   if(window._wccMapInit) return;
   window._wccMapInit = true;
   window._wccMap = L.map('wcc-leaflet-map', {
     center: [10, 20], zoom: 2,
     zoomControl: true, scrollWheelZoom: false
   });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
-    subdomains: 'abcd', maxZoom: 5, minZoom: 2
-  }).addTo(map);
+  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; OpenStreetMap contributors',
+      maxZoom: 5, minZoom: 2
+  }).addTo(window._wccMap);
   var orange = {radius:7, fillColor:'#FF8C00', color:'white', weight:2, fillOpacity:1};
   var pink   = {radius:7, fillColor:'#D03366', color:'white', weight:2, fillOpacity:1};
   [
