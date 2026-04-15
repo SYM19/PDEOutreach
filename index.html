@@ -1624,7 +1624,7 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script>
-(function(){
+window._initWccMap = function(){
   if(window._wccMapInit) return;
   window._wccMapInit = true;
   window._wccMap = L.map('wcc-leaflet-map', {
@@ -1651,8 +1651,8 @@
     {ll:[23.6,-102.5], n:'Mexico'},
     {ll:[13.7,-89.2], n:'El Salvador / Guatemala / Honduras'},
     {ll:[40.2,44.5], n:'Armenia'},
-  ].forEach(function(d){ L.circleMarker(d.ll,pink).addTo(map).bindTooltip(d.n); });
-})();
+ ].forEach(function(d){ L.circleMarker(d.ll,pink).addTo(window._wccMap).bindTooltip(d.n); });
+};
 </script>
       
           <!-- Map legend -->
@@ -2088,8 +2088,12 @@ function switchTab(name){
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
   const panel = document.getElementById('tab-'+name);
   if (panel) panel.classList.add('active');
-  if (name === 'child' && window._wccMap) {
-    setTimeout(function(){ window._wccMap.invalidateSize(); }, 50);
+  if (name === 'child') {
+    if (!window._wccMapInit) {
+      setTimeout(function(){ window._initWccMap(); }, 100);
+    } else if (window._wccMap) {
+      setTimeout(function(){ window._wccMap.invalidateSize(); }, 50);
+    }
   }
   const tabs = ['home','drug','early','lifestyle','precision','journal','child','about'];
   const navBtns = document.querySelectorAll('#nav button');
