@@ -1627,7 +1627,7 @@
 (function(){
   if(window._wccMapInit) return;
   window._wccMapInit = true;
-  var map = L.map('wcc-leaflet-map', {
+  window._wccMap = L.map('wcc-leaflet-map', {
     center: [10, 20], zoom: 2,
     zoomControl: true, scrollWheelZoom: false
   });
@@ -2088,6 +2088,9 @@ function switchTab(name){
   document.querySelectorAll('#nav button').forEach(b=>b.classList.remove('active'));
   const panel = document.getElementById('tab-'+name);
   if (panel) panel.classList.add('active');
+  if (name === 'child' && window._wccMap) {
+    setTimeout(function(){ window._wccMap.invalidateSize(); }, 50);
+  }
   const tabs = ['home','drug','early','lifestyle','precision','journal','child','about'];
   const navBtns = document.querySelectorAll('#nav button');
   tabs.forEach((t,i) => { if(t===name && navBtns[i]) navBtns[i].classList.add('active'); });
