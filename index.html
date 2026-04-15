@@ -1620,129 +1620,40 @@
         <!-- WHERE THEY WORK - SVG MAP -->
         <div style="background:var(--bg1);border:1px solid var(--border);border-radius:var(--radius-lg);padding:1.25rem;margin-bottom:1.25rem;">
           <div style="font-family:var(--mono);font-size:.72rem;color:var(--text3);text-transform:uppercase;letter-spacing:.06em;margin-bottom:1rem;" id="wcc-map-label">Where WCC works</div>
-          <div style="position:relative;background:linear-gradient(135deg,#EEF6FF,#EAF4FB);border-radius:var(--radius);overflow:hidden;">
-            <svg viewBox="0 0 800 390" style="width:100%;height:auto;display:block;" xmlns="http://www.w3.org/2000/svg">
-              <!-- Graticule -->
-              <line x1="0" y1="195" x2="800" y2="195" stroke="#C8DEF0" stroke-width="0.5" stroke-dasharray="4,4"/>
-              <line x1="400" y1="0" x2="400" y2="390" stroke="#C8DEF0" stroke-width="0.5" stroke-dasharray="4,4"/>
-      
-              <!-- NORTH AMERICA -->
-              <path d="M62,52 L175,45 L225,62 L248,84 L258,118 L248,158 L232,198 L214,218 L196,228 L192,248 L172,253 L161,240 L150,218 L144,192 L150,162 L140,132 L120,102 L90,76 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- Greenland -->
-              <path d="M252,22 L305,15 L325,32 L314,52 L282,57 L256,46 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- Central America -->
-              <path d="M196,228 L218,233 L222,250 L208,255 L196,247 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- South America -->
-              <path d="M172,253 L222,247 L242,268 L250,305 L244,348 L227,378 L202,388 L180,378 L163,352 L156,312 L159,277 L166,262 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- EUROPE -->
-              <path d="M348,58 L384,50 L433,52 L472,60 L498,75 L508,91 L500,108 L480,118 L451,124 L422,120 L396,112 L370,97 L353,80 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- Scandinavia -->
-              <path d="M408,32 L432,24 L452,30 L457,47 L441,54 L416,52 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- UK -->
-              <path d="M352,68 L362,62 L370,68 L365,80 L354,78 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- AFRICA -->
-              <path d="M348,118 L388,110 L435,114 L470,130 L495,158 L500,198 L497,240 L482,280 L457,308 L427,321 L397,315 L370,288 L352,252 L344,212 L346,172 L350,142 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- Madagascar -->
-              <path d="M494,260 L502,254 L510,270 L505,290 L496,284 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- RUSSIA / NORTH ASIA -->
-              <path d="M493,40 L604,30 L724,37 L778,57 L793,82 L773,102 L724,110 L662,114 L602,112 L552,117 L516,110 L502,94 L494,74 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- MIDDLE EAST / CAUCASUS -->
-              <path d="M480,112 L522,108 L547,117 L550,140 L532,152 L510,157 L491,150 L478,134 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- SOUTH / SE ASIA + INDIAN SUBCONTINENT -->
-              <path d="M548,117 L614,117 L662,127 L702,140 L720,160 L712,180 L680,190 L650,187 L620,197 L600,207 L583,197 L564,180 L550,160 L542,140 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <path d="M564,148 L597,144 L608,158 L602,178 L582,190 L564,180 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- EAST ASIA -->
-              <path d="M652,82 L733,72 L772,87 L777,112 L757,127 L720,130 L680,120 L657,107 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-              <!-- Japan -->
-              <path d="M748,105 L758,100 L765,110 L758,120 L748,115 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- AUSTRALIA -->
-              <path d="M660,270 L725,257 L763,272 L770,308 L750,332 L708,337 L670,320 L654,292 Z"
-                    fill="#C8DFF0" stroke="#9BBCD4" stroke-width="0.8" opacity="0.85"/>
-      
-              <!-- ═══ WCC COUNTRY HIGHLIGHTS ═══ -->
-              <!-- Pulse ring + dot for each country -->
-      
-              <!-- AFRICA: Ghana lon=-1 lat=8 → ~398,200 -->
-              <circle cx="382" cy="198" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="382" cy="198" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Sierra Leone lon=-12 lat=8 → ~358,198 -->
-              <circle cx="360" cy="195" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="360" cy="195" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Malawi lon=34 lat=-13 → ~475,257 -->
-              <circle cx="473" cy="256" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="473" cy="256" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Tanzania lon=35 lat=-6 → ~477,240 -->
-              <circle cx="475" cy="240" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="475" cy="240" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-      
-              <!-- ASIA: Nepal lon=84 lat=28 → ~587,151 -->
-              <circle cx="578" cy="150" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="578" cy="150" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Myanmar lon=96 lat=17 → ~613,170 -->
-              <circle cx="600" cy="170" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="600" cy="170" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Vietnam lon=108 lat=16 → ~640,173 -->
-              <circle cx="625" cy="173" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="625" cy="173" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-              <!-- Indonesia lon=118 lat=-5 → ~662,205 -->
-              <circle cx="648" cy="205" r="11" fill="#FF8C00" opacity="0.15"/>
-              <circle cx="648" cy="205" r="6" fill="#FF8C00" stroke="white" stroke-width="1.5"/>
-      
-              <!-- AMERICAS: Mexico lon=-102 lat=24 → ~173,160 -->
-              <circle cx="178" cy="162" r="11" fill="#E84444" opacity="0.15"/>
-              <circle cx="178" cy="162" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
-              <!-- El Salvador/Guatemala/Honduras cluster lon=-89/90/87 lat=14/15 -->
-              <circle cx="206" cy="192" r="11" fill="#E84444" opacity="0.15"/>
-              <circle cx="206" cy="192" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
-      
-              <!-- CAUCASUS: Armenia lon=45 lat=40 → ~500,113 -->
-              <circle cx="498" cy="113" r="11" fill="#E84444" opacity="0.15"/>
-              <circle cx="498" cy="113" r="6" fill="#E84444" stroke="white" stroke-width="1.5"/>
-      
-              <!-- ═══ LABELS ═══ -->
-              <!-- Africa labels -->
-              <text x="391" y="195" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Ghana</text>
-              <text x="332" y="191" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Sierra Leone</text>
-              <text x="481" y="253" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Malawi</text>
-              <text x="481" y="237" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Tanzania</text>
-      
-              <!-- Asia labels -->
-              <text x="558" y="145" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Nepal</text>
-              <text x="604" y="165" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Myanmar</text>
-              <text x="629" y="168" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Vietnam</text>
-              <text x="652" y="200" font-size="8" fill="#7A4500" font-family="monospace" font-weight="700">Indonesia</text>
-      
-              <!-- Americas labels -->
-              <text x="155" y="157" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Mexico</text>
-              <text x="213" y="188" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">El Sal /</text>
-              <text x="213" y="198" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Guat / Hon.</text>
-      
-              <!-- Caucasus label -->
-              <text x="503" y="109" font-size="8" fill="#8B0000" font-family="monospace" font-weight="700">Armenia</text>
-            </svg>
-          </div>
+          <div id="wcc-leaflet-map" style="height:340px;border-radius:var(--radius);overflow:hidden;"></div>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+(function(){
+  if(window._wccMapInit) return;
+  window._wccMapInit = true;
+  var map = L.map('wcc-leaflet-map', {
+    center: [10, 20], zoom: 2,
+    zoomControl: true, scrollWheelZoom: false
+  });
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://carto.com/">CARTO</a>',
+    subdomains: 'abcd', maxZoom: 5, minZoom: 2
+  }).addTo(map);
+  var orange = {radius:7, fillColor:'#FF8C00', color:'white', weight:2, fillOpacity:1};
+  var pink   = {radius:7, fillColor:'#D03366', color:'white', weight:2, fillOpacity:1};
+  [
+    {ll:[7.9,-1.0], n:'Ghana'},
+    {ll:[8.5,-13.2], n:'Sierra Leone'},
+    {ll:[-13.3,34.3], n:'Malawi'},
+    {ll:[-6.4,34.9], n:'Tanzania'},
+    {ll:[28.4,84.1], n:'Nepal'},
+    {ll:[17.1,96.1], n:'Myanmar'},
+    {ll:[16.0,107.8], n:'Vietnam'},
+    {ll:[-2.5,118.0], n:'Indonesia'},
+  ].forEach(function(d){ L.circleMarker(d.ll,orange).addTo(map).bindTooltip(d.n); });
+  [
+    {ll:[23.6,-102.5], n:'Mexico'},
+    {ll:[13.7,-89.2], n:'El Salvador / Guatemala / Honduras'},
+    {ll:[40.2,44.5], n:'Armenia'},
+  ].forEach(function(d){ L.circleMarker(d.ll,pink).addTo(map).bindTooltip(d.n); });
+})();
+</script>
       
           <!-- Map legend -->
           <div style="display:flex;gap:1.5rem;margin-top:.75rem;font-size:.75rem;color:var(--text2);flex-wrap:wrap;">
