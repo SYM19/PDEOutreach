@@ -1654,6 +1654,7 @@ window._initWccMap = function(){
     {ll:[40.2,44.5], n:'Armenia'},
  ].forEach(function(d){ L.circleMarker(d.ll,pink).addTo(window._wccMap).bindTooltip(d.n); });
 };
+document.addEventListener('DOMContentLoaded', function(){ setTimeout(window._initWccMap, 300); });
 </script>
       
           <!-- Map legend -->
