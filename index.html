@@ -1578,7 +1578,7 @@
         <div style="display:flex;gap:1rem;align-items:center;margin-bottom:1.25rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
           <img src="https://worldchildcancer.org/wp-content/uploads/2024/07/wcc-logo-white.png"
                alt="World Child Cancer"
-               style="height:44px;object-fit:contain;"
+               style="height:44px;object-fit:contain;background:#C0351A;padding:6px 14px;border-radius:6px;"
                onerror="this.style.display='none'">
           <div style="font-size:.82rem;color:var(--text3);font-style:italic;line-height:1.5;" id="wcc-tagline-txt">
             "No child should suffer." — Working since 2004 to ensure every child with cancer has access to diagnosis, treatment, and care.
@@ -2956,7 +2956,15 @@ function applyLang(lang){
   setText('child-aya-stat2', t('survival advantage on paediatric vs adult ALL protocols','儿科方案对比成人方案的生存优势（以ALL为例）','Überlebensvorteil bei pädiatrischen vs. Erwachsenenprotokollen (ALL)'));
   
   // Causes
-  
+  setText('child-type-all-h', t('Acute Lymphoblastic Leukaemia (ALL) — Most common, ~25% of cases','急性淋巴细胞白血病（ALL）——最常见，约占25%','Akute lymphoblastische Leukämie (ALL) — Häufigste, ~25%'));
+  setText('child-type-brain-h', t('Brain & CNS tumours — 2nd most common, ~20% of cases','脑部及中枢神经系统肿瘤——第二常见，约占20%','Hirn- & ZNS-Tumoren — 2. häufigste, ~20%'));
+  setText('child-type-neuro-h', t('Neuroblastoma — ~8% of cases, most common solid tumour in infants','神经母细胞瘤——约占8%，婴幼儿最常见实体瘤','Neuroblastom — ~8%, häufigster solider Tumor bei Säuglingen'));
+  setText('child-type-wilms-h', t('Wilms Tumour (Nephroblastoma) — most common kidney cancer in children','肾母细胞瘤——儿童最常见肾脏肿瘤','Wilms-Tumor (Nephroblastom) — häufigstes Nierenkarzinom'));
+  setText('child-type-retino-h', t('Retinoblastoma — most common eye tumour in children','视网膜母细胞瘤——儿童最常见眼部肿瘤','Retinoblastom — häufigster Augentumor bei Kindern'));
+  setText('child-type-bone-h', t('Bone tumours: Osteosarcoma & Ewing sarcoma — ~5% of cases','骨肿瘤：骨肉瘤和尤文肉瘤——约占5%','Knochentumoren: Osteosarkom & Ewing-Sarkom — ~5%'));
+  setText('child-type-lymph-h', t('Hodgkin Lymphoma — highly treatable, >95% survival','霍奇金淋巴瘤——治疗效果极好，生存率>95%','Hodgkin-Lymphom — gut behandelbar, >95% Überleben'));
+  setText('child-types-title', t('Common childhood cancers','常见儿童癌症类型','Häufige Kinderkrebserkrankungen'));
+  setText('child-types-sub', t('Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.','点击任意癌症类型，了解它是什么、影响哪些人、如何治疗，以及为什么药物递送特别困难。','Klicke auf einen Krebstyp'));
   setText('child-types-title', t('Common childhood cancers','常见儿童癌症类型','Häufige Kinderkrebserkrankungen'));
   setText('child-types-sub', t('Click any cancer type to learn what it is, who it affects, how it\'s treated, and why drug delivery is particularly challenging.','点击任意癌症类型，了解它是什么、影响哪些人、如何治疗，以及为什么药物递送特别困难。','Klicke auf einen Krebstyp'));
   setText('child-causes-title', t('Why do children get cancer?','为什么儿童会得癌症？','Warum erkranken Kinder an Krebs?'));
