@@ -1619,8 +1619,11 @@ function initWccMap(){
   L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png',{attribution:'&copy; OpenStreetMap contributors',maxZoom:5,minZoom:2}).addTo(m);
   var o={radius:8,fillColor:'#FF8C00',color:'white',weight:2,fillOpacity:1};
   var p={radius:8,fillColor:'#D03366',color:'white',weight:2,fillOpacity:1};
-  [[7.9,-1.0,'Ghana'],[8.5,-13.2,'Sierra Leone'],[-13.3,34.3,'Malawi'],[-6.4,34.9,'Tanzania'],[28.4,84.1,'Nepal'],[17.1,96.1,'Myanmar'],[16.0,107.8,'Vietnam'],[-2.5,118.0,'Indonesia']].forEach(function(d){L.circleMarker([d[0],d[1]],o).addTo(m).bindTooltip(d[2]);});
-  [[23.6,-102.5,'Mexico'],[13.7,-89.2,'El Salvador/Guatemala/Honduras'],[40.2,44.5,'Armenia']].forEach(function(d){L.circleMarker([d[0],d[1]],p).addTo(m).bindTooltip(d[2]);});
+  var _mn={en:['Ghana','Sierra Leone','Malawi','Tanzania','Nepal','Myanmar','Vietnam','Indonesia'],zh:['加纳','塞拉利昂','马拉维','坦桑尼亚','尼泊尔','缅甸','越南','印度尼西亚'],de:['Ghana','Sierra Leone','Malawi','Tansania','Nepal','Myanmar','Vietnam','Indonesien']};
+  var _mn2={en:['Mexico','El Salvador/Guatemala/Honduras','Armenia'],zh:['墨西哥','萨尔瓦多/危地马拉/洪都拉斯','亚美尼亚'],de:['Mexiko','El Salvador/Guatemala/Honduras','Armenien']};
+  var _ml=typeof currentLang!=='undefined'?currentLang:'en';
+  [[7.9,-1.0],[8.5,-13.2],[-13.3,34.3],[-6.4,34.9],[28.4,84.1],[17.1,96.1],[16.0,107.8],[-2.5,118.0]].forEach(function(d,i){L.circleMarker([d[0],d[1]],o).addTo(m).bindTooltip((_mn[_ml]||_mn.en)[i]);});
+  [[23.6,-102.5],[13.7,-89.2],[40.2,44.5]].forEach(function(d,i){L.circleMarker([d[0],d[1]],p).addTo(m).bindTooltip((_mn2[_ml]||_mn2.en)[i]);});
   window._wccMap = m;
 }
 </script>
