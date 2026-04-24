@@ -1533,6 +1533,7 @@
           </div>
         </div>
       </div>
+    </div>
     
       <!-- SUPPORT -->
       <!-- World Child Cancer PARTNERSHIP SECTION -->
@@ -1577,8 +1578,8 @@
           <div class="story-placeholder-text" id="child-story-ph-p">Read a recent story from World Child Cancer about a child and family whose life was changed by access to diagnosis and treatment. <a href="https://worldchildcancer.org/news_and_blog/sujatas-story/?geo=uk" target="_blank" style="color:var(--blue);">Read Sujata's Story → worldchildcancer.org</a></div>
         </div>
       </div>
-      </div>
-    </div>
+  </div>
+    
     
     <!-- JOURNAL TAB -->
     <div id="tab-journal" class="tab-panel">
@@ -1629,13 +1630,6 @@
         <div class="card-header"><div class="card-icon">💡</div><h2 style="margin:0;" id="journal-how-title">How to read a scientific paper if you're not a scientist</h2></div>
         <p id="journal-how-p1">Start with the <strong>Abstract</strong> (one paragraph summary at the top) and the <strong>Discussion</strong> section at the end — skip the Methods entirely on first read. In the Results section, look at the figures rather than the text. If a number seems important, check the confidence interval or p-value nearby; if either looks uncertain, the finding is probably preliminary.</p>
         <p id="journal-how-p2" style="margin-bottom:0;">Be sceptical of single studies, especially in cancer biology where replication is often difficult. The highest-quality evidence comes from systematic reviews and meta-analyses, which pool data from many studies. If something is described as "shown in a mouse model" or "in vitro" (in a dish), it hasn't yet been tested in humans — which matters a lot in oncology.</p>
-      </div>
-      <div class="support-card section">
-        <h3 id="journal-support-title">This content is free. The fight isn't.</h3>
-        <p id="journal-support-p">We support World Child Cancer — a UK charity working to close the survival gap for children with cancer in low- and middle-income countries. If reading this has been valuable, please consider donating.</p>
-        <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="journal-support-btn">
-          ❤ Donate to World Child Cancer
-        </a>
       </div>
     </div>
 
@@ -2777,7 +2771,7 @@ function applyLang(lang){
   setText('child-age-row3', t('Hodgkin lymphoma · Bone tumours · Germ cell tumours · Thyroid cancer · Melanoma','霍奇金淋巴瘤 · 骨肿瘤 · 生殖细胞肿瘤 · 甲状腺癌 · 黑色素瘤','Hodgkin-Lymphom · Knochentumoren · Keimzelltumoren · Schilddrüsenkrebs · Melanom'));
   setText('child-aya-label', t('Adolescents: the forgotten group','青少年：被忽视的群体','Jugendliche: die vergessene Gruppe'));
   setText('child-aya-p1', t(
-    'Teenagers with cancer occupy an uncomfortable middle ground between paediatric and adult oncology — and outcomes reflect this. An adolescent with ALL treated on a paediatric protocol has significantly better survival than the same patient on an adult protocol, despite identical biology.',
+    'An adolescent with ALL treated on a <em>paediatric</em> protocol has significantly better survival than the same patient treated on an <em>adult</em> protocol, despite identical biology. <a href="https://doi.org/10.1200/JCO.2011.38.6367" target="_blank" style="color:var(--blue);font-size:.85em;">[Barry et al., JCO 2012]</a> <a href="https://doi.org/10.1016/j.ejca.2020.07.011" target="_blank" style="color:var(--blue);font-size:.85em;">[Möricke et al., EJCA 2020]</a>',
     '癌症青少年患者处于儿科与成人肿瘤学之间尴尬的中间地带——结果也印证了这一点。接受儿科方案治疗的青少年ALL患者，其生存率显著优于接受成人方案的同类患者，尽管两者的生物学特征相同。',
     'Krebskranke Teenager befinden sich in einem unbehaglichen Mittelfeld zwischen pädiatrischer und Erwachsenenonkologie — die Ergebnisse spiegeln dies wider.'
   ));
@@ -2846,7 +2840,7 @@ function applyLang(lang){
   // Cancer types
   // ── ALL ──
   setHtml('child-type-all-what', t(
-    '<strong>What it is:</strong> A cancer of the blood and bone marrow where immature white blood cells (lymphoblasts) multiply uncontrollably, crowding out normal blood cells. It progresses rapidly and requires urgent treatment. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>',
+    '<strong>What it is:</strong> A cancer of the blood and bone marrow where immature white blood cells (lymphoblasts) multiply uncontrollably, crowding out normal blood cells. It progresses rapidly and requires urgent treatment. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Hunger & Mullighan, NEJM 2015]</a> <a href="https://doi.org/10.1038/s41568-021-00390-4" target="_blank" style="color:var(--blue);font-size:.85em;">[Inaba & Pui, Nat Rev Cancer 2021]</a>',
     '<strong>是什么：</strong>急性淋巴细胞白血病（ALL）是儿童最常见的血液癌症。骨髓里本该正常发育的白细胞发生异常，不受控制地大量增殖，挤占了正常血细胞的生存空间。病情进展很快，需要立即治疗。',
     '<strong>Was es ist:</strong> Krebs des Blutes und Knochenmarks, bei dem unreife weiße Blutzellen (Lymphoblasten) unkontrolliert wachsen. Rasch fortschreitend. <a href="https://doi.org/10.1056/NEJMra1400972" target="_blank" style="color:var(--blue);font-size:.85em;">[Pui et al., NEJM 2015]</a>'
   ));
@@ -3032,7 +3026,7 @@ function applyLang(lang){
   
   // ── HODGKIN ──
   setHtml('child-type-lymph-what', t(
-    '<strong>What it is:</strong> A cancer of the lymphatic system defined by Reed-Sternberg cells. One of the earliest cancers to be cured by chemotherapy. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology and treatment.',
+    '<strong>What it is:</strong> A cancer of the lymphatic system defined by Reed-Sternberg cells. One of the earliest cancers to be cured by chemotherapy. Non-Hodgkin lymphoma (NHL) in children is a distinct group with different biology and treatment. <a href="https://doi.org/10.1200/JCO.2014.59.7227" target="_blank" style="color:var(--blue);font-size:.85em;">[Castellino et al., JCO 2014]</a>',
     '<strong>是什么：</strong>霍奇金淋巴瘤是淋巴系统的癌症，病理上可以在显微镜下看到一种特殊的大细胞（Reed-Sternberg细胞）。它是最早被化疗治愈的癌症之一，也是儿童和青少年癌症中预后最好的类型之一。非霍奇金淋巴瘤（NHL）是另一类淋巴瘤，生物学特征和治疗方式都不同，预后也更复杂。',
     '<strong>Was es ist:</strong> Lymphsystemkrebs mit Reed-Sternberg-Zellen. Eines der ersten durch Chemo heilbaren Krebsarten. NHL bei Kindern ist eine eigene Gruppe.'
   ));
@@ -3167,7 +3161,7 @@ function applyLang(lang){
   setText('region-india-label',t('India','印度','Indien'));
   setText('region-ssa-label',t('Sub-Saharan','撒哈拉以南非洲','Subsahara-Afrika'));
   setText('child-gap-p1', t('The gap exists because of three interconnected problems. First, late diagnosis — in low-income settings, children present at far more advanced stages. Second, treatment abandonment — families cannot afford prolonged hospital stays, drug costs, or travel. Around 30–60% of children in some LMICs abandon treatment before completion. Third, drug availability — supply chain failures mean critical chemotherapy agents are frequently unavailable.','这一差距源于三个相互关联的问题。第一，诊断延迟——在低收入环境中，儿童就诊时病情往往更为晚期。第二，治疗中断——家庭无法负担长期住院、药物费用或交通费用。在某些低中收入国家，约30–60%的儿童在完成治疗前就放弃了。第三，药物可及性——供应链故障意味着关键化疗药物经常无法获得。','Die Lücke besteht wegen drei miteinander verbundener Probleme. Erstens: späte Diagnose — in einkommensschwachen Ländern präsentieren sich Kinder in viel fortgeschritteneren Stadien. Zweitens: Behandlungsabbruch — Familien können Krankenhausaufenthalte, Medikamente oder Reisen nicht leisten. Drittens: Medikamentenverfügbarkeit — Lieferkettenprobleme machen kritische Chemotherapeutika oft unverfügbar.'));
-  setText('child-gap-p2', t('Organisations working to close this gap focus on improving diagnostic capacity, training local oncologists, subsidising treatment costs, and ensuring drug supply reliability. The science is largely solved — the challenge is delivery.','致力于缩小这一差距的组织专注于提高诊断能力、培训当地肿瘤科医生、补贴治疗费用和确保药物供应可靠性。科学问题在很大程度上已经解决——挑战在于落实。','Organisationen, die diese Lücke schließen wollen, konzentrieren sich auf Diagnostikkapazität, Ausbildung lokaler Onkologen, Subventionierung von Behandlungskosten und Medikamentenversorgung. Die Wissenschaft ist weitgehend gelöst — die Herausforderung ist die Umsetzung.'));
+  setText('child-gap-p2', t('Organisations working to close this gap focus on improving diagnostic capacity, training local oncologists, subsidising treatment costs, and ensuring drug supply reliability. The science is largely solved — the challenge is delivery. <a href="https://doi.org/10.1038/s41591-022-01687-7" target="_blank" style="color:var(--blue);font-size:.85em;">[Lam et al., Nat Med 2022]</a>','致力于缩小这一差距的组织专注于提高诊断能力、培训当地肿瘤科医生、补贴治疗费用和确保药物供应可靠性。科学问题在很大程度上已经解决——挑战在于落实。','Organisationen, die diese Lücke schließen wollen, konzentrieren sich auf Diagnostikkapazität, Ausbildung lokaler Onkologen, Subventionierung von Behandlungskosten und Medikamentenversorgung. Die Wissenschaft ist weitgehend gelöst — die Herausforderung ist die Umsetzung.'));
 
   // ── CHILD SUPPORT + STORIES ──
   setText('child-support-title', t('Childhood cancer research is underfunded relative to its burden.','相对于其负担，儿童癌症研究资金严重不足。','Kinderkrebsforschung ist im Verhältnis zu ihrer Krankheitslast unterfinanziert.'));
