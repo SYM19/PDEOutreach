@@ -1682,7 +1682,7 @@
           <div style="display:flex;flex-wrap:wrap;gap:.75rem;align-items:center;margin-bottom:.875rem;">
             <a href="https://www.justgiving.com/page/pdeoutreach-wcc" target="_blank" class="support-btn" id="about-charity-btn">❤ Donate via JustGiving</a>
             <a href="https://worldchildcancer.org" target="_blank" style="font-family:var(--mono);font-size:.78rem;color:var(--blue);text-decoration:none;" id="about-wcc-link">worldchildcancer.org ↗</a>
-            <a href="#" onclick="switchTab('child');return false;" style="font-family:var(--mono);font-size:.78rem;color:var(--teal);text-decoration:none;" id="about-wcc-child-link">Full WCC profile → Childhood Cancer tab</a>
+            <a href="#" onclick="switchTab('child');return false;" style="font-family:var(--mono);font-size:.78rem;color:var(--teal);text-decoration:none;" id="about-wcc-child-link">Full World Child Cancer profile → Childhood Cancer tab</a>
           </div>
           <div style="background:rgba(78,205,196,.06);border:1px solid rgba(78,205,196,.2);border-radius:var(--radius);padding:.75rem 1rem;font-size:.78rem;color:var(--text3);" id="about-wcc-note">
             World Child Cancer · Registered charity no. 1107353 (England & Wales) · <a href="https://worldchildcancer.org" target="_blank" style="color:var(--blue);">worldchildcancer.org</a>
@@ -3213,9 +3213,9 @@ function applyLang(lang){
   setText('about-wcc-link', t('worldchildcancer.org ↗','worldchildcancer.org ↗','worldchildcancer.org ↗'));
   const aboutChildLink = document.getElementById('about-wcc-child-link');
   if (aboutChildLink) aboutChildLink.textContent = t(
-    'Full WCC profile → Childhood Cancer tab',
-    '完整WCC介绍 → 儿童癌症专栏',
-    'Vollständiges WCC-Profil → Kinderkrebs-Tab'
+    'Full World Child Cancer profile → Childhood Cancer tab',
+    '完整世界儿童基金会介绍 → 儿童癌症专栏',
+    'Vollständiges World Child Cancer Profil → Kinderkrebs-Tab'
   );
   setText('about-wcc-note', t('World Child Cancer · Registered charity no. 1107353 (England & Wales) · worldchildcancer.org','世界儿童癌症基金会 · 注册慈善机构编号1107353（英格兰和威尔士） · worldchildcancer.org','World Child Cancer · Eingetragene Wohltätigkeitsorganisation Nr. 1107353 (England & Wales) · worldchildcancer.org'));
   setText('about-contact-title',t('Contact us','联系我们','Kontakt'));
